@@ -1,0 +1,33 @@
+{
+  "feature_columns": [
+    "return_1",
+    "return_3",
+    "return_5",
+    "ma_ratio_10",
+    "ma_ratio_20",
+    "volatility_10",
+    "volatility_20",
+    "high_low_range",
+    "open_close_range",
+    "rsi_14",
+    "macd",
+    "macd_signal",
+    "macd_hist",
+    "atr_14",
+    "bb_width",
+    "bb_position",
+    "vol_ratio",
+    "rsi_slope",
+    "lag1_return",
+    "lag2_return",
+    "momentum_5",
+    "momentum_10",
+    "dow",
+    "adx",
+    "plus_di",
+    "minus_di",
+    "adx_trending",
+    "adx_ranging"
+  ],
+  "accuracy_train": 0.65
+}

@@ -1,0 +1,1141 @@
+2026-03-21 15:47:53,095 - train - INFO - Loading data...
+2026-03-21 16:44:53,100 - train - INFO - Loading data...
+2026-03-21 16:53:27,950 - train - INFO - Loading data...
+2026-03-21 17:10:03,323 - train - INFO - Loading data...
+2026-03-21 17:10:03,352 - train - INFO - Running walk-forward validation...
+2026-03-21 17:10:17,079 - train - INFO - Training final model on full dataset...
+2026-03-21 17:10:18,184 - train - INFO - Training complete.
+2026-03-21 17:10:18,184 - train - INFO - Saved model to models/model.pkl
+2026-03-21 17:10:18,184 - train - INFO - Saved walk-forward results to models/walk_forward_results.csv
+2026-04-27 02:43:27,031 - train - INFO - Loading data...
+2026-04-27 02:43:27,082 - train - INFO - Running walk-forward validation...
+2026-04-27 02:43:39,760 - train - INFO - Training final model on 3984 rows, testing on 996 rows...
+2026-04-27 02:43:40,376 - train - INFO - Training complete.
+2026-04-27 03:05:10,940 - api - INFO - Prediction: SELL / DOWN  prob_up=0.4425  close=1.157
+2026-04-27 03:05:38,464 - api - INFO - Prediction: SELL / DOWN  prob_up=0.4425  close=1.157
+2026-04-27 03:05:51,685 - api - ERROR - Fetch failed: expected str, bytes or os.PathLike object, not NoneType
+2026-04-27 03:05:52,559 - api - INFO - Prediction: SELL / DOWN  prob_up=0.4425  close=1.157
+2026-04-27 03:05:57,759 - api - INFO - Retraining triggered via API...
+2026-04-27 03:05:59,908 - train - INFO - Loading data...
+2026-04-27 03:05:59,937 - train - INFO - Running walk-forward validation...
+2026-04-27 03:06:10,547 - train - INFO - Training final model on 3984 rows, testing on 996 rows...
+2026-04-27 03:06:11,063 - train - INFO - Training complete.
+2026-04-27 03:06:11,212 - api - INFO - Retraining complete.
+2026-04-27 03:06:12,097 - api - INFO - Prediction: BUY / UP  prob_up=0.5402  close=1.157
+2026-04-27 03:06:15,334 - api - ERROR - Fetch failed: expected str, bytes or os.PathLike object, not NoneType
+2026-04-27 03:06:16,170 - api - INFO - Prediction: BUY / UP  prob_up=0.5402  close=1.157
+2026-04-27 03:11:04,587 - api - INFO - Prediction: BUY / UP  prob_up=0.5402  close=1.157
+2026-04-27 03:11:16,013 - api - INFO - Prediction: BUY / UP  prob_up=0.5402  close=1.157
+2026-04-27 03:11:19,811 - api - INFO - Data fetch complete. Total rows: 5025, new rows: 25
+2026-04-27 03:11:20,653 - api - INFO - Prediction: BUY / UP  prob_up=0.5045  close=1.172
+2026-04-27 03:11:25,135 - api - INFO - Retraining triggered via API...
+2026-04-27 03:11:27,238 - train - INFO - Loading data...
+2026-04-27 03:11:27,269 - train - INFO - Running walk-forward validation...
+2026-04-27 03:11:38,148 - train - INFO - Training final model on 4004 rows, testing on 1001 rows...
+2026-04-27 03:11:38,659 - train - INFO - Training complete.
+2026-04-27 03:11:38,814 - api - INFO - Retraining complete.
+2026-04-27 03:11:39,731 - api - INFO - Prediction: BUY / UP  prob_up=0.5051  close=1.172
+2026-04-27 03:12:28,601 - api - INFO - Prediction: BUY / UP  prob_up=0.5051  close=1.172
+2026-04-27 03:12:32,674 - api - INFO - Prediction: BUY / UP  prob_up=0.5051  close=1.172
+2026-04-27 03:13:14,419 - api - INFO - Prediction: BUY / UP  prob_up=0.5051  close=1.172
+2026-04-27 09:05:58,200 - api - INFO - Prediction: BUY / UP  prob_up=0.5051  close=1.172
+2026-04-27 09:05:58,317 - api - INFO - Prediction: BUY / UP  prob_up=0.5051  close=1.172
+2026-05-01 06:41:39,438 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-01 06:42:07,875 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-01 06:42:08,314 - oanda - INFO - Fetched 299 D candles for EUR_USD
+2026-05-01 06:42:08,879 - paper_trader - INFO - Signal skipped — below threshold: prob_up=0.4874
+2026-05-01 06:43:19,503 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-01 06:43:19,503 - scheduler - INFO - Scheduler started. Waiting for scheduled jobs...
+2026-05-01 06:43:24,565 - scheduler - INFO - Running initial signal check on startup...
+2026-05-01 06:43:24,566 - scheduler - INFO - === Running signal check ===
+2026-05-01 06:43:25,096 - oanda - INFO - Fetched 299 D candles for EUR_USD
+2026-05-01 06:43:25,468 - paper_trader - INFO - Signal skipped — below threshold: prob_up=0.4874
+2026-05-01 06:43:30,462 - scheduler - INFO - Signal check result: {'timestamp': '2026-05-01T00:58:24.566397', 'action': 'none', 'reason': 'Confidence below threshold (0.55)', 'signal': 'SELL', 'prob_up': 0.4874, 'confidence': 'LOW', 'price': 1.17284}
+2026-05-01 06:52:41,050 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-01 06:52:43,072 - regime - INFO - Regime: ADX=33.9 (trending) | Direction=bullish | Vol=normal (0.65x avg) | Tradeable=['BUY']
+2026-05-01 06:52:43,184 - api - INFO - Prediction: BUY / UP  prob_up=0.5051  close=1.172
+2026-05-01 06:52:43,260 - api - INFO - Prediction: BUY / UP  prob_up=0.5051  close=1.172
+2026-05-01 07:01:07,749 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-01 07:01:08,586 - oanda - INFO - Fetched 299 D candles for EUR_USD
+2026-05-01 07:01:09,594 - paper_trader - INFO - Signal skipped — below threshold: prob_up=0.4874
+2026-05-01 07:03:45,507 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-01 07:03:45,507 - scheduler - INFO - Scheduler started. Waiting for scheduled jobs...
+2026-05-01 07:03:52,525 - scheduler - INFO - Running initial signal check on startup...
+2026-05-01 07:03:52,525 - scheduler - INFO - === Running signal check ===
+2026-05-01 07:03:52,955 - oanda - INFO - Fetched 299 D candles for EUR_USD
+2026-05-01 07:03:53,275 - paper_trader - INFO - Signal skipped — below threshold: prob_up=0.4874
+2026-05-01 07:03:58,165 - scheduler - INFO - Signal check result: {'timestamp': '2026-05-01T01:18:52.525166', 'action': 'none', 'reason': 'Confidence below threshold (0.55)', 'signal': 'SELL', 'prob_up': 0.4874, 'confidence': 'LOW', 'price': 1.17278}
+2026-05-01 07:07:26,447 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-01 07:07:27,783 - regime - INFO - Regime: ADX=33.9 (trending) | Direction=bullish | Vol=normal (0.65x avg) | Tradeable=['BUY']
+2026-05-01 07:07:27,904 - api - INFO - Prediction: BUY / UP  prob_up=0.5051  close=1.172
+2026-05-01 07:07:27,990 - api - INFO - Prediction: BUY / UP  prob_up=0.5051  close=1.172
+2026-05-01 07:09:31,748 - api - INFO - Data fetch complete. Total rows: 5029, new rows: 4
+2026-05-01 07:09:32,252 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-01 07:09:33,132 - regime - INFO - Regime: ADX=25.2 (trending) | Direction=bullish | Vol=normal (0.67x avg) | Tradeable=['BUY']
+2026-05-01 07:09:33,223 - api - INFO - Prediction: SELL / DOWN  prob_up=0.4883  close=1.173
+2026-05-01 07:09:33,290 - api - INFO - Prediction: SELL / DOWN  prob_up=0.4883  close=1.173
+2026-05-01 07:09:51,585 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-01 07:09:52,494 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-01 07:09:52,963 - oanda - INFO - Fetched 299 D candles for EUR_USD
+2026-05-01 07:09:53,286 - paper_trader - INFO - Signal skipped — below threshold: prob_up=0.4874
+2026-05-01 07:09:58,031 - regime - INFO - Regime: ADX=25.2 (trending) | Direction=bullish | Vol=normal (0.67x avg) | Tradeable=['BUY']
+2026-05-01 07:09:58,171 - api - INFO - Prediction: SELL / DOWN  prob_up=0.4883  close=1.173
+2026-05-01 07:09:58,241 - api - INFO - Prediction: SELL / DOWN  prob_up=0.4883  close=1.173
+2026-05-01 07:10:13,503 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-01 07:10:14,384 - regime - INFO - Regime: ADX=25.2 (trending) | Direction=bullish | Vol=normal (0.67x avg) | Tradeable=['BUY']
+2026-05-01 07:10:19,508 - api - INFO - Prediction: SELL / DOWN  prob_up=0.4883  close=1.173
+2026-05-01 07:10:19,581 - api - INFO - Prediction: SELL / DOWN  prob_up=0.4883  close=1.173
+2026-05-03 16:23:20,144 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-03 16:23:22,500 - regime - INFO - Regime: ADX=25.2 (trending) | Direction=bullish | Vol=normal (0.67x avg) | Tradeable=['BUY']
+2026-05-03 16:23:22,620 - api - INFO - Prediction: SELL / DOWN  prob_up=0.4883  close=1.173
+2026-05-03 16:23:22,697 - api - INFO - Prediction: SELL / DOWN  prob_up=0.4883  close=1.173
+2026-05-03 16:24:08,451 - api - INFO - Data fetch complete. Total rows: 5030, new rows: 1
+2026-05-03 16:24:08,948 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-03 16:24:11,204 - regime - INFO - Regime: ADX=26.7 (trending) | Direction=bullish | Vol=normal (0.67x avg) | Tradeable=['BUY']
+2026-05-03 16:24:11,311 - api - INFO - Prediction: BUY / UP  prob_up=0.5193  close=1.172
+2026-05-03 16:24:11,385 - api - INFO - Prediction: BUY / UP  prob_up=0.5193  close=1.172
+2026-05-03 16:24:12,744 - api - INFO - Retraining triggered via API...
+2026-05-03 16:24:14,093 - train - INFO - Loading data...
+2026-05-03 16:24:14,109 - train - INFO - Running walk-forward validation...
+2026-05-03 16:24:20,512 - train - INFO - Training final model on 4008 rows, testing on 1002 rows...
+2026-05-03 16:24:20,865 - train - INFO - Training complete.
+2026-05-03 16:24:20,971 - api - INFO - Retraining complete.
+2026-05-03 16:24:21,541 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-03 16:24:22,441 - regime - INFO - Regime: ADX=26.7 (trending) | Direction=bullish | Vol=normal (0.67x avg) | Tradeable=['BUY']
+2026-05-03 16:24:22,526 - api - INFO - Prediction: BUY / UP  prob_up=0.5202  close=1.172
+2026-05-03 16:24:22,596 - api - INFO - Prediction: BUY / UP  prob_up=0.5202  close=1.172
+2026-05-03 16:30:42,206 - regime - INFO - Regime: ADX=26.7 (trending) | Direction=bullish | Vol=normal (0.67x avg) | Tradeable=['BUY']
+2026-05-03 16:31:21,130 - regime - INFO - Regime: ADX=26.7 (trending) | Direction=bullish | Vol=normal (0.67x avg) | Tradeable=['BUY']
+2026-05-03 16:32:09,165 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-03 16:32:09,601 - oanda - INFO - Fetched 300 D candles for EUR_USD
+2026-05-03 16:32:09,943 - paper_trader - INFO - Signal skipped — below threshold: prob_up=0.5096
+2026-05-03 16:41:13,955 - train - INFO - Loading data...
+2026-05-03 16:41:13,993 - train - INFO - Running walk-forward validation...
+2026-05-03 16:41:20,441 - train - INFO - Training final model on 4008 rows, testing on 1002 rows...
+2026-05-03 16:41:20,783 - train - INFO - Training complete.
+2026-05-03 16:42:41,510 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-03 16:42:44,450 - regime - INFO - Regime: ADX=26.7 (trending) | Direction=bullish | Vol=normal (0.67x avg) | Tradeable=['BUY']
+2026-05-03 16:42:44,590 - api - INFO - Prediction: BUY / UP  prob_up=0.5097  close=1.172
+2026-05-03 16:42:44,670 - api - INFO - Prediction: BUY / UP  prob_up=0.5097  close=1.172
+2026-05-03 16:43:25,890 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-03 16:43:25,890 - scheduler - INFO - Scheduler started. Waiting for scheduled jobs...
+2026-05-03 16:43:32,159 - scheduler - INFO - Running initial signal check on startup...
+2026-05-03 16:43:32,160 - scheduler - INFO - === Running signal check ===
+2026-05-03 16:43:32,541 - oanda - INFO - Fetched 300 D candles for EUR_USD
+2026-05-03 16:43:32,968 - paper_trader - INFO - Signal skipped — below threshold: prob_up=0.5081
+2026-05-03 16:43:40,753 - scheduler - INFO - Signal check result: {'timestamp': '2026-05-03T10:58:32.160120', 'action': 'none', 'reason': 'Confidence below threshold (0.55)', 'signal': 'BUY', 'prob_up': 0.5081, 'confidence': 'LOW', 'price': 1.17212}
+2026-05-03 16:45:54,618 - api - INFO - Data fetch complete. Total rows: 5030, new rows: 0
+2026-05-03 16:45:55,147 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-03 16:45:56,088 - regime - INFO - Regime: ADX=26.7 (trending) | Direction=bullish | Vol=normal (0.67x avg) | Tradeable=['BUY']
+2026-05-03 16:45:56,189 - api - INFO - Prediction: BUY / UP  prob_up=0.5097  close=1.172
+2026-05-03 16:45:56,263 - api - INFO - Prediction: BUY / UP  prob_up=0.5097  close=1.172
+2026-05-03 16:45:57,701 - api - INFO - Retraining triggered via API...
+2026-05-03 16:45:59,165 - train - INFO - Loading data...
+2026-05-03 16:45:59,190 - train - INFO - Running walk-forward validation...
+2026-05-03 16:46:05,646 - train - INFO - Training final model on 4008 rows, testing on 1002 rows...
+2026-05-03 16:46:06,012 - train - INFO - Training complete.
+2026-05-03 16:46:06,120 - api - INFO - Retraining complete.
+2026-05-03 16:46:06,728 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-03 16:46:07,670 - regime - INFO - Regime: ADX=26.7 (trending) | Direction=bullish | Vol=normal (0.67x avg) | Tradeable=['BUY']
+2026-05-03 16:46:07,767 - api - INFO - Prediction: BUY / UP  prob_up=0.5097  close=1.172
+2026-05-03 16:46:07,841 - api - INFO - Prediction: BUY / UP  prob_up=0.5097  close=1.172
+2026-05-03 16:48:01,029 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-03 16:48:01,390 - regime - INFO - Regime: ADX=26.7 (trending) | Direction=bullish | Vol=normal (0.67x avg) | Tradeable=['BUY']
+2026-05-04 11:01:37,597 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-04 11:01:38,622 - oanda - INFO - Fetched 499 D candles for EUR_USD
+2026-05-04 11:01:38,624 - multi_pair - INFO - EUR_USD: saved 499 rows to data/EUR_USD.csv
+2026-05-04 11:01:38,624 - multi_pair - INFO - EUR_USD: fetched 499 rows
+2026-05-04 11:01:38,624 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-04 11:01:39,509 - oanda - INFO - Fetched 499 D candles for GBP_USD
+2026-05-04 11:01:39,511 - multi_pair - INFO - GBP_USD: saved 499 rows to data/GBP_USD.csv
+2026-05-04 11:01:39,511 - multi_pair - INFO - GBP_USD: fetched 499 rows
+2026-05-04 11:01:39,511 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-04 11:01:40,030 - oanda - INFO - Fetched 499 D candles for USD_JPY
+2026-05-04 11:01:40,031 - multi_pair - INFO - USD_JPY: saved 499 rows to data/USD_JPY.csv
+2026-05-04 11:01:40,032 - multi_pair - INFO - USD_JPY: fetched 499 rows
+2026-05-04 11:01:40,032 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-04 11:01:40,422 - oanda - INFO - Fetched 499 D candles for AUD_USD
+2026-05-04 11:01:40,423 - multi_pair - INFO - AUD_USD: saved 499 rows to data/AUD_USD.csv
+2026-05-04 11:01:40,423 - multi_pair - INFO - AUD_USD: fetched 499 rows
+2026-05-04 11:01:40,802 - multi_pair - INFO - EUR_USD: trained — test_acc=0.5625  wf_acc=0.5500
+2026-05-04 11:01:41,168 - multi_pair - INFO - GBP_USD: trained — test_acc=0.5417  wf_acc=0.4700
+2026-05-04 11:01:41,507 - multi_pair - INFO - USD_JPY: trained — test_acc=0.4792  wf_acc=0.4900
+2026-05-04 11:01:41,852 - multi_pair - INFO - AUD_USD: trained — test_acc=0.4479  wf_acc=0.6400
+2026-05-04 11:06:42,621 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-04 11:06:44,390 - regime - INFO - Regime: ADX=26.7 (trending) | Direction=bullish | Vol=normal (0.67x avg) | Tradeable=['BUY']
+2026-05-04 11:06:44,566 - api - INFO - Prediction: BUY / UP  prob_up=0.5055  close=1.172
+2026-05-04 11:06:44,682 - api - INFO - Prediction: BUY / UP  prob_up=0.5055  close=1.172
+2026-05-04 11:07:18,055 - scheduler - INFO - Multi-pair scheduler started
+2026-05-04 11:07:22,991 - scheduler - INFO - Running startup fetch + signal check...
+2026-05-04 11:07:22,991 - scheduler - INFO - === Fetching data for all pairs ===
+2026-05-04 11:07:22,991 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-04 11:07:23,296 - oanda - INFO - Fetched 99 D candles for EUR_USD
+2026-05-04 11:07:23,302 - multi_pair - INFO - EUR_USD: saved 499 rows to data/EUR_USD.csv
+2026-05-04 11:07:23,302 - multi_pair - INFO - EUR_USD: fetched 499 rows
+2026-05-04 11:07:23,302 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-04 11:07:23,658 - oanda - INFO - Fetched 99 D candles for GBP_USD
+2026-05-04 11:07:23,662 - multi_pair - INFO - GBP_USD: saved 499 rows to data/GBP_USD.csv
+2026-05-04 11:07:23,662 - multi_pair - INFO - GBP_USD: fetched 499 rows
+2026-05-04 11:07:23,662 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-04 11:07:24,236 - oanda - INFO - Fetched 99 D candles for USD_JPY
+2026-05-04 11:07:24,239 - multi_pair - INFO - USD_JPY: saved 499 rows to data/USD_JPY.csv
+2026-05-04 11:07:24,239 - multi_pair - INFO - USD_JPY: fetched 499 rows
+2026-05-04 11:07:24,239 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-04 11:07:24,921 - oanda - INFO - Fetched 99 D candles for AUD_USD
+2026-05-04 11:07:24,925 - multi_pair - INFO - AUD_USD: saved 499 rows to data/AUD_USD.csv
+2026-05-04 11:07:24,925 - multi_pair - INFO - AUD_USD: fetched 499 rows
+2026-05-04 11:07:24,925 - scheduler - INFO - Fetch complete — ok: ['EUR_USD', 'GBP_USD', 'USD_JPY', 'AUD_USD'], failed: []
+2026-05-04 11:07:24,925 - scheduler - INFO - === Portfolio signal check ===
+2026-05-04 11:07:24,925 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-04 11:07:26,275 - scheduler - ERROR - Portfolio signal check failed: 'prob_up'
+2026-05-04 11:07:56,599 - api - INFO - Data fetch complete. Total rows: 5030, new rows: 0
+2026-05-04 11:07:57,106 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-04 11:07:57,994 - regime - INFO - Regime: ADX=26.7 (trending) | Direction=bullish | Vol=normal (0.67x avg) | Tradeable=['BUY']
+2026-05-04 11:07:58,097 - api - INFO - Prediction: BUY / UP  prob_up=0.5055  close=1.172
+2026-05-04 11:07:58,171 - api - INFO - Prediction: BUY / UP  prob_up=0.5055  close=1.172
+2026-05-04 11:07:59,866 - api - INFO - Retraining triggered via API...
+2026-05-04 11:08:01,183 - train - INFO - Loading data...
+2026-05-04 11:08:01,205 - train - INFO - Running walk-forward validation...
+2026-05-04 11:08:07,576 - train - INFO - Training final model on 4008 rows, testing on 1002 rows...
+2026-05-04 11:08:07,929 - train - INFO - Training complete.
+2026-05-04 11:08:08,029 - api - INFO - Retraining complete.
+2026-05-04 11:08:08,623 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-04 11:08:09,464 - regime - INFO - Regime: ADX=26.7 (trending) | Direction=bullish | Vol=normal (0.67x avg) | Tradeable=['BUY']
+2026-05-04 11:08:09,555 - api - INFO - Prediction: BUY / UP  prob_up=0.5097  close=1.172
+2026-05-04 11:08:09,627 - api - INFO - Prediction: BUY / UP  prob_up=0.5097  close=1.172
+2026-05-04 11:08:26,876 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-04 11:08:27,716 - regime - INFO - Regime: ADX=26.7 (trending) | Direction=bullish | Vol=normal (0.67x avg) | Tradeable=['BUY']
+2026-05-04 11:08:28,288 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-04 11:08:29,189 - regime - INFO - Regime: ADX=26.7 (trending) | Direction=bullish | Vol=normal (0.67x avg) | Tradeable=['BUY']
+2026-05-04 11:08:29,280 - api - INFO - Prediction: BUY / UP  prob_up=0.5097  close=1.172
+2026-05-04 11:08:29,353 - api - INFO - Prediction: BUY / UP  prob_up=0.5097  close=1.172
+2026-05-04 11:08:55,418 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-04 11:08:57,408 - regime - INFO - Regime: ADX=26.7 (trending) | Direction=bullish | Vol=normal (0.67x avg) | Tradeable=['BUY']
+2026-05-04 11:08:59,203 - multi_pair - INFO - EUR_USD: trained — test_acc=0.5625  wf_acc=0.5500
+2026-05-04 11:08:59,572 - multi_pair - INFO - GBP_USD: trained — test_acc=0.5417  wf_acc=0.4700
+2026-05-04 11:08:59,965 - multi_pair - INFO - USD_JPY: trained — test_acc=0.4792  wf_acc=0.4900
+2026-05-04 11:09:00,314 - multi_pair - INFO - AUD_USD: trained — test_acc=0.4479  wf_acc=0.6400
+2026-05-04 11:09:00,510 - api - INFO - Prediction: BUY / UP  prob_up=0.5055  close=1.172
+2026-05-04 11:09:00,587 - api - INFO - Prediction: BUY / UP  prob_up=0.5055  close=1.172
+2026-05-04 11:09:05,712 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-04 11:09:06,631 - regime - INFO - Regime: ADX=26.7 (trending) | Direction=bullish | Vol=normal (0.67x avg) | Tradeable=['BUY']
+2026-05-04 11:09:07,723 - api - INFO - Data fetch complete. Total rows: 5030, new rows: 0
+2026-05-04 11:09:07,725 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-04 11:09:08,075 - oanda - INFO - Fetched 99 D candles for EUR_USD
+2026-05-04 11:09:08,080 - multi_pair - INFO - EUR_USD: saved 499 rows to data/EUR_USD.csv
+2026-05-04 11:09:08,080 - multi_pair - INFO - EUR_USD: fetched 499 rows
+2026-05-04 11:09:08,080 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-04 11:09:08,404 - oanda - INFO - Fetched 99 D candles for GBP_USD
+2026-05-04 11:09:08,409 - multi_pair - INFO - GBP_USD: saved 499 rows to data/GBP_USD.csv
+2026-05-04 11:09:08,409 - multi_pair - INFO - GBP_USD: fetched 499 rows
+2026-05-04 11:09:08,409 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-04 11:09:08,804 - oanda - INFO - Fetched 99 D candles for USD_JPY
+2026-05-04 11:09:08,808 - multi_pair - INFO - USD_JPY: saved 499 rows to data/USD_JPY.csv
+2026-05-04 11:09:08,808 - multi_pair - INFO - USD_JPY: fetched 499 rows
+2026-05-04 11:09:08,808 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-04 11:09:09,137 - oanda - INFO - Fetched 99 D candles for AUD_USD
+2026-05-04 11:09:09,141 - multi_pair - INFO - AUD_USD: saved 499 rows to data/AUD_USD.csv
+2026-05-04 11:09:09,141 - multi_pair - INFO - AUD_USD: fetched 499 rows
+2026-05-04 11:09:09,229 - api - INFO - Prediction: BUY / UP  prob_up=0.5055  close=1.172
+2026-05-04 11:09:09,301 - api - INFO - Prediction: BUY / UP  prob_up=0.5055  close=1.172
+2026-05-04 11:09:13,135 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-04 11:09:13,987 - regime - INFO - Regime: ADX=26.7 (trending) | Direction=bullish | Vol=normal (0.67x avg) | Tradeable=['BUY']
+2026-05-04 11:09:15,711 - multi_pair - INFO - EUR_USD: trained — test_acc=0.5625  wf_acc=0.5500
+2026-05-04 11:09:16,078 - multi_pair - INFO - GBP_USD: trained — test_acc=0.5417  wf_acc=0.4700
+2026-05-04 11:09:16,461 - multi_pair - INFO - USD_JPY: trained — test_acc=0.4792  wf_acc=0.4900
+2026-05-04 11:09:16,832 - multi_pair - INFO - AUD_USD: trained — test_acc=0.4479  wf_acc=0.6400
+2026-05-04 11:09:17,005 - api - INFO - Prediction: BUY / UP  prob_up=0.5055  close=1.172
+2026-05-04 11:09:17,078 - api - INFO - Prediction: BUY / UP  prob_up=0.5055  close=1.172
+2026-05-04 11:09:23,830 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-04 11:09:24,731 - regime - INFO - Regime: ADX=26.7 (trending) | Direction=bullish | Vol=normal (0.67x avg) | Tradeable=['BUY']
+2026-05-04 11:09:25,314 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-04 11:09:26,187 - regime - INFO - Regime: ADX=26.7 (trending) | Direction=bullish | Vol=normal (0.67x avg) | Tradeable=['BUY']
+2026-05-04 11:09:26,295 - api - INFO - Prediction: BUY / UP  prob_up=0.5055  close=1.172
+2026-05-04 11:09:26,366 - api - INFO - Prediction: BUY / UP  prob_up=0.5055  close=1.172
+2026-05-04 11:14:12,670 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-04 11:14:13,162 - oanda - INFO - Fetched 499 D candles for EUR_USD
+2026-05-04 11:14:13,167 - multi_pair - INFO - EUR_USD: saved 499 rows to data/EUR_USD.csv
+2026-05-04 11:14:13,168 - multi_pair - INFO - EUR_USD: fetched 499 rows
+2026-05-04 11:14:13,168 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-04 11:14:13,635 - oanda - INFO - Fetched 499 D candles for GBP_USD
+2026-05-04 11:14:13,639 - multi_pair - INFO - GBP_USD: saved 499 rows to data/GBP_USD.csv
+2026-05-04 11:14:13,639 - multi_pair - INFO - GBP_USD: fetched 499 rows
+2026-05-04 11:14:13,639 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-04 11:14:14,075 - oanda - INFO - Fetched 499 D candles for USD_JPY
+2026-05-04 11:14:14,079 - multi_pair - INFO - USD_JPY: saved 499 rows to data/USD_JPY.csv
+2026-05-04 11:14:14,079 - multi_pair - INFO - USD_JPY: fetched 499 rows
+2026-05-04 11:14:14,079 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-04 11:14:14,511 - oanda - INFO - Fetched 499 D candles for AUD_USD
+2026-05-04 11:14:14,514 - multi_pair - INFO - AUD_USD: saved 499 rows to data/AUD_USD.csv
+2026-05-04 11:14:14,514 - multi_pair - INFO - AUD_USD: fetched 499 rows
+2026-05-04 11:14:14,877 - multi_pair - INFO - EUR_USD: trained — test_acc=0.5625  wf_acc=0.5500
+2026-05-04 11:14:15,259 - multi_pair - INFO - GBP_USD: trained — test_acc=0.5417  wf_acc=0.4700
+2026-05-04 11:14:15,628 - multi_pair - INFO - USD_JPY: trained — test_acc=0.4792  wf_acc=0.4900
+2026-05-04 11:14:15,998 - multi_pair - INFO - AUD_USD: trained — test_acc=0.4479  wf_acc=0.6400
+2026-05-04 11:14:31,024 - multi_pair - WARNING - No trained models found for any pair. Run: python train_all.py --fetch
+2026-05-04 11:18:33,483 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-04 11:18:34,481 - oanda - INFO - Fetched 499 D candles for EUR_USD
+2026-05-04 11:18:34,488 - multi_pair - INFO - EUR_USD: 499 rows saved to data/EUR_USD.csv
+2026-05-04 11:18:34,488 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-04 11:18:35,394 - oanda - INFO - Fetched 499 D candles for GBP_USD
+2026-05-04 11:18:35,397 - multi_pair - INFO - GBP_USD: 499 rows saved to data/GBP_USD.csv
+2026-05-04 11:18:35,397 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-04 11:18:35,798 - oanda - INFO - Fetched 499 D candles for USD_JPY
+2026-05-04 11:18:35,801 - multi_pair - INFO - USD_JPY: 499 rows saved to data/USD_JPY.csv
+2026-05-04 11:18:35,801 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-04 11:18:36,219 - oanda - INFO - Fetched 499 D candles for AUD_USD
+2026-05-04 11:18:36,223 - multi_pair - INFO - AUD_USD: 499 rows saved to data/AUD_USD.csv
+2026-05-04 11:18:36,607 - multi_pair - INFO - EUR_USD: model saved → models/EUR_USD_model.pkl
+2026-05-04 11:18:36,607 - multi_pair - INFO - EUR_USD: trained — train=0.7728 test=0.5625 wf=0.5500
+2026-05-04 11:18:36,983 - multi_pair - INFO - GBP_USD: model saved → models/GBP_USD_model.pkl
+2026-05-04 11:18:36,984 - multi_pair - INFO - GBP_USD: trained — train=0.7911 test=0.5417 wf=0.4700
+2026-05-04 11:18:37,343 - multi_pair - INFO - USD_JPY: model saved → models/USD_JPY_model.pkl
+2026-05-04 11:18:37,343 - multi_pair - INFO - USD_JPY: trained — train=0.7859 test=0.4792 wf=0.4900
+2026-05-04 11:18:37,691 - multi_pair - INFO - AUD_USD: model saved → models/AUD_USD_model.pkl
+2026-05-04 11:18:37,691 - multi_pair - INFO - AUD_USD: trained — train=0.7493 test=0.4479 wf=0.6400
+2026-05-04 11:18:49,656 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.67x avg) | Tradeable=[]
+2026-05-04 11:18:49,711 - regime - INFO - Regime: ADX=21.8 (transitioning) | Direction=bullish | Vol=normal (0.86x avg) | Tradeable=[]
+2026-05-04 11:18:49,765 - regime - INFO - Regime: ADX=31.6 (trending) | Direction=neutral | Vol=normal (1.49x avg) | Tradeable=['BUY', 'SELL']
+2026-05-04 11:18:49,819 - regime - INFO - Regime: ADX=18.4 (ranging) | Direction=bullish | Vol=normal (0.93x avg) | Tradeable=['BUY', 'SELL']
+2026-05-04 11:22:25,068 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-04 11:22:25,521 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.67x avg) | Tradeable=[]
+2026-05-04 11:22:25,577 - regime - INFO - Regime: ADX=21.8 (transitioning) | Direction=bullish | Vol=normal (0.86x avg) | Tradeable=[]
+2026-05-04 11:22:25,631 - regime - INFO - Regime: ADX=31.6 (trending) | Direction=neutral | Vol=normal (1.49x avg) | Tradeable=['BUY', 'SELL']
+2026-05-04 11:22:25,682 - regime - INFO - Regime: ADX=18.4 (ranging) | Direction=bullish | Vol=normal (0.93x avg) | Tradeable=['BUY', 'SELL']
+2026-05-04 11:23:40,762 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-04 11:23:41,909 - regime - INFO - Regime: ADX=26.7 (trending) | Direction=bullish | Vol=normal (0.67x avg) | Tradeable=['BUY']
+2026-05-04 11:23:41,993 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.67x avg) | Tradeable=[]
+2026-05-04 11:23:42,052 - regime - INFO - Regime: ADX=21.8 (transitioning) | Direction=bullish | Vol=normal (0.86x avg) | Tradeable=[]
+2026-05-04 11:23:42,106 - regime - INFO - Regime: ADX=31.6 (trending) | Direction=neutral | Vol=normal (1.49x avg) | Tradeable=['BUY', 'SELL']
+2026-05-04 11:23:42,162 - regime - INFO - Regime: ADX=18.4 (ranging) | Direction=bullish | Vol=normal (0.93x avg) | Tradeable=['BUY', 'SELL']
+2026-05-04 11:23:42,225 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.67x avg) | Tradeable=[]
+2026-05-04 11:23:42,276 - regime - INFO - Regime: ADX=21.8 (transitioning) | Direction=bullish | Vol=normal (0.86x avg) | Tradeable=[]
+2026-05-04 11:23:42,332 - regime - INFO - Regime: ADX=31.6 (trending) | Direction=neutral | Vol=normal (1.49x avg) | Tradeable=['BUY', 'SELL']
+2026-05-04 11:23:42,387 - regime - INFO - Regime: ADX=18.4 (ranging) | Direction=bullish | Vol=normal (0.93x avg) | Tradeable=['BUY', 'SELL']
+2026-05-04 11:23:42,523 - api - INFO - Prediction: BUY / UP  prob_up=0.5055  close=1.172
+2026-05-04 11:23:42,601 - api - INFO - Prediction: BUY / UP  prob_up=0.5055  close=1.172
+2026-05-04 11:25:03,826 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-04 11:25:04,872 - regime - INFO - Regime: ADX=26.7 (trending) | Direction=bullish | Vol=normal (0.67x avg) | Tradeable=['BUY']
+2026-05-04 11:25:05,485 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-04 11:25:06,635 - regime - INFO - Regime: ADX=26.7 (trending) | Direction=bullish | Vol=normal (0.67x avg) | Tradeable=['BUY']
+2026-05-04 11:25:06,711 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.67x avg) | Tradeable=[]
+2026-05-04 11:25:06,764 - regime - INFO - Regime: ADX=21.8 (transitioning) | Direction=bullish | Vol=normal (0.86x avg) | Tradeable=[]
+2026-05-04 11:25:06,821 - regime - INFO - Regime: ADX=31.6 (trending) | Direction=neutral | Vol=normal (1.49x avg) | Tradeable=['BUY', 'SELL']
+2026-05-04 11:25:06,876 - regime - INFO - Regime: ADX=18.4 (ranging) | Direction=bullish | Vol=normal (0.93x avg) | Tradeable=['BUY', 'SELL']
+2026-05-04 11:25:06,937 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.67x avg) | Tradeable=[]
+2026-05-04 11:25:06,994 - regime - INFO - Regime: ADX=21.8 (transitioning) | Direction=bullish | Vol=normal (0.86x avg) | Tradeable=[]
+2026-05-04 11:25:07,045 - regime - INFO - Regime: ADX=31.6 (trending) | Direction=neutral | Vol=normal (1.49x avg) | Tradeable=['BUY', 'SELL']
+2026-05-04 11:25:07,099 - regime - INFO - Regime: ADX=18.4 (ranging) | Direction=bullish | Vol=normal (0.93x avg) | Tradeable=['BUY', 'SELL']
+2026-05-04 11:25:07,195 - api - INFO - Prediction: BUY / UP  prob_up=0.5055  close=1.172
+2026-05-04 11:25:07,269 - api - INFO - Prediction: BUY / UP  prob_up=0.5055  close=1.172
+2026-05-04 16:20:00,748 - database - INFO - Default admin account created — username: admin, password: admin123
+2026-05-04 16:20:00,749 - database - INFO - Database initialised at data/forexchautari.db
+2026-05-04 16:20:14,572 - database - INFO - Database initialised at data/forexchautari.db
+2026-05-04 16:20:14,644 - database - INFO - Database initialised at data/forexchautari.db
+2026-05-04 16:20:16,138 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.67x avg) | Tradeable=[]
+2026-05-04 16:20:16,194 - regime - INFO - Regime: ADX=21.8 (transitioning) | Direction=bullish | Vol=normal (0.86x avg) | Tradeable=[]
+2026-05-04 16:20:16,249 - regime - INFO - Regime: ADX=31.6 (trending) | Direction=neutral | Vol=normal (1.49x avg) | Tradeable=['BUY', 'SELL']
+2026-05-04 16:20:16,301 - regime - INFO - Regime: ADX=18.4 (ranging) | Direction=bullish | Vol=normal (0.93x avg) | Tradeable=['BUY', 'SELL']
+2026-05-04 16:22:00,278 - database - INFO - Database initialised at data/forexchautari.db
+2026-05-04 16:22:00,624 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.67x avg) | Tradeable=[]
+2026-05-04 16:22:00,682 - regime - INFO - Regime: ADX=21.8 (transitioning) | Direction=bullish | Vol=normal (0.86x avg) | Tradeable=[]
+2026-05-04 16:22:00,739 - regime - INFO - Regime: ADX=31.6 (trending) | Direction=neutral | Vol=normal (1.49x avg) | Tradeable=['BUY', 'SELL']
+2026-05-04 16:22:00,825 - regime - INFO - Regime: ADX=18.4 (ranging) | Direction=bullish | Vol=normal (0.93x avg) | Tradeable=['BUY', 'SELL']
+2026-05-04 16:22:14,507 - database - INFO - Database initialised at data/forexchautari.db
+2026-05-04 16:22:14,648 - database - INFO - Database initialised at data/forexchautari.db
+2026-05-04 16:22:14,749 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.67x avg) | Tradeable=[]
+2026-05-04 16:22:14,803 - regime - INFO - Regime: ADX=21.8 (transitioning) | Direction=bullish | Vol=normal (0.86x avg) | Tradeable=[]
+2026-05-04 16:22:14,856 - regime - INFO - Regime: ADX=31.6 (trending) | Direction=neutral | Vol=normal (1.49x avg) | Tradeable=['BUY', 'SELL']
+2026-05-04 16:22:14,912 - regime - INFO - Regime: ADX=18.4 (ranging) | Direction=bullish | Vol=normal (0.93x avg) | Tradeable=['BUY', 'SELL']
+2026-05-04 16:22:30,135 - database - INFO - Database initialised at data/forexchautari.db
+2026-05-04 16:22:30,249 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.67x avg) | Tradeable=[]
+2026-05-04 16:22:30,307 - regime - INFO - Regime: ADX=21.8 (transitioning) | Direction=bullish | Vol=normal (0.86x avg) | Tradeable=[]
+2026-05-04 16:22:30,363 - regime - INFO - Regime: ADX=31.6 (trending) | Direction=neutral | Vol=normal (1.49x avg) | Tradeable=['BUY', 'SELL']
+2026-05-04 16:22:30,418 - regime - INFO - Regime: ADX=18.4 (ranging) | Direction=bullish | Vol=normal (0.93x avg) | Tradeable=['BUY', 'SELL']
+2026-05-04 16:22:36,968 - database - INFO - Database initialised at data/forexchautari.db
+2026-05-04 16:22:37,098 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.67x avg) | Tradeable=[]
+2026-05-04 16:22:37,186 - regime - INFO - Regime: ADX=21.8 (transitioning) | Direction=bullish | Vol=normal (0.86x avg) | Tradeable=[]
+2026-05-04 16:22:37,242 - regime - INFO - Regime: ADX=31.6 (trending) | Direction=neutral | Vol=normal (1.49x avg) | Tradeable=['BUY', 'SELL']
+2026-05-04 16:22:37,297 - regime - INFO - Regime: ADX=18.4 (ranging) | Direction=bullish | Vol=normal (0.93x avg) | Tradeable=['BUY', 'SELL']
+2026-05-04 16:24:12,058 - database - INFO - Database initialised at data/forexchautari.db
+2026-05-04 16:24:29,386 - database - INFO - Database initialised at data/forexchautari.db
+2026-05-04 16:24:29,490 - database - INFO - Database initialised at data/forexchautari.db
+2026-05-04 16:24:29,693 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.67x avg) | Tradeable=[]
+2026-05-04 16:24:29,755 - regime - INFO - Regime: ADX=21.8 (transitioning) | Direction=bullish | Vol=normal (0.86x avg) | Tradeable=[]
+2026-05-04 16:24:29,811 - regime - INFO - Regime: ADX=31.6 (trending) | Direction=neutral | Vol=normal (1.49x avg) | Tradeable=['BUY', 'SELL']
+2026-05-04 16:24:29,869 - regime - INFO - Regime: ADX=18.4 (ranging) | Direction=bullish | Vol=normal (0.93x avg) | Tradeable=['BUY', 'SELL']
+2026-05-04 16:25:20,439 - database - INFO - Database initialised at data/forexchautari.db
+2026-05-04 16:25:20,619 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.67x avg) | Tradeable=[]
+2026-05-04 16:25:20,690 - regime - INFO - Regime: ADX=21.8 (transitioning) | Direction=bullish | Vol=normal (0.86x avg) | Tradeable=[]
+2026-05-04 16:25:20,744 - regime - INFO - Regime: ADX=31.6 (trending) | Direction=neutral | Vol=normal (1.49x avg) | Tradeable=['BUY', 'SELL']
+2026-05-04 16:25:20,803 - regime - INFO - Regime: ADX=18.4 (ranging) | Direction=bullish | Vol=normal (0.93x avg) | Tradeable=['BUY', 'SELL']
+2026-05-04 16:25:23,806 - database - INFO - Database initialised at data/forexchautari.db
+2026-05-04 16:25:23,909 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.67x avg) | Tradeable=[]
+2026-05-04 16:25:23,966 - regime - INFO - Regime: ADX=21.8 (transitioning) | Direction=bullish | Vol=normal (0.86x avg) | Tradeable=[]
+2026-05-04 16:25:24,022 - regime - INFO - Regime: ADX=31.6 (trending) | Direction=neutral | Vol=normal (1.49x avg) | Tradeable=['BUY', 'SELL']
+2026-05-04 16:25:24,080 - regime - INFO - Regime: ADX=18.4 (ranging) | Direction=bullish | Vol=normal (0.93x avg) | Tradeable=['BUY', 'SELL']
+2026-05-04 16:25:24,494 - database - INFO - Database initialised at data/forexchautari.db
+2026-05-04 16:25:24,606 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.67x avg) | Tradeable=[]
+2026-05-04 16:25:24,660 - regime - INFO - Regime: ADX=21.8 (transitioning) | Direction=bullish | Vol=normal (0.86x avg) | Tradeable=[]
+2026-05-04 16:25:24,701 - database - INFO - Database initialised at data/forexchautari.db
+2026-05-04 16:25:24,730 - regime - INFO - Regime: ADX=31.6 (trending) | Direction=neutral | Vol=normal (1.49x avg) | Tradeable=['BUY', 'SELL']
+2026-05-04 16:25:24,861 - regime - INFO - Regime: ADX=18.4 (ranging) | Direction=bullish | Vol=normal (0.93x avg) | Tradeable=['BUY', 'SELL']
+2026-05-04 16:25:24,898 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.67x avg) | Tradeable=[]
+2026-05-04 16:25:24,952 - regime - INFO - Regime: ADX=21.8 (transitioning) | Direction=bullish | Vol=normal (0.86x avg) | Tradeable=[]
+2026-05-04 16:25:25,007 - regime - INFO - Regime: ADX=31.6 (trending) | Direction=neutral | Vol=normal (1.49x avg) | Tradeable=['BUY', 'SELL']
+2026-05-04 16:25:25,063 - regime - INFO - Regime: ADX=18.4 (ranging) | Direction=bullish | Vol=normal (0.93x avg) | Tradeable=['BUY', 'SELL']
+2026-05-04 16:25:25,345 - database - INFO - Database initialised at data/forexchautari.db
+2026-05-04 16:25:25,459 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.67x avg) | Tradeable=[]
+2026-05-04 16:25:25,512 - regime - INFO - Regime: ADX=21.8 (transitioning) | Direction=bullish | Vol=normal (0.86x avg) | Tradeable=[]
+2026-05-04 16:25:25,553 - database - INFO - Database initialised at data/forexchautari.db
+2026-05-04 16:25:25,585 - regime - INFO - Regime: ADX=31.6 (trending) | Direction=neutral | Vol=normal (1.49x avg) | Tradeable=['BUY', 'SELL']
+2026-05-04 16:25:25,707 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.67x avg) | Tradeable=[]
+2026-05-04 16:25:25,730 - regime - INFO - Regime: ADX=18.4 (ranging) | Direction=bullish | Vol=normal (0.93x avg) | Tradeable=['BUY', 'SELL']
+2026-05-04 16:25:25,808 - regime - INFO - Regime: ADX=21.8 (transitioning) | Direction=bullish | Vol=normal (0.86x avg) | Tradeable=[]
+2026-05-04 16:25:25,864 - regime - INFO - Regime: ADX=31.6 (trending) | Direction=neutral | Vol=normal (1.49x avg) | Tradeable=['BUY', 'SELL']
+2026-05-04 16:25:25,916 - regime - INFO - Regime: ADX=18.4 (ranging) | Direction=bullish | Vol=normal (0.93x avg) | Tradeable=['BUY', 'SELL']
+2026-05-04 16:25:45,100 - database - INFO - Database initialised at data/forexchautari.db
+2026-05-04 16:25:45,233 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.67x avg) | Tradeable=[]
+2026-05-04 16:25:45,284 - regime - INFO - Regime: ADX=21.8 (transitioning) | Direction=bullish | Vol=normal (0.86x avg) | Tradeable=[]
+2026-05-04 16:25:45,337 - regime - INFO - Regime: ADX=31.6 (trending) | Direction=neutral | Vol=normal (1.49x avg) | Tradeable=['BUY', 'SELL']
+2026-05-04 16:25:45,392 - regime - INFO - Regime: ADX=18.4 (ranging) | Direction=bullish | Vol=normal (0.93x avg) | Tradeable=['BUY', 'SELL']
+2026-05-04 16:26:32,130 - database - INFO - Database initialised at data/forexchautari.db
+2026-05-04 16:26:32,320 - database - INFO - Database initialised at data/forexchautari.db
+2026-05-04 16:26:32,443 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.67x avg) | Tradeable=[]
+2026-05-04 16:26:32,500 - regime - INFO - Regime: ADX=21.8 (transitioning) | Direction=bullish | Vol=normal (0.86x avg) | Tradeable=[]
+2026-05-04 16:26:32,560 - regime - INFO - Regime: ADX=31.6 (trending) | Direction=neutral | Vol=normal (1.49x avg) | Tradeable=['BUY', 'SELL']
+2026-05-04 16:26:32,615 - regime - INFO - Regime: ADX=18.4 (ranging) | Direction=bullish | Vol=normal (0.93x avg) | Tradeable=['BUY', 'SELL']
+2026-05-04 16:26:39,976 - database - INFO - Database initialised at data/forexchautari.db
+2026-05-04 16:26:40,120 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.67x avg) | Tradeable=[]
+2026-05-04 16:26:40,179 - regime - INFO - Regime: ADX=21.8 (transitioning) | Direction=bullish | Vol=normal (0.86x avg) | Tradeable=[]
+2026-05-04 16:26:40,235 - regime - INFO - Regime: ADX=31.6 (trending) | Direction=neutral | Vol=normal (1.49x avg) | Tradeable=['BUY', 'SELL']
+2026-05-04 16:26:40,291 - regime - INFO - Regime: ADX=18.4 (ranging) | Direction=bullish | Vol=normal (0.93x avg) | Tradeable=['BUY', 'SELL']
+2026-05-04 16:27:23,234 - database - INFO - Database initialised at data/forexchautari.db
+2026-05-04 16:27:43,403 - database - INFO - Database initialised at data/forexchautari.db
+2026-05-04 16:27:43,498 - database - INFO - Database initialised at data/forexchautari.db
+2026-05-04 16:27:43,606 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.67x avg) | Tradeable=[]
+2026-05-04 16:27:43,663 - regime - INFO - Regime: ADX=21.8 (transitioning) | Direction=bullish | Vol=normal (0.86x avg) | Tradeable=[]
+2026-05-04 16:27:43,719 - regime - INFO - Regime: ADX=31.6 (trending) | Direction=neutral | Vol=normal (1.49x avg) | Tradeable=['BUY', 'SELL']
+2026-05-04 16:27:43,772 - regime - INFO - Regime: ADX=18.4 (ranging) | Direction=bullish | Vol=normal (0.93x avg) | Tradeable=['BUY', 'SELL']
+2026-05-04 16:44:12,556 - database - INFO - Database initialised at data/forexchautari.db
+2026-05-05 12:43:20,331 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-05 12:43:20,332 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp19ot1lce/test.db
+2026-05-05 12:43:20,433 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-05 12:43:20,433 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpdc7nbz9w/test.db
+2026-05-05 12:43:20,584 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-05 12:43:20,585 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpqafbgmvk/test.db
+2026-05-05 12:43:20,835 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-05 12:43:20,835 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpkzoph8x8/test.db
+2026-05-05 12:43:20,985 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-05 12:43:20,986 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpw20ohvx0/test.db
+2026-05-05 12:43:21,137 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-05 12:43:21,137 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpln85z1ls/test.db
+2026-05-05 12:43:21,189 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-05 12:43:21,189 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp4fu4go_3/test.db
+2026-05-05 12:43:21,339 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-05 12:43:21,339 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp_cp58dum/test.db
+2026-05-05 12:43:21,496 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-05 12:43:21,497 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpc8p2_vwi/test.db
+2026-05-05 12:43:21,665 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-05 12:43:21,666 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp4v9unrfs/test.db
+2026-05-05 12:43:22,170 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-05 12:43:22,170 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp656cl8d8/test.db
+2026-05-05 12:43:22,235 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-05 12:43:22,235 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp4xydpzf7/test.db
+2026-05-05 12:43:22,399 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-05 12:43:22,399 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp6bm4_bop/test.db
+2026-05-05 12:43:22,451 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-05 12:43:22,452 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmptjewdrsx/test.db
+2026-05-05 12:43:22,752 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-05 12:43:22,753 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpcwhll147/test.db
+2026-05-05 12:43:23,004 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-05 12:43:23,005 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp0vwhaklu/test.db
+2026-05-05 12:43:23,155 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-05 12:43:23,155 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmprnrgk5t7/test.db
+2026-05-05 12:43:23,309 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-05 12:43:23,310 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmps5f03br2/auth_test.db
+2026-05-05 12:43:23,429 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-05 12:43:23,430 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpwbm097e3/auth_test.db
+2026-05-05 12:43:23,643 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-05 12:43:23,643 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpueo6kymk/auth_test.db
+2026-05-05 12:43:28,252 - multi_pair - WARNING - No trained models found. Run: python train_all.py --fetch
+2026-05-05 12:44:48,440 - database - INFO - Database ready at data/forexchautari.db
+2026-05-05 12:44:59,265 - database - INFO - Database ready at data/forexchautari.db
+2026-05-05 12:45:03,806 - database - INFO - Database ready at data/forexchautari.db
+2026-05-05 12:45:03,877 - database - INFO - Database ready at data/forexchautari.db
+2026-05-05 12:45:05,729 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.67x avg) | Tradeable=[]
+2026-05-05 12:45:05,785 - regime - INFO - Regime: ADX=21.8 (transitioning) | Direction=bullish | Vol=normal (0.86x avg) | Tradeable=[]
+2026-05-05 12:45:05,841 - regime - INFO - Regime: ADX=31.6 (trending) | Direction=neutral | Vol=normal (1.49x avg) | Tradeable=['BUY', 'SELL']
+2026-05-05 12:45:05,892 - regime - INFO - Regime: ADX=18.4 (ranging) | Direction=bullish | Vol=normal (0.93x avg) | Tradeable=['BUY', 'SELL']
+2026-05-05 12:45:48,669 - database - INFO - Database ready at data/forexchautari.db
+2026-05-05 12:45:48,849 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.67x avg) | Tradeable=[]
+2026-05-05 12:45:48,907 - regime - INFO - Regime: ADX=21.8 (transitioning) | Direction=bullish | Vol=normal (0.86x avg) | Tradeable=[]
+2026-05-05 12:45:48,966 - regime - INFO - Regime: ADX=31.6 (trending) | Direction=neutral | Vol=normal (1.49x avg) | Tradeable=['BUY', 'SELL']
+2026-05-05 12:45:49,025 - regime - INFO - Regime: ADX=18.4 (ranging) | Direction=bullish | Vol=normal (0.93x avg) | Tradeable=['BUY', 'SELL']
+2026-05-05 12:45:49,036 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-05 12:45:50,298 - oanda - INFO - Fetched 99 D candles for EUR_USD
+2026-05-05 12:45:50,306 - multi_pair - INFO - EUR_USD: 500 rows saved to data/EUR_USD.csv
+2026-05-05 12:45:50,306 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-05 12:45:51,317 - oanda - INFO - Fetched 99 D candles for GBP_USD
+2026-05-05 12:45:51,322 - multi_pair - INFO - GBP_USD: 500 rows saved to data/GBP_USD.csv
+2026-05-05 12:45:51,322 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-05 12:45:51,636 - oanda - INFO - Fetched 99 D candles for USD_JPY
+2026-05-05 12:45:51,640 - multi_pair - INFO - USD_JPY: 500 rows saved to data/USD_JPY.csv
+2026-05-05 12:45:51,640 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-05 12:45:51,981 - oanda - INFO - Fetched 99 D candles for AUD_USD
+2026-05-05 12:45:51,986 - multi_pair - INFO - AUD_USD: 500 rows saved to data/AUD_USD.csv
+2026-05-05 12:45:56,624 - database - INFO - Database ready at data/forexchautari.db
+2026-05-05 12:45:56,759 - regime - INFO - Regime: ADX=22.3 (transitioning) | Direction=neutral | Vol=normal (0.66x avg) | Tradeable=[]
+2026-05-05 12:45:56,820 - regime - INFO - Regime: ADX=20.7 (transitioning) | Direction=bullish | Vol=normal (0.89x avg) | Tradeable=[]
+2026-05-05 12:45:56,873 - regime - INFO - Regime: ADX=35.3 (trending) | Direction=neutral | Vol=normal (1.49x avg) | Tradeable=['BUY', 'SELL']
+2026-05-05 12:45:56,942 - regime - INFO - Regime: ADX=16.4 (ranging) | Direction=neutral | Vol=normal (0.96x avg) | Tradeable=['BUY', 'SELL']
+2026-05-05 12:45:58,716 - multi_pair - INFO - EUR_USD: model saved → models/EUR_USD_model.pkl
+2026-05-05 12:45:58,717 - multi_pair - INFO - EUR_USD: trained — train=0.7995 test=0.5208 wf=0.5500
+2026-05-05 12:45:59,075 - multi_pair - INFO - GBP_USD: model saved → models/GBP_USD_model.pkl
+2026-05-05 12:45:59,075 - multi_pair - INFO - GBP_USD: trained — train=0.8021 test=0.5312 wf=0.4700
+2026-05-05 12:45:59,458 - multi_pair - INFO - USD_JPY: model saved → models/USD_JPY_model.pkl
+2026-05-05 12:45:59,458 - multi_pair - INFO - USD_JPY: trained — train=0.7812 test=0.4583 wf=0.4900
+2026-05-05 12:45:59,818 - multi_pair - INFO - AUD_USD: model saved → models/AUD_USD_model.pkl
+2026-05-05 12:45:59,818 - multi_pair - INFO - AUD_USD: trained — train=0.7604 test=0.4583 wf=0.6400
+2026-05-05 12:47:56,687 - database - INFO - Database ready at data/forexchautari.db
+2026-05-05 12:48:12,509 - database - INFO - Database ready at data/forexchautari.db
+2026-05-05 12:48:22,345 - database - INFO - Database ready at data/forexchautari.db
+2026-05-05 12:48:22,476 - database - INFO - Database ready at data/forexchautari.db
+2026-05-05 12:48:22,567 - regime - INFO - Regime: ADX=22.3 (transitioning) | Direction=neutral | Vol=normal (0.66x avg) | Tradeable=[]
+2026-05-05 12:48:22,654 - regime - INFO - Regime: ADX=20.7 (transitioning) | Direction=bullish | Vol=normal (0.89x avg) | Tradeable=[]
+2026-05-05 12:48:22,714 - regime - INFO - Regime: ADX=35.3 (trending) | Direction=neutral | Vol=normal (1.49x avg) | Tradeable=['BUY', 'SELL']
+2026-05-05 12:48:22,771 - regime - INFO - Regime: ADX=16.4 (ranging) | Direction=neutral | Vol=normal (0.96x avg) | Tradeable=['BUY', 'SELL']
+2026-05-05 12:53:12,123 - database - INFO - Database ready at data/forexchautari.db
+2026-05-05 12:53:12,292 - regime - INFO - Regime: ADX=22.3 (transitioning) | Direction=neutral | Vol=normal (0.66x avg) | Tradeable=[]
+2026-05-05 12:53:12,353 - regime - INFO - Regime: ADX=20.7 (transitioning) | Direction=bullish | Vol=normal (0.89x avg) | Tradeable=[]
+2026-05-05 12:53:12,414 - regime - INFO - Regime: ADX=35.3 (trending) | Direction=neutral | Vol=normal (1.49x avg) | Tradeable=['BUY', 'SELL']
+2026-05-05 12:53:12,471 - regime - INFO - Regime: ADX=16.4 (ranging) | Direction=neutral | Vol=normal (0.96x avg) | Tradeable=['BUY', 'SELL']
+2026-05-05 12:53:19,523 - database - INFO - Database ready at data/forexchautari.db
+2026-05-05 12:53:19,599 - regime - INFO - Regime: ADX=22.3 (transitioning) | Direction=neutral | Vol=normal (0.66x avg) | Tradeable=[]
+2026-05-05 12:53:19,654 - regime - INFO - Regime: ADX=20.7 (transitioning) | Direction=bullish | Vol=normal (0.89x avg) | Tradeable=[]
+2026-05-05 12:53:19,707 - regime - INFO - Regime: ADX=35.3 (trending) | Direction=neutral | Vol=normal (1.49x avg) | Tradeable=['BUY', 'SELL']
+2026-05-05 12:53:19,759 - regime - INFO - Regime: ADX=16.4 (ranging) | Direction=neutral | Vol=normal (0.96x avg) | Tradeable=['BUY', 'SELL']
+2026-05-05 12:53:29,438 - database - INFO - Database ready at data/forexchautari.db
+2026-05-05 12:53:29,517 - regime - INFO - Regime: ADX=22.3 (transitioning) | Direction=neutral | Vol=normal (0.66x avg) | Tradeable=[]
+2026-05-05 12:53:29,573 - regime - INFO - Regime: ADX=20.7 (transitioning) | Direction=bullish | Vol=normal (0.89x avg) | Tradeable=[]
+2026-05-05 12:53:29,625 - regime - INFO - Regime: ADX=35.3 (trending) | Direction=neutral | Vol=normal (1.49x avg) | Tradeable=['BUY', 'SELL']
+2026-05-05 12:53:29,679 - regime - INFO - Regime: ADX=16.4 (ranging) | Direction=neutral | Vol=normal (0.96x avg) | Tradeable=['BUY', 'SELL']
+2026-05-05 12:53:30,310 - database - INFO - Database ready at data/forexchautari.db
+2026-05-05 12:53:30,409 - regime - INFO - Regime: ADX=22.3 (transitioning) | Direction=neutral | Vol=normal (0.66x avg) | Tradeable=[]
+2026-05-05 12:53:30,464 - regime - INFO - Regime: ADX=20.7 (transitioning) | Direction=bullish | Vol=normal (0.89x avg) | Tradeable=[]
+2026-05-05 12:53:30,518 - regime - INFO - Regime: ADX=35.3 (trending) | Direction=neutral | Vol=normal (1.49x avg) | Tradeable=['BUY', 'SELL']
+2026-05-05 12:53:30,545 - database - INFO - Database ready at data/forexchautari.db
+2026-05-05 12:53:30,657 - regime - INFO - Regime: ADX=16.4 (ranging) | Direction=neutral | Vol=normal (0.96x avg) | Tradeable=['BUY', 'SELL']
+2026-05-05 12:53:30,697 - regime - INFO - Regime: ADX=22.3 (transitioning) | Direction=neutral | Vol=normal (0.66x avg) | Tradeable=[]
+2026-05-05 12:53:30,750 - regime - INFO - Regime: ADX=20.7 (transitioning) | Direction=bullish | Vol=normal (0.89x avg) | Tradeable=[]
+2026-05-05 12:53:30,804 - regime - INFO - Regime: ADX=35.3 (trending) | Direction=neutral | Vol=normal (1.49x avg) | Tradeable=['BUY', 'SELL']
+2026-05-05 12:53:30,856 - regime - INFO - Regime: ADX=16.4 (ranging) | Direction=neutral | Vol=normal (0.96x avg) | Tradeable=['BUY', 'SELL']
+2026-05-05 12:53:35,122 - database - INFO - Database ready at data/forexchautari.db
+2026-05-05 12:53:35,200 - regime - INFO - Regime: ADX=22.3 (transitioning) | Direction=neutral | Vol=normal (0.66x avg) | Tradeable=[]
+2026-05-05 12:53:35,280 - regime - INFO - Regime: ADX=20.7 (transitioning) | Direction=bullish | Vol=normal (0.89x avg) | Tradeable=[]
+2026-05-05 12:53:35,337 - regime - INFO - Regime: ADX=35.3 (trending) | Direction=neutral | Vol=normal (1.49x avg) | Tradeable=['BUY', 'SELL']
+2026-05-05 12:53:35,392 - regime - INFO - Regime: ADX=16.4 (ranging) | Direction=neutral | Vol=normal (0.96x avg) | Tradeable=['BUY', 'SELL']
+2026-05-05 12:53:43,196 - database - INFO - Database ready at data/forexchautari.db
+2026-05-05 12:53:43,290 - regime - INFO - Regime: ADX=22.3 (transitioning) | Direction=neutral | Vol=normal (0.66x avg) | Tradeable=[]
+2026-05-05 12:53:43,347 - regime - INFO - Regime: ADX=20.7 (transitioning) | Direction=bullish | Vol=normal (0.89x avg) | Tradeable=[]
+2026-05-05 12:53:43,402 - regime - INFO - Regime: ADX=35.3 (trending) | Direction=neutral | Vol=normal (1.49x avg) | Tradeable=['BUY', 'SELL']
+2026-05-05 12:53:43,464 - regime - INFO - Regime: ADX=16.4 (ranging) | Direction=neutral | Vol=normal (0.96x avg) | Tradeable=['BUY', 'SELL']
+2026-05-05 12:53:57,444 - database - INFO - Database ready at data/forexchautari.db
+2026-05-05 12:53:57,565 - regime - INFO - Regime: ADX=22.3 (transitioning) | Direction=neutral | Vol=normal (0.66x avg) | Tradeable=[]
+2026-05-05 12:53:57,621 - regime - INFO - Regime: ADX=20.7 (transitioning) | Direction=bullish | Vol=normal (0.89x avg) | Tradeable=[]
+2026-05-05 12:53:57,675 - regime - INFO - Regime: ADX=35.3 (trending) | Direction=neutral | Vol=normal (1.49x avg) | Tradeable=['BUY', 'SELL']
+2026-05-05 12:53:57,730 - regime - INFO - Regime: ADX=16.4 (ranging) | Direction=neutral | Vol=normal (0.96x avg) | Tradeable=['BUY', 'SELL']
+2026-05-05 12:53:57,748 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-05 12:53:58,129 - database - INFO - Database ready at data/forexchautari.db
+2026-05-05 12:53:58,192 - regime - INFO - Regime: ADX=22.3 (transitioning) | Direction=neutral | Vol=normal (0.66x avg) | Tradeable=[]
+2026-05-05 12:53:58,249 - regime - INFO - Regime: ADX=20.7 (transitioning) | Direction=bullish | Vol=normal (0.89x avg) | Tradeable=[]
+2026-05-05 12:53:58,303 - regime - INFO - Regime: ADX=35.3 (trending) | Direction=neutral | Vol=normal (1.49x avg) | Tradeable=['BUY', 'SELL']
+2026-05-05 12:53:58,355 - regime - INFO - Regime: ADX=16.4 (ranging) | Direction=neutral | Vol=normal (0.96x avg) | Tradeable=['BUY', 'SELL']
+2026-05-05 12:53:58,372 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-05 13:09:32,744 - database - INFO - Database ready at data/forexchautari.db
+2026-05-05 13:09:32,936 - regime - INFO - Regime: ADX=22.3 (transitioning) | Direction=neutral | Vol=normal (0.66x avg) | Tradeable=[]
+2026-05-05 13:09:32,993 - regime - INFO - Regime: ADX=20.7 (transitioning) | Direction=bullish | Vol=normal (0.89x avg) | Tradeable=[]
+2026-05-05 13:09:33,054 - regime - INFO - Regime: ADX=35.3 (trending) | Direction=neutral | Vol=normal (1.49x avg) | Tradeable=['BUY', 'SELL']
+2026-05-05 13:09:33,104 - regime - INFO - Regime: ADX=16.4 (ranging) | Direction=neutral | Vol=normal (0.96x avg) | Tradeable=['BUY', 'SELL']
+2026-05-05 13:09:33,134 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-05 13:09:33,649 - oanda - INFO - OandaClient initialised — environment: practice
+2026-05-09 16:42:35,840 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 16:42:35,841 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpwxe4hdtn/test.db
+2026-05-09 16:42:35,943 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 16:42:35,943 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpqhuqpyfz/test.db
+2026-05-09 16:42:36,094 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 16:42:36,095 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpltjfw4kv/test.db
+2026-05-09 16:42:36,378 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 16:42:36,378 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp3kbnlq9u/test.db
+2026-05-09 16:42:36,529 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 16:42:36,530 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpkdn8l315/test.db
+2026-05-09 16:42:36,685 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 16:42:36,686 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpzcma8g78/test.db
+2026-05-09 16:42:36,739 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 16:42:36,740 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp4lxy430k/test.db
+2026-05-09 16:42:36,892 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 16:42:36,893 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpng9br36l/test.db
+2026-05-09 16:42:37,046 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 16:42:37,047 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpelyb5t1v/test.db
+2026-05-09 16:42:37,200 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 16:42:37,200 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp5m4_0f85/test.db
+2026-05-09 16:42:37,657 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 16:42:37,658 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpcjv5csk4/test.db
+2026-05-09 16:42:37,711 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 16:42:37,711 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp8pbkvw3m/test.db
+2026-05-09 16:42:37,867 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 16:42:37,868 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmppvok3i2h/test.db
+2026-05-09 16:42:37,921 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 16:42:37,921 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp4y90tgwb/test.db
+2026-05-09 16:42:38,230 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 16:42:38,230 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpxw4vuvkb/test.db
+2026-05-09 16:42:38,482 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 16:42:38,483 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmptuk1em4s/test.db
+2026-05-09 16:42:38,637 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 16:42:38,637 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpmyqvv59t/test.db
+2026-05-09 16:42:38,790 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 16:42:38,791 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpms3o_5fa/auth_test.db
+2026-05-09 16:42:38,893 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 16:42:38,894 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpr35d1h6z/auth_test.db
+2026-05-09 16:42:39,096 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 16:42:39,097 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpuowk62cr/auth_test.db
+2026-05-09 16:43:21,505 - multi_pair - WARNING - No trained models found. Run: python train_all.py --fetch
+2026-05-09 16:43:21,561 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 16:43:21,562 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp64vw2ldt/test.db
+2026-05-09 16:51:21,641 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 16:51:21,642 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpcujb9p5x/test.db
+2026-05-09 16:51:21,744 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 16:51:21,745 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpsc3yngmf/test.db
+2026-05-09 16:51:21,895 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 16:51:21,896 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp3y2be8eh/test.db
+2026-05-09 16:51:22,148 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 16:51:22,148 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpho1q9w4r/test.db
+2026-05-09 16:51:22,298 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 16:51:22,299 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp1hcx3tyu/test.db
+2026-05-09 16:51:22,453 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 16:51:22,453 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmph7_obz9o/test.db
+2026-05-09 16:51:22,507 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 16:51:22,507 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp556vw2wq/test.db
+2026-05-09 16:51:22,657 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 16:51:22,658 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp5q4_7ecv/test.db
+2026-05-09 16:51:22,809 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 16:51:22,810 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmprp6rexam/test.db
+2026-05-09 16:51:22,962 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 16:51:22,963 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpt9luy5_4/test.db
+2026-05-09 16:51:23,411 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 16:51:23,412 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpbfs3x86t/test.db
+2026-05-09 16:51:23,464 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 16:51:23,464 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp4o3lq_bj/test.db
+2026-05-09 16:51:23,618 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 16:51:23,618 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpj2e0un4i/test.db
+2026-05-09 16:51:23,670 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 16:51:23,671 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp6g19p1qp/test.db
+2026-05-09 16:51:23,973 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 16:51:23,973 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp8r8s2kb8/test.db
+2026-05-09 16:51:24,224 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 16:51:24,224 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmphnvxi979/test.db
+2026-05-09 16:51:24,380 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 16:51:24,380 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpj5uuo5k5/test.db
+2026-05-09 16:51:24,533 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 16:51:24,533 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp8jl_af7n/auth_test.db
+2026-05-09 16:51:24,633 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 16:51:24,634 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpxljlupaj/auth_test.db
+2026-05-09 16:51:24,832 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 16:51:24,833 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpbz_b6bv8/auth_test.db
+2026-05-09 16:51:27,465 - multi_pair - WARNING - No trained models found. Run: python train_all.py --fetch
+2026-05-09 16:51:27,519 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 16:51:27,520 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpa_d2zelu/test.db
+2026-05-09 16:51:44,449 - multi_pair - INFO - EUR_USD: 504 rows saved to data/EUR_USD.csv
+2026-05-09 16:51:44,924 - multi_pair - INFO - GBP_USD: 504 rows saved to data/GBP_USD.csv
+2026-05-09 16:51:45,337 - multi_pair - INFO - USD_JPY: 504 rows saved to data/USD_JPY.csv
+2026-05-09 16:51:46,333 - multi_pair - INFO - AUD_USD: 504 rows saved to data/AUD_USD.csv
+2026-05-09 16:51:46,718 - multi_pair - INFO - EUR_USD: model saved → models/EUR_USD_model.pkl
+2026-05-09 16:51:46,718 - multi_pair - INFO - EUR_USD: trained — train=0.8036 test=0.4845 wf=0.5500
+2026-05-09 16:51:47,094 - multi_pair - INFO - GBP_USD: model saved → models/GBP_USD_model.pkl
+2026-05-09 16:51:47,094 - multi_pair - INFO - GBP_USD: trained — train=0.8010 test=0.5361 wf=0.4700
+2026-05-09 16:51:47,446 - multi_pair - INFO - USD_JPY: model saved → models/USD_JPY_model.pkl
+2026-05-09 16:51:47,446 - multi_pair - INFO - USD_JPY: trained — train=0.7984 test=0.4742 wf=0.4900
+2026-05-09 16:51:47,808 - multi_pair - INFO - AUD_USD: model saved → models/AUD_USD_model.pkl
+2026-05-09 16:51:47,808 - multi_pair - INFO - AUD_USD: trained — train=0.7519 test=0.4433 wf=0.6400
+2026-05-09 16:53:22,778 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 16:54:13,475 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 16:54:13,597 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 16:54:15,532 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 16:54:15,587 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 16:54:15,642 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 16:54:15,697 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 16:54:16,867 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 16:54:16,920 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 16:54:16,974 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 16:54:17,028 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 16:54:47,756 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 16:54:47,990 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 16:54:48,053 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 16:54:48,108 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 16:54:48,160 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 16:54:48,471 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 16:54:48,525 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 16:54:48,578 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 16:54:48,632 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 16:54:50,789 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 16:54:50,905 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 16:54:50,960 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 16:54:51,012 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 16:54:51,066 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 16:54:51,353 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 16:54:51,410 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 16:54:51,465 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 16:54:51,518 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 16:54:53,274 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 16:54:53,409 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 16:54:53,462 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 16:54:53,514 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 16:54:53,568 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 16:54:53,857 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 16:54:53,910 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 16:54:53,963 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 16:54:54,017 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 16:54:55,003 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 16:54:55,095 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 16:54:55,185 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 16:54:55,240 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 16:54:55,292 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 16:54:55,345 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 16:54:55,625 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 16:54:55,678 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 16:54:55,730 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 16:54:55,783 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 16:54:57,618 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 16:54:57,717 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 16:54:57,813 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 16:54:57,867 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 16:54:57,919 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 16:54:57,974 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 16:54:58,260 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 16:54:58,313 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 16:54:58,367 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 16:54:58,419 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 16:55:30,690 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 16:55:30,895 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 16:55:30,964 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 16:55:31,032 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 16:55:31,087 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 16:55:31,411 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 16:55:31,466 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 16:55:31,521 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 16:55:31,575 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 16:55:32,980 - multi_pair - INFO - EUR_USD: 504 rows saved to data/EUR_USD.csv
+2026-05-09 16:55:33,572 - multi_pair - INFO - GBP_USD: 504 rows saved to data/GBP_USD.csv
+2026-05-09 16:55:33,924 - multi_pair - INFO - USD_JPY: 504 rows saved to data/USD_JPY.csv
+2026-05-09 16:55:34,291 - multi_pair - INFO - AUD_USD: 504 rows saved to data/AUD_USD.csv
+2026-05-09 16:55:37,637 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 16:55:37,770 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 16:55:37,826 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 16:55:37,878 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 16:55:37,929 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 16:55:38,214 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 16:55:38,267 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 16:55:38,320 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 16:55:38,373 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 16:55:40,356 - multi_pair - INFO - EUR_USD: model saved → models/EUR_USD_model.pkl
+2026-05-09 16:55:40,356 - multi_pair - INFO - EUR_USD: trained — train=0.8036 test=0.4845 wf=0.5500
+2026-05-09 16:55:40,718 - multi_pair - INFO - GBP_USD: model saved → models/GBP_USD_model.pkl
+2026-05-09 16:55:40,718 - multi_pair - INFO - GBP_USD: trained — train=0.8010 test=0.5361 wf=0.4700
+2026-05-09 16:55:41,098 - multi_pair - INFO - USD_JPY: model saved → models/USD_JPY_model.pkl
+2026-05-09 16:55:41,098 - multi_pair - INFO - USD_JPY: trained — train=0.7984 test=0.4742 wf=0.4900
+2026-05-09 16:55:41,457 - multi_pair - INFO - AUD_USD: model saved → models/AUD_USD_model.pkl
+2026-05-09 16:55:41,457 - multi_pair - INFO - AUD_USD: trained — train=0.7519 test=0.4433 wf=0.6400
+2026-05-09 16:58:03,557 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 16:58:03,741 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 16:58:03,796 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 16:58:03,848 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 16:58:03,901 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 16:58:04,437 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 16:58:04,546 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 16:58:04,599 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 16:58:04,653 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 16:58:04,703 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 16:58:10,598 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 16:58:10,649 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 16:58:10,703 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 16:58:10,757 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 17:02:35,888 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 17:02:36,176 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 17:02:36,314 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 17:02:36,376 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 17:02:36,426 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 17:02:36,479 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 17:02:41,072 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 17:02:41,126 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 17:02:41,179 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 17:02:41,233 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 17:02:44,333 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 17:02:57,772 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 17:02:57,910 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 17:02:58,010 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 17:02:58,065 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 17:02:58,123 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 17:02:58,177 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 17:02:58,308 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 17:03:44,284 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 17:03:44,438 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 17:03:44,493 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 17:03:44,548 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 17:03:44,601 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 17:03:44,673 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 17:04:15,433 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 17:04:15,538 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 17:04:15,592 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 17:04:15,645 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 17:04:15,700 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 17:04:15,772 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 17:05:34,475 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 17:05:34,650 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 17:05:34,709 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 17:05:34,779 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 17:05:34,848 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 17:05:34,928 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 17:06:13,696 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 17:06:21,301 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 17:06:21,437 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 17:06:21,711 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 17:06:21,772 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 17:06:21,826 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 17:06:21,894 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 17:06:26,318 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 17:06:26,373 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 17:06:26,427 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 17:06:26,481 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 17:07:19,873 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 17:07:20,102 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 17:07:20,158 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 17:07:20,215 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 17:07:20,270 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 17:07:22,123 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 17:07:22,211 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 17:07:22,266 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 17:07:22,318 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 17:07:22,372 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 17:07:23,858 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 17:07:23,964 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 17:07:24,014 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 17:07:24,067 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 17:07:24,121 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 17:07:25,254 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 17:07:25,364 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 17:07:25,418 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 17:07:25,510 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 17:07:25,561 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 17:07:26,512 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 17:07:26,665 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 17:07:26,718 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 17:07:26,767 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 17:07:26,820 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 17:07:28,102 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 17:07:28,253 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 17:07:28,307 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 17:07:28,361 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 17:07:28,415 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 17:07:29,284 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 17:07:29,434 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 17:07:29,485 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 17:07:29,537 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 17:07:29,587 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 17:07:33,505 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 17:07:33,558 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 17:07:33,612 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 17:07:33,666 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 17:07:44,801 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 17:07:45,014 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 17:07:45,086 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 17:07:45,139 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 17:07:45,193 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 17:07:47,467 - trading_engine - INFO - Trade placed: user=1 EUR_USD BUY units=1000 fill=0.0
+2026-05-09 17:07:47,614 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 17:07:47,717 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 17:07:47,770 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 17:07:47,823 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 17:07:47,875 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 17:07:52,033 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 17:07:52,087 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 17:07:52,139 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 17:07:52,192 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 17:07:57,099 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 17:07:57,245 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 17:07:57,299 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 17:07:57,352 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 17:07:57,405 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 17:08:05,000 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 17:08:05,088 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 17:08:05,147 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 17:08:05,203 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 17:08:05,261 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 17:08:09,446 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 17:08:09,499 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 17:08:09,553 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 17:08:09,606 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 17:18:19,567 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 17:18:19,568 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp66wn2xip/test.db
+2026-05-09 17:18:19,683 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 17:18:19,684 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpjhzevsau/test.db
+2026-05-09 17:18:19,856 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 17:18:19,857 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpbdwcop1w/test.db
+2026-05-09 17:18:20,148 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 17:18:20,149 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpz9s5yqg4/test.db
+2026-05-09 17:18:20,324 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 17:18:20,326 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpre20q67t/test.db
+2026-05-09 17:18:20,501 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 17:18:20,502 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpbf_s2048/test.db
+2026-05-09 17:18:20,562 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 17:18:20,563 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp2cix_qwz/test.db
+2026-05-09 17:18:20,735 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 17:18:20,736 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpvup1bh9x/test.db
+2026-05-09 17:18:20,909 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 17:18:20,910 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmprmiu8im0/test.db
+2026-05-09 17:18:21,081 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 17:18:21,082 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp8htknk35/test.db
+2026-05-09 17:18:21,587 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 17:18:21,588 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp_nudtb8k/test.db
+2026-05-09 17:18:21,648 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 17:18:21,649 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpfzqycklk/test.db
+2026-05-09 17:18:21,825 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 17:18:21,826 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp8t3obg8i/test.db
+2026-05-09 17:18:21,885 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 17:18:21,886 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpoxhefj37/test.db
+2026-05-09 17:18:22,227 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 17:18:22,229 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmps9pi0t6h/test.db
+2026-05-09 17:18:22,514 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 17:18:22,515 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpwfu0voul/test.db
+2026-05-09 17:18:22,687 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 17:18:22,688 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp6s0o6aup/test.db
+2026-05-09 17:18:22,859 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 17:18:22,860 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpof_gzjy3/auth_test.db
+2026-05-09 17:18:22,975 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 17:18:22,976 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpayospjn9/auth_test.db
+2026-05-09 17:18:23,199 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 17:18:23,200 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpydq8lihf/auth_test.db
+2026-05-09 17:18:27,701 - multi_pair - WARNING - No trained models found. Run: python train_all.py --fetch
+2026-05-09 17:18:27,763 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 17:18:27,765 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpl7kz4yws/test.db
+2026-05-09 17:28:45,800 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 17:28:45,801 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp89s0d2s0/test.db
+2026-05-09 17:28:45,917 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 17:28:45,918 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp68r8ewwr/test.db
+2026-05-09 17:28:46,091 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 17:28:46,092 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpv2tjswf6/test.db
+2026-05-09 17:28:46,406 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 17:28:46,407 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpnbos9sgp/test.db
+2026-05-09 17:28:46,584 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 17:28:46,585 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp9vlx4y_6/test.db
+2026-05-09 17:28:46,762 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 17:28:46,763 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp26mhuvdn/test.db
+2026-05-09 17:28:46,824 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 17:28:46,825 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpgv07_zrg/test.db
+2026-05-09 17:28:47,011 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 17:28:47,012 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp7ymk3jdi/test.db
+2026-05-09 17:28:47,185 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 17:28:47,186 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpvjwcisr0/test.db
+2026-05-09 17:28:47,358 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 17:28:47,359 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpwbhmffg3/test.db
+2026-05-09 17:28:47,872 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 17:28:47,873 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmperk_ziqg/test.db
+2026-05-09 17:28:47,932 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 17:28:47,933 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpe4vbmcvt/test.db
+2026-05-09 17:28:48,110 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 17:28:48,111 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpm3tn7yam/test.db
+2026-05-09 17:28:48,170 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 17:28:48,172 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpjgf7ozw_/test.db
+2026-05-09 17:28:48,516 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 17:28:48,517 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpa7ukj8m9/test.db
+2026-05-09 17:28:48,802 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 17:28:48,803 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp_1yaqw6l/test.db
+2026-05-09 17:28:48,977 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 17:28:48,978 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp0if4toc2/test.db
+2026-05-09 17:28:49,150 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 17:28:49,151 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpoejlkf95/auth_test.db
+2026-05-09 17:28:49,266 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 17:28:49,267 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmppf_cj7q2/auth_test.db
+2026-05-09 17:28:49,493 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 17:28:49,494 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpq4fzr7gn/auth_test.db
+2026-05-09 17:28:52,195 - multi_pair - WARNING - No trained models found. Run: python train_all.py --fetch
+2026-05-09 17:28:52,259 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 17:28:52,260 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmplxjrcnai/test.db
+2026-05-09 17:28:57,278 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 17:31:10,809 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 17:32:24,387 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 17:32:24,506 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 17:32:26,476 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 17:32:26,555 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 17:32:26,627 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 17:32:26,680 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 17:32:51,685 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 17:32:51,774 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 17:33:01,686 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 17:33:01,814 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 17:33:01,918 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 17:33:02,007 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 17:33:02,061 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 17:33:02,117 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 17:34:41,650 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 17:34:41,935 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 17:34:41,995 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 17:34:42,049 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 17:34:42,104 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 17:35:02,134 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 17:35:02,220 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 17:35:16,402 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 17:35:16,536 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 17:35:16,640 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 17:35:16,700 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 17:35:16,783 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 17:35:16,837 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 17:35:16,954 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 17:35:45,310 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 17:35:45,435 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 17:35:45,490 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 17:35:45,545 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 17:35:45,600 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 17:35:45,687 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 17:36:03,565 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 17:36:03,688 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 17:36:03,745 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 17:36:03,800 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 17:36:03,853 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 17:36:03,931 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 18:57:06,685 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 18:57:06,892 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 18:57:06,946 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 18:57:06,999 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 18:57:07,055 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 18:57:07,176 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 18:57:29,661 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 18:57:29,783 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 18:57:29,839 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 18:57:29,891 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 18:57:29,943 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 18:57:30,019 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 18:57:34,030 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 18:57:34,130 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 18:57:34,194 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 18:57:34,259 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 18:57:34,315 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 18:57:34,456 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 22:38:56,366 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 22:38:56,368 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpbl3_5_rg/test.db
+2026-05-09 22:38:56,485 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 22:38:56,486 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp4c3qucbq/test.db
+2026-05-09 22:38:56,662 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 22:38:56,663 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp625oc12_/test.db
+2026-05-09 22:38:56,963 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 22:38:56,964 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp4__ic3z0/test.db
+2026-05-09 22:38:57,138 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 22:38:57,139 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpo36l0iqs/test.db
+2026-05-09 22:38:57,315 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 22:38:57,316 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpmitiaz7y/test.db
+2026-05-09 22:38:57,378 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 22:38:57,379 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpqnmrkcmn/test.db
+2026-05-09 22:38:57,551 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 22:38:57,552 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpturttry2/test.db
+2026-05-09 22:38:57,724 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 22:38:57,725 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpv2x7gq32/test.db
+2026-05-09 22:38:57,897 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 22:38:57,898 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmprloa1rnt/test.db
+2026-05-09 22:38:58,405 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 22:38:58,406 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpc5agb1ia/test.db
+2026-05-09 22:38:58,466 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 22:38:58,467 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp53gg3ld5/test.db
+2026-05-09 22:38:58,642 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 22:38:58,643 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp_2nev3ep/test.db
+2026-05-09 22:38:58,702 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 22:38:58,704 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpzu7_cqui/test.db
+2026-05-09 22:38:59,045 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 22:38:59,046 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpvhackh4a/test.db
+2026-05-09 22:38:59,330 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 22:38:59,332 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpb9atq_1k/test.db
+2026-05-09 22:38:59,504 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 22:38:59,505 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpkms2bn9q/test.db
+2026-05-09 22:38:59,677 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 22:38:59,678 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpijvxwixf/auth_test.db
+2026-05-09 22:38:59,792 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 22:38:59,793 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpedlgmigr/auth_test.db
+2026-05-09 22:39:00,030 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 22:39:00,031 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmplpcrk_dm/auth_test.db
+2026-05-09 22:39:02,749 - multi_pair - WARNING - No trained models found. Run: python train_all.py --fetch
+2026-05-09 22:39:02,827 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 22:39:02,829 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpg7qhx4c3/test.db
+2026-05-09 22:39:07,619 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 22:39:26,973 - multi_pair - INFO - EUR_USD: model saved → models/EUR_USD_model.pkl
+2026-05-09 22:39:26,974 - multi_pair - INFO - EUR_USD: trained — train=0.8036 test=0.4845 wf=0.5500
+2026-05-09 22:39:27,341 - multi_pair - INFO - GBP_USD: model saved → models/GBP_USD_model.pkl
+2026-05-09 22:39:27,342 - multi_pair - INFO - GBP_USD: trained — train=0.8010 test=0.5361 wf=0.4700
+2026-05-09 22:39:27,736 - multi_pair - INFO - USD_JPY: model saved → models/USD_JPY_model.pkl
+2026-05-09 22:39:27,736 - multi_pair - INFO - USD_JPY: trained — train=0.7984 test=0.4742 wf=0.4900
+2026-05-09 22:39:28,118 - multi_pair - INFO - AUD_USD: model saved → models/AUD_USD_model.pkl
+2026-05-09 22:39:28,118 - multi_pair - INFO - AUD_USD: trained — train=0.7519 test=0.4433 wf=0.6400
+2026-05-09 22:41:29,979 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 22:41:40,420 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 22:41:40,573 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 22:41:40,815 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 22:41:40,880 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 22:41:40,935 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 22:41:40,992 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 22:42:57,644 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 22:42:57,821 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 22:42:57,878 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 22:42:57,944 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 22:42:58,005 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 22:43:04,190 - multi_pair - INFO - EUR_USD: 504 rows saved to data/EUR_USD.csv
+2026-05-09 22:43:04,583 - multi_pair - INFO - GBP_USD: 504 rows saved to data/GBP_USD.csv
+2026-05-09 22:43:04,914 - multi_pair - INFO - USD_JPY: 504 rows saved to data/USD_JPY.csv
+2026-05-09 22:43:05,252 - multi_pair - INFO - AUD_USD: 504 rows saved to data/AUD_USD.csv
+2026-05-09 22:43:10,209 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 22:43:10,337 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-09 22:43:10,394 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-09 22:43:10,449 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-09 22:43:10,501 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-09 22:45:13,362 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 22:45:13,364 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpvv_nc6oz/test.db
+2026-05-09 22:45:13,479 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 22:45:13,480 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp7yezj_pr/test.db
+2026-05-09 22:45:13,655 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 22:45:13,657 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpnc33bgka/test.db
+2026-05-09 22:45:13,946 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 22:45:13,948 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp7qeiym5z/test.db
+2026-05-09 22:45:14,130 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 22:45:14,131 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpqcihxrqb/test.db
+2026-05-09 22:45:14,307 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 22:45:14,308 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpa7wur4nz/test.db
+2026-05-09 22:45:14,369 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 22:45:14,370 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpktz6srbl/test.db
+2026-05-09 22:45:14,543 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 22:45:14,544 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpid3hcn0m/test.db
+2026-05-09 22:45:14,720 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 22:45:14,721 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpnyu6ty0d/test.db
+2026-05-09 22:45:14,894 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 22:45:14,895 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpdg9zbe_h/test.db
+2026-05-09 22:45:15,402 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 22:45:15,403 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpcxq50iam/test.db
+2026-05-09 22:45:15,463 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 22:45:15,464 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpkxixq9mf/test.db
+2026-05-09 22:45:15,640 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 22:45:15,641 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpqz0ozllk/test.db
+2026-05-09 22:45:15,700 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 22:45:15,701 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmptcca44f0/test.db
+2026-05-09 22:45:16,040 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 22:45:16,041 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp9kyolfx5/test.db
+2026-05-09 22:45:16,324 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 22:45:16,325 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpf66nucvo/test.db
+2026-05-09 22:45:16,498 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 22:45:16,499 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp_tixqea0/test.db
+2026-05-09 22:45:16,670 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 22:45:16,671 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpj32pf42i/auth_test.db
+2026-05-09 22:45:16,787 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 22:45:16,788 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpsd0kd6hl/auth_test.db
+2026-05-09 22:45:17,013 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 22:45:17,015 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpuxmg8lxo/auth_test.db
+2026-05-09 22:45:19,725 - multi_pair - WARNING - No trained models found. Run: python train_all.py --fetch
+2026-05-09 22:45:19,787 - database - INFO - Default admin created — username: admin  password: admin123
+2026-05-09 22:45:19,788 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp9f2uk7ck/test.db
+2026-05-09 22:48:07,707 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 22:48:11,360 - database - INFO - Database ready at data/forexchautari.db
+2026-05-09 22:48:12,433 - database - INFO - Database ready at data/forexchautari.db
