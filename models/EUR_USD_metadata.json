@@ -32,11 +32,11 @@
   "pair": "EUR_USD",
   "model_version": "v2",
   "feature_set": "FEATURE_COLUMNS_V2",
-  "rows_total": 484,
-  "rows_train": 387,
-  "rows_test": 97,
-  "accuracy_train": 0.8036175710594315,
-  "accuracy_test": 0.4845360824742268,
+  "rows_total": 488,
+  "rows_train": 390,
+  "rows_test": 98,
+  "accuracy_train": 0.7923076923076923,
+  "accuracy_test": 0.46938775510204084,
   "walk_forward_mean_accuracy": 0.55,
   "walk_forward_mean_strategy_return": 0.0017433263596102755,
   "walk_forward_mean_profit_factor": 1.1582539344571143,
@@ -49,5 +49,5 @@
   "rf_min_samples_leaf": 20,
   "rf_n_estimators": 200,
   "signal_threshold": 0.55,
-  "trained_at": "2026-05-09T16:54:26.951890"
+  "trained_at": "2026-05-15T14:40:27.110794"
 }

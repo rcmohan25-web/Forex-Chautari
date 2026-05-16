@@ -1139,3 +1139,222 @@
 2026-05-09 22:48:07,707 - database - INFO - Database ready at data/forexchautari.db
 2026-05-09 22:48:11,360 - database - INFO - Database ready at data/forexchautari.db
 2026-05-09 22:48:12,433 - database - INFO - Database ready at data/forexchautari.db
+2026-05-15 12:48:17,071 - database - INFO - Database ready at data/forexchautari.db
+2026-05-15 12:48:56,699 - database - INFO - Database ready at data/forexchautari.db
+2026-05-15 12:48:56,811 - database - INFO - Database ready at data/forexchautari.db
+2026-05-15 12:49:02,567 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-15 12:49:02,625 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-15 12:49:02,680 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-15 12:49:02,732 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-15 12:49:10,842 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-15 12:49:10,901 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-15 12:49:10,954 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-15 12:49:11,008 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-15 12:59:10,676 - database - INFO - Database ready at data/forexchautari.db
+2026-05-15 12:59:10,959 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-15 12:59:11,010 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-15 12:59:11,061 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-15 12:59:11,115 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-15 12:59:13,915 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-15 12:59:13,976 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-15 12:59:14,034 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-15 12:59:14,089 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-15 12:59:50,541 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-15 12:59:50,596 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-15 12:59:50,649 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-15 12:59:50,702 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-15 13:04:44,206 - database - INFO - Database ready at data/forexchautari.db
+2026-05-15 13:04:44,441 - database - INFO - Database ready at data/forexchautari.db
+2026-05-15 13:04:58,290 - database - INFO - Database ready at data/forexchautari.db
+2026-05-15 13:05:05,506 - database - INFO - Database ready at data/forexchautari.db
+2026-05-15 13:05:05,663 - database - INFO - Database ready at data/forexchautari.db
+2026-05-15 13:05:05,807 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-15 13:05:05,863 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-15 13:05:05,932 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-15 13:05:05,986 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-15 13:05:06,116 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-15 13:05:32,536 - database - INFO - Database ready at data/forexchautari.db
+2026-05-15 13:05:32,667 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-15 13:05:32,734 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-15 13:05:32,791 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-15 13:05:32,846 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-15 13:05:32,932 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-15 13:06:23,890 - database - INFO - Database ready at data/forexchautari.db
+2026-05-15 13:06:24,027 - database - INFO - Database ready at data/forexchautari.db
+2026-05-15 13:06:34,591 - database - INFO - Database ready at data/forexchautari.db
+2026-05-15 13:06:34,761 - database - INFO - Database ready at data/forexchautari.db
+2026-05-15 13:06:34,974 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-15 13:06:35,078 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-15 13:06:35,132 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-15 13:06:35,187 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-15 13:06:41,694 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-15 13:06:41,747 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-15 13:06:41,801 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-15 13:06:41,854 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-15 13:06:55,923 - database - INFO - Database ready at data/forexchautari.db
+2026-05-15 13:06:56,131 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-15 13:06:56,186 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-15 13:06:56,240 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-15 13:06:56,295 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-15 13:07:01,425 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=bullish | Vol=normal (0.74x avg) | Tradeable=['BUY']
+2026-05-15 13:07:01,479 - regime - INFO - Regime: ADX=24.5 (transitioning) | Direction=bullish | Vol=normal (0.94x avg) | Tradeable=[]
+2026-05-15 13:07:01,531 - regime - INFO - Regime: ADX=43.5 (trending) | Direction=bearish | Vol=high (1.56x avg) | Tradeable=[]
+2026-05-15 13:07:01,585 - regime - INFO - Regime: ADX=18.7 (ranging) | Direction=bullish | Vol=normal (1.03x avg) | Tradeable=['BUY', 'SELL']
+2026-05-15 13:07:02,243 - multi_pair - INFO - EUR_USD: 508 rows saved to data/EUR_USD.csv
+2026-05-15 13:07:02,739 - multi_pair - INFO - GBP_USD: 508 rows saved to data/GBP_USD.csv
+2026-05-15 13:07:03,242 - multi_pair - INFO - USD_JPY: 508 rows saved to data/USD_JPY.csv
+2026-05-15 13:07:03,874 - multi_pair - INFO - AUD_USD: 508 rows saved to data/AUD_USD.csv
+2026-05-15 13:07:31,102 - database - INFO - Database ready at data/forexchautari.db
+2026-05-15 13:07:31,276 - database - INFO - Database ready at data/forexchautari.db
+2026-05-15 13:07:31,369 - regime - INFO - Regime: ADX=23.0 (transitioning) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=[]
+2026-05-15 13:07:31,469 - regime - INFO - Regime: ADX=22.5 (transitioning) | Direction=neutral | Vol=normal (0.92x avg) | Tradeable=[]
+2026-05-15 13:07:31,488 - regime - INFO - Regime: ADX=23.0 (transitioning) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=[]
+2026-05-15 13:07:31,588 - regime - INFO - Regime: ADX=22.5 (transitioning) | Direction=neutral | Vol=normal (0.92x avg) | Tradeable=[]
+2026-05-15 13:07:31,605 - regime - INFO - Regime: ADX=35.4 (trending) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=['BUY', 'SELL']
+2026-05-15 13:07:31,696 - regime - INFO - Regime: ADX=35.4 (trending) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=['BUY', 'SELL']
+2026-05-15 13:07:31,715 - regime - INFO - Regime: ADX=20.3 (transitioning) | Direction=bullish | Vol=normal (0.70x avg) | Tradeable=[]
+2026-05-15 13:07:31,822 - regime - INFO - Regime: ADX=20.3 (transitioning) | Direction=bullish | Vol=normal (0.70x avg) | Tradeable=[]
+2026-05-15 13:07:32,160 - database - INFO - Database ready at data/forexchautari.db
+2026-05-15 13:07:32,299 - regime - INFO - Regime: ADX=23.0 (transitioning) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=[]
+2026-05-15 13:07:32,360 - database - INFO - Database ready at data/forexchautari.db
+2026-05-15 13:07:32,401 - regime - INFO - Regime: ADX=22.5 (transitioning) | Direction=neutral | Vol=normal (0.92x avg) | Tradeable=[]
+2026-05-15 13:07:32,516 - regime - INFO - Regime: ADX=35.4 (trending) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=['BUY', 'SELL']
+2026-05-15 13:07:32,586 - regime - INFO - Regime: ADX=23.0 (transitioning) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=[]
+2026-05-15 13:07:32,638 - regime - INFO - Regime: ADX=20.3 (transitioning) | Direction=bullish | Vol=normal (0.70x avg) | Tradeable=[]
+2026-05-15 13:07:32,696 - regime - INFO - Regime: ADX=22.5 (transitioning) | Direction=neutral | Vol=normal (0.92x avg) | Tradeable=[]
+2026-05-15 13:07:32,751 - regime - INFO - Regime: ADX=35.4 (trending) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=['BUY', 'SELL']
+2026-05-15 13:07:32,800 - regime - INFO - Regime: ADX=20.3 (transitioning) | Direction=bullish | Vol=normal (0.70x avg) | Tradeable=[]
+2026-05-15 13:07:38,239 - regime - INFO - Regime: ADX=23.0 (transitioning) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=[]
+2026-05-15 13:07:38,294 - regime - INFO - Regime: ADX=22.5 (transitioning) | Direction=neutral | Vol=normal (0.92x avg) | Tradeable=[]
+2026-05-15 13:07:38,348 - regime - INFO - Regime: ADX=35.4 (trending) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=['BUY', 'SELL']
+2026-05-15 13:07:38,401 - regime - INFO - Regime: ADX=20.3 (transitioning) | Direction=bullish | Vol=normal (0.70x avg) | Tradeable=[]
+2026-05-15 13:07:38,496 - database - INFO - Database ready at data/forexchautari.db
+2026-05-15 13:07:38,599 - regime - INFO - Regime: ADX=23.0 (transitioning) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=[]
+2026-05-15 13:07:38,656 - regime - INFO - Regime: ADX=22.5 (transitioning) | Direction=neutral | Vol=normal (0.92x avg) | Tradeable=[]
+2026-05-15 13:07:38,707 - regime - INFO - Regime: ADX=35.4 (trending) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=['BUY', 'SELL']
+2026-05-15 13:07:38,761 - regime - INFO - Regime: ADX=20.3 (transitioning) | Direction=bullish | Vol=normal (0.70x avg) | Tradeable=[]
+2026-05-15 13:07:44,093 - regime - INFO - Regime: ADX=23.0 (transitioning) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=[]
+2026-05-15 13:07:44,146 - regime - INFO - Regime: ADX=22.5 (transitioning) | Direction=neutral | Vol=normal (0.92x avg) | Tradeable=[]
+2026-05-15 13:07:44,199 - regime - INFO - Regime: ADX=35.4 (trending) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=['BUY', 'SELL']
+2026-05-15 13:07:44,252 - regime - INFO - Regime: ADX=20.3 (transitioning) | Direction=bullish | Vol=normal (0.70x avg) | Tradeable=[]
+2026-05-15 13:07:47,355 - database - INFO - Database ready at data/forexchautari.db
+2026-05-15 13:07:47,518 - regime - INFO - Regime: ADX=23.0 (transitioning) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=[]
+2026-05-15 13:07:47,583 - regime - INFO - Regime: ADX=22.5 (transitioning) | Direction=neutral | Vol=normal (0.92x avg) | Tradeable=[]
+2026-05-15 13:07:47,650 - regime - INFO - Regime: ADX=35.4 (trending) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=['BUY', 'SELL']
+2026-05-15 13:07:47,701 - regime - INFO - Regime: ADX=20.3 (transitioning) | Direction=bullish | Vol=normal (0.70x avg) | Tradeable=[]
+2026-05-15 13:07:52,854 - regime - INFO - Regime: ADX=23.0 (transitioning) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=[]
+2026-05-15 13:07:52,906 - regime - INFO - Regime: ADX=22.5 (transitioning) | Direction=neutral | Vol=normal (0.92x avg) | Tradeable=[]
+2026-05-15 13:07:52,959 - regime - INFO - Regime: ADX=35.4 (trending) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=['BUY', 'SELL']
+2026-05-15 13:07:53,011 - regime - INFO - Regime: ADX=20.3 (transitioning) | Direction=bullish | Vol=normal (0.70x avg) | Tradeable=[]
+2026-05-15 13:07:53,512 - multi_pair - INFO - EUR_USD: 508 rows saved to data/EUR_USD.csv
+2026-05-15 13:07:54,017 - multi_pair - INFO - GBP_USD: 508 rows saved to data/GBP_USD.csv
+2026-05-15 13:07:54,478 - multi_pair - INFO - USD_JPY: 508 rows saved to data/USD_JPY.csv
+2026-05-15 13:07:55,034 - multi_pair - INFO - AUD_USD: 508 rows saved to data/AUD_USD.csv
+2026-05-15 13:07:57,099 - multi_pair - INFO - EUR_USD: model saved → models/EUR_USD_model.pkl
+2026-05-15 13:07:57,099 - multi_pair - INFO - EUR_USD: trained — train=0.7923 test=0.4694 wf=0.5500
+2026-05-15 13:07:57,464 - multi_pair - INFO - GBP_USD: model saved → models/GBP_USD_model.pkl
+2026-05-15 13:07:57,464 - multi_pair - INFO - GBP_USD: trained — train=0.8103 test=0.5000 wf=0.4700
+2026-05-15 13:07:57,849 - multi_pair - INFO - USD_JPY: model saved → models/USD_JPY_model.pkl
+2026-05-15 13:07:57,849 - multi_pair - INFO - USD_JPY: trained — train=0.7974 test=0.4592 wf=0.4900
+2026-05-15 13:07:58,213 - multi_pair - INFO - AUD_USD: model saved → models/AUD_USD_model.pkl
+2026-05-15 13:07:58,213 - multi_pair - INFO - AUD_USD: trained — train=0.7564 test=0.4184 wf=0.6400
+2026-05-15 20:23:24,356 - database - INFO - Database ready at data/forexchautari.db
+2026-05-15 20:23:25,670 - regime - INFO - Regime: ADX=23.0 (transitioning) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=[]
+2026-05-15 20:23:25,861 - regime - INFO - Regime: ADX=22.5 (transitioning) | Direction=neutral | Vol=normal (0.92x avg) | Tradeable=[]
+2026-05-15 20:23:26,009 - regime - INFO - Regime: ADX=35.4 (trending) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=['BUY', 'SELL']
+2026-05-15 20:23:26,102 - regime - INFO - Regime: ADX=20.3 (transitioning) | Direction=bullish | Vol=normal (0.70x avg) | Tradeable=[]
+2026-05-15 20:23:40,606 - regime - INFO - Regime: ADX=23.0 (transitioning) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=[]
+2026-05-15 20:23:40,666 - regime - INFO - Regime: ADX=22.5 (transitioning) | Direction=neutral | Vol=normal (0.92x avg) | Tradeable=[]
+2026-05-15 20:23:40,725 - regime - INFO - Regime: ADX=35.4 (trending) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=['BUY', 'SELL']
+2026-05-15 20:23:40,802 - regime - INFO - Regime: ADX=20.3 (transitioning) | Direction=bullish | Vol=normal (0.70x avg) | Tradeable=[]
+2026-05-15 20:24:52,454 - database - INFO - Database ready at data/forexchautari.db
+2026-05-15 20:24:52,648 - regime - INFO - Regime: ADX=23.0 (transitioning) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=[]
+2026-05-15 20:24:52,701 - regime - INFO - Regime: ADX=22.5 (transitioning) | Direction=neutral | Vol=normal (0.92x avg) | Tradeable=[]
+2026-05-15 20:24:52,754 - regime - INFO - Regime: ADX=35.4 (trending) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=['BUY', 'SELL']
+2026-05-15 20:24:52,808 - regime - INFO - Regime: ADX=20.3 (transitioning) | Direction=bullish | Vol=normal (0.70x avg) | Tradeable=[]
+2026-05-15 20:24:59,169 - regime - INFO - Regime: ADX=23.0 (transitioning) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=[]
+2026-05-15 20:24:59,222 - regime - INFO - Regime: ADX=22.5 (transitioning) | Direction=neutral | Vol=normal (0.92x avg) | Tradeable=[]
+2026-05-15 20:24:59,275 - regime - INFO - Regime: ADX=35.4 (trending) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=['BUY', 'SELL']
+2026-05-15 20:24:59,329 - regime - INFO - Regime: ADX=20.3 (transitioning) | Direction=bullish | Vol=normal (0.70x avg) | Tradeable=[]
+2026-05-15 20:24:59,924 - multi_pair - INFO - EUR_USD: 508 rows saved to data/EUR_USD.csv
+2026-05-15 20:25:00,319 - multi_pair - INFO - GBP_USD: 508 rows saved to data/GBP_USD.csv
+2026-05-15 20:25:01,216 - multi_pair - INFO - USD_JPY: 508 rows saved to data/USD_JPY.csv
+2026-05-15 20:25:01,735 - multi_pair - INFO - AUD_USD: 508 rows saved to data/AUD_USD.csv
+2026-05-15 20:25:04,535 - multi_pair - INFO - EUR_USD: model saved → models/EUR_USD_model.pkl
+2026-05-15 20:25:04,535 - multi_pair - INFO - EUR_USD: trained — train=0.7923 test=0.4694 wf=0.5500
+2026-05-15 20:25:04,898 - multi_pair - INFO - GBP_USD: model saved → models/GBP_USD_model.pkl
+2026-05-15 20:25:04,898 - multi_pair - INFO - GBP_USD: trained — train=0.8103 test=0.5000 wf=0.4700
+2026-05-15 20:25:05,282 - multi_pair - INFO - USD_JPY: model saved → models/USD_JPY_model.pkl
+2026-05-15 20:25:05,282 - multi_pair - INFO - USD_JPY: trained — train=0.7974 test=0.4592 wf=0.4900
+2026-05-15 20:25:05,628 - multi_pair - INFO - AUD_USD: model saved → models/AUD_USD_model.pkl
+2026-05-15 20:25:05,629 - multi_pair - INFO - AUD_USD: trained — train=0.7564 test=0.4184 wf=0.6400
+2026-05-15 20:25:17,437 - database - INFO - Database ready at data/forexchautari.db
+2026-05-15 20:25:17,589 - regime - INFO - Regime: ADX=23.0 (transitioning) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=[]
+2026-05-15 20:25:17,644 - regime - INFO - Regime: ADX=22.5 (transitioning) | Direction=neutral | Vol=normal (0.92x avg) | Tradeable=[]
+2026-05-15 20:25:17,698 - regime - INFO - Regime: ADX=35.4 (trending) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=['BUY', 'SELL']
+2026-05-15 20:25:17,751 - regime - INFO - Regime: ADX=20.3 (transitioning) | Direction=bullish | Vol=normal (0.70x avg) | Tradeable=[]
+2026-05-15 20:25:25,258 - regime - INFO - Regime: ADX=23.0 (transitioning) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=[]
+2026-05-15 20:25:25,311 - regime - INFO - Regime: ADX=22.5 (transitioning) | Direction=neutral | Vol=normal (0.92x avg) | Tradeable=[]
+2026-05-15 20:25:25,364 - regime - INFO - Regime: ADX=35.4 (trending) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=['BUY', 'SELL']
+2026-05-15 20:25:25,418 - regime - INFO - Regime: ADX=20.3 (transitioning) | Direction=bullish | Vol=normal (0.70x avg) | Tradeable=[]
+2026-05-15 20:25:27,130 - multi_pair - INFO - EUR_USD: model saved → models/EUR_USD_model.pkl
+2026-05-15 20:25:27,130 - multi_pair - INFO - EUR_USD: trained — train=0.7923 test=0.4694 wf=0.5500
+2026-05-15 20:25:27,489 - multi_pair - INFO - GBP_USD: model saved → models/GBP_USD_model.pkl
+2026-05-15 20:25:27,489 - multi_pair - INFO - GBP_USD: trained — train=0.8103 test=0.5000 wf=0.4700
+2026-05-15 20:25:27,868 - multi_pair - INFO - USD_JPY: model saved → models/USD_JPY_model.pkl
+2026-05-15 20:25:27,868 - multi_pair - INFO - USD_JPY: trained — train=0.7974 test=0.4592 wf=0.4900
+2026-05-15 20:25:28,222 - multi_pair - INFO - AUD_USD: model saved → models/AUD_USD_model.pkl
+2026-05-15 20:25:28,222 - multi_pair - INFO - AUD_USD: trained — train=0.7564 test=0.4184 wf=0.6400
+2026-05-15 20:26:39,183 - database - INFO - Database ready at data/forexchautari.db
+2026-05-15 20:26:39,380 - regime - INFO - Regime: ADX=23.0 (transitioning) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=[]
+2026-05-15 20:26:39,441 - regime - INFO - Regime: ADX=22.5 (transitioning) | Direction=neutral | Vol=normal (0.92x avg) | Tradeable=[]
+2026-05-15 20:26:39,498 - regime - INFO - Regime: ADX=35.4 (trending) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=['BUY', 'SELL']
+2026-05-15 20:26:39,554 - regime - INFO - Regime: ADX=20.3 (transitioning) | Direction=bullish | Vol=normal (0.70x avg) | Tradeable=[]
+2026-05-15 20:26:42,816 - regime - INFO - Regime: ADX=23.0 (transitioning) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=[]
+2026-05-15 20:26:42,870 - regime - INFO - Regime: ADX=22.5 (transitioning) | Direction=neutral | Vol=normal (0.92x avg) | Tradeable=[]
+2026-05-15 20:26:42,923 - regime - INFO - Regime: ADX=35.4 (trending) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=['BUY', 'SELL']
+2026-05-15 20:26:42,976 - regime - INFO - Regime: ADX=20.3 (transitioning) | Direction=bullish | Vol=normal (0.70x avg) | Tradeable=[]
+2026-05-15 20:27:14,870 - regime - INFO - Regime: ADX=23.0 (transitioning) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=[]
+2026-05-15 20:27:14,924 - regime - INFO - Regime: ADX=22.5 (transitioning) | Direction=neutral | Vol=normal (0.92x avg) | Tradeable=[]
+2026-05-15 20:27:14,977 - regime - INFO - Regime: ADX=35.4 (trending) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=['BUY', 'SELL']
+2026-05-15 20:27:15,030 - regime - INFO - Regime: ADX=20.3 (transitioning) | Direction=bullish | Vol=normal (0.70x avg) | Tradeable=[]
+2026-05-15 20:27:23,931 - database - INFO - Database ready at data/forexchautari.db
+2026-05-15 20:27:24,089 - regime - INFO - Regime: ADX=23.0 (transitioning) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=[]
+2026-05-15 20:27:24,153 - regime - INFO - Regime: ADX=22.5 (transitioning) | Direction=neutral | Vol=normal (0.92x avg) | Tradeable=[]
+2026-05-15 20:27:24,206 - regime - INFO - Regime: ADX=35.4 (trending) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=['BUY', 'SELL']
+2026-05-15 20:27:24,256 - regime - INFO - Regime: ADX=20.3 (transitioning) | Direction=bullish | Vol=normal (0.70x avg) | Tradeable=[]
+2026-05-15 20:27:40,028 - database - INFO - Database ready at data/forexchautari.db
+2026-05-15 20:27:40,154 - regime - INFO - Regime: ADX=23.0 (transitioning) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=[]
+2026-05-15 20:27:40,221 - regime - INFO - Regime: ADX=22.5 (transitioning) | Direction=neutral | Vol=normal (0.92x avg) | Tradeable=[]
+2026-05-15 20:27:40,276 - regime - INFO - Regime: ADX=35.4 (trending) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=['BUY', 'SELL']
+2026-05-15 20:27:40,329 - regime - INFO - Regime: ADX=20.3 (transitioning) | Direction=bullish | Vol=normal (0.70x avg) | Tradeable=[]
+2026-05-15 20:27:46,138 - regime - INFO - Regime: ADX=23.0 (transitioning) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=[]
+2026-05-15 20:27:46,191 - regime - INFO - Regime: ADX=22.5 (transitioning) | Direction=neutral | Vol=normal (0.92x avg) | Tradeable=[]
+2026-05-15 20:27:46,244 - regime - INFO - Regime: ADX=35.4 (trending) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=['BUY', 'SELL']
+2026-05-15 20:27:46,297 - regime - INFO - Regime: ADX=20.3 (transitioning) | Direction=bullish | Vol=normal (0.70x avg) | Tradeable=[]
+2026-05-16 02:57:18,556 - database - INFO - Database ready at data/forexchautari.db
+2026-05-16 02:57:29,949 - database - INFO - Database ready at data/forexchautari.db
+2026-05-16 02:57:30,078 - database - INFO - Database ready at data/forexchautari.db
+2026-05-16 02:57:30,344 - regime - INFO - Regime: ADX=23.0 (transitioning) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=[]
+2026-05-16 02:57:30,400 - regime - INFO - Regime: ADX=22.5 (transitioning) | Direction=neutral | Vol=normal (0.92x avg) | Tradeable=[]
+2026-05-16 02:57:30,458 - regime - INFO - Regime: ADX=35.4 (trending) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=['BUY', 'SELL']
+2026-05-16 02:57:30,518 - regime - INFO - Regime: ADX=20.3 (transitioning) | Direction=bullish | Vol=normal (0.70x avg) | Tradeable=[]
+2026-05-16 02:57:36,993 - regime - INFO - Regime: ADX=23.0 (transitioning) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=[]
+2026-05-16 02:57:37,046 - regime - INFO - Regime: ADX=22.5 (transitioning) | Direction=neutral | Vol=normal (0.92x avg) | Tradeable=[]
+2026-05-16 02:57:37,099 - regime - INFO - Regime: ADX=35.4 (trending) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=['BUY', 'SELL']
+2026-05-16 02:57:37,152 - regime - INFO - Regime: ADX=20.3 (transitioning) | Direction=bullish | Vol=normal (0.70x avg) | Tradeable=[]
+2026-05-16 02:58:56,260 - database - INFO - Database ready at data/forexchautari.db
+2026-05-16 02:58:56,495 - regime - INFO - Regime: ADX=23.0 (transitioning) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=[]
+2026-05-16 02:58:56,550 - regime - INFO - Regime: ADX=22.5 (transitioning) | Direction=neutral | Vol=normal (0.92x avg) | Tradeable=[]
+2026-05-16 02:58:56,613 - regime - INFO - Regime: ADX=35.4 (trending) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=['BUY', 'SELL']
+2026-05-16 02:58:56,668 - regime - INFO - Regime: ADX=20.3 (transitioning) | Direction=bullish | Vol=normal (0.70x avg) | Tradeable=[]
+2026-05-16 02:58:59,007 - trading_engine - INFO - Trade placed: user=1 EUR_USD BUY units=1000 fill=0.0
+2026-05-16 02:58:59,125 - database - INFO - Database ready at data/forexchautari.db
+2026-05-16 02:58:59,248 - regime - INFO - Regime: ADX=23.0 (transitioning) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=[]
+2026-05-16 02:58:59,298 - regime - INFO - Regime: ADX=22.5 (transitioning) | Direction=neutral | Vol=normal (0.92x avg) | Tradeable=[]
+2026-05-16 02:58:59,350 - regime - INFO - Regime: ADX=35.4 (trending) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=['BUY', 'SELL']
+2026-05-16 02:58:59,402 - regime - INFO - Regime: ADX=20.3 (transitioning) | Direction=bullish | Vol=normal (0.70x avg) | Tradeable=[]
+2026-05-16 02:59:03,673 - regime - INFO - Regime: ADX=23.0 (transitioning) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=[]
+2026-05-16 02:59:03,727 - regime - INFO - Regime: ADX=22.5 (transitioning) | Direction=neutral | Vol=normal (0.92x avg) | Tradeable=[]
+2026-05-16 02:59:03,781 - regime - INFO - Regime: ADX=35.4 (trending) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=['BUY', 'SELL']
+2026-05-16 02:59:03,834 - regime - INFO - Regime: ADX=20.3 (transitioning) | Direction=bullish | Vol=normal (0.70x avg) | Tradeable=[]

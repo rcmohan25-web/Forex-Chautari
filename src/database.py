@@ -1,12 +1,12 @@
 """
 SQLite database layer for ForexChautari.
-All fixes applied:
-  - get_user_trades accepts optional user_id (None = all users for admin)
-  - _hash_password exported as public verify/hash functions
-  - notifications table added
-  - reactivate_user added
-  - get_user_by_id added
-  - update_user_profile added
+
+Changes in this version (encryption update):
+  - Imports encrypt() and decrypt() from src.encryption
+  - add_trading_account() encrypts api_key before INSERT
+  - get_trading_accounts() decrypts api_key_enc after SELECT
+  - remove_trading_account() unchanged
+  - All other functions are identical to the original
 """
 
 import os
@@ -16,6 +16,7 @@ import secrets
 from datetime import datetime, timedelta
 from contextlib import contextmanager
 from src.logger import get_logger
+from src.encryption import encrypt, decrypt   # ← NEW
 
 logger = get_logger("database")
 
@@ -224,7 +225,6 @@ def hash_password(password: str, salt: str) -> str:
     dk = hashlib.pbkdf2_hmac("sha256", password.encode(), salt.encode(), 260000)
     return dk.hex()
 
-# Keep private alias for internal backward compat
 _hash_password = hash_password
 
 def verify_password(password: str, salt: str, stored_hash: str) -> bool:
@@ -447,31 +447,92 @@ def reactivate_user(user_id: int, admin_id: int):
 
 # ── Trading accounts ──────────────────────────────────────────────────────────
 
-def add_trading_account(user_id: int, account_name: str, api_key: str,
-                        account_id: str, environment: str = "practice") -> int:
+def add_trading_account(
+    user_id:      int,
+    account_name: str,
+    api_key:      str,
+    account_id:   str,
+    environment:  str = "practice",
+) -> int:
+    """
+    Store a new Oanda trading account for a user.
+
+    The api_key is encrypted with Fernet (AES-128-CBC + HMAC-SHA256)
+    before it is written to the database. The column api_key_enc now
+    genuinely holds ciphertext — the "enc:v1:" prefix makes this
+    verifiable at a glance in any SQLite browser.
+
+    If FIELD_ENCRYPTION_KEY is missing from .env, encrypt() raises
+    RuntimeError here — a loud failure at write time so misconfiguration
+    is never silently swallowed.
+    """
     now = datetime.utcnow().isoformat()
+
+    # Encrypt before the value ever touches the database.
+    encrypted_key = encrypt(api_key)
+
     with get_db() as conn:
         conn.execute("""
             INSERT INTO trading_accounts
-            (user_id,account_name,broker,api_key_enc,account_id,environment,created_at,verified_at)
-            VALUES (?,?,'oanda',?,?,?,?,?)
-        """, (user_id, account_name, api_key, account_id, environment, now, now))
+                (user_id, account_name, broker, api_key_enc,
+                 account_id, environment, created_at, verified_at)
+            VALUES (?, ?, 'oanda', ?, ?, ?, ?, ?)
+        """, (user_id, account_name, encrypted_key, account_id, environment, now, now))
+
         row = conn.execute(
             "SELECT id FROM trading_accounts WHERE user_id=? ORDER BY id DESC LIMIT 1",
             (user_id,)
         ).fetchone()
-        return row["id"]
+
+    new_id = row["id"]
+    logger.info(
+        f"Trading account added: user_id={user_id} "
+        f"account_id={account_id} env={environment} db_id={new_id}"
+    )
+    return new_id
 
 
 def get_trading_accounts(user_id: int) -> list:
+    """
+    Return all active trading accounts for a user with decrypted API keys.
+
+    The decrypted plaintext is placed back into the "api_key_enc" dict key
+    so every existing call site (OandaClient construction in admin_panel.py,
+    user_dashboard.py, trading_engine.py) continues to work with zero changes —
+    they all already read acc["api_key_enc"] and pass it to OandaClient().
+
+    decrypt() handles legacy plaintext rows transparently (returns as-is),
+    so the app stays fully functional during the gap between deploying this
+    code and running the migration script.
+
+    If decryption fails for a row (wrong key / corrupted data), that account
+    is excluded from the result with an error log — the rest still work.
+    """
     with get_db() as conn:
         rows = conn.execute(
-            "SELECT * FROM trading_accounts WHERE user_id=? AND is_active=1", (user_id,)
+            "SELECT * FROM trading_accounts WHERE user_id=? AND is_active=1",
+            (user_id,)
         ).fetchall()
-        return [dict(r) for r in rows]
+
+    result = []
+    for row in rows:
+        account = dict(row)
+        try:
+            account["api_key_enc"] = decrypt(account["api_key_enc"])
+        except RuntimeError as exc:
+            logger.error(
+                f"Failed to decrypt API key for trading_account "
+                f"id={account.get('id')} user_id={user_id}: {exc}"
+            )
+            # Exclude broken account rather than crashing the whole list.
+            continue
+        result.append(account)
+
+    return result
 
 
 def remove_trading_account(account_id: int, user_id: int):
+    now = datetime.utcnow().isoformat()
     with get_db() as conn:
         conn.execute(
             "UPDATE trading_accounts SET is_active=0 WHERE id=? AND user_id=?",
@@ -481,7 +542,7 @@ def remove_trading_account(account_id: int, user_id: int):
             UPDATE user_trading_settings
             SET mode='signals_only', auto_trade_enabled=0, trading_account_id=NULL, updated_at=?
             WHERE user_id=? AND trading_account_id=?
-        """, (datetime.utcnow().isoformat(), user_id, account_id))
+        """, (now, user_id, account_id))
 
 
 # ── Trading settings ──────────────────────────────────────────────────────────

@@ -1,18 +1,19 @@
 """
-ForexChautari — FastAPI Backend
-Forex Market Prediction and Analysis ML Model
+ForexChautari — FastAPI Backend  (auth-integrated)
+app/api.py
 
-Endpoints:
-  System:     GET  /health
-  Prediction: GET  /predict/latest?pair=EUR_USD
-              GET  /predict/all
-  Model:      GET  /model-info?pair=EUR_USD
-              POST /retrain?pair=EUR_USD  (or /retrain/all)
-  Data:       POST /fetch-data
-              GET  /history?pair=EUR_USD&n=200
-  Portfolio:  GET  /portfolio/signals
-              GET  /portfolio/health
-  WF:         GET  /walk-forward?pair=EUR_USD
+All endpoints now require a JWT Bearer token except:
+  GET  /health     — public (liveness/monitoring)
+  POST /auth/login — public (token issuance)
+  POST /auth/refresh
+  POST /auth/logout
+  GET  /auth/me
+
+New plan-gating:
+  free/basic : /predict/latest, /predict/all  (plan limits which pairs)
+  basic+     : /walk-forward
+  pro+       : /portfolio/signals
+  admin only : /retrain, /fetch-data
 """
 
 import os
@@ -20,7 +21,7 @@ import subprocess
 import sys
 from typing import Optional
 
-from fastapi import FastAPI, HTTPException, Query, Depends
+from fastapi import Depends, FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 
 from config.settings import (
@@ -36,6 +37,7 @@ from src.schemas import (
     ModelInfoResponse, FetchResponse,
 )
 
+# ── Auth imports ──────────────────────────────────────────────────────────────
 from app.api_auth import (
     auth_router,
     require_user,
@@ -60,6 +62,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# ── Mount auth routes  (/auth/login, /auth/refresh, /auth/logout, /auth/me) ──
 app.include_router(auth_router)
 
 
@@ -73,12 +77,11 @@ def _load_pair(pair: str):
     mp  = model_path(pair)
     mep = meta_path(pair)
     if not os.path.exists(mp):
-        # Fall back to legacy single-pair model
         mp, mep = MODEL_PATH, METADATA_PATH
     if not os.path.exists(mp):
         raise HTTPException(
             status_code=503,
-            detail=f"No model for {pair}. Run: python train_all.py --fetch"
+            detail=f"No model for {pair}. Run: python train_all.py --fetch",
         )
 
     model = joblib.load(mp)
@@ -87,7 +90,6 @@ def _load_pair(pair: str):
 
     csv = data_path(pair)
     if not os.path.exists(csv):
-        # Try legacy path
         from config.settings import DATA_PATH
         csv = DATA_PATH
     if not os.path.exists(csv):
@@ -109,7 +111,7 @@ def _valid_pair(pair: str) -> str:
     if pair not in ACTIVE_PAIRS:
         raise HTTPException(
             status_code=400,
-            detail=f"Unknown pair '{pair}'. Valid: {ACTIVE_PAIRS}"
+            detail=f"Unknown pair '{pair}'. Valid: {ACTIVE_PAIRS}",
         )
     return pair
 
@@ -118,7 +120,10 @@ def _valid_pair(pair: str) -> str:
 
 @app.get("/health", tags=["System"])
 def health():
-    """Liveness check — reports model and data status for all pairs."""
+    """
+    Public liveness check — no auth required.
+    Reports model and data status for all pairs.
+    """
     result = {
         "status":  "ok",
         "brand":   APP_BRAND,
@@ -136,9 +141,9 @@ def health():
             try:
                 import json
                 with open(mp) as f: m = json.load(f)
-                info["trained_at"]   = m.get("trained_at", "?")[:10]
-                info["wf_accuracy"]  = m.get("walk_forward_mean_accuracy")
-                info["test_accuracy"]= m.get("accuracy_test")
+                info["trained_at"]    = m.get("trained_at", "?")[:10]
+                info["wf_accuracy"]   = m.get("walk_forward_mean_accuracy")
+                info["test_accuracy"] = m.get("accuracy_test")
             except Exception:
                 pass
         if data_ok:
@@ -164,9 +169,13 @@ def predict_latest(
     threshold: float = Query(DEFAULT_SIGNAL_THRESHOLD, ge=0.5, le=0.95),
     user:      CurrentUser = Depends(require_user),
 ):
-    """Return the latest directional signal for one pair."""
+    """
+    Return the latest directional signal for one pair.
+    Requires auth. Pair access is gated by subscription plan.
+    """
     pair = _valid_pair(pair)
-    pair_allowed_for_plan(pair, user)
+    pair_allowed_for_plan(pair, user)     # raises 403 if the pair is above the user's plan
+
     model, metadata, df = _load_pair(pair)
     feat_cols = metadata["feature_columns"]
     latest    = df[feat_cols].iloc[-1:]
@@ -175,16 +184,16 @@ def predict_latest(
     signal    = "BUY / UP" if pred == 1 else "SELL / DOWN"
     row       = df.iloc[-1]
     return {
-        "pair":            pair,
-        "signal":          signal,
-        "prediction":      pred,
-        "probability_up":  round(prob_up, 4),
-        "probability_down":round(1 - prob_up, 4),
-        "confidence":      _confidence_label(prob_up),
-        "latest_close":    float(row["Close"]),
-        "latest_date":     str(row["Date"]),
-        "threshold_used":  threshold,
-        "model_version":   metadata.get("model_version"),
+        "pair":             pair,
+        "signal":           signal,
+        "prediction":       pred,
+        "probability_up":   round(prob_up, 4),
+        "probability_down": round(1 - prob_up, 4),
+        "confidence":       _confidence_label(prob_up),
+        "latest_close":     float(row["Close"]),
+        "latest_date":      str(row["Date"]),
+        "threshold_used":   threshold,
+        "model_version":    metadata.get("model_version"),
     }
 
 
@@ -193,8 +202,11 @@ def predict_all(
     threshold: float = Query(DEFAULT_SIGNAL_THRESHOLD, ge=0.5, le=0.95),
     user:      CurrentUser = Depends(require_user),
 ):
-    """Return signals for all active pairs."""
-    allowed = user.allowed_pairs() if not user.is_admin() else ACTIVE_PAIRS
+    """
+    Return signals for all pairs allowed under the user's plan.
+    Admins see all pairs regardless of plan.
+    """
+    allowed = ACTIVE_PAIRS if user.is_admin() else user.allowed_pairs()
     results = []
     for pair in allowed:
         try:
@@ -223,7 +235,10 @@ def portfolio_signals(
     threshold: float = Query(DEFAULT_SIGNAL_THRESHOLD),
     user:      CurrentUser = Depends(require_plan("pro", "enterprise")),
 ):
-    """Get ranked portfolio signals from multi-pair manager."""
+    """
+    Get ranked portfolio signals.  Pro and Enterprise plans only.
+    Non-admin users only see pairs within their plan allowance.
+    """
     try:
         from src.multi_pair_manager import get_portfolio_signals
         df = get_portfolio_signals(threshold)
@@ -239,7 +254,7 @@ def portfolio_signals(
 def portfolio_health(
     user: CurrentUser = Depends(require_user),
 ):
-    """Return model health metrics for all pairs."""
+    """Return model health metrics for all pairs. Requires auth."""
     import json
     result = []
     for pair in ACTIVE_PAIRS:
@@ -248,12 +263,12 @@ def portfolio_health(
             with open(mp) as f:
                 m = json.load(f)
             result.append({
-                "pair":         pair,
-                "ok":           True,
-                "test_accuracy":m.get("accuracy_test"),
-                "wf_accuracy":  m.get("walk_forward_mean_accuracy"),
-                "trained_at":   m.get("trained_at", "?")[:10],
-                "rows":         m.get("rows_total"),
+                "pair":          pair,
+                "ok":            True,
+                "test_accuracy": m.get("accuracy_test"),
+                "wf_accuracy":   m.get("walk_forward_mean_accuracy"),
+                "trained_at":    m.get("trained_at", "?")[:10],
+                "rows":          m.get("rows_total"),
             })
         else:
             result.append({"pair": pair, "ok": False})
@@ -267,15 +282,15 @@ def model_info(
     pair: str = Query("EUR_USD"),
     user: CurrentUser = Depends(require_user),
 ):
-    """Return full metadata for a pair's model."""
+    """Return full metadata for a pair's model. Pair access is plan-gated."""
     pair = _valid_pair(pair)
     pair_allowed_for_plan(pair, user)
     _, metadata, _ = _load_pair(pair)
     return {
-        "pair":           pair,
-        "feature_columns":metadata["feature_columns"],
-        "feature_count":  len(metadata["feature_columns"]),
-        "metadata":       metadata,
+        "pair":            pair,
+        "feature_columns": metadata["feature_columns"],
+        "feature_count":   len(metadata["feature_columns"]),
+        "metadata":        metadata,
     }
 
 
@@ -288,7 +303,10 @@ def retrain(
     pair: str = Query("all", description="Pair to retrain, or 'all'"),
     user: CurrentUser = Depends(require_admin),
 ):
-    """Retrain model(s). pair='all' retrains all active pairs."""
+    """
+    Retrain model(s).  Admin only.  Rate-limited to 3 calls/hour.
+    pair='all' retrains all active pairs.
+    """
     try:
         args = [sys.executable, "train_all.py"]
         if pair.lower() != "all":
@@ -314,7 +332,7 @@ def fetch_data(
     outputsize: str = Query("compact", pattern="^(compact|full)$"),
     user:       CurrentUser = Depends(require_admin),
 ):
-    """Fetch latest candles for one or all pairs from Oanda."""
+    """Fetch latest candles for one or all pairs from Oanda.  Admin only."""
     try:
         from src.multi_pair_manager import fetch_all_pairs, fetch_pair_data
         if pair.lower() == "all":
@@ -324,9 +342,9 @@ def fetch_data(
             _valid_pair(pair)
             df = fetch_pair_data(pair, count=100 if outputsize == "compact" else 500)
             return {
-                "pair":      pair,
-                "rows":      len(df),
-                "latest":    str(df["Date"].max().date()),
+                "pair":   pair,
+                "rows":   len(df),
+                "latest": str(df["Date"].max().date()),
             }
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -338,13 +356,13 @@ def history(
     n:    int = Query(200, ge=10, le=2000),
     user: CurrentUser = Depends(require_user),
 ):
-    """Return last N OHLC bars for a pair."""
+    """Return last N OHLC bars for a pair. Pair access is plan-gated."""
     pair = _valid_pair(pair)
     pair_allowed_for_plan(pair, user)
     csv  = data_path(pair)
     if not os.path.exists(csv):
         raise HTTPException(status_code=404, detail=f"No data for {pair}")
-    df = load_forex_data(csv).tail(n)[["Date","Open","High","Low","Close"]]
+    df = load_forex_data(csv).tail(n)[["Date", "Open", "High", "Low", "Close"]]
     df["Date"] = df["Date"].astype(str)
     return {"pair": pair, "rows": df.to_dict(orient="records"), "count": len(df)}
 
@@ -356,22 +374,25 @@ def walk_forward(
     pair: str = Query("EUR_USD"),
     user: CurrentUser = Depends(require_plan("basic", "pro", "enterprise")),
 ):
-    """Return walk-forward validation results for a pair."""
+    """
+    Return walk-forward validation results for a pair.
+    Available from Basic plan upward.
+    """
     import pandas as pd
     from config.settings import wf_path
     pair = _valid_pair(pair)
     pair_allowed_for_plan(pair, user)
     wf   = wf_path(pair)
     if not os.path.exists(wf):
-        raise HTTPException(status_code=404, detail=f"No WF results for {pair}. Run retrain first.")
+        raise HTTPException(status_code=404, detail=f"No WF results for {pair}.")
     df = pd.read_csv(wf)
     return {
         "pair":   pair,
         "splits": df.to_dict(orient="records"),
         "summary": {
-            "total_splits":       len(df),
-            "mean_accuracy":      round(float(df["accuracy"].mean()), 4),
+            "total_splits":        len(df),
+            "mean_accuracy":       round(float(df["accuracy"].mean()), 4),
             "mean_strategy_return":round(float(df["strategy_return"].mean()), 4),
-            "profitable_splits":  int((df["strategy_return"] > 0).sum()),
+            "profitable_splits":   int((df["strategy_return"] > 0).sum()),
         },
     }
