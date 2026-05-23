@@ -40,6 +40,61 @@ def get_db():
         conn.close()
 
 
+# ── Default password sentinel ─────────────────────────────────────────────────
+_DEFAULT_ADMIN_PASSWORD = "admin123"
+
+
+def _audit_admin_default_password(conn) -> None:
+    """
+    Called once per process startup inside init_db().
+    Checks whether the admin account still uses the seeded password.
+    Writes the result into platform_settings so the API middleware and
+    admin panel can both read it without hitting the users table.
+
+    Two possible states written to platform_settings:
+      ADMIN_PASSWORD_CHANGED = "true"   — password has been changed, all clear
+      ADMIN_PASSWORD_CHANGED = "false"  — still on default, block non-health endpoints
+    """
+    now = datetime.utcnow().isoformat()
+    admin_row = conn.execute(
+        "SELECT password_hash, salt FROM users WHERE username='admin' AND is_active=1"
+    ).fetchone()
+
+    if not admin_row:
+        # No admin user at all — nothing to check
+        return
+
+    still_default = verify_password(
+        _DEFAULT_ADMIN_PASSWORD,
+        admin_row["salt"],
+        admin_row["password_hash"],
+    )
+
+    flag_value = "false" if still_default else "true"
+
+    conn.execute("""
+        INSERT INTO platform_settings (key, value, updated_at)
+        VALUES ('ADMIN_PASSWORD_CHANGED', ?, ?)
+        ON CONFLICT(key) DO UPDATE
+            SET value = excluded.value,
+                updated_at = excluded.updated_at
+    """, (flag_value, now))
+
+    if still_default:
+        logger.critical(
+            "\n".join([
+                "=" * 70,
+                "CRITICAL SECURITY WARNING",
+                "The admin account is still using the default password 'admin123'.",
+                "All non-health API endpoints are BLOCKED until you change it.",
+                "Log in to the admin panel to complete first-run setup.",
+                "=" * 70,
+            ])
+        )
+    else:
+        logger.info("Admin password check passed — default password has been changed.")
+
+
 def init_db():
     with get_db() as conn:
         conn.executescript("""
@@ -180,7 +235,14 @@ def init_db():
                  max_positions,use_regime_filter,created_at,updated_at)
                 VALUES (?,'signals_only',0,0.55,0.01,20,40,1000,3,1,?,?)
             """, (uid, now, now))
-            logger.info("Default admin created — username: admin  password: admin123")
+            # Flag the default password so startup check can detect it
+            logger.critical(
+                "SECURITY: Default admin account created with password 'admin123'. "
+                "You MUST change this before using the system."
+            )
+
+        # ── Default-password audit (runs on every startup) ─────────────────
+        _audit_admin_default_password(conn)
 
         # Backfill settings for existing users after upgrades.
         now = datetime.utcnow().isoformat()
@@ -453,19 +515,41 @@ def add_trading_account(
     api_key:      str,
     account_id:   str,
     environment:  str = "practice",
+    is_admin:     bool = False,
 ) -> int:
     """
     Store a new Oanda trading account for a user.
 
-    The api_key is encrypted with Fernet (AES-128-CBC + HMAC-SHA256)
-    before it is written to the database. The column api_key_enc now
-    genuinely holds ciphertext — the "enc:v1:" prefix makes this
-    verifiable at a glance in any SQLite browser.
+    Live environment policy (v1):
+      - Live trading is disabled for all non-admin users unconditionally.
+      - Even for admins, live trading requires LIVE_TRADING_ENABLED=true in .env.
+      - This is enforced here at the DB layer, not just in the UI, so it cannot
+        be bypassed by crafting a direct API call or calling this function
+        from a script.
 
-    If FIELD_ENCRYPTION_KEY is missing from .env, encrypt() raises
-    RuntimeError here — a loud failure at write time so misconfiguration
-    is never silently swallowed.
+    The api_key is encrypted with Fernet (AES-128-CBC + HMAC-SHA256)
+    before it is written to the database.
     """
+    # ── Live trading gate (server-side, cannot be bypassed via UI) ────────────
+    if environment == "live":
+        live_enabled = os.getenv("LIVE_TRADING_ENABLED", "false").strip().lower() == "true"
+        if not live_enabled:
+            raise ValueError(
+                "Live trading is disabled in this deployment. "
+                "Set LIVE_TRADING_ENABLED=true in .env to enable it. "
+                "WARNING: The v1 model has ~51-53% walk-forward accuracy — "
+                "live trading with real money is not recommended."
+            )
+        if not is_admin:
+            raise ValueError(
+                "Live trading accounts can only be connected by administrators. "
+                "Please use practice mode, or contact your admin."
+            )
+        logger.warning(
+            f"LIVE trading account being added: user_id={user_id} "
+            f"account_id={account_id} — admin override active"
+        )
+
     now = datetime.utcnow().isoformat()
 
     # Encrypt before the value ever touches the database.
@@ -646,6 +730,18 @@ def get_platform_settings() -> dict:
     with get_db() as conn:
         rows = conn.execute("SELECT key,value FROM platform_settings").fetchall()
         return {r["key"]: r["value"] for r in rows}
+
+
+def is_admin_password_default() -> bool:
+    """
+    Returns True if the admin account still has the seeded 'admin123' password.
+    Reads from platform_settings (written by _audit_admin_default_password at
+    startup) so callers never need to touch the users table directly.
+    Fast: single indexed key lookup.
+    """
+    settings = get_platform_settings()
+    # "false" means the flag ADMIN_PASSWORD_CHANGED is false → password NOT changed
+    return settings.get("ADMIN_PASSWORD_CHANGED", "false").strip().lower() != "true"
 
 
 def update_platform_settings(settings: dict):

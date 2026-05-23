@@ -161,6 +161,20 @@ def render_login():
         st.rerun()
     st.markdown('</div>', unsafe_allow_html=True)
 
+    # Warn operators who land on the login page that setup is pending.
+    # Regular users do not need to see this.
+    try:
+        from src.database import is_admin_password_default
+        if is_admin_password_default():
+            st.warning(
+                "⚠️ **Admin setup required.** "
+                "The platform is running with the default admin password. "
+                "Sign in as admin to complete first-run setup.",
+                icon="🔒",
+            )
+    except Exception:
+        pass  # Never break the login page due to a DB check failure
+
 
 def render_register():
     _auth_css()

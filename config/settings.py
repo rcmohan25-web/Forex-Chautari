@@ -59,3 +59,8 @@ PLAN_LIMITS = {
     "pro":        {"pairs": 4, "auto_trade": True,  "price": "$29/mo"},
     "enterprise": {"pairs": 99,"auto_trade": True,  "price": "Custom"},
 }
+
+# ── Live trading gate ─────────────────────────────────────────────────────────
+# False by default. Set LIVE_TRADING_ENABLED=true in .env only after
+# thorough review. v1 models have ~51-53% walk-forward accuracy.
+LIVE_TRADING_ENABLED = os.getenv("LIVE_TRADING_ENABLED", "false").strip().lower() == "true"

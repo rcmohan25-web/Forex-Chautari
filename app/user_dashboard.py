@@ -672,7 +672,12 @@ def render_user_dashboard(user: dict):
                     acc_id   = st.text_input("Account ID", placeholder="101-001-XXXXXXX-001")
                     env      = st.selectbox("Environment", ["practice", "live"])
                     if env == "live":
-                        st.error("⚠️ LIVE trading uses real money. Only connect if you understand the risks.")
+                        st.error(
+                            "⚠️ Live trading is not available for user accounts in v1. "
+                            "Please select **practice** mode."
+                        )
+                        # Prevent the form from submitting with live selected
+                        st.stop()
                     if st.form_submit_button("Verify & Connect", type="primary"):
                         if acc_name and api_key and acc_id:
                             with st.spinner("Verifying credentials with Oanda..."):
@@ -681,7 +686,9 @@ def render_user_dashboard(user: dict):
                                     client = OandaClient(api_key=api_key, account_id=acc_id, environment=env)
                                     result = client.validate_credentials()
                                     if result["valid"]:
-                                        new_id = add_trading_account(user["id"], acc_name, api_key, acc_id, env)
+                                        new_id = add_trading_account(
+                                            user["id"], acc_name, api_key, acc_id, env, is_admin=False
+                                        )
                                         current_settings = get_user_trading_settings(user["id"])
                                         if not current_settings.get("trading_account_id"):
                                             update_user_trading_settings(user["id"], trading_account_id=new_id)
@@ -689,6 +696,8 @@ def render_user_dashboard(user: dict):
                                         st.rerun()
                                     else:
                                         st.error(f"Connection failed: {result.get('error')}")
+                                except ValueError as e:
+                                    st.error(str(e))
                                 except Exception as e:
                                     st.error(f"Error: {e}")
                         else:
@@ -1151,7 +1160,11 @@ def render_user_dashboard(user: dict):
                     acc_id   = st.text_input("Account ID", placeholder="101-001-XXXXXXX-001", key="acct_tab_id")
                     env      = st.selectbox("Environment", ["practice", "live"], key="acct_tab_env")
                     if env == "live":
-                        st.error("LIVE trading uses real money. Only connect it if you understand the risks.")
+                        st.error(
+                            "⚠️ Live trading is not available for user accounts in v1. "
+                            "Please select **practice** mode."
+                        )
+                        st.stop()
                     if st.form_submit_button("Verify & Connect", type="primary"):
                         if acc_name and api_key and acc_id:
                             with st.spinner("Verifying credentials with Oanda..."):
@@ -1160,7 +1173,9 @@ def render_user_dashboard(user: dict):
                                     client = OandaClient(api_key=api_key, account_id=acc_id, environment=env)
                                     result = client.validate_credentials()
                                     if result["valid"]:
-                                        new_id = add_trading_account(user["id"], acc_name, api_key, acc_id, env)
+                                        new_id = add_trading_account(
+                                            user["id"], acc_name, api_key, acc_id, env, is_admin=False
+                                        )
                                         current_settings = get_user_trading_settings(user["id"])
                                         if not current_settings.get("trading_account_id"):
                                             update_user_trading_settings(user["id"], trading_account_id=new_id)
@@ -1168,6 +1183,8 @@ def render_user_dashboard(user: dict):
                                         st.rerun()
                                     else:
                                         st.error(f"Connection failed: {result.get('error')}")
+                                except ValueError as e:
+                                    st.error(str(e))
                                 except Exception as e:
                                     st.error(f"Error: {e}")
                         else:

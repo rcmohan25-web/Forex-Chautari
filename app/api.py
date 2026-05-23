@@ -22,6 +22,8 @@ from typing import Optional
 
 from fastapi import FastAPI, HTTPException, Query, Depends
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi import Request
+from fastapi.responses import JSONResponse
 
 from config.settings import (
     APP_BRAND, APP_NAME, APP_VERSION,
@@ -45,8 +47,10 @@ from app.api_auth import (
     rate_limit,
     CurrentUser,
 )
+from src.database import init_db, is_admin_password_default
 
 logger = get_logger("api")
+init_db()
 
 app = FastAPI(
     title=f"{APP_BRAND} API",
@@ -61,6 +65,37 @@ app.add_middleware(
     allow_headers=["*"],
 )
 app.include_router(auth_router)
+
+
+# ── Default-password firewall ─────────────────────────────────────────────────
+# All endpoints except /health and /auth/* are blocked until the admin
+# changes the seeded password. This cannot be bypassed by the client.
+
+_ALWAYS_ALLOWED = {"/health", "/auth", "/docs", "/openapi.json", "/redoc"}
+
+
+@app.middleware("http")
+async def require_password_changed(request: Request, call_next):
+    path = request.url.path
+    # Allow health, auth, and API docs unconditionally
+    if any(path == p or path.startswith(f"{p}/") for p in _ALWAYS_ALLOWED):
+        return await call_next(request)
+
+    if is_admin_password_default():
+        return JSONResponse(
+            status_code=503,
+            content={
+                "type":   "setup_required",
+                "title":  "Service Unavailable — First-Run Setup Incomplete",
+                "detail": (
+                    "The admin account is still using the default password 'admin123'. "
+                    "Log in to the admin panel and change it before using any endpoint. "
+                    "Only GET /health is available until setup is complete."
+                ),
+            },
+        )
+
+    return await call_next(request)
 
 
 # ── Helpers ───────────────────────────────────────────────────────────────────

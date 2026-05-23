@@ -136,8 +136,141 @@ def _build_client(acc: dict):
     )
 
 
+def _render_first_run_wizard(user: dict):
+    """
+    Blocks the entire admin panel and forces a password change.
+    Only dismissed once the new password is saved and verified.
+    """
+    from src.database import (
+        update_user_password, verify_password,
+        get_db,
+    )
+
+    # Sidebar is minimal during setup
+    with st.sidebar:
+        st.markdown(
+            f'<div style="font-family:Syne Mono,monospace;font-size:15px;'
+            f'color:{C_ACCENT};font-weight:700;padding:14px 0 4px;">⬡ {APP_BRAND}</div>',
+            unsafe_allow_html=True,
+        )
+        st.markdown(
+            f'<div style="font-size:11px;color:{C_RED};font-weight:700;'
+            f'letter-spacing:1px;">⚠ SETUP REQUIRED</div>',
+            unsafe_allow_html=True,
+        )
+        render_logout_button()
+
+    # ── Warning banner ─────────────────────────────────────────────────────────
+    st.markdown(f"""
+    <div style="background:linear-gradient(135deg,#1a0308,#1f040c);
+         border:2px solid {C_RED};border-radius:14px;
+         padding:24px 30px;margin-bottom:24px;">
+      <div style="font-family:'Syne Mono',monospace;font-size:22px;
+           font-weight:700;color:{C_RED};margin-bottom:8px;">
+        ⚠ First-Run Security Setup
+      </div>
+      <div style="font-size:13px;color:{C_TEXT};line-height:1.9;">
+        The admin account is using the <b style="color:{C_RED};">default password
+        'admin123'</b>.<br>
+        <b>All platform features are locked</b> until you set a strong password.<br>
+        This is enforced at both the API and UI layers and cannot be skipped.
+      </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # ── Password change form ───────────────────────────────────────────────────
+    st.markdown(
+        f'<div style="max-width:480px;margin:0 auto;">',
+        unsafe_allow_html=True,
+    )
+
+    with st.form("first_run_password_form", clear_on_submit=True):
+        st.markdown(
+            f'<div style="font-size:10px;color:{C_MUTED};letter-spacing:3px;'
+            f'text-transform:uppercase;margin-bottom:16px;">Set Admin Password</div>',
+            unsafe_allow_html=True,
+        )
+        current_pw = st.text_input(
+            "Current password",
+            type="password",
+            placeholder="admin123",
+            help="Enter the current default password to confirm your identity.",
+        )
+        new_pw = st.text_input(
+            "New password",
+            type="password",
+            placeholder="Minimum 12 characters",
+        )
+        confirm_pw = st.text_input(
+            "Confirm new password",
+            type="password",
+            placeholder="Repeat new password",
+        )
+        submitted = st.form_submit_button("Set Password & Continue", type="primary")
+
+    if submitted:
+        errors = []
+
+        # Verify the current password first — prevents a logged-in session
+        # from being hijacked to change the password without knowing it.
+        with get_db() as conn:
+            row = conn.execute(
+                "SELECT password_hash, salt FROM users WHERE username='admin'"
+            ).fetchone()
+        if not row or not verify_password(current_pw, row["salt"], row["password_hash"]):
+            errors.append("Current password is incorrect.")
+
+        if len(new_pw) < 12:
+            errors.append("New password must be at least 12 characters.")
+
+        if new_pw == "admin123":
+            errors.append("You cannot reuse the default password.")
+
+        if new_pw != confirm_pw:
+            errors.append("New passwords do not match.")
+
+        if errors:
+            for e in errors:
+                st.error(e)
+        else:
+            update_user_password(user["id"], new_pw)
+            st.success(
+                "✅ Password updated. The platform is now fully operational. "
+                "Reloading…"
+            )
+            # Give the user a moment to read the message, then reload
+            import time as _time
+            _time.sleep(1.5)
+            st.rerun()
+
+    # Validation hints shown below the form
+    st.markdown(f"""
+    <div style="background:{C_SURF};border:1px solid {C_BORDER};border-radius:10px;
+         padding:14px 18px;margin-top:16px;font-size:12px;color:{C_MUTED};line-height:2;">
+      <b style="color:{C_TEXT};">Password requirements</b><br>
+      ✓ &nbsp;Minimum 12 characters<br>
+      ✓ &nbsp;Cannot be <code>admin123</code><br>
+      ✓ &nbsp;Must match in both fields<br><br>
+      <b style="color:{C_TEXT};">What is blocked until setup completes</b><br>
+      🔒 &nbsp;All API endpoints except <code>/health</code><br>
+      🔒 &nbsp;Admin panel tabs (Overview, Users, Trading, etc.)<br>
+      🔒 &nbsp;User dashboard logins still work normally
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown("</div>", unsafe_allow_html=True)
+
+
 def render_admin(user: dict):
     _css()
+
+    # ── First-run setup wizard ─────────────────────────────────────────────────
+    # Shown instead of the full admin panel when the default password is still set.
+    # No other tab is rendered until the password is changed.
+    from src.database import is_admin_password_default
+    if is_admin_password_default():
+        _render_first_run_wizard(user)
+        return          # hard stop — nothing below this line runs
 
     # ── Sidebar ────────────────────────────────────────────────────────────────
     with st.sidebar:
@@ -498,7 +631,9 @@ def render_admin(user: dict):
                                     cl     = OandaClient(api_key=a_key, account_id=a_id, environment=a_env)
                                     result = cl.validate_credentials()
                                     if result["valid"]:
-                                        new_id = add_trading_account(user["id"], a_name, a_key, a_id, a_env)
+                                        new_id = add_trading_account(
+                                            user["id"], a_name, a_key, a_id, a_env, is_admin=True
+                                        )
                                         current_settings = get_user_trading_settings(user["id"])
                                         if not current_settings.get("trading_account_id"):
                                             update_user_trading_settings(user["id"], trading_account_id=new_id)

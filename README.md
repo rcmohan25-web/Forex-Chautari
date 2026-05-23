@@ -132,13 +132,47 @@ python tests/test_all.py
 
 ---
 
-## Default Credentials
+## Live Trading — v1 Restriction
+
+Live Oanda account connections are **disabled by default** for all users.
+
+| Account type | Practice | Live |
+|---|---|---|
+| Regular users (any plan) | ✅ Allowed | 🔒 Always blocked |
+| Admin | ✅ Allowed | ⚠️ Requires `LIVE_TRADING_ENABLED=true` in `.env` |
+
+**Why?** The v1 Random Forest model achieves ~51–53% walk-forward accuracy,
+which is statistically close to a coin flip. Connecting real money to an
+automated system with this edge profile carries significant financial risk.
+
+To enable live trading (admins only, at your own risk):
+
+```env
+LIVE_TRADING_ENABLED=true
+```
+
+This flag is enforced at the database layer — it cannot be bypassed via the
+UI, the REST API, or by calling `add_trading_account()` from a script.
+
+## Default Credentials & First-Run Setup
 
 | Role  | Username | Password  |
 |-------|----------|-----------|
 | Admin | admin    | admin123  |
 
-**Change the admin password immediately after first login.**
+**The platform enforces a password change before it is usable.**
+
+On first startup:
+1. All non-health API endpoints return `503 Setup Required`
+2. The admin panel shows a setup wizard instead of any other tab
+3. A `CRITICAL` warning is written to the application log
+
+The block is lifted automatically once the admin password is changed
+via the wizard. There is no way to skip this step.
+
+Minimum password requirements enforced by the wizard:
+- 12 characters or more
+- Cannot be `admin123`
 
 ---
 
