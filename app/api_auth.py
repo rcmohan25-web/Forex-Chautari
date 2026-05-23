@@ -44,13 +44,21 @@ logger = logging.getLogger("api_auth")
 # Configuration
 # ─────────────────────────────────────────────────────────────────────────────
 
-_SECRET = os.getenv("JWT_SECRET", "")
-if not _SECRET:
-    # Fail loudly at import time so the developer notices immediately.
+_SECRET = os.getenv("JWT_SECRET", "").strip()
+if not _SECRET or _SECRET == "GENERATE_AND_PASTE_JWT_SECRET_HERE":
     raise RuntimeError(
-        "JWT_SECRET environment variable is not set.\n"
-        "Generate one with:  openssl rand -hex 32\n"
-        "Then add it to your .env file:  JWT_SECRET=<value>"
+        "\n"
+        "JWT_SECRET is not configured.\n"
+        "\n"
+        "Generate a secret:\n"
+        '    python -c "import secrets; print(secrets.token_hex(32))"\n'
+        "\n"
+        "Add it to .env:\n"
+        "    JWT_SECRET=<paste output here>\n"
+        "\n"
+        "If you have not created .env yet:\n"
+        "    cp .env.example .env\n"
+        "Then fill in JWT_SECRET and all other REQUIRED values.\n"
     )
 
 ALGORITHM               = os.getenv("JWT_ALGORITHM", "HS256")

@@ -204,6 +204,10 @@ def schedule_jobs_from_settings():
     schedule.every().day.at(settings.get("train_time_utc", "00:01")).do(job_weekly_retrain)
 
 if __name__ == "__main__":
+    from config.startup_checks import validate_env, warn_if_debug_settings_in_production
+    validate_env()
+    warn_if_debug_settings_in_production()
+
     # Ensure DB is initialised
     init_db()
     schedule_jobs_from_settings()

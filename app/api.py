@@ -37,6 +37,13 @@ from src.schemas import (
     HealthResponse, PredictionResponse,
     ModelInfoResponse, FetchResponse,
 )
+from config.startup_checks import validate_env, warn_if_debug_settings_in_production
+
+logger = get_logger("api")
+
+# Fail fast — check all required env vars before touching the database
+validate_env()
+warn_if_debug_settings_in_production()
 
 from app.api_auth import (
     auth_router,
@@ -49,7 +56,6 @@ from app.api_auth import (
 )
 from src.database import init_db, is_admin_password_default
 
-logger = get_logger("api")
 init_db()
 
 app = FastAPI(
