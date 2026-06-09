@@ -32,11 +32,11 @@
   "pair": "GBP_USD",
   "model_version": "v2",
   "feature_set": "FEATURE_COLUMNS_V2",
-  "rows_total": 488,
-  "rows_train": 390,
-  "rows_test": 98,
-  "accuracy_train": 0.8102564102564103,
-  "accuracy_test": 0.5,
+  "rows_total": 495,
+  "rows_train": 396,
+  "rows_test": 99,
+  "accuracy_train": 0.797979797979798,
+  "accuracy_test": 0.5050505050505051,
   "walk_forward_mean_accuracy": 0.47,
   "walk_forward_mean_strategy_return": -0.044496153327565846,
   "walk_forward_mean_profit_factor": 0.6022931471899715,
@@ -49,5 +49,5 @@
   "rf_min_samples_leaf": 20,
   "rf_n_estimators": 200,
   "signal_threshold": 0.55,
-  "trained_at": "2026-05-15T14:40:27.470137"
+  "trained_at": "2026-05-26T07:08:41.316306"
 }

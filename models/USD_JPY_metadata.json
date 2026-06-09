@@ -32,11 +32,11 @@
   "pair": "USD_JPY",
   "model_version": "v2",
   "feature_set": "FEATURE_COLUMNS_V2",
-  "rows_total": 488,
-  "rows_train": 390,
-  "rows_test": 98,
-  "accuracy_train": 0.7974358974358975,
-  "accuracy_test": 0.45918367346938777,
+  "rows_total": 495,
+  "rows_train": 396,
+  "rows_test": 99,
+  "accuracy_train": 0.7878787878787878,
+  "accuracy_test": 0.45454545454545453,
   "walk_forward_mean_accuracy": 0.49,
   "walk_forward_mean_strategy_return": -0.036888278317439904,
   "walk_forward_mean_profit_factor": 0.5437080681447202,
@@ -49,5 +49,5 @@
   "rf_min_samples_leaf": 20,
   "rf_n_estimators": 200,
   "signal_threshold": 0.55,
-  "trained_at": "2026-05-15T14:40:27.827463"
+  "trained_at": "2026-05-26T07:08:41.685366"
 }
