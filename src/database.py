@@ -1,12 +1,16 @@
 """
 SQLite database layer for ForexChautari.
 
-Changes in this version (encryption update):
+Changes in this version (encryption audit update):
   - Imports encrypt() and decrypt() from src.encryption
-  - add_trading_account() encrypts api_key before INSERT
-  - get_trading_accounts() decrypts api_key_enc after SELECT
-  - remove_trading_account() unchanged
-  - All other functions are identical to the original
+  - add_trading_account() encrypts api_key before INSERT  (existing)
+  - get_trading_accounts() decrypts api_key_enc after SELECT  (existing)
+  - init_db() now calls _audit_plaintext_api_keys() on every startup.
+    Any row whose api_key_enc does NOT start with the "enc:v1:" prefix
+    is a plaintext key that was written before encryption was deployed.
+    A CRITICAL log line is emitted and stored in platform_settings so
+    the admin panel can surface a banner without re-querying the table.
+    Resolution: run  python scripts/migrate_encrypt_keys.py
 """
 
 import os
@@ -16,7 +20,7 @@ import secrets
 from datetime import datetime, timedelta
 from contextlib import contextmanager
 from src.logger import get_logger
-from src.encryption import encrypt, decrypt   # ← NEW
+from src.encryption import encrypt, decrypt, is_encrypted   # ← is_encrypted added
 
 logger = get_logger("database")
 
@@ -61,7 +65,6 @@ def _audit_admin_default_password(conn) -> None:
     ).fetchone()
 
     if not admin_row:
-        # No admin user at all — nothing to check
         return
 
     still_default = verify_password(
@@ -93,6 +96,89 @@ def _audit_admin_default_password(conn) -> None:
         )
     else:
         logger.info("Admin password check passed — default password has been changed.")
+
+
+def _audit_plaintext_api_keys(conn) -> None:
+    """
+    Called once per process startup inside init_db().
+
+    Scans every active row in trading_accounts and counts how many have
+    api_key_enc values that are NOT prefixed with "enc:v1:" — i.e. they
+    are still stored as plaintext, meaning the encrypt-at-rest migration
+    has not been run yet.
+
+    Actions taken:
+      • Writes PLAINTEXT_API_KEYS_FOUND = "true" / "false" into
+        platform_settings so the admin panel can surface a banner.
+      • Logs a CRITICAL message with the exact count and the command
+        needed to fix it, so operators catch it in log aggregators.
+      • Does NOT auto-encrypt here: the migration script is a deliberate,
+        operator-confirmed action (it needs FIELD_ENCRYPTION_KEY to be
+        set and the DB to be backed up first).
+
+    This function is intentionally read-only with respect to the
+    trading_accounts table so it can never corrupt stored credentials.
+    """
+    now = datetime.utcnow().isoformat()
+
+    rows = conn.execute(
+        "SELECT id, user_id, api_key_enc FROM trading_accounts WHERE is_active = 1"
+    ).fetchall()
+
+    plaintext_ids: list[int] = [
+        row["id"] for row in rows
+        if row["api_key_enc"] and not is_encrypted(row["api_key_enc"])
+    ]
+
+    found = len(plaintext_ids) > 0
+    flag  = "true" if found else "false"
+
+    conn.execute("""
+        INSERT INTO platform_settings (key, value, updated_at)
+        VALUES ('PLAINTEXT_API_KEYS_FOUND', ?, ?)
+        ON CONFLICT(key) DO UPDATE
+            SET value      = excluded.value,
+                updated_at = excluded.updated_at
+    """, (flag, now))
+
+    if found:
+        # Also store the count so the admin panel can show a specific number.
+        conn.execute("""
+            INSERT INTO platform_settings (key, value, updated_at)
+            VALUES ('PLAINTEXT_API_KEYS_COUNT', ?, ?)
+            ON CONFLICT(key) DO UPDATE
+                SET value      = excluded.value,
+                    updated_at = excluded.updated_at
+        """, (str(len(plaintext_ids)), now))
+
+        logger.critical(
+            "\n".join([
+                "=" * 70,
+                "CRITICAL SECURITY WARNING — PLAINTEXT API KEYS IN DATABASE",
+                f"{len(plaintext_ids)} trading account(s) have their Oanda API key",
+                "stored as PLAINTEXT. Anyone who reads the SQLite file can steal",
+                "live Oanda credentials and place or close trades on behalf of users.",
+                "",
+                "To encrypt all plaintext keys, run:",
+                "    python scripts/migrate_encrypt_keys.py",
+                "",
+                "Before running the migration:",
+                "  1. Ensure FIELD_ENCRYPTION_KEY is set in .env",
+                "  2. Back up the database:",
+                "       cp data/forexchautari.db data/forexchautari.db.bak",
+                "  3. Run the migration (dry-run first is safe):",
+                "       python scripts/migrate_encrypt_keys.py --dry-run",
+                "       python scripts/migrate_encrypt_keys.py",
+                "",
+                f"Affected trading_account row IDs: {plaintext_ids}",
+                "=" * 70,
+            ])
+        )
+    else:
+        logger.info(
+            "API key encryption check passed — "
+            f"all {len(rows)} active trading account(s) use encrypted keys."
+        )
 
 
 def init_db():
@@ -235,14 +321,14 @@ def init_db():
                  max_positions,use_regime_filter,created_at,updated_at)
                 VALUES (?,'signals_only',0,0.55,0.01,20,40,1000,3,1,?,?)
             """, (uid, now, now))
-            # Flag the default password so startup check can detect it
             logger.critical(
                 "SECURITY: Default admin account created with password 'admin123'. "
                 "You MUST change this before using the system."
             )
 
-        # ── Default-password audit (runs on every startup) ─────────────────
+        # ── Security audits (run on every startup) ─────────────────────────
         _audit_admin_default_password(conn)
+        _audit_plaintext_api_keys(conn)       # ← NEW
 
         # Backfill settings for existing users after upgrades.
         now = datetime.utcnow().isoformat()
@@ -530,7 +616,6 @@ def add_trading_account(
     The api_key is encrypted with Fernet (AES-128-CBC + HMAC-SHA256)
     before it is written to the database.
     """
-    # ── Live trading gate (server-side, cannot be bypassed via UI) ────────────
     if environment == "live":
         live_enabled = os.getenv("LIVE_TRADING_ENABLED", "false").strip().lower() == "true"
         if not live_enabled:
@@ -580,11 +665,6 @@ def get_trading_accounts(user_id: int) -> list:
     """
     Return all active trading accounts for a user with decrypted API keys.
 
-    The decrypted plaintext is placed back into the "api_key_enc" dict key
-    so every existing call site (OandaClient construction in admin_panel.py,
-    user_dashboard.py, trading_engine.py) continues to work with zero changes —
-    they all already read acc["api_key_enc"] and pass it to OandaClient().
-
     decrypt() handles legacy plaintext rows transparently (returns as-is),
     so the app stays fully functional during the gap between deploying this
     code and running the migration script.
@@ -608,7 +688,6 @@ def get_trading_accounts(user_id: int) -> list:
                 f"Failed to decrypt API key for trading_account "
                 f"id={account.get('id')} user_id={user_id}: {exc}"
             )
-            # Exclude broken account rather than crashing the whole list.
             continue
         result.append(account)
 
@@ -737,11 +816,28 @@ def is_admin_password_default() -> bool:
     Returns True if the admin account still has the seeded 'admin123' password.
     Reads from platform_settings (written by _audit_admin_default_password at
     startup) so callers never need to touch the users table directly.
+    """
+    settings = get_platform_settings()
+    return settings.get("ADMIN_PASSWORD_CHANGED", "false").strip().lower() != "true"
+
+
+def has_plaintext_api_keys() -> bool:
+    """
+    Returns True if any active trading account still has an unencrypted API key.
+    Reads from platform_settings (written by _audit_plaintext_api_keys at startup).
     Fast: single indexed key lookup.
     """
     settings = get_platform_settings()
-    # "false" means the flag ADMIN_PASSWORD_CHANGED is false → password NOT changed
-    return settings.get("ADMIN_PASSWORD_CHANGED", "false").strip().lower() != "true"
+    return settings.get("PLAINTEXT_API_KEYS_FOUND", "false").strip().lower() == "true"
+
+
+def plaintext_api_keys_count() -> int:
+    """Return the number of active trading accounts with plaintext API keys."""
+    settings = get_platform_settings()
+    try:
+        return int(settings.get("PLAINTEXT_API_KEYS_COUNT", "0"))
+    except (ValueError, TypeError):
+        return 0
 
 
 def update_platform_settings(settings: dict):

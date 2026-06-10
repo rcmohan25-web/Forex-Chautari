@@ -1,0 +1,42 @@
+[
+  {
+    "timestamp": "2026-05-20T04:54:17.191620",
+    "instrument": "GBP_USD",
+    "signal": "BUY",
+    "prob_up": 0.5937351734784712,
+    "confidence": "MEDIUM",
+    "fill_price": 1.33932,
+    "units": 1000,
+    "trade_id": "9"
+  },
+  {
+    "timestamp": "2026-05-20T04:54:20.517590",
+    "instrument": "AUD_USD",
+    "signal": "BUY",
+    "prob_up": 0.5906491598020347,
+    "confidence": "MEDIUM",
+    "fill_price": 0.71004,
+    "units": 1000,
+    "trade_id": "13"
+  },
+  {
+    "timestamp": "2026-05-22T08:03:08.052446",
+    "instrument": "AUD_USD",
+    "signal": "BUY",
+    "prob_up": 0.6701077127838222,
+    "confidence": "HIGH",
+    "fill_price": 0.71332,
+    "units": 1000,
+    "trade_id": "21"
+  },
+  {
+    "timestamp": "2026-05-23T12:22:02.492297",
+    "instrument": "EUR_USD",
+    "signal": "SELL",
+    "prob_up": 0.4034193597601391,
+    "confidence": "MEDIUM",
+    "fill_price": 0.0,
+    "units": -1000,
+    "trade_id": ""
+  }
+]

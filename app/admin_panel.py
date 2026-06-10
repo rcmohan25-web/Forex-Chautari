@@ -32,6 +32,7 @@ from src.database import (
     log_trade, close_trade as db_close_trade,
     get_user_trading_settings, update_user_trading_settings,
     get_platform_settings, update_platform_settings, setting_bool,
+    has_plaintext_api_keys, plaintext_api_keys_count,
 )
 from config.settings import (
     ACTIVE_PAIRS, meta_path, data_path, DEFAULT_SIGNAL_THRESHOLD,
@@ -271,6 +272,19 @@ def render_admin(user: dict):
     if is_admin_password_default():
         _render_first_run_wizard(user)
         return          # hard stop — nothing below this line runs
+
+    # ── Plaintext API key warning banner ──────────────────────────────────────
+    if has_plaintext_api_keys():
+        count = plaintext_api_keys_count()
+        st.warning(
+            f"⚠️ **Security: {count} trading account(s) have plaintext API keys.**  "
+            f"Anyone with read access to the SQLite file can steal Oanda credentials.  \n\n"
+            f"Run the migration (takes < 5 seconds):  \n"
+            f"```\npython scripts/migrate_encrypt_keys.py --dry-run\n"
+            f"python scripts/migrate_encrypt_keys.py\n```  \n"
+            f"See the Deployment Checklist in README.md for full instructions.",
+            icon="🔑",
+        )
 
     # ── Sidebar ────────────────────────────────────────────────────────────────
     with st.sidebar:

@@ -1358,3 +1358,963 @@
 2026-05-16 02:59:03,727 - regime - INFO - Regime: ADX=22.5 (transitioning) | Direction=neutral | Vol=normal (0.92x avg) | Tradeable=[]
 2026-05-16 02:59:03,781 - regime - INFO - Regime: ADX=35.4 (trending) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=['BUY', 'SELL']
 2026-05-16 02:59:03,834 - regime - INFO - Regime: ADX=20.3 (transitioning) | Direction=bullish | Vol=normal (0.70x avg) | Tradeable=[]
+2026-05-16 11:17:43,014 - database - INFO - Database ready at data/forexchautari.db
+2026-05-16 11:17:51,170 - database - INFO - Database ready at data/forexchautari.db
+2026-05-16 11:17:51,309 - database - INFO - Database ready at data/forexchautari.db
+2026-05-16 11:17:51,735 - regime - INFO - Regime: ADX=23.0 (transitioning) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=[]
+2026-05-16 11:17:51,802 - regime - INFO - Regime: ADX=22.5 (transitioning) | Direction=neutral | Vol=normal (0.92x avg) | Tradeable=[]
+2026-05-16 11:17:51,859 - regime - INFO - Regime: ADX=35.4 (trending) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=['BUY', 'SELL']
+2026-05-16 11:17:51,916 - regime - INFO - Regime: ADX=20.3 (transitioning) | Direction=bullish | Vol=normal (0.70x avg) | Tradeable=[]
+2026-05-16 11:18:00,770 - regime - INFO - Regime: ADX=23.0 (transitioning) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=[]
+2026-05-16 11:18:00,825 - regime - INFO - Regime: ADX=22.5 (transitioning) | Direction=neutral | Vol=normal (0.92x avg) | Tradeable=[]
+2026-05-16 11:18:00,880 - regime - INFO - Regime: ADX=35.4 (trending) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=['BUY', 'SELL']
+2026-05-16 11:18:00,933 - regime - INFO - Regime: ADX=20.3 (transitioning) | Direction=bullish | Vol=normal (0.70x avg) | Tradeable=[]
+2026-05-16 11:18:21,844 - database - INFO - Database ready at data/forexchautari.db
+2026-05-16 11:18:22,002 - regime - INFO - Regime: ADX=23.0 (transitioning) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=[]
+2026-05-16 11:18:22,070 - regime - INFO - Regime: ADX=22.5 (transitioning) | Direction=neutral | Vol=normal (0.92x avg) | Tradeable=[]
+2026-05-16 11:18:22,136 - regime - INFO - Regime: ADX=35.4 (trending) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=['BUY', 'SELL']
+2026-05-16 11:18:22,186 - regime - INFO - Regime: ADX=20.3 (transitioning) | Direction=bullish | Vol=normal (0.70x avg) | Tradeable=[]
+2026-05-16 11:18:28,805 - regime - INFO - Regime: ADX=23.0 (transitioning) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=[]
+2026-05-16 11:18:28,858 - regime - INFO - Regime: ADX=22.5 (transitioning) | Direction=neutral | Vol=normal (0.92x avg) | Tradeable=[]
+2026-05-16 11:18:28,912 - regime - INFO - Regime: ADX=35.4 (trending) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=['BUY', 'SELL']
+2026-05-16 11:18:28,965 - regime - INFO - Regime: ADX=20.3 (transitioning) | Direction=bullish | Vol=normal (0.70x avg) | Tradeable=[]
+2026-05-16 11:18:29,409 - multi_pair - INFO - EUR_USD: 509 rows saved to data/EUR_USD.csv
+2026-05-16 11:18:30,979 - multi_pair - INFO - GBP_USD: 509 rows saved to data/GBP_USD.csv
+2026-05-16 11:18:31,604 - multi_pair - INFO - USD_JPY: 509 rows saved to data/USD_JPY.csv
+2026-05-16 11:18:32,378 - multi_pair - INFO - AUD_USD: 509 rows saved to data/AUD_USD.csv
+2026-05-16 11:18:36,767 - multi_pair - INFO - EUR_USD: model saved → models/EUR_USD_model.pkl
+2026-05-16 11:18:36,767 - multi_pair - INFO - EUR_USD: trained — train=0.7954 test=0.4898 wf=0.5500
+2026-05-16 11:18:37,135 - multi_pair - INFO - GBP_USD: model saved → models/GBP_USD_model.pkl
+2026-05-16 11:18:37,135 - multi_pair - INFO - GBP_USD: trained — train=0.8133 test=0.5000 wf=0.4700
+2026-05-16 11:18:37,525 - multi_pair - INFO - USD_JPY: model saved → models/USD_JPY_model.pkl
+2026-05-16 11:18:37,525 - multi_pair - INFO - USD_JPY: trained — train=0.8082 test=0.4796 wf=0.4900
+2026-05-16 11:18:37,890 - multi_pair - INFO - AUD_USD: model saved → models/AUD_USD_model.pkl
+2026-05-16 11:18:37,890 - multi_pair - INFO - AUD_USD: trained — train=0.7596 test=0.4388 wf=0.6400
+2026-05-20 08:46:11,326 - database - INFO - Database ready at data/forexchautari.db
+2026-05-20 08:46:22,876 - database - INFO - Database ready at data/forexchautari.db
+2026-05-20 08:46:38,711 - database - INFO - Database ready at data/forexchautari.db
+2026-05-20 08:46:47,131 - database - INFO - Database ready at data/forexchautari.db
+2026-05-20 08:46:47,263 - database - INFO - Database ready at data/forexchautari.db
+2026-05-20 08:46:47,583 - regime - INFO - Regime: ADX=24.7 (transitioning) | Direction=neutral | Vol=normal (0.77x avg) | Tradeable=[]
+2026-05-20 08:46:47,650 - regime - INFO - Regime: ADX=26.1 (trending) | Direction=neutral | Vol=normal (0.96x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 08:46:47,704 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 08:46:47,763 - regime - INFO - Regime: ADX=21.2 (transitioning) | Direction=neutral | Vol=normal (0.86x avg) | Tradeable=[]
+2026-05-20 08:47:05,088 - regime - INFO - Regime: ADX=24.7 (transitioning) | Direction=neutral | Vol=normal (0.77x avg) | Tradeable=[]
+2026-05-20 08:47:05,146 - regime - INFO - Regime: ADX=26.1 (trending) | Direction=neutral | Vol=normal (0.96x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 08:47:05,201 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 08:47:05,257 - regime - INFO - Regime: ADX=21.2 (transitioning) | Direction=neutral | Vol=normal (0.86x avg) | Tradeable=[]
+2026-05-20 08:47:17,061 - database - INFO - Database ready at data/forexchautari.db
+2026-05-20 08:47:17,231 - regime - INFO - Regime: ADX=24.7 (transitioning) | Direction=neutral | Vol=normal (0.77x avg) | Tradeable=[]
+2026-05-20 08:47:17,291 - regime - INFO - Regime: ADX=26.1 (trending) | Direction=neutral | Vol=normal (0.96x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 08:47:17,346 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 08:47:17,400 - regime - INFO - Regime: ADX=21.2 (transitioning) | Direction=neutral | Vol=normal (0.86x avg) | Tradeable=[]
+2026-05-20 08:47:21,730 - regime - INFO - Regime: ADX=24.7 (transitioning) | Direction=neutral | Vol=normal (0.77x avg) | Tradeable=[]
+2026-05-20 08:47:21,785 - regime - INFO - Regime: ADX=26.1 (trending) | Direction=neutral | Vol=normal (0.96x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 08:47:21,838 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=neutral | Vol=normal (0.73x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 08:47:21,891 - regime - INFO - Regime: ADX=21.2 (transitioning) | Direction=neutral | Vol=normal (0.86x avg) | Tradeable=[]
+2026-05-20 08:47:22,310 - multi_pair - INFO - EUR_USD: 511 rows saved to data/EUR_USD.csv
+2026-05-20 08:47:22,679 - multi_pair - INFO - GBP_USD: 511 rows saved to data/GBP_USD.csv
+2026-05-20 08:47:23,144 - multi_pair - INFO - USD_JPY: 511 rows saved to data/USD_JPY.csv
+2026-05-20 08:47:23,880 - multi_pair - INFO - AUD_USD: 511 rows saved to data/AUD_USD.csv
+2026-05-20 08:47:26,909 - multi_pair - INFO - EUR_USD: model saved → models/EUR_USD_model.pkl
+2026-05-20 08:47:26,909 - multi_pair - INFO - EUR_USD: trained — train=0.7781 test=0.4949 wf=0.5500
+2026-05-20 08:47:27,266 - multi_pair - INFO - GBP_USD: model saved → models/GBP_USD_model.pkl
+2026-05-20 08:47:27,266 - multi_pair - INFO - GBP_USD: trained — train=0.8010 test=0.4949 wf=0.4700
+2026-05-20 08:47:27,647 - multi_pair - INFO - USD_JPY: model saved → models/USD_JPY_model.pkl
+2026-05-20 08:47:27,647 - multi_pair - INFO - USD_JPY: trained — train=0.7934 test=0.4646 wf=0.4900
+2026-05-20 08:47:28,006 - multi_pair - INFO - AUD_USD: model saved → models/AUD_USD_model.pkl
+2026-05-20 08:47:28,006 - multi_pair - INFO - AUD_USD: trained — train=0.7551 test=0.4242 wf=0.6400
+2026-05-20 10:38:20,366 - database - INFO - Database ready at data/forexchautari.db
+2026-05-20 10:38:20,742 - regime - INFO - Regime: ADX=29.0 (trending) | Direction=neutral | Vol=normal (0.84x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 10:38:20,801 - regime - INFO - Regime: ADX=26.9 (trending) | Direction=neutral | Vol=normal (1.15x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 10:38:20,869 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=neutral | Vol=normal (0.71x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 10:38:20,926 - regime - INFO - Regime: ADX=26.1 (trending) | Direction=neutral | Vol=normal (0.93x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 10:38:28,853 - regime - INFO - Regime: ADX=29.0 (trending) | Direction=neutral | Vol=normal (0.84x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 10:38:28,922 - regime - INFO - Regime: ADX=26.9 (trending) | Direction=neutral | Vol=normal (1.15x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 10:38:28,982 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=neutral | Vol=normal (0.71x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 10:38:29,043 - regime - INFO - Regime: ADX=26.1 (trending) | Direction=neutral | Vol=normal (0.93x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 10:39:11,512 - database - INFO - Database ready at data/forexchautari.db
+2026-05-20 10:39:11,738 - regime - INFO - Regime: ADX=29.0 (trending) | Direction=neutral | Vol=normal (0.84x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 10:39:11,808 - regime - INFO - Regime: ADX=26.9 (trending) | Direction=neutral | Vol=normal (1.15x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 10:39:11,875 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=neutral | Vol=normal (0.71x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 10:39:11,933 - regime - INFO - Regime: ADX=26.1 (trending) | Direction=neutral | Vol=normal (0.93x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 10:39:17,029 - regime - INFO - Regime: ADX=29.0 (trending) | Direction=neutral | Vol=normal (0.84x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 10:39:17,087 - regime - INFO - Regime: ADX=26.9 (trending) | Direction=neutral | Vol=normal (1.15x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 10:39:17,140 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=neutral | Vol=normal (0.71x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 10:39:17,190 - regime - INFO - Regime: ADX=26.1 (trending) | Direction=neutral | Vol=normal (0.93x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 10:39:20,515 - alerter - WARNING - Telegram error: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8593453301:AAGJdUMUNZaOZfbRBhQfCn5-rAb2lDnKqe4/sendMessage (Caused by SSLError(SSLCertVerificationError(1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'api.telegram.org'. (_ssl.c:1028)")))
+2026-05-20 10:39:20,516 - paper_trader - INFO - Order placed: {'order_id': '8', 'trade_id': '9', 'instrument': 'GBP_USD', 'units': 1000, 'fill_price': 1.33932, 'time': '2026-05-20T04:54:19.931324408Z', 'pl': 0.0}
+2026-05-20 10:39:24,591 - alerter - WARNING - Telegram error: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8593453301:AAGJdUMUNZaOZfbRBhQfCn5-rAb2lDnKqe4/sendMessage (Caused by SSLError(SSLCertVerificationError(1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'api.telegram.org'. (_ssl.c:1028)")))
+2026-05-20 10:39:24,592 - paper_trader - INFO - Order placed: {'order_id': '12', 'trade_id': '13', 'instrument': 'AUD_USD', 'units': 1000, 'fill_price': 0.71004, 'time': '2026-05-20T04:54:23.611566879Z', 'pl': 0.0}
+2026-05-20 10:39:24,976 - alerter - WARNING - Telegram error: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8593453301:AAGJdUMUNZaOZfbRBhQfCn5-rAb2lDnKqe4/sendMessage (Caused by SSLError(SSLCertVerificationError(1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'api.telegram.org'. (_ssl.c:1028)")))
+2026-05-20 10:39:25,323 - alerter - WARNING - Telegram error: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8593453301:AAGJdUMUNZaOZfbRBhQfCn5-rAb2lDnKqe4/sendMessage (Caused by SSLError(SSLCertVerificationError(1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'api.telegram.org'. (_ssl.c:1028)")))
+2026-05-20 10:39:29,129 - regime - INFO - Regime: ADX=29.0 (trending) | Direction=neutral | Vol=normal (0.84x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 10:39:29,183 - regime - INFO - Regime: ADX=26.9 (trending) | Direction=neutral | Vol=normal (1.15x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 10:39:29,236 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=neutral | Vol=normal (0.71x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 10:39:29,290 - regime - INFO - Regime: ADX=26.1 (trending) | Direction=neutral | Vol=normal (0.93x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 10:40:32,088 - database - INFO - Database ready at data/forexchautari.db
+2026-05-20 10:40:32,371 - regime - INFO - Regime: ADX=29.0 (trending) | Direction=neutral | Vol=normal (0.84x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 10:40:32,439 - regime - INFO - Regime: ADX=26.9 (trending) | Direction=neutral | Vol=normal (1.15x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 10:40:32,494 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=neutral | Vol=normal (0.71x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 10:40:32,552 - regime - INFO - Regime: ADX=26.1 (trending) | Direction=neutral | Vol=normal (0.93x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 10:40:35,955 - regime - INFO - Regime: ADX=29.0 (trending) | Direction=neutral | Vol=normal (0.84x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 10:40:36,006 - regime - INFO - Regime: ADX=26.9 (trending) | Direction=neutral | Vol=normal (1.15x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 10:40:36,059 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=neutral | Vol=normal (0.71x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 10:40:36,110 - regime - INFO - Regime: ADX=26.1 (trending) | Direction=neutral | Vol=normal (0.93x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 10:40:38,689 - alerter - WARNING - Telegram error: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8593453301:AAGJdUMUNZaOZfbRBhQfCn5-rAb2lDnKqe4/sendMessage (Caused by SSLError(SSLCertVerificationError(1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'api.telegram.org'. (_ssl.c:1028)")))
+2026-05-20 10:40:42,006 - alerter - WARNING - Telegram error: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8593453301:AAGJdUMUNZaOZfbRBhQfCn5-rAb2lDnKqe4/sendMessage (Caused by SSLError(SSLCertVerificationError(1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'api.telegram.org'. (_ssl.c:1028)")))
+2026-05-20 10:40:42,339 - alerter - WARNING - Telegram error: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8593453301:AAGJdUMUNZaOZfbRBhQfCn5-rAb2lDnKqe4/sendMessage (Caused by SSLError(SSLCertVerificationError(1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'api.telegram.org'. (_ssl.c:1028)")))
+2026-05-20 10:40:42,701 - alerter - WARNING - Telegram error: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8593453301:AAGJdUMUNZaOZfbRBhQfCn5-rAb2lDnKqe4/sendMessage (Caused by SSLError(SSLCertVerificationError(1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'api.telegram.org'. (_ssl.c:1028)")))
+2026-05-20 10:40:46,606 - regime - INFO - Regime: ADX=29.0 (trending) | Direction=neutral | Vol=normal (0.84x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 10:40:46,660 - regime - INFO - Regime: ADX=26.9 (trending) | Direction=neutral | Vol=normal (1.15x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 10:40:46,714 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=neutral | Vol=normal (0.71x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 10:40:46,767 - regime - INFO - Regime: ADX=26.1 (trending) | Direction=neutral | Vol=normal (0.93x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 10:47:13,489 - database - INFO - Database ready at data/forexchautari.db
+2026-05-20 10:47:13,823 - regime - INFO - Regime: ADX=29.0 (trending) | Direction=neutral | Vol=normal (0.84x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 10:47:13,881 - regime - INFO - Regime: ADX=26.9 (trending) | Direction=neutral | Vol=normal (1.15x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 10:47:13,937 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=neutral | Vol=normal (0.71x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 10:47:14,007 - regime - INFO - Regime: ADX=26.1 (trending) | Direction=neutral | Vol=normal (0.93x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 10:47:17,551 - regime - INFO - Regime: ADX=29.0 (trending) | Direction=neutral | Vol=normal (0.84x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 10:47:17,606 - regime - INFO - Regime: ADX=26.9 (trending) | Direction=neutral | Vol=normal (1.15x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 10:47:17,663 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=neutral | Vol=normal (0.71x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 10:47:17,722 - regime - INFO - Regime: ADX=26.1 (trending) | Direction=neutral | Vol=normal (0.93x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 10:47:28,891 - regime - INFO - Regime: ADX=29.0 (trending) | Direction=neutral | Vol=normal (0.84x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 10:47:28,945 - regime - INFO - Regime: ADX=26.9 (trending) | Direction=neutral | Vol=normal (1.15x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 10:47:28,998 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=neutral | Vol=normal (0.71x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 10:47:29,052 - regime - INFO - Regime: ADX=26.1 (trending) | Direction=neutral | Vol=normal (0.93x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 11:01:33,543 - database - INFO - Database ready at data/forexchautari.db
+2026-05-20 11:01:33,890 - regime - INFO - Regime: ADX=29.0 (trending) | Direction=neutral | Vol=normal (0.84x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 11:01:33,948 - regime - INFO - Regime: ADX=26.9 (trending) | Direction=neutral | Vol=normal (1.15x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 11:01:34,007 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=neutral | Vol=normal (0.71x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 11:01:34,065 - regime - INFO - Regime: ADX=26.1 (trending) | Direction=neutral | Vol=normal (0.93x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 11:01:39,127 - regime - INFO - Regime: ADX=29.0 (trending) | Direction=neutral | Vol=normal (0.84x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 11:01:39,181 - regime - INFO - Regime: ADX=26.9 (trending) | Direction=neutral | Vol=normal (1.15x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 11:01:39,235 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=neutral | Vol=normal (0.71x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 11:01:39,287 - regime - INFO - Regime: ADX=26.1 (trending) | Direction=neutral | Vol=normal (0.93x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 11:02:09,966 - database - INFO - Database ready at data/forexchautari.db
+2026-05-20 11:02:10,153 - regime - INFO - Regime: ADX=29.0 (trending) | Direction=neutral | Vol=normal (0.84x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 11:02:10,210 - regime - INFO - Regime: ADX=26.9 (trending) | Direction=neutral | Vol=normal (1.15x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 11:02:10,265 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=neutral | Vol=normal (0.71x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 11:02:10,318 - regime - INFO - Regime: ADX=26.1 (trending) | Direction=neutral | Vol=normal (0.93x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 11:02:12,492 - regime - INFO - Regime: ADX=29.0 (trending) | Direction=neutral | Vol=normal (0.84x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 11:02:12,546 - regime - INFO - Regime: ADX=26.9 (trending) | Direction=neutral | Vol=normal (1.15x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 11:02:12,601 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=neutral | Vol=normal (0.71x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 11:02:12,659 - regime - INFO - Regime: ADX=26.1 (trending) | Direction=neutral | Vol=normal (0.93x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 11:02:23,675 - regime - INFO - Regime: ADX=29.0 (trending) | Direction=neutral | Vol=normal (0.84x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 11:02:23,728 - regime - INFO - Regime: ADX=26.9 (trending) | Direction=neutral | Vol=normal (1.15x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 11:02:23,782 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=neutral | Vol=normal (0.71x avg) | Tradeable=['BUY', 'SELL']
+2026-05-20 11:02:23,835 - regime - INFO - Regime: ADX=26.1 (trending) | Direction=neutral | Vol=normal (0.93x avg) | Tradeable=['BUY', 'SELL']
+2026-05-22 13:29:14,931 - database - INFO - Database ready at data/forexchautari.db
+2026-05-22 13:30:05,297 - database - INFO - Database ready at data/forexchautari.db
+2026-05-22 13:30:05,504 - database - INFO - Database ready at data/forexchautari.db
+2026-05-22 13:30:05,913 - regime - INFO - Regime: ADX=29.0 (trending) | Direction=neutral | Vol=normal (0.84x avg) | Tradeable=['BUY', 'SELL']
+2026-05-22 13:30:05,971 - regime - INFO - Regime: ADX=26.9 (trending) | Direction=neutral | Vol=normal (1.15x avg) | Tradeable=['BUY', 'SELL']
+2026-05-22 13:30:06,028 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=neutral | Vol=normal (0.71x avg) | Tradeable=['BUY', 'SELL']
+2026-05-22 13:30:06,086 - regime - INFO - Regime: ADX=26.1 (trending) | Direction=neutral | Vol=normal (0.93x avg) | Tradeable=['BUY', 'SELL']
+2026-05-22 13:30:11,696 - regime - INFO - Regime: ADX=29.0 (trending) | Direction=neutral | Vol=normal (0.84x avg) | Tradeable=['BUY', 'SELL']
+2026-05-22 13:30:11,749 - regime - INFO - Regime: ADX=26.9 (trending) | Direction=neutral | Vol=normal (1.15x avg) | Tradeable=['BUY', 'SELL']
+2026-05-22 13:30:11,803 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=neutral | Vol=normal (0.71x avg) | Tradeable=['BUY', 'SELL']
+2026-05-22 13:30:11,856 - regime - INFO - Regime: ADX=26.1 (trending) | Direction=neutral | Vol=normal (0.93x avg) | Tradeable=['BUY', 'SELL']
+2026-05-22 13:30:33,734 - database - INFO - Database ready at data/forexchautari.db
+2026-05-22 13:30:33,905 - regime - INFO - Regime: ADX=29.0 (trending) | Direction=neutral | Vol=normal (0.84x avg) | Tradeable=['BUY', 'SELL']
+2026-05-22 13:30:33,959 - regime - INFO - Regime: ADX=26.9 (trending) | Direction=neutral | Vol=normal (1.15x avg) | Tradeable=['BUY', 'SELL']
+2026-05-22 13:30:34,024 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=neutral | Vol=normal (0.71x avg) | Tradeable=['BUY', 'SELL']
+2026-05-22 13:30:34,077 - regime - INFO - Regime: ADX=26.1 (trending) | Direction=neutral | Vol=normal (0.93x avg) | Tradeable=['BUY', 'SELL']
+2026-05-22 13:30:38,280 - regime - INFO - Regime: ADX=29.0 (trending) | Direction=neutral | Vol=normal (0.84x avg) | Tradeable=['BUY', 'SELL']
+2026-05-22 13:30:38,335 - regime - INFO - Regime: ADX=26.9 (trending) | Direction=neutral | Vol=normal (1.15x avg) | Tradeable=['BUY', 'SELL']
+2026-05-22 13:30:38,387 - regime - INFO - Regime: ADX=27.0 (trending) | Direction=neutral | Vol=normal (0.71x avg) | Tradeable=['BUY', 'SELL']
+2026-05-22 13:30:38,441 - regime - INFO - Regime: ADX=26.1 (trending) | Direction=neutral | Vol=normal (0.93x avg) | Tradeable=['BUY', 'SELL']
+2026-05-22 13:30:38,881 - multi_pair - INFO - EUR_USD: 513 rows saved to data/EUR_USD.csv
+2026-05-22 13:30:39,262 - multi_pair - INFO - GBP_USD: 513 rows saved to data/GBP_USD.csv
+2026-05-22 13:30:40,614 - multi_pair - INFO - USD_JPY: 513 rows saved to data/USD_JPY.csv
+2026-05-22 13:30:40,985 - multi_pair - INFO - AUD_USD: 513 rows saved to data/AUD_USD.csv
+2026-05-22 13:30:49,049 - multi_pair - INFO - EUR_USD: model saved → models/EUR_USD_model.pkl
+2026-05-22 13:30:49,050 - multi_pair - INFO - EUR_USD: trained — train=0.7843 test=0.4949 wf=0.5500
+2026-05-22 13:30:49,474 - multi_pair - INFO - GBP_USD: model saved → models/GBP_USD_model.pkl
+2026-05-22 13:30:49,474 - multi_pair - INFO - GBP_USD: trained — train=0.8096 test=0.4747 wf=0.4700
+2026-05-22 13:30:50,018 - multi_pair - INFO - USD_JPY: model saved → models/USD_JPY_model.pkl
+2026-05-22 13:30:50,019 - multi_pair - INFO - USD_JPY: trained — train=0.7792 test=0.4646 wf=0.4900
+2026-05-22 13:30:50,473 - multi_pair - INFO - AUD_USD: model saved → models/AUD_USD_model.pkl
+2026-05-22 13:30:50,473 - multi_pair - INFO - AUD_USD: trained — train=0.7665 test=0.4141 wf=0.6400
+2026-05-22 13:47:42,058 - database - INFO - Database ready at data/forexchautari.db
+2026-05-22 13:47:42,341 - regime - INFO - Regime: ADX=34.0 (trending) | Direction=neutral | Vol=normal (0.74x avg) | Tradeable=['BUY', 'SELL']
+2026-05-22 13:47:42,397 - regime - INFO - Regime: ADX=24.4 (transitioning) | Direction=neutral | Vol=normal (1.13x avg) | Tradeable=[]
+2026-05-22 13:47:42,454 - regime - INFO - Regime: ADX=24.4 (transitioning) | Direction=neutral | Vol=low (0.30x avg) | Tradeable=[]
+2026-05-22 13:47:42,524 - regime - INFO - Regime: ADX=31.2 (trending) | Direction=neutral | Vol=normal (0.88x avg) | Tradeable=['BUY', 'SELL']
+2026-05-22 13:47:49,642 - regime - INFO - Regime: ADX=34.0 (trending) | Direction=neutral | Vol=normal (0.74x avg) | Tradeable=['BUY', 'SELL']
+2026-05-22 13:47:49,699 - regime - INFO - Regime: ADX=24.4 (transitioning) | Direction=neutral | Vol=normal (1.13x avg) | Tradeable=[]
+2026-05-22 13:47:49,754 - regime - INFO - Regime: ADX=24.4 (transitioning) | Direction=neutral | Vol=low (0.30x avg) | Tradeable=[]
+2026-05-22 13:47:49,808 - regime - INFO - Regime: ADX=31.2 (trending) | Direction=neutral | Vol=normal (0.88x avg) | Tradeable=['BUY', 'SELL']
+2026-05-22 13:47:49,926 - database - INFO - Database ready at data/forexchautari.db
+2026-05-22 13:47:50,056 - regime - INFO - Regime: ADX=34.0 (trending) | Direction=neutral | Vol=normal (0.74x avg) | Tradeable=['BUY', 'SELL']
+2026-05-22 13:47:50,109 - regime - INFO - Regime: ADX=24.4 (transitioning) | Direction=neutral | Vol=normal (1.13x avg) | Tradeable=[]
+2026-05-22 13:47:50,159 - regime - INFO - Regime: ADX=24.4 (transitioning) | Direction=neutral | Vol=low (0.30x avg) | Tradeable=[]
+2026-05-22 13:47:50,213 - regime - INFO - Regime: ADX=31.2 (trending) | Direction=neutral | Vol=normal (0.88x avg) | Tradeable=['BUY', 'SELL']
+2026-05-22 13:47:54,725 - regime - INFO - Regime: ADX=34.0 (trending) | Direction=neutral | Vol=normal (0.74x avg) | Tradeable=['BUY', 'SELL']
+2026-05-22 13:47:54,779 - regime - INFO - Regime: ADX=24.4 (transitioning) | Direction=neutral | Vol=normal (1.13x avg) | Tradeable=[]
+2026-05-22 13:47:54,834 - regime - INFO - Regime: ADX=24.4 (transitioning) | Direction=neutral | Vol=low (0.30x avg) | Tradeable=[]
+2026-05-22 13:47:54,887 - regime - INFO - Regime: ADX=31.2 (trending) | Direction=neutral | Vol=normal (0.88x avg) | Tradeable=['BUY', 'SELL']
+2026-05-22 13:48:04,431 - database - INFO - Database ready at data/forexchautari.db
+2026-05-22 13:48:04,574 - regime - INFO - Regime: ADX=34.0 (trending) | Direction=neutral | Vol=normal (0.74x avg) | Tradeable=['BUY', 'SELL']
+2026-05-22 13:48:04,629 - regime - INFO - Regime: ADX=24.4 (transitioning) | Direction=neutral | Vol=normal (1.13x avg) | Tradeable=[]
+2026-05-22 13:48:04,680 - regime - INFO - Regime: ADX=24.4 (transitioning) | Direction=neutral | Vol=low (0.30x avg) | Tradeable=[]
+2026-05-22 13:48:04,735 - regime - INFO - Regime: ADX=31.2 (trending) | Direction=neutral | Vol=normal (0.88x avg) | Tradeable=['BUY', 'SELL']
+2026-05-22 13:48:07,895 - regime - INFO - Regime: ADX=34.0 (trending) | Direction=neutral | Vol=normal (0.74x avg) | Tradeable=['BUY', 'SELL']
+2026-05-22 13:48:07,945 - regime - INFO - Regime: ADX=24.4 (transitioning) | Direction=neutral | Vol=normal (1.13x avg) | Tradeable=[]
+2026-05-22 13:48:07,996 - regime - INFO - Regime: ADX=24.4 (transitioning) | Direction=neutral | Vol=low (0.30x avg) | Tradeable=[]
+2026-05-22 13:48:08,050 - regime - INFO - Regime: ADX=31.2 (trending) | Direction=neutral | Vol=normal (0.88x avg) | Tradeable=['BUY', 'SELL']
+2026-05-22 13:48:15,289 - paper_trader - INFO - Order placed: {'order_id': '20', 'trade_id': '21', 'instrument': 'AUD_USD', 'units': 1000, 'fill_price': 0.71332, 'time': '2026-05-22T08:03:09.727394662Z', 'pl': 0.0}
+2026-05-22 13:48:41,820 - regime - INFO - Regime: ADX=34.0 (trending) | Direction=neutral | Vol=normal (0.74x avg) | Tradeable=['BUY', 'SELL']
+2026-05-22 13:48:41,873 - regime - INFO - Regime: ADX=24.4 (transitioning) | Direction=neutral | Vol=normal (1.13x avg) | Tradeable=[]
+2026-05-22 13:48:41,926 - regime - INFO - Regime: ADX=24.4 (transitioning) | Direction=neutral | Vol=low (0.30x avg) | Tradeable=[]
+2026-05-22 13:48:41,979 - regime - INFO - Regime: ADX=31.2 (trending) | Direction=neutral | Vol=normal (0.88x avg) | Tradeable=['BUY', 'SELL']
+2026-05-23 11:56:51,417 - database - INFO - Database ready at data/forexchautari.db
+2026-05-23 11:57:01,618 - database - INFO - Database ready at data/forexchautari.db
+2026-05-23 11:57:01,751 - database - INFO - Database ready at data/forexchautari.db
+2026-05-23 11:57:02,029 - regime - INFO - Regime: ADX=34.0 (trending) | Direction=neutral | Vol=normal (0.74x avg) | Tradeable=['BUY', 'SELL']
+2026-05-23 11:57:02,085 - regime - INFO - Regime: ADX=24.4 (transitioning) | Direction=neutral | Vol=normal (1.13x avg) | Tradeable=[]
+2026-05-23 11:57:02,142 - regime - INFO - Regime: ADX=24.4 (transitioning) | Direction=neutral | Vol=low (0.30x avg) | Tradeable=[]
+2026-05-23 11:57:02,202 - regime - INFO - Regime: ADX=31.2 (trending) | Direction=neutral | Vol=normal (0.88x avg) | Tradeable=['BUY', 'SELL']
+2026-05-23 11:57:08,800 - regime - INFO - Regime: ADX=34.0 (trending) | Direction=neutral | Vol=normal (0.74x avg) | Tradeable=['BUY', 'SELL']
+2026-05-23 11:57:08,855 - regime - INFO - Regime: ADX=24.4 (transitioning) | Direction=neutral | Vol=normal (1.13x avg) | Tradeable=[]
+2026-05-23 11:57:08,908 - regime - INFO - Regime: ADX=24.4 (transitioning) | Direction=neutral | Vol=low (0.30x avg) | Tradeable=[]
+2026-05-23 11:57:08,962 - regime - INFO - Regime: ADX=31.2 (trending) | Direction=neutral | Vol=normal (0.88x avg) | Tradeable=['BUY', 'SELL']
+2026-05-23 11:57:27,867 - database - INFO - Database ready at data/forexchautari.db
+2026-05-23 11:57:28,062 - regime - INFO - Regime: ADX=34.0 (trending) | Direction=neutral | Vol=normal (0.74x avg) | Tradeable=['BUY', 'SELL']
+2026-05-23 11:57:28,120 - regime - INFO - Regime: ADX=24.4 (transitioning) | Direction=neutral | Vol=normal (1.13x avg) | Tradeable=[]
+2026-05-23 11:57:28,175 - regime - INFO - Regime: ADX=24.4 (transitioning) | Direction=neutral | Vol=low (0.30x avg) | Tradeable=[]
+2026-05-23 11:57:28,228 - regime - INFO - Regime: ADX=31.2 (trending) | Direction=neutral | Vol=normal (0.88x avg) | Tradeable=['BUY', 'SELL']
+2026-05-23 11:57:33,174 - regime - INFO - Regime: ADX=34.0 (trending) | Direction=neutral | Vol=normal (0.74x avg) | Tradeable=['BUY', 'SELL']
+2026-05-23 11:57:33,228 - regime - INFO - Regime: ADX=24.4 (transitioning) | Direction=neutral | Vol=normal (1.13x avg) | Tradeable=[]
+2026-05-23 11:57:33,281 - regime - INFO - Regime: ADX=24.4 (transitioning) | Direction=neutral | Vol=low (0.30x avg) | Tradeable=[]
+2026-05-23 11:57:33,334 - regime - INFO - Regime: ADX=31.2 (trending) | Direction=neutral | Vol=normal (0.88x avg) | Tradeable=['BUY', 'SELL']
+2026-05-23 11:57:33,792 - multi_pair - INFO - EUR_USD: 514 rows saved to data/EUR_USD.csv
+2026-05-23 11:57:35,618 - multi_pair - INFO - GBP_USD: 514 rows saved to data/GBP_USD.csv
+2026-05-23 11:57:36,077 - multi_pair - INFO - USD_JPY: 514 rows saved to data/USD_JPY.csv
+2026-05-23 11:57:36,497 - multi_pair - INFO - AUD_USD: 514 rows saved to data/AUD_USD.csv
+2026-05-23 11:57:39,687 - multi_pair - INFO - EUR_USD: model saved → models/EUR_USD_model.pkl
+2026-05-23 11:57:39,688 - multi_pair - INFO - EUR_USD: trained — train=0.7747 test=0.4949 wf=0.5500
+2026-05-23 11:57:40,043 - multi_pair - INFO - GBP_USD: model saved → models/GBP_USD_model.pkl
+2026-05-23 11:57:40,043 - multi_pair - INFO - GBP_USD: trained — train=0.8177 test=0.4646 wf=0.4700
+2026-05-23 11:57:40,434 - multi_pair - INFO - USD_JPY: model saved → models/USD_JPY_model.pkl
+2026-05-23 11:57:40,435 - multi_pair - INFO - USD_JPY: trained — train=0.7823 test=0.4545 wf=0.4900
+2026-05-23 11:57:40,794 - multi_pair - INFO - AUD_USD: model saved → models/AUD_USD_model.pkl
+2026-05-23 11:57:40,794 - multi_pair - INFO - AUD_USD: trained — train=0.7696 test=0.4444 wf=0.6400
+2026-05-23 17:38:04,358 - database - INFO - Database ready at data/forexchautari.db
+2026-05-23 17:44:23,427 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-05-23 17:44:23,483 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+=
+2026-05-23 17:44:23,485 - database - INFO - Database ready at /private/tmp/forexchautari_first_run_test.db
+2026-05-23 17:44:23,655 - database - INFO - Admin password check passed — default password has been changed.
+2026-05-23 17:44:23,656 - database - INFO - Database ready at /private/tmp/forexchautari_first_run_test.db
+2026-05-23 17:44:50,813 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-05-23 17:44:50,881 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-05-23 17:44:50,882 - database - INFO - Database ready at /private/tmp/forexchautari_first_run_test_2.db
+2026-05-23 17:44:51,052 - database - INFO - Admin password check passed — default password has been changed.
+2026-05-23 17:44:51,053 - database - INFO - Database ready at /private/tmp/forexchautari_first_run_test_2.db
+2026-05-23 17:45:09,722 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-05-23 17:45:09,778 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-05-23 17:45:09,779 - database - INFO - Database ready at /private/tmp/forexchautari_api_firewall_test_2.db
+2026-05-23 17:45:14,638 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-05-23 17:45:14,693 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-05-23 17:45:14,695 - database - INFO - Database ready at /private/tmp/forexchautari_api_firewall_test_3.db
+2026-05-23 17:57:34,581 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-05-23 17:57:34,638 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-05-23 17:57:34,639 - database - INFO - Database ready at /private/tmp/forexchautari_startup_import.db
+2026-05-23 18:05:30,429 - database - INFO - Database ready at data/forexchautari.db
+2026-05-23 18:05:30,937 - regime - INFO - Regime: ADX=36.1 (trending) | Direction=neutral | Vol=normal (0.55x avg) | Tradeable=['BUY', 'SELL']
+2026-05-23 18:05:30,995 - regime - INFO - Regime: ADX=22.8 (transitioning) | Direction=neutral | Vol=normal (1.01x avg) | Tradeable=[]
+2026-05-23 18:05:31,053 - regime - INFO - Regime: ADX=23.8 (transitioning) | Direction=neutral | Vol=low (0.24x avg) | Tradeable=[]
+2026-05-23 18:05:31,110 - regime - INFO - Regime: ADX=33.3 (trending) | Direction=neutral | Vol=normal (0.80x avg) | Tradeable=['BUY', 'SELL']
+2026-05-23 18:05:38,378 - regime - INFO - Regime: ADX=36.1 (trending) | Direction=neutral | Vol=normal (0.55x avg) | Tradeable=['BUY', 'SELL']
+2026-05-23 18:05:38,432 - regime - INFO - Regime: ADX=22.8 (transitioning) | Direction=neutral | Vol=normal (1.01x avg) | Tradeable=[]
+2026-05-23 18:05:38,486 - regime - INFO - Regime: ADX=23.8 (transitioning) | Direction=neutral | Vol=low (0.24x avg) | Tradeable=[]
+2026-05-23 18:05:38,543 - regime - INFO - Regime: ADX=33.3 (trending) | Direction=neutral | Vol=normal (0.80x avg) | Tradeable=['BUY', 'SELL']
+2026-05-23 18:06:13,026 - database - INFO - Database ready at data/forexchautari.db
+2026-05-23 18:06:13,216 - regime - INFO - Regime: ADX=36.1 (trending) | Direction=neutral | Vol=normal (0.55x avg) | Tradeable=['BUY', 'SELL']
+2026-05-23 18:06:13,272 - regime - INFO - Regime: ADX=22.8 (transitioning) | Direction=neutral | Vol=normal (1.01x avg) | Tradeable=[]
+2026-05-23 18:06:13,326 - regime - INFO - Regime: ADX=23.8 (transitioning) | Direction=neutral | Vol=low (0.24x avg) | Tradeable=[]
+2026-05-23 18:06:13,381 - regime - INFO - Regime: ADX=33.3 (trending) | Direction=neutral | Vol=normal (0.80x avg) | Tradeable=['BUY', 'SELL']
+2026-05-23 18:06:19,401 - regime - INFO - Regime: ADX=36.1 (trending) | Direction=neutral | Vol=normal (0.55x avg) | Tradeable=['BUY', 'SELL']
+2026-05-23 18:06:19,455 - regime - INFO - Regime: ADX=22.8 (transitioning) | Direction=neutral | Vol=normal (1.01x avg) | Tradeable=[]
+2026-05-23 18:06:19,507 - regime - INFO - Regime: ADX=23.8 (transitioning) | Direction=neutral | Vol=low (0.24x avg) | Tradeable=[]
+2026-05-23 18:06:19,560 - regime - INFO - Regime: ADX=33.3 (trending) | Direction=neutral | Vol=normal (0.80x avg) | Tradeable=['BUY', 'SELL']
+2026-05-23 18:06:20,097 - multi_pair - INFO - EUR_USD: 514 rows saved to data/EUR_USD.csv
+2026-05-23 18:06:20,575 - multi_pair - INFO - GBP_USD: 514 rows saved to data/GBP_USD.csv
+2026-05-23 18:06:20,935 - multi_pair - INFO - USD_JPY: 514 rows saved to data/USD_JPY.csv
+2026-05-23 18:06:21,321 - multi_pair - INFO - AUD_USD: 514 rows saved to data/AUD_USD.csv
+2026-05-23 18:06:23,386 - multi_pair - INFO - EUR_USD: model saved → models/EUR_USD_model.pkl
+2026-05-23 18:06:23,386 - multi_pair - INFO - EUR_USD: trained — train=0.7747 test=0.4949 wf=0.5500
+2026-05-23 18:06:23,748 - multi_pair - INFO - GBP_USD: model saved → models/GBP_USD_model.pkl
+2026-05-23 18:06:23,748 - multi_pair - INFO - GBP_USD: trained — train=0.8177 test=0.4646 wf=0.4700
+2026-05-23 18:06:24,113 - multi_pair - INFO - USD_JPY: model saved → models/USD_JPY_model.pkl
+2026-05-23 18:06:24,114 - multi_pair - INFO - USD_JPY: trained — train=0.7823 test=0.4545 wf=0.4900
+2026-05-23 18:06:24,471 - multi_pair - INFO - AUD_USD: model saved → models/AUD_USD_model.pkl
+2026-05-23 18:06:24,472 - multi_pair - INFO - AUD_USD: trained — train=0.7696 test=0.4444 wf=0.6400
+2026-05-23 18:06:59,020 - database - INFO - Database ready at data/forexchautari.db
+2026-05-23 18:06:59,239 - regime - INFO - Regime: ADX=36.1 (trending) | Direction=neutral | Vol=normal (0.55x avg) | Tradeable=['BUY', 'SELL']
+2026-05-23 18:06:59,296 - regime - INFO - Regime: ADX=22.8 (transitioning) | Direction=neutral | Vol=normal (1.01x avg) | Tradeable=[]
+2026-05-23 18:06:59,351 - regime - INFO - Regime: ADX=23.8 (transitioning) | Direction=neutral | Vol=low (0.24x avg) | Tradeable=[]
+2026-05-23 18:06:59,402 - regime - INFO - Regime: ADX=33.3 (trending) | Direction=neutral | Vol=normal (0.80x avg) | Tradeable=['BUY', 'SELL']
+2026-05-23 18:07:02,332 - regime - INFO - Regime: ADX=36.1 (trending) | Direction=neutral | Vol=normal (0.55x avg) | Tradeable=['BUY', 'SELL']
+2026-05-23 18:07:02,383 - regime - INFO - Regime: ADX=22.8 (transitioning) | Direction=neutral | Vol=normal (1.01x avg) | Tradeable=[]
+2026-05-23 18:07:02,437 - regime - INFO - Regime: ADX=23.8 (transitioning) | Direction=neutral | Vol=low (0.24x avg) | Tradeable=[]
+2026-05-23 18:07:02,490 - regime - INFO - Regime: ADX=33.3 (trending) | Direction=neutral | Vol=normal (0.80x avg) | Tradeable=['BUY', 'SELL']
+2026-05-23 18:07:12,779 - paper_trader - INFO - Order placed: {'order_id': '', 'trade_id': '', 'instrument': 'EUR_USD', 'units': -1000, 'fill_price': 0.0, 'time': '', 'pl': 0.0}
+2026-05-23 18:07:34,011 - regime - INFO - Regime: ADX=36.1 (trending) | Direction=neutral | Vol=normal (0.55x avg) | Tradeable=['BUY', 'SELL']
+2026-05-23 18:07:34,067 - regime - INFO - Regime: ADX=22.8 (transitioning) | Direction=neutral | Vol=normal (1.01x avg) | Tradeable=[]
+2026-05-23 18:07:34,121 - regime - INFO - Regime: ADX=23.8 (transitioning) | Direction=neutral | Vol=low (0.24x avg) | Tradeable=[]
+2026-05-23 18:07:34,175 - regime - INFO - Regime: ADX=33.3 (trending) | Direction=neutral | Vol=normal (0.80x avg) | Tradeable=['BUY', 'SELL']
+2026-05-24 11:15:29,643 - database - INFO - Database ready at data/forexchautari.db
+2026-05-24 11:15:42,358 - database - INFO - Database ready at data/forexchautari.db
+2026-05-24 11:15:42,498 - database - INFO - Database ready at data/forexchautari.db
+2026-05-24 11:15:42,893 - regime - INFO - Regime: ADX=36.1 (trending) | Direction=neutral | Vol=normal (0.55x avg) | Tradeable=['BUY', 'SELL']
+2026-05-24 11:15:42,956 - regime - INFO - Regime: ADX=22.8 (transitioning) | Direction=neutral | Vol=normal (1.01x avg) | Tradeable=[]
+2026-05-24 11:15:43,014 - regime - INFO - Regime: ADX=23.8 (transitioning) | Direction=neutral | Vol=low (0.24x avg) | Tradeable=[]
+2026-05-24 11:15:43,074 - regime - INFO - Regime: ADX=33.3 (trending) | Direction=neutral | Vol=normal (0.80x avg) | Tradeable=['BUY', 'SELL']
+2026-05-24 11:15:43,491 - regime - INFO - Regime: ADX=36.1 (trending) | Direction=neutral | Vol=normal (0.55x avg) | Tradeable=['BUY', 'SELL']
+2026-05-24 11:15:43,545 - regime - INFO - Regime: ADX=22.8 (transitioning) | Direction=neutral | Vol=normal (1.01x avg) | Tradeable=[]
+2026-05-24 11:15:43,599 - regime - INFO - Regime: ADX=23.8 (transitioning) | Direction=neutral | Vol=low (0.24x avg) | Tradeable=[]
+2026-05-24 11:15:43,652 - regime - INFO - Regime: ADX=33.3 (trending) | Direction=neutral | Vol=normal (0.80x avg) | Tradeable=['BUY', 'SELL']
+2026-05-24 11:16:00,325 - database - INFO - Database ready at data/forexchautari.db
+2026-05-24 11:16:00,577 - regime - INFO - Regime: ADX=36.1 (trending) | Direction=neutral | Vol=normal (0.55x avg) | Tradeable=['BUY', 'SELL']
+2026-05-24 11:16:00,631 - regime - INFO - Regime: ADX=22.8 (transitioning) | Direction=neutral | Vol=normal (1.01x avg) | Tradeable=[]
+2026-05-24 11:16:00,687 - regime - INFO - Regime: ADX=23.8 (transitioning) | Direction=neutral | Vol=low (0.24x avg) | Tradeable=[]
+2026-05-24 11:16:00,739 - regime - INFO - Regime: ADX=33.3 (trending) | Direction=neutral | Vol=normal (0.80x avg) | Tradeable=['BUY', 'SELL']
+2026-05-24 11:16:01,076 - regime - INFO - Regime: ADX=36.1 (trending) | Direction=neutral | Vol=normal (0.55x avg) | Tradeable=['BUY', 'SELL']
+2026-05-24 11:16:01,129 - regime - INFO - Regime: ADX=22.8 (transitioning) | Direction=neutral | Vol=normal (1.01x avg) | Tradeable=[]
+2026-05-24 11:16:01,182 - regime - INFO - Regime: ADX=23.8 (transitioning) | Direction=neutral | Vol=low (0.24x avg) | Tradeable=[]
+2026-05-24 11:16:01,236 - regime - INFO - Regime: ADX=33.3 (trending) | Direction=neutral | Vol=normal (0.80x avg) | Tradeable=['BUY', 'SELL']
+2026-05-24 11:16:01,258 - multi_pair - ERROR - EUR_USD: fetch failed — HTTPSConnectionPool(host='api-fxpractice.oanda.com', port=443): Max retries exceeded with url: /v3/instruments/EUR_USD/candles?granularity=D&count=100&price=M (Caused by NameResolutionError("HTTPSConnection(host='api-fxpractice.oanda.com', port=443): Failed to resolve 'api-fxpractice.oanda.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2026-05-24 11:16:01,261 - multi_pair - ERROR - GBP_USD: fetch failed — HTTPSConnectionPool(host='api-fxpractice.oanda.com', port=443): Max retries exceeded with url: /v3/instruments/GBP_USD/candles?granularity=D&count=100&price=M (Caused by NameResolutionError("HTTPSConnection(host='api-fxpractice.oanda.com', port=443): Failed to resolve 'api-fxpractice.oanda.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2026-05-24 11:16:01,263 - multi_pair - ERROR - USD_JPY: fetch failed — HTTPSConnectionPool(host='api-fxpractice.oanda.com', port=443): Max retries exceeded with url: /v3/instruments/USD_JPY/candles?granularity=D&count=100&price=M (Caused by NameResolutionError("HTTPSConnection(host='api-fxpractice.oanda.com', port=443): Failed to resolve 'api-fxpractice.oanda.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2026-05-24 11:16:01,266 - multi_pair - ERROR - AUD_USD: fetch failed — HTTPSConnectionPool(host='api-fxpractice.oanda.com', port=443): Max retries exceeded with url: /v3/instruments/AUD_USD/candles?granularity=D&count=100&price=M (Caused by NameResolutionError("HTTPSConnection(host='api-fxpractice.oanda.com', port=443): Failed to resolve 'api-fxpractice.oanda.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2026-05-24 11:16:03,424 - multi_pair - INFO - EUR_USD: model saved → models/EUR_USD_model.pkl
+2026-05-24 11:16:03,424 - multi_pair - INFO - EUR_USD: trained — train=0.7747 test=0.4949 wf=0.5500
+2026-05-24 11:16:03,780 - multi_pair - INFO - GBP_USD: model saved → models/GBP_USD_model.pkl
+2026-05-24 11:16:03,781 - multi_pair - INFO - GBP_USD: trained — train=0.8177 test=0.4646 wf=0.4700
+2026-05-24 11:16:04,165 - multi_pair - INFO - USD_JPY: model saved → models/USD_JPY_model.pkl
+2026-05-24 11:16:04,165 - multi_pair - INFO - USD_JPY: trained — train=0.7823 test=0.4545 wf=0.4900
+2026-05-24 11:16:04,533 - multi_pair - INFO - AUD_USD: model saved → models/AUD_USD_model.pkl
+2026-05-24 11:16:04,533 - multi_pair - INFO - AUD_USD: trained — train=0.7696 test=0.4444 wf=0.6400
+2026-05-26 12:42:34,092 - database - INFO - Database ready at data/forexchautari.db
+2026-05-26 12:51:55,454 - database - INFO - Database ready at data/forexchautari.db
+2026-05-26 12:52:03,124 - database - INFO - Database ready at data/forexchautari.db
+2026-05-26 12:52:03,254 - database - INFO - Database ready at data/forexchautari.db
+2026-05-26 12:52:03,680 - regime - INFO - Regime: ADX=36.1 (trending) | Direction=neutral | Vol=normal (0.55x avg) | Tradeable=['BUY', 'SELL']
+2026-05-26 12:52:03,739 - regime - INFO - Regime: ADX=22.8 (transitioning) | Direction=neutral | Vol=normal (1.01x avg) | Tradeable=[]
+2026-05-26 12:52:03,838 - regime - INFO - Regime: ADX=23.8 (transitioning) | Direction=neutral | Vol=low (0.24x avg) | Tradeable=[]
+2026-05-26 12:52:03,899 - regime - INFO - Regime: ADX=33.3 (trending) | Direction=neutral | Vol=normal (0.80x avg) | Tradeable=['BUY', 'SELL']
+2026-05-26 12:52:10,379 - regime - INFO - Regime: ADX=36.1 (trending) | Direction=neutral | Vol=normal (0.55x avg) | Tradeable=['BUY', 'SELL']
+2026-05-26 12:52:10,433 - regime - INFO - Regime: ADX=22.8 (transitioning) | Direction=neutral | Vol=normal (1.01x avg) | Tradeable=[]
+2026-05-26 12:52:10,487 - regime - INFO - Regime: ADX=23.8 (transitioning) | Direction=neutral | Vol=low (0.24x avg) | Tradeable=[]
+2026-05-26 12:52:10,540 - regime - INFO - Regime: ADX=33.3 (trending) | Direction=neutral | Vol=normal (0.80x avg) | Tradeable=['BUY', 'SELL']
+2026-05-26 12:53:31,186 - database - INFO - Database ready at data/forexchautari.db
+2026-05-26 12:53:31,433 - regime - INFO - Regime: ADX=36.1 (trending) | Direction=neutral | Vol=normal (0.55x avg) | Tradeable=['BUY', 'SELL']
+2026-05-26 12:53:31,493 - regime - INFO - Regime: ADX=22.8 (transitioning) | Direction=neutral | Vol=normal (1.01x avg) | Tradeable=[]
+2026-05-26 12:53:31,552 - regime - INFO - Regime: ADX=23.8 (transitioning) | Direction=neutral | Vol=low (0.24x avg) | Tradeable=[]
+2026-05-26 12:53:31,606 - regime - INFO - Regime: ADX=33.3 (trending) | Direction=neutral | Vol=normal (0.80x avg) | Tradeable=['BUY', 'SELL']
+2026-05-26 12:53:36,379 - regime - INFO - Regime: ADX=36.1 (trending) | Direction=neutral | Vol=normal (0.55x avg) | Tradeable=['BUY', 'SELL']
+2026-05-26 12:53:36,432 - regime - INFO - Regime: ADX=22.8 (transitioning) | Direction=neutral | Vol=normal (1.01x avg) | Tradeable=[]
+2026-05-26 12:53:36,486 - regime - INFO - Regime: ADX=23.8 (transitioning) | Direction=neutral | Vol=low (0.24x avg) | Tradeable=[]
+2026-05-26 12:53:36,541 - regime - INFO - Regime: ADX=33.3 (trending) | Direction=neutral | Vol=normal (0.80x avg) | Tradeable=['BUY', 'SELL']
+2026-05-26 12:53:36,979 - multi_pair - INFO - EUR_USD: 515 rows saved to data/EUR_USD.csv
+2026-05-26 12:53:37,361 - multi_pair - INFO - GBP_USD: 515 rows saved to data/GBP_USD.csv
+2026-05-26 12:53:37,927 - multi_pair - INFO - USD_JPY: 515 rows saved to data/USD_JPY.csv
+2026-05-26 12:53:38,334 - multi_pair - INFO - AUD_USD: 515 rows saved to data/AUD_USD.csv
+2026-05-26 12:53:40,970 - multi_pair - INFO - EUR_USD: model saved → models/EUR_USD_model.pkl
+2026-05-26 12:53:40,971 - multi_pair - INFO - EUR_USD: trained — train=0.7753 test=0.4949 wf=0.5500
+2026-05-26 12:53:41,335 - multi_pair - INFO - GBP_USD: model saved → models/GBP_USD_model.pkl
+2026-05-26 12:53:41,336 - multi_pair - INFO - GBP_USD: trained — train=0.7980 test=0.5051 wf=0.4700
+2026-05-26 12:53:41,736 - multi_pair - INFO - USD_JPY: model saved → models/USD_JPY_model.pkl
+2026-05-26 12:53:41,737 - multi_pair - INFO - USD_JPY: trained — train=0.7879 test=0.4545 wf=0.4900
+2026-05-26 12:53:42,097 - multi_pair - INFO - AUD_USD: model saved → models/AUD_USD_model.pkl
+2026-05-26 12:53:42,097 - multi_pair - INFO - AUD_USD: trained — train=0.7702 test=0.4545 wf=0.6400
+2026-05-27 12:22:31,674 - database - INFO - Database ready at data/forexchautari.db
+2026-05-29 00:57:06,909 - database - INFO - Database ready at data/forexchautari.db
+2026-05-29 00:57:16,076 - database - INFO - Database ready at data/forexchautari.db
+2026-05-29 00:57:16,252 - database - INFO - Database ready at data/forexchautari.db
+2026-05-29 00:57:16,741 - regime - INFO - Regime: ADX=33.7 (trending) | Direction=neutral | Vol=normal (0.66x avg) | Tradeable=['BUY', 'SELL']
+2026-05-29 00:57:16,799 - regime - INFO - Regime: ADX=21.1 (transitioning) | Direction=bullish | Vol=normal (1.11x avg) | Tradeable=[]
+2026-05-29 00:57:16,855 - regime - INFO - Regime: ADX=21.9 (transitioning) | Direction=neutral | Vol=low (0.28x avg) | Tradeable=[]
+2026-05-29 00:57:16,932 - regime - INFO - Regime: ADX=31.5 (trending) | Direction=neutral | Vol=normal (0.90x avg) | Tradeable=['BUY', 'SELL']
+2026-05-29 00:57:26,960 - regime - INFO - Regime: ADX=33.7 (trending) | Direction=neutral | Vol=normal (0.66x avg) | Tradeable=['BUY', 'SELL']
+2026-05-29 00:57:27,014 - regime - INFO - Regime: ADX=21.1 (transitioning) | Direction=bullish | Vol=normal (1.11x avg) | Tradeable=[]
+2026-05-29 00:57:27,068 - regime - INFO - Regime: ADX=21.9 (transitioning) | Direction=neutral | Vol=low (0.28x avg) | Tradeable=[]
+2026-05-29 00:57:27,122 - regime - INFO - Regime: ADX=31.5 (trending) | Direction=neutral | Vol=normal (0.90x avg) | Tradeable=['BUY', 'SELL']
+2026-05-29 00:57:55,578 - database - INFO - Database ready at data/forexchautari.db
+2026-05-29 00:57:55,755 - regime - INFO - Regime: ADX=33.7 (trending) | Direction=neutral | Vol=normal (0.66x avg) | Tradeable=['BUY', 'SELL']
+2026-05-29 00:57:55,826 - regime - INFO - Regime: ADX=21.1 (transitioning) | Direction=bullish | Vol=normal (1.11x avg) | Tradeable=[]
+2026-05-29 00:57:55,885 - regime - INFO - Regime: ADX=21.9 (transitioning) | Direction=neutral | Vol=low (0.28x avg) | Tradeable=[]
+2026-05-29 00:57:55,944 - regime - INFO - Regime: ADX=31.5 (trending) | Direction=neutral | Vol=normal (0.90x avg) | Tradeable=['BUY', 'SELL']
+2026-05-29 00:58:00,349 - regime - INFO - Regime: ADX=33.7 (trending) | Direction=neutral | Vol=normal (0.66x avg) | Tradeable=['BUY', 'SELL']
+2026-05-29 00:58:00,402 - regime - INFO - Regime: ADX=21.1 (transitioning) | Direction=bullish | Vol=normal (1.11x avg) | Tradeable=[]
+2026-05-29 00:58:00,455 - regime - INFO - Regime: ADX=21.9 (transitioning) | Direction=neutral | Vol=low (0.28x avg) | Tradeable=[]
+2026-05-29 00:58:00,509 - regime - INFO - Regime: ADX=31.5 (trending) | Direction=neutral | Vol=normal (0.90x avg) | Tradeable=['BUY', 'SELL']
+2026-06-09 11:40:13,517 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-09 11:40:13,568 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-09 11:40:13,568 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-09 11:40:13,569 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmph8evb0yd/test.db
+2026-06-09 11:40:13,671 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-09 11:40:13,722 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-09 11:40:13,722 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-09 11:40:13,722 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpqqrykcbw/test.db
+2026-06-09 11:40:13,874 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-09 11:40:13,925 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-09 11:40:13,925 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-09 11:40:13,926 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmplodqw2sk/test.db
+2026-06-09 11:40:14,184 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-09 11:40:14,236 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-09 11:40:14,237 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-09 11:40:14,238 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpguxwq1xu/test.db
+2026-06-09 11:40:14,402 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-09 11:40:14,458 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-09 11:40:14,458 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-09 11:40:14,459 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmptv31hfyw/test.db
+2026-06-09 11:40:14,635 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-09 11:40:14,687 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-09 11:40:14,687 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-09 11:40:14,688 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpdovj2d1_/test.db
+2026-06-09 11:40:14,747 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-09 11:40:14,799 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-09 11:40:14,799 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-09 11:40:14,800 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpqdxc_tu9/test.db
+2026-06-09 11:40:14,973 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-09 11:40:15,024 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-09 11:40:15,024 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-09 11:40:15,024 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpou7o72o1/test.db
+2026-06-09 11:40:15,181 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-09 11:40:15,232 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-09 11:40:15,232 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-09 11:40:15,232 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpl5_ugj87/test.db
+2026-06-09 11:40:15,389 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-09 11:40:15,439 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-09 11:40:15,439 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-09 11:40:15,440 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp_5oox165/test.db
+2026-06-09 11:40:15,899 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-09 11:40:15,948 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-09 11:40:15,948 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-09 11:40:15,949 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp9yb51fyv/test.db
+2026-06-09 11:40:16,002 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-09 11:40:16,052 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-09 11:40:16,052 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-09 11:40:16,053 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp2qnhbwed/test.db
+2026-06-09 11:40:16,213 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-09 11:40:16,263 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-09 11:40:16,263 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-09 11:40:16,264 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp55eko1aw/test.db
+2026-06-09 11:40:16,317 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-09 11:40:16,368 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-09 11:40:16,368 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-09 11:40:16,369 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpbxksgkoy/test.db
+2026-06-09 11:40:16,699 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-09 11:40:16,750 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-09 11:40:16,750 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-09 11:40:16,750 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpfa5idvgj/test.db
+2026-06-09 11:40:17,010 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-09 11:40:17,060 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-09 11:40:17,060 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-09 11:40:17,061 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpnm2rnu07/test.db
+2026-06-09 11:40:17,215 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-09 11:40:17,266 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-09 11:40:17,266 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-09 11:40:17,266 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp5ky_mh2t/test.db
+2026-06-09 11:40:17,420 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-09 11:40:17,470 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-09 11:40:17,470 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-09 11:40:17,471 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpk0nx5_mi/auth_test.db
+2026-06-09 11:40:17,575 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-09 11:40:17,626 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-09 11:40:17,626 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-09 11:40:17,626 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp6xeq0gx0/auth_test.db
+2026-06-09 11:40:17,831 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-09 11:40:17,881 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-09 11:40:17,881 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-09 11:40:17,883 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp82pyq5t9/auth_test.db
+2026-06-09 11:40:22,480 - multi_pair - WARNING - No trained models found. Run: python train_all.py --fetch
+2026-06-09 11:40:22,535 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-09 11:40:22,586 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-09 11:40:22,586 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-09 11:40:22,586 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpzoyo72cy/test.db
+2026-06-09 11:45:45,558 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-09 11:45:45,558 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-09 11:45:45,559 - database - INFO - Database ready at data/forexchautari.db
