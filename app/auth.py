@@ -150,6 +150,8 @@ def render_login():
                 st.session_state["user"]     = user
                 st.session_state["auth_view"] = "app"
                 _set_query_token(token)
+                from app.api_client import login_and_store_jwt
+                login_and_store_jwt(username.strip(), password)   # ← JWT issuance
                 st.rerun()
             else:
                 st.error("Invalid username or password.")
@@ -232,6 +234,8 @@ def render_register():
                 st.session_state["user"]      = user
                 st.session_state["auth_view"] = "app"
                 _set_query_token(token)
+                from app.api_client import login_and_store_jwt
+                login_and_store_jwt(username.strip(), password)   # ← JWT issuance
                 st.success(f"Welcome to ForexChautari, {full_name.split()[0]}!")
                 st.rerun()
             except Exception as e:

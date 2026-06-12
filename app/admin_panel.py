@@ -12,7 +12,7 @@ Tabs:
   🖥 System       — API health, retrain, fetch, run commands
 """
 
-import os, sys, json, time, subprocess, requests
+import os, sys, json, time, requests
 import pandas as pd
 import numpy as np
 import plotly.graph_objects as go
@@ -23,6 +23,7 @@ from datetime import datetime
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from app.auth import render_logout_button
+from app.api_client import api_post, api_delete, ApiError
 from src.database import (
     get_all_users, update_user_plan, deactivate_user, reactivate_user,
     get_signals_log, get_audit_log, get_platform_stats,
@@ -74,18 +75,12 @@ def api_post(path, **kw):
     except Exception as e:
         return None, str(e)
 
-def retrain_local(pair: str = "all") -> tuple[dict | None, str | None]:
-    """Run training locally so admin actions still work if FastAPI is offline."""
-    try:
-        args = [sys.executable, "train_all.py"]
-        if pair and pair.lower() != "all":
-            args.append(pair)
-        result = subprocess.run(args, capture_output=True, text=True, timeout=600)
-        if result.returncode != 0:
-            return None, result.stderr[-1200:] or "Training failed"
-        return {"success": True, "output": result.stdout[-1600:]}, None
-    except Exception as e:
-        return None, str(e)
+# Prefer the remote API client for admin actions — use the JWT-authenticated
+# client so callers can rely on ApiError exceptions.
+from app.api_client import api_post as _api_post_remote, api_delete as _api_delete_remote, ApiError as _ApiError
+api_post = _api_post_remote
+api_delete = _api_delete_remote
+ApiError = _ApiError
 
 def _kpi(label, value, cls="", sub=""):
     sc = {"g":C_GREEN,"r":C_RED,"y":C_YELLOW,"a":C_ACCENT,"m":C_MUTED}.get(cls, C_TEXT)
@@ -421,18 +416,30 @@ def render_admin(user: dict):
             with m3:
                 st.markdown("<br>", unsafe_allow_html=True)
                 if st.button("✓ Update Plan") and target_id:
-                    update_user_plan(target_id, new_plan, user["id"])
-                    st.success(f"Plan → {new_plan}"); st.rerun()
+                    try:
+                        api_post(f"/admin/users/{target_id}/plan", json={"plan": new_plan})
+                        st.success(f"Plan → {new_plan}")
+                        st.rerun()
+                    except ApiError as e:
+                        st.error(e.detail)
             with m4:
                 st.markdown("<br>", unsafe_allow_html=True)
                 if is_active:
                     if st.button("✗ Deactivate") and target_id:
-                        deactivate_user(target_id, user["id"])
-                        st.warning("Deactivated."); st.rerun()
+                        try:
+                            api_post(f"/admin/users/{target_id}/deactivate", json={})
+                            st.warning("Deactivated.")
+                            st.rerun()
+                        except ApiError as e:
+                            st.error(e.detail)
                 else:
                     if st.button("✓ Reactivate") and target_id:
-                        reactivate_user(target_id, user["id"])
-                        st.success("Reactivated."); st.rerun()
+                        try:
+                            api_post(f"/admin/users/{target_id}/reactivate", json={})
+                            st.success("Reactivated.")
+                            st.rerun()
+                        except ApiError as e:
+                            st.error(e.detail)
 
             # Per-user trading accounts viewer
             if target_id:
@@ -471,12 +478,13 @@ def render_admin(user: dict):
                       Units: <b>{int(ts.get('units') or 0):,}</b>
                     </div>""", unsafe_allow_html=True)
                     if ts.get("auto_trade_enabled"):
-                        if st.button("Disable Auto Trade", key=f"disable_auto_{target_id}"):
-                            update_user_trading_settings(
-                                target_id, mode="signals_only", auto_trade_enabled=False
-                            )
-                            st.success("Auto-trade disabled for user.")
-                            st.rerun()
+                            if st.button("Disable Auto Trade", key=f"disable_auto_{target_id}"):
+                                try:
+                                    api_post(f"/admin/users/{target_id}/disable-auto-trade", json={})
+                                    st.success("Auto-trade disabled for user.")
+                                    st.rerun()
+                                except ApiError as e:
+                                    st.error(e.detail)
                 except Exception as e:
                     st.info(f"Trading settings unavailable: {e}")
 
@@ -498,8 +506,13 @@ def render_admin(user: dict):
             if st.form_submit_button("Create User", type="primary"):
                 if nu and ne and np_:
                     try:
-                        create_user(nu, ne, np_, nf, role=nr, plan=npl)
+                        api_post("/admin/users", json={
+                            "username": nu, "email": ne, "password": np_,
+                            "full_name": nf, "role": nr, "plan": npl,
+                        })
                         st.success(f"User '{nu}' created."); st.rerun()
+                    except ApiError as e:
+                        st.error(e.detail)
                     except Exception as ex:
                         st.error(str(ex))
                 else:
@@ -623,8 +636,11 @@ def render_admin(user: dict):
                             st.markdown(f'<div style="font-size:12px;color:{C_RED};padding:14px 0;">✗ Error</div>', unsafe_allow_html=True)
                     with c3:
                         if st.button("Remove", key=f"admin_rm_{acc['id']}"):
-                            remove_trading_account(acc["id"], user["id"])
-                            st.rerun()
+                            try:
+                                api_delete(f"/account/trading-accounts/{acc['id']}")
+                                st.rerun()
+                            except ApiError as e:
+                                st.error(e.detail)
             else:
                 st.info("No admin trading account connected.")
 
@@ -749,58 +765,52 @@ def render_admin(user: dict):
                     if btn1.button(f"▶ Place {t_otype} {t_dir}", type="primary", key="adm_place"):
                         with st.spinner("Placing order..."):
                             try:
-                                from src.trading_engine import place_trade
-                                if t_otype == "Market":
-                                    result = place_trade(
-                                        user_id=user["id"],
-                                        instrument=t_pair, direction=t_dir,
-                                        units=t_units, sl_pips=float(t_sl),
-                                        tp_pips=float(t_tp), trade_type="admin_manual",
-                                        account_db_id=selected_admin_account_id,
-                                    )
-                                    fill = result["fill"]
-                                    st.success(f"✅ {t_dir} {t_units} {t_pair} @ {fill['fill_price']:.5f} | SL:{result['sl']} TP:{result['tp']}")
-                                else:
-                                    px    = limit_price_adm or client.get_live_price(t_pair)["mid"]
-                                    sl, tp= calculate_sl_tp(t_pair, t_dir, px, t_sl, t_tp)
-                                    actual= t_units if t_dir=="BUY" else -t_units
-                                    client.place_limit_order(t_pair, actual, px, sl, tp)
-                                    log_trade(user["id"], t_pair, t_dir, px, t_units, "admin_limit")
-                                    st.success(f"✅ Limit {t_dir} {t_units} {t_pair} @ {px:.5f}")
+                                api_post("/trading/place", json={
+                                    "instrument": t_pair,
+                                    "direction": t_dir,
+                                    "units": t_units,
+                                    "sl_pips": float(t_sl),
+                                    "tp_pips": float(t_tp),
+                                    "order_type": t_otype,
+                                    "limit_price": limit_price_adm,
+                                    "account_db_id": selected_admin_account_id,
+                                })
+                                st.success(f"✅ {t_otype} {t_dir} order placed.")
                                 st.rerun()
-                            except Exception as e:
-                                st.error(f"Order failed: {e}")
+                            except ApiError as e:
+                                st.error(e.detail)
 
                     if btn2.button("🤖 Signal + Trade", key="adm_signal_trade"):
                         with st.spinner("Running ML signal..."):
                             try:
-                                from src.paper_trader import PaperTrader
-                                pt     = PaperTrader(instrument=t_pair, threshold=DEFAULT_SIGNAL_THRESHOLD,
-                                                     units=t_units, use_regime_filter=True,
-                                                     oanda_client=client,
-                                                     user_id=user["id"],
-                                                     account_db_id=selected_admin_account_id,
-                                                     sl_pips=float(t_sl),
-                                                     tp_pips=float(t_tp))
-                                result = pt.run_signal_check()
-                                if result["action"]=="order_placed":
+                                result = api_post("/trading/signal-trade", json={
+                                    "pair": t_pair,
+                                    "threshold": DEFAULT_SIGNAL_THRESHOLD,
+                                    "sl_pips": float(t_sl),
+                                    "tp_pips": float(t_tp),
+                                    "units": t_units,
+                                    "account_db_id": selected_admin_account_id,
+                                })[0]
+                                if result and result.get("action")=="order_placed":
                                     st.success(f"✅ Signal trade: {result['signal']} @ {result.get('price','?')}")
-                                elif result["action"]=="error":
+                                elif result and result.get("action")=="error":
                                     st.error(f"Error: {result['reason']}")
                                 else:
-                                    st.info(f"{result.get('signal','—')} — Not traded: {result.get('reason','')}")
+                                    st.info(f"{result.get('signal','—') if result else '—'} — Not traded")
                                 st.rerun()
-                            except Exception as e:
-                                st.error(str(e))
+                            except ApiError as e:
+                                st.error(e.detail)
 
                     if btn3.button("🔴 Close All", key="adm_close_all"):
                         with st.spinner("Closing all positions..."):
                             try:
-                                client.close_all_positions()
+                                api_post("/trading/close-all", json={
+                                    "account_db_id": selected_admin_account_id,
+                                })
                                 st.success("All positions closed.")
                                 st.rerun()
-                            except Exception as e:
-                                st.error(str(e))
+                            except ApiError as e:
+                                st.error(e.detail)
 
                     if btn4.button("⚡ Portfolio Auto Check", key="adm_portfolio_auto"):
                         with st.spinner("Checking all pairs and trading eligible signals..."):
@@ -842,32 +852,33 @@ def render_admin(user: dict):
                             with oc7:
                                 if st.button("Mod", key=f"adm_mod_{trade['trade_id']}_{i}") and (new_sl or new_tp):
                                     try:
-                                        client.modify_trade_sl_tp(trade["trade_id"],
-                                            stop_loss=new_sl if new_sl>0 else None,
-                                            take_profit=new_tp if new_tp>0 else None)
+                                        api_post("/trading/modify", json={
+                                            "trade_id": trade["trade_id"],
+                                            "account_db_id": selected_admin_account_id,
+                                            "stop_loss": new_sl if new_sl>0 else None,
+                                            "take_profit": new_tp if new_tp>0 else None,
+                                        })
                                         st.success("Modified")
                                         st.rerun()
-                                    except Exception as e:
-                                        st.error(str(e))
+                                    except ApiError as e:
+                                        st.error(e.detail)
                                 if st.button("Close", key=f"adm_close_{trade['trade_id']}_{i}"):
                                     try:
-                                        # Use close_user_trade to close + update DB atomically
+                                        # Get DB trade ID for API call
                                         db_trades = get_user_trades(user["id"], limit=30)
                                         match = next((t for t in db_trades
                                                       if t.get("broker_trade_id")==trade["trade_id"]
                                                       and t["status"]=="open"), None)
-                                        if match:
-                                            from src.trading_engine import close_user_trade
-                                            res = close_user_trade(
-                                                user["id"], trade["trade_id"], match["id"],
-                                                account_db_id=selected_admin_account_id,
-                                            )
-                                        else:
-                                            res = client.close_trade(trade["trade_id"])
-                                        st.success(f"Closed @ {res['fill_price']:.5f} P&L ${res['pl']:+.2f}")
+                                        db_trade_id = match["id"] if match else None
+                                        api_post("/trading/close", json={
+                                            "broker_trade_id": trade["trade_id"],
+                                            "db_trade_id": db_trade_id,
+                                            "account_db_id": selected_admin_account_id,
+                                        })
+                                        st.success("Trade closed.")
                                         st.rerun()
-                                    except Exception as e:
-                                        st.error(str(e))
+                                    except ApiError as e:
+                                        st.error(e.detail)
                             st.markdown(f'<hr style="border-color:{C_DIM};margin:2px 0;">', unsafe_allow_html=True)
                     else:
                         st.info("No open positions.")
@@ -1018,23 +1029,22 @@ def render_admin(user: dict):
                         st.error(str(e))
             if a2.button("⚙ Retrain All"):
                 with st.spinner("Retraining all pairs (~3 min)..."):
-                    res, err = retrain_local("all")
-                    if err: st.error(err)
-                    elif res:
+                    try:
+                        res = api_post("/retrain", params={"pair": "all"})
                         st.success("Retrain complete")
                         st.code(res.get("output",""))
+                    except ApiError as e:
+                        st.error(e.detail)
             if a3.button("⬇⚙ Fetch + Retrain"):
                 with st.spinner("Fetching fresh data, then retraining all models..."):
                     try:
-                        from src.multi_pair_manager import fetch_all_pairs
-                        fetch_res = fetch_all_pairs(count=int(get_platform_settings().get("fetch_count", 100) or 100))
+                        fetch_res = api_post("/fetch-data", params={"pair": "all", "outputsize": "compact"})
                         st.write(fetch_res)
-                        res, err = retrain_local("all")
-                        if err:
-                            st.error(err)
-                        elif res:
-                            st.success("Fetch + retrain complete")
-                            st.code(res.get("output",""))
+                        res = api_post("/retrain", params={"pair": "all"})
+                        st.success("Fetch + retrain complete")
+                        st.code(res.get("output",""))
+                    except ApiError as e:
+                        st.error(e.detail)
                     except Exception as e:
                         st.error(str(e))
 

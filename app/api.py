@@ -18,8 +18,9 @@ Endpoints:
 import os
 import subprocess
 import sys
-from typing import Optional
+from typing import Optional as Opt
 
+from pydantic import BaseModel
 from fastapi import FastAPI, HTTPException, Query, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi import Request
@@ -57,6 +58,83 @@ from app.api_auth import (
 from src.database import init_db, is_admin_password_default
 
 init_db()
+
+
+# ── Trading Request/Response Models ───────────────────────────────────────────
+
+class PlaceTradeRequest(BaseModel):
+    instrument: str
+    direction: str
+    units: int
+    sl_pips: float = 20.0
+    tp_pips: float = 40.0
+    order_type: str = "Market"
+    limit_price: Opt[float] = None
+    account_db_id: Opt[int] = None
+
+
+class CloseTradeRequest(BaseModel):
+    broker_trade_id: str
+    db_trade_id: int
+    account_db_id: Opt[int] = None
+
+
+class ModifyTradeRequest(BaseModel):
+    trade_id: str
+    account_db_id: Opt[int] = None
+    stop_loss: Opt[float] = None
+    take_profit: Opt[float] = None
+
+
+class TradingSettingsUpdate(BaseModel):
+    mode: Opt[str] = None
+    auto_trade_enabled: Opt[bool] = None
+    trading_account_id: Opt[int] = None
+    threshold: Opt[float] = None
+    risk_pct: Opt[float] = None
+    sl_pips: Opt[float] = None
+    tp_pips: Opt[float] = None
+    units: Opt[int] = None
+    max_positions: Opt[int] = None
+    use_regime_filter: Opt[bool] = None
+
+
+# ── Profile & Admin Management Models ──────────────────────────────────────────
+
+class ProfileUpdate(BaseModel):
+    full_name: Opt[str] = None
+    phone: Opt[str] = None
+    email: Opt[str] = None
+
+
+class PasswordUpdate(BaseModel):
+    current_password: str
+    new_password: str
+
+
+class CreateUserRequest(BaseModel):
+    username: str
+    email: str
+    password: str
+    full_name: str = ""
+    role: str = "user"
+    plan: str = "free"
+
+
+class PlanUpdateRequest(BaseModel):
+    plan: str
+
+
+class AddTradingAccountRequest(BaseModel):
+    account_name: str
+    api_key: str
+    account_id: str
+    environment: str = "practice"
+
+
+class MarkReadRequest(BaseModel):
+    pass
+
 
 app = FastAPI(
     title=f"{APP_BRAND} API",
@@ -416,3 +494,215 @@ def walk_forward(
             "profitable_splits":  int((df["strategy_return"] > 0).sum()),
         },
     }
+
+
+# ── Trading (writes — replaces direct dashboard calls) ────────────────────────
+
+@app.post("/trading/place", tags=["Trading"])
+def trading_place(body: PlaceTradeRequest, user: CurrentUser = Depends(require_user)):
+    if not user.is_admin() and not user.can_trade():
+        raise HTTPException(403, "Trading requires Pro or Enterprise plan.")
+    try:
+        if body.order_type == "Market":
+            from src.trading_engine import place_trade
+            result = place_trade(
+                user_id=user.id, instrument=body.instrument, direction=body.direction,
+                units=body.units, sl_pips=body.sl_pips, tp_pips=body.tp_pips,
+                trade_type="manual", account_db_id=body.account_db_id,
+            )
+            return {"success": True, "result": result}
+        else:
+            from src.trading_engine import get_client_for_user, calculate_sl_tp, enforce_hard_risk_limits
+            from src.database import log_trade
+            client = get_client_for_user(user.id, account_db_id=body.account_db_id)
+            enforce_hard_risk_limits(client=client, user_id=user.id, units=body.units,
+                                      instrument=body.instrument, sl_pips=body.sl_pips)
+            entry = body.limit_price or client.get_live_price(body.instrument)["mid"]
+            sl, tp = calculate_sl_tp(body.instrument, body.direction, entry, body.sl_pips, body.tp_pips)
+            actual_units = body.units if body.direction == "BUY" else -body.units
+            order = client.place_limit_order(body.instrument, actual_units, entry, sl, tp)
+            log_trade(user.id, body.instrument, body.direction, entry, body.units, "manual_limit")
+            return {"success": True, "result": order, "entry": entry, "sl": sl, "tp": tp}
+    except ValueError as e:
+        raise HTTPException(400, str(e))
+    except Exception as e:
+        raise HTTPException(500, str(e))
+
+
+@app.post("/trading/close", tags=["Trading"])
+def trading_close(body: CloseTradeRequest, user: CurrentUser = Depends(require_user)):
+    if not user.is_admin() and not user.can_trade():
+        raise HTTPException(403, "Trading requires Pro or Enterprise plan.")
+    try:
+        from src.trading_engine import close_user_trade
+        result = close_user_trade(user.id, body.broker_trade_id, body.db_trade_id,
+                                    account_db_id=body.account_db_id)
+        return {"success": True, "result": result}
+    except Exception as e:
+        raise HTTPException(500, str(e))
+
+
+@app.post("/trading/modify", tags=["Trading"])
+def trading_modify(body: ModifyTradeRequest, user: CurrentUser = Depends(require_user)):
+    if not user.is_admin() and not user.can_trade():
+        raise HTTPException(403, "Trading requires Pro or Enterprise plan.")
+    try:
+        from src.trading_engine import get_client_for_user
+        client = get_client_for_user(user.id, account_db_id=body.account_db_id)
+        result = client.modify_trade_sl_tp(body.trade_id, stop_loss=body.stop_loss,
+                                            take_profit=body.take_profit)
+        return {"success": True, "result": result}
+    except Exception as e:
+        raise HTTPException(500, str(e))
+
+
+@app.post("/trading/close-all", tags=["Trading"])
+def trading_close_all(account_db_id: Optional[int] = Query(None),
+                       user: CurrentUser = Depends(require_user)):
+    if not user.is_admin() and not user.can_trade():
+        raise HTTPException(403, "Trading requires Pro or Enterprise plan.")
+    try:
+        from src.trading_engine import get_client_for_user
+        client = get_client_for_user(user.id, account_db_id=account_db_id)
+        results = client.close_all_positions()
+        return {"success": True, "results": results}
+    except Exception as e:
+        raise HTTPException(500, str(e))
+
+
+@app.post("/trading/signal-trade", tags=["Trading"])
+def trading_signal_trade(
+    pair: str = Query("EUR_USD"),
+    threshold: float = Query(DEFAULT_SIGNAL_THRESHOLD),
+    sl_pips: float = Query(20.0),
+    tp_pips: float = Query(40.0),
+    units: Optional[int] = Query(None),
+    account_db_id: Optional[int] = Query(None),
+    user: CurrentUser = Depends(require_user),
+):
+    if not user.is_admin() and not user.can_trade():
+        raise HTTPException(403, "Trading requires Pro or Enterprise plan.")
+    try:
+        from src.paper_trader import PaperTrader
+        from src.trading_engine import get_client_for_user
+        client = get_client_for_user(user.id, account_db_id=account_db_id)
+        pt = PaperTrader(instrument=pair, threshold=threshold,
+                          units=units or 1000, use_regime_filter=True,
+                          oanda_client=client, user_id=user.id,
+                          account_db_id=account_db_id, sl_pips=sl_pips, tp_pips=tp_pips)
+        return pt.run_signal_check()
+    except Exception as e:
+        raise HTTPException(500, str(e))
+
+
+# ── Account settings (writes) ────────────────────────────────────────────────
+
+@app.post("/account/settings", tags=["Account"])
+def account_settings(body: TradingSettingsUpdate, user: CurrentUser = Depends(require_user)):
+    from src.database import update_user_trading_settings
+    fields = body.dict(exclude_unset=True)
+    if "mode" in fields and fields["mode"] in ("manual", "auto") and not user.can_trade():
+        raise HTTPException(403, "Manual/auto trading requires Pro or Enterprise.")
+    update_user_trading_settings(user.id, **fields)
+    return {"success": True}
+
+
+# ── Account profile / password / accounts ───────────────────────────────────
+
+@app.post("/account/profile", tags=["Account"])
+def account_profile(body: ProfileUpdate, user: CurrentUser = Depends(require_user)):
+    from src.database import update_user_profile
+    fields = body.dict(exclude_unset=True)
+    update_user_profile(user.id, **fields)
+    return {"success": True}
+
+
+@app.post("/account/password", tags=["Account"])
+def account_password(body: PasswordUpdate, user: CurrentUser = Depends(require_user)):
+    from src.database import get_db, verify_password, update_user_password
+    if len(body.new_password) < 8:
+        raise HTTPException(400, "Password must be at least 8 characters.")
+    with get_db() as conn:
+        row = conn.execute("SELECT * FROM users WHERE id=?", (user.id,)).fetchone()
+    if not row or not verify_password(body.current_password, row["salt"], row["password_hash"]):
+        raise HTTPException(400, "Current password is incorrect.")
+    update_user_password(user.id, body.new_password)
+    return {"success": True}
+
+
+@app.post("/account/trading-accounts", tags=["Account"])
+def account_add_trading_account(body: AddTradingAccountRequest, user: CurrentUser = Depends(require_user)):
+    if body.environment == "live" and not user.is_admin():
+        raise HTTPException(403, "Live accounts require admin.")
+    try:
+        from src.oanda_client import OandaClient
+        from src.database import add_trading_account, get_user_trading_settings, update_user_trading_settings
+        client = OandaClient(api_key=body.api_key, account_id=body.account_id, environment=body.environment)
+        result = client.validate_credentials()
+        if not result["valid"]:
+            raise HTTPException(400, f"Connection failed: {result.get('error')}")
+        new_id = add_trading_account(user.id, body.account_name, body.api_key,
+                                       body.account_id, body.environment, is_admin=user.is_admin())
+        settings = get_user_trading_settings(user.id)
+        if not settings.get("trading_account_id"):
+            update_user_trading_settings(user.id, trading_account_id=new_id)
+        return {"success": True, "account_db_id": new_id, "balance": result["balance"], "currency": result["currency"]}
+    except ValueError as e:
+        raise HTTPException(400, str(e))
+
+
+@app.delete("/account/trading-accounts/{account_id}", tags=["Account"])
+def account_remove_trading_account(account_id: int, user: CurrentUser = Depends(require_user)):
+    from src.database import remove_trading_account
+    remove_trading_account(account_id, user.id)
+    return {"success": True}
+
+
+@app.post("/account/notifications/mark-read", tags=["Account"])
+def account_mark_notifications_read(user: CurrentUser = Depends(require_user)):
+    from src.database import mark_notifications_read
+    mark_notifications_read(user.id)
+    return {"success": True}
+
+
+# ── Admin user management ────────────────────────────────────────────────────
+
+@app.post("/admin/users", tags=["Admin"])
+def admin_create_user(body: CreateUserRequest, user: CurrentUser = Depends(require_admin)):
+    from src.database import create_user
+    try:
+        result = create_user(body.username, body.email, body.password,
+                              body.full_name, role=body.role, plan=body.plan)
+        return {"success": True, "user": result}
+    except Exception as e:
+        if "UNIQUE constraint" in str(e):
+            raise HTTPException(400, "Username or email already taken.")
+        raise HTTPException(500, str(e))
+
+
+@app.post("/admin/users/{target_id}/plan", tags=["Admin"])
+def admin_update_plan(target_id: int, body: PlanUpdateRequest, user: CurrentUser = Depends(require_admin)):
+    from src.database import update_user_plan
+    update_user_plan(target_id, body.plan, user.id)
+    return {"success": True}
+
+
+@app.post("/admin/users/{target_id}/deactivate", tags=["Admin"])
+def admin_deactivate(target_id: int, user: CurrentUser = Depends(require_admin)):
+    from src.database import deactivate_user
+    deactivate_user(target_id, user.id)
+    return {"success": True}
+
+
+@app.post("/admin/users/{target_id}/reactivate", tags=["Admin"])
+def admin_reactivate(target_id: int, user: CurrentUser = Depends(require_admin)):
+    from src.database import reactivate_user
+    reactivate_user(target_id, user.id)
+    return {"success": True}
+
+
+@app.post("/admin/users/{target_id}/disable-auto-trade", tags=["Admin"])
+def admin_disable_auto_trade(target_id: int, user: CurrentUser = Depends(require_admin)):
+    from src.database import update_user_trading_settings
+    update_user_trading_settings(target_id, mode="signals_only", auto_trade_enabled=False)
+    return {"success": True}

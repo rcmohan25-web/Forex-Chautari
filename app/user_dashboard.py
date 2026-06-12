@@ -22,6 +22,7 @@ from datetime import datetime
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from app.auth import render_logout_button
+from app.api_client import api_post, api_delete, ApiError
 from src.database import (
     get_trading_accounts, add_trading_account, remove_trading_account,
     get_user_trades, get_trade_stats, log_signal, get_signals_log,
@@ -653,8 +654,11 @@ def render_user_dashboard(user: dict):
                             st.markdown(f'<div style="font-size:12px;color:{C_RED};padding:14px 0;">✗ Error</div>', unsafe_allow_html=True)
                     with c3:
                         if st.button("Remove", key=f"rm_{acc['id']}"):
-                            remove_trading_account(acc["id"], user["id"])
-                            st.rerun()
+                            try:
+                                api_delete(f"/account/trading-accounts/{acc['id']}")
+                                st.rerun()
+                            except ApiError as e:
+                                st.error(e.detail)
             else:
                 st.info("No trading account connected yet.")
 
@@ -682,24 +686,19 @@ def render_user_dashboard(user: dict):
                         if acc_name and api_key and acc_id:
                             with st.spinner("Verifying credentials with Oanda..."):
                                 try:
-                                    from src.oanda_client import OandaClient
-                                    client = OandaClient(api_key=api_key, account_id=acc_id, environment=env)
-                                    result = client.validate_credentials()
-                                    if result["valid"]:
-                                        new_id = add_trading_account(
-                                            user["id"], acc_name, api_key, acc_id, env, is_admin=False
-                                        )
-                                        current_settings = get_user_trading_settings(user["id"])
-                                        if not current_settings.get("trading_account_id"):
-                                            update_user_trading_settings(user["id"], trading_account_id=new_id)
-                                        st.success(f"✅ Connected! Balance: ${result['balance']:,.2f} {result['currency']}")
-                                        st.rerun()
-                                    else:
-                                        st.error(f"Connection failed: {result.get('error')}")
-                                except ValueError as e:
-                                    st.error(str(e))
-                                except Exception as e:
-                                    st.error(f"Error: {e}")
+                                            try:
+                                                resp = api_post("/account/trading-accounts", json={
+                                                    "account_name": acc_name,
+                                                    "api_key": api_key,
+                                                    "account_id": acc_id,
+                                                    "environment": env,
+                                                })
+                                                st.success(f"✅ Connected! Balance: ${resp['balance']:,.2f} {resp['currency']}")
+                                                st.rerun()
+                                            except ApiError as e:
+                                                st.error(e.detail)
+                                            except Exception as e:
+                                                st.error(str(e))
                         else:
                             st.error("All fields are required.")
 
@@ -781,58 +780,46 @@ def render_user_dashboard(user: dict):
                     if c_btn1.button(f"▶ Place {order_type} {trade_dir}", type="primary"):
                         with st.spinner("Placing order..."):
                             try:
-                                from src.trading_engine import place_trade, calculate_sl_tp
+                                resp = api_post("/trading/place", json={
+                                    "instrument": trade_pair,
+                                    "direction": trade_dir,
+                                    "units": trade_units,
+                                    "sl_pips": float(trade_sl),
+                                    "tp_pips": float(trade_tp),
+                                    "order_type": order_type,
+                                    "limit_price": limit_price,
+                                    "account_db_id": selected_account_id,
+                                })
                                 if order_type == "Market":
-                                    result = place_trade(
-                                        user_id=user["id"],
-                                        instrument=trade_pair,
-                                        direction=trade_dir,
-                                        units=trade_units,
-                                        sl_pips=float(trade_sl),
-                                        tp_pips=float(trade_tp),
-                                        trade_type="manual",
-                                        account_db_id=selected_account_id,
-                                    )
-                                    fill = result["fill"]
-                                    st.success(f"✅ {trade_dir} {trade_units} {trade_pair} @ {fill['fill_price']:.5f} | SL: {result['sl']} | TP: {result['tp']}")
+                                    fill = resp["result"]["fill"]
+                                    st.success(f"✅ {trade_dir} {trade_units} {trade_pair} @ {fill['fill_price']:.5f}")
                                 else:
-                                    # Limit order
-                                    entry = limit_price or client.get_live_price(trade_pair)["mid"]
-                                    sl, tp = calculate_sl_tp(trade_pair, trade_dir, entry, trade_sl, trade_tp)
-                                    actual_units = trade_units if trade_dir=="BUY" else -trade_units
-                                    result = client.place_limit_order(
-                                        instrument=trade_pair, units=actual_units,
-                                        price=entry, stop_loss=sl, take_profit=tp,
-                                    )
-                                    st.success(f"✅ Limit {trade_dir} {trade_units} {trade_pair} @ {entry:.5f} placed")
+                                    st.success(f"✅ Limit {trade_dir} {trade_units} {trade_pair} @ {resp['entry']:.5f} placed")
                                 st.rerun()
-                            except Exception as e:
-                                st.error(f"Order failed: {e}")
+                            except ApiError as e:
+                                st.error(f"Order failed: {e.detail}")
 
                     if c_btn2.button("🤖 Signal + Trade"):
                         with st.spinner("Running ML signal check..."):
                             try:
-                                from src.paper_trader import PaperTrader
-                                pt     = PaperTrader(instrument=trade_pair,
-                                                     threshold=threshold, units=trade_units,
-                                                     use_regime_filter=True,
-                                                     oanda_client=client,
-                                                     user_id=user["id"],
-                                                     account_db_id=selected_account_id,
-                                                     sl_pips=float(trade_sl),
-                                                     tp_pips=float(trade_tp))
-                                result = pt.run_signal_check()
+                                result = api_post("/trading/signal-trade", params={
+                                    "pair": trade_pair,
+                                    "threshold": threshold,
+                                    "sl_pips": float(trade_sl),
+                                    "tp_pips": float(trade_tp),
+                                    "units": trade_units,
+                                    "account_db_id": selected_account_id,
+                                })
                                 if result["action"] == "order_placed":
                                     fill = result.get("fill", {})
                                     st.success(f"✅ Auto-trade: {result['signal']} @ {fill.get('fill_price','?')}")
                                 elif result["action"] == "error":
                                     st.error(f"Error: {result['reason']}")
                                 else:
-                                    sig = result.get("signal","—")
-                                    st.info(f"Signal: {sig} — Not traded: {result.get('reason','')}")
+                                    st.info(f"Signal: {result.get('signal','—')} — Not traded: {result.get('reason','')}")
                                 st.rerun()
-                            except Exception as e:
-                                st.error(str(e))
+                            except ApiError as e:
+                                st.error(e.detail)
 
                     if c_btn3.button("⚖ Use Risk Sizing"):
                         st.session_state["trade_units_override"] = auto_u
@@ -880,14 +867,15 @@ def render_user_dashboard(user: dict):
                             with tc6:
                                 if st.button("Mod", key=f"usr_mod_{trade['trade_id']}_{i}") and (new_sl or new_tp):
                                     try:
-                                        client.modify_trade_sl_tp(
-                                            trade["trade_id"],
-                                            stop_loss=new_sl if new_sl>0 else None,
-                                            take_profit=new_tp if new_tp>0 else None,
-                                        )
+                                        api_post("/trading/modify", json={
+                                            "trade_id": trade["trade_id"],
+                                            "account_db_id": selected_account_id,
+                                            "stop_loss": new_sl if new_sl > 0 else None,
+                                            "take_profit": new_tp if new_tp > 0 else None,
+                                        })
                                         st.success("Modified."); st.rerun()
-                                    except Exception as e:
-                                        st.error(str(e))
+                                    except ApiError as e:
+                                        st.error(e.detail)
                                 if st.button("Close", key=f"close_{trade['trade_id']}_{i}"):
                                     with st.spinner(f"Closing {trade['instrument']}..."):
                                         try:
@@ -895,28 +883,26 @@ def render_user_dashboard(user: dict):
                                             match = next((t for t in user_trades
                                                           if t.get("broker_trade_id")==trade["trade_id"]
                                                           and t["status"]=="open"), None)
-                                            if match:
-                                                from src.trading_engine import close_user_trade
-                                                res = close_user_trade(
-                                                    user["id"], trade["trade_id"], match["id"],
-                                                    account_db_id=selected_account_id,
-                                                )
-                                            else:
-                                                res = client.close_trade(trade["trade_id"])
+                                            db_trade_id = match["id"] if match else 0
+                                            res = api_post("/trading/close", json={
+                                                "broker_trade_id": trade["trade_id"],
+                                                "db_trade_id": db_trade_id,
+                                                "account_db_id": selected_account_id,
+                                            })["result"]
                                             st.success(f"Closed @ {res['fill_price']:.5f} | P&L: ${res['pl']:+.2f}")
                                             st.rerun()
-                                        except Exception as e:
-                                            st.error(f"Close failed: {e}")
+                                        except ApiError as e:
+                                            st.error(f"Close failed: {e.detail}")
                             st.markdown(f'<hr style="border-color:{C_DIM};margin:2px 0;">', unsafe_allow_html=True)
 
                         if st.button("🔴 Close All Positions"):
                             with st.spinner("Closing all..."):
                                 try:
-                                    client.close_all_positions()
+                                    api_post("/trading/close-all", params={"account_db_id": selected_account_id})
                                     st.success("All positions closed.")
                                     st.rerun()
-                                except Exception as e:
-                                    st.error(str(e))
+                                except ApiError as e:
+                                    st.error(e.detail)
                     else:
                         st.info("No open positions.")
 
@@ -1027,8 +1013,11 @@ def render_user_dashboard(user: dict):
         all_notifs = get_notifications(user["id"], unread_only=False)
         if all_notifs:
             if st.button("✓ Mark all as read"):
-                mark_notifications_read(user["id"])
-                st.rerun()
+                try:
+                    api_post("/account/notifications/mark-read", json={})
+                    st.rerun()
+                except ApiError as e:
+                    st.error(e.detail)
             for n in all_notifs:
                 dot  = C_ACCENT if not n["is_read"] else C_MUTED
                 type_icon = {"success":"✅","info":"ℹ️","warning":"⚠️","error":"🔴"}.get(n.get("type","info"),"ℹ️")
@@ -1094,15 +1083,16 @@ def render_user_dashboard(user: dict):
                 new_email = st.text_input("Email",      value=user.get("email",""))
                 if st.form_submit_button("Save Profile", type="primary"):
                     try:
-                        update_user_profile(user["id"],
-                                            full_name=new_name.strip(),
-                                            phone=new_phone.strip(),
-                                            email=new_email.strip())
+                        api_post("/account/profile", json={
+                            "full_name": new_name.strip(),
+                            "phone": new_phone.strip(),
+                            "email": new_email.strip(),
+                        })
                         st.session_state["user"]["full_name"] = new_name.strip()
                         st.session_state["user"]["email"]     = new_email.strip()
                         st.success("Profile updated.")
-                    except Exception as e:
-                        st.error(str(e))
+                    except ApiError as e:
+                        st.error(e.detail)
 
             _section("Change Password")
             with st.form("password_form"):
@@ -1115,13 +1105,14 @@ def render_user_dashboard(user: dict):
                     elif len(new_pw) < 8:
                         st.error("Password must be at least 8 characters.")
                     else:
-                        with get_db() as conn:
-                            row = conn.execute("SELECT * FROM users WHERE id=?", (user["id"],)).fetchone()
-                        if row and verify_password(cur_pw, row["salt"], row["password_hash"]):
-                            update_user_password(user["id"], new_pw)
+                        try:
+                            api_post("/account/password", json={
+                                "current_password": cur_pw,
+                                "new_password": new_pw,
+                            })
                             st.success("Password updated.")
-                        else:
-                            st.error("Current password is incorrect.")
+                        except ApiError as e:
+                            st.error(e.detail)
 
             _section("Session")
             st.markdown(
@@ -1147,8 +1138,11 @@ def render_user_dashboard(user: dict):
                         </div>""", unsafe_allow_html=True)
                     with c2:
                         if st.button("Remove", key=f"acct_tab_rm_{acc['id']}"):
-                            remove_trading_account(acc["id"], user["id"])
-                            st.rerun()
+                            try:
+                                api_delete(f"/account/trading-accounts/{acc['id']}")
+                                st.rerun()
+                            except ApiError as e:
+                                st.error(e.detail)
             else:
                 st.info("No trading account connected yet. You can link an Oanda practice or live account here.")
 
@@ -1169,24 +1163,18 @@ def render_user_dashboard(user: dict):
                         if acc_name and api_key and acc_id:
                             with st.spinner("Verifying credentials with Oanda..."):
                                 try:
-                                    from src.oanda_client import OandaClient
-                                    client = OandaClient(api_key=api_key, account_id=acc_id, environment=env)
-                                    result = client.validate_credentials()
-                                    if result["valid"]:
-                                        new_id = add_trading_account(
-                                            user["id"], acc_name, api_key, acc_id, env, is_admin=False
-                                        )
-                                        current_settings = get_user_trading_settings(user["id"])
-                                        if not current_settings.get("trading_account_id"):
-                                            update_user_trading_settings(user["id"], trading_account_id=new_id)
-                                        st.success(f"Connected. Balance: ${result['balance']:,.2f} {result['currency']}")
-                                        st.rerun()
-                                    else:
-                                        st.error(f"Connection failed: {result.get('error')}")
-                                except ValueError as e:
-                                    st.error(str(e))
+                                    resp = api_post("/account/trading-accounts", json={
+                                        "account_name": acc_name,
+                                        "api_key": api_key,
+                                        "account_id": acc_id,
+                                        "environment": env,
+                                    })
+                                    st.success(f"Connected. Balance: ${resp['balance']:,.2f} {resp['currency']}")
+                                    st.rerun()
+                                except ApiError as e:
+                                    st.error(e.detail)
                                 except Exception as e:
-                                    st.error(f"Error: {e}")
+                                    st.error(str(e))
                         else:
                             st.error("All fields are required.")
 
@@ -1247,21 +1235,23 @@ def render_user_dashboard(user: dict):
                     elif mode in ("manual", "auto") and not selected_acc:
                         st.error("Connect a trading account first.")
                     else:
-                        update_user_trading_settings(
-                            user["id"],
-                            mode=mode if can_auto else "signals_only",
-                            auto_trade_enabled=auto_enabled,
-                            trading_account_id=selected_acc,
-                            threshold=threshold_cfg,
-                            risk_pct=risk_cfg,
-                            sl_pips=sl_cfg,
-                            tp_pips=tp_cfg,
-                            units=units_cfg,
-                            max_positions=max_pos_cfg,
-                            use_regime_filter=regime_cfg,
-                        )
-                        st.success("Trading mode saved.")
-                        st.rerun()
+                        try:
+                            api_post("/account/settings", json={
+                                "mode": mode if can_auto else "signals_only",
+                                "auto_trade_enabled": auto_enabled,
+                                "trading_account_id": selected_acc,
+                                "threshold": threshold_cfg,
+                                "risk_pct": risk_cfg,
+                                "sl_pips": sl_cfg,
+                                "tp_pips": tp_cfg,
+                                "units": units_cfg,
+                                "max_positions": max_pos_cfg,
+                                "use_regime_filter": regime_cfg,
+                            })
+                            st.success("Trading mode saved.")
+                            st.rerun()
+                        except ApiError as e:
+                            st.error(e.detail)
 
             if not can_auto:
                 st.info("Your current plan can view signals and connect an account. Manual and auto execution unlock on Pro.")

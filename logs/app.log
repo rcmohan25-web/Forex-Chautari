@@ -2318,3 +2318,623 @@ Log in to the admin panel to complete first-run setup.
 ======================================================================
 2026-06-09 11:45:45,558 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
 2026-06-09 11:45:45,559 - database - INFO - Database ready at data/forexchautari.db
+2026-06-12 09:35:47,133 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:35:47,183 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:35:47,183 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:35:47,184 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpqccin4d5/test.db
+2026-06-12 09:35:47,765 - trading_engine - CRITICAL - KILL SWITCH ACTIVATED — user_id=99 daily drawdown=6.00% >= 5% hard limit. Auto-trading disabled for the rest of the UTC day.
+2026-06-12 09:35:47,766 - trading_engine - CRITICAL - KILL SWITCH ACTIVATED — user_id=99 daily drawdown=7.00% >= 5% hard limit. Auto-trading disabled for the rest of the UTC day.
+2026-06-12 09:35:47,818 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:35:47,867 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:35:47,867 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:35:47,868 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmprmnuud3h/test.db
+2026-06-12 09:35:47,869 - trading_engine - CRITICAL - KILL SWITCH ACTIVATED — user_id=1 daily drawdown=6.00% >= 5% hard limit. Auto-trading disabled for the rest of the UTC day.
+2026-06-12 09:35:47,921 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:35:47,970 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:35:47,970 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:35:47,971 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp5zsm476_/test.db
+2026-06-12 09:35:47,972 - trading_engine - CRITICAL - KILL SWITCH ACTIVATED — user_id=1 daily drawdown=6.00% >= 5% hard limit. Auto-trading disabled for the rest of the UTC day.
+2026-06-12 09:35:48,025 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:35:48,075 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:35:48,075 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:35:48,076 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpmieuo5n9/test.db
+2026-06-12 09:35:48,129 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:35:48,178 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:35:48,178 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:35:48,179 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmplkxm9qvn/test.db
+2026-06-12 09:35:48,232 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:35:48,281 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:35:48,281 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:35:48,282 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpru5h69jv/test.db
+2026-06-12 09:35:48,283 - trading_engine - CRITICAL - KILL SWITCH ACTIVATED — user_id=7 daily drawdown=7.00% >= 5% hard limit. Auto-trading disabled for the rest of the UTC day.
+2026-06-12 09:35:48,336 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:35:48,386 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:35:48,386 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:35:48,387 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp96ptigfy/test.db
+2026-06-12 09:35:48,388 - trading_engine - CRITICAL - KILL SWITCH ACTIVATED — user_id=8 daily drawdown=6.00% >= 5% hard limit. Auto-trading disabled for the rest of the UTC day.
+2026-06-12 09:35:48,388 - trading_engine - WARNING - Kill-switch Telegram alert failed: network
+2026-06-12 09:35:48,440 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:35:48,491 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:35:48,491 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:35:48,491 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp0rxrqo6s/test.db
+2026-06-12 09:35:48,492 - trading_engine - WARNING - enforce_hard_risk_limits: account summary unavailable (Oanda down); checks 3 & 4 skipped for this order.
+2026-06-12 09:35:48,545 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:35:48,596 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:35:48,596 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:35:48,597 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmprrmcp047/test.db
+2026-06-12 09:35:48,599 - trading_engine - CRITICAL - KILL SWITCH ACTIVATED — user_id=42 daily drawdown=6.00% >= 5% hard limit. Auto-trading disabled for the rest of the UTC day.
+2026-06-12 09:35:48,652 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:35:48,703 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:35:48,703 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:35:48,703 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpdu27gyhh/test.db
+2026-06-12 09:35:48,705 - trading_engine - CRITICAL - KILL SWITCH ACTIVATED — user_id=1 daily drawdown=5.00% >= 5% hard limit. Auto-trading disabled for the rest of the UTC day.
+2026-06-12 09:35:48,758 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:35:48,808 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:35:48,808 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:35:48,809 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpntj2itm2/test.db
+2026-06-12 09:35:48,864 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:35:48,915 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:35:48,915 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:35:48,915 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpqvvkp0_l/test.db
+2026-06-12 09:35:48,917 - trading_engine - CRITICAL - KILL SWITCH ACTIVATED — user_id=1 daily drawdown=6.00% >= 5% hard limit. Auto-trading disabled for the rest of the UTC day.
+2026-06-12 09:35:48,970 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:35:49,021 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:35:49,021 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:35:49,021 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp50aoxrb1/test.db
+2026-06-12 09:35:49,023 - trading_engine - CRITICAL - KILL SWITCH ACTIVATED — user_id=1 daily drawdown=6.00% >= 5% hard limit. Auto-trading disabled for the rest of the UTC day.
+2026-06-12 09:35:49,076 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:35:49,127 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:35:49,127 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:35:49,128 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpttoifnvo/test.db
+2026-06-12 09:35:49,129 - trading_engine - CRITICAL - KILL SWITCH ACTIVATED — user_id=1 daily drawdown=6.00% >= 5% hard limit. Auto-trading disabled for the rest of the UTC day.
+2026-06-12 09:35:49,183 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:35:49,233 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:35:49,233 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:35:49,234 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpn43lu7k4/test.db
+2026-06-12 09:35:49,287 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:35:49,337 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:35:49,337 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:35:49,338 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpwmiku4a5/test.db
+2026-06-12 09:35:49,390 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:35:49,441 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:35:49,441 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:35:49,442 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmph1p3_912/test.db
+2026-06-12 09:35:49,494 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:35:49,544 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:35:49,544 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:35:49,545 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpb3emb2hj/test.db
+2026-06-12 09:35:49,598 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:35:49,648 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:35:49,648 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:35:49,649 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpf6zxd6gr/test.db
+2026-06-12 09:35:49,702 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:35:49,753 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:35:49,753 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:35:49,753 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpij_ehc28/test.db
+2026-06-12 09:35:49,806 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:35:49,857 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:35:49,857 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:35:49,858 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpbkd1zuvf/test.db
+2026-06-12 09:35:49,914 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:35:49,965 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:35:49,965 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:35:49,965 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpco0xh1st/test.db
+2026-06-12 09:35:49,967 - trading_engine - WARNING - calculate_position_size: requested risk_pct 0.500 exceeds hard cap 0.020 — clamped.
+2026-06-12 09:35:49,967 - trading_engine - WARNING - calculate_position_size: requested risk_pct 0.100 exceeds hard cap 0.020 — clamped.
+2026-06-12 09:35:50,019 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:35:50,068 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:35:50,068 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:35:50,069 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpjem8idag/test.db
+2026-06-12 09:35:50,070 - trading_engine - CRITICAL - KILL SWITCH ACTIVATED — user_id=1 daily drawdown=6.00% >= 5% hard limit. Auto-trading disabled for the rest of the UTC day.
+2026-06-12 09:35:51,162 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:35:51,212 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:35:51,212 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:35:51,213 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpctb_6i_s/test.db
+2026-06-12 09:35:51,214 - trading_engine - CRITICAL - KILL SWITCH ACTIVATED — user_id=1 daily drawdown=6.00% >= 5% hard limit. Auto-trading disabled for the rest of the UTC day.
+2026-06-12 09:35:51,267 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:35:51,316 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:35:51,316 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:35:51,317 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmptdma_p2t/test.db
+2026-06-12 09:35:51,368 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:35:51,417 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:35:51,417 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:35:51,418 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpw7c6d5aq/test.db
+2026-06-12 09:35:51,418 - trading_engine - INFO - Trade placed: user=1 EUR_USD BUY units=1000 fill=1.085
+2026-06-12 09:35:51,470 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:35:51,520 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:35:51,520 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:35:51,521 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp5z5d9tg_/test.db
+2026-06-12 09:35:51,577 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:35:51,626 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:35:51,627 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:35:51,627 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp_4u3215i/test.db
+2026-06-12 09:35:51,681 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:35:51,733 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:35:51,733 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:35:51,734 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp0s4a59xu/test.db
+2026-06-12 09:35:51,791 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:35:51,841 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:35:51,841 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:35:51,842 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpvqmtp0jb/test.db
+2026-06-12 09:36:17,847 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:36:17,897 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:36:17,897 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:36:17,898 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpu9cy2hvv/test.db
+2026-06-12 09:36:18,003 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:36:18,052 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:36:18,052 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:36:18,053 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpenh0c4x8/test.db
+2026-06-12 09:36:18,205 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:36:18,256 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:36:18,256 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:36:18,256 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp7kl698qz/test.db
+2026-06-12 09:36:18,509 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:36:18,560 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:36:18,560 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:36:18,561 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmps5gu0nil/test.db
+2026-06-12 09:36:18,715 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:36:18,764 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:36:18,764 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:36:18,765 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpvf8i24t_/test.db
+2026-06-12 09:36:18,918 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:36:18,970 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:36:18,970 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:36:18,971 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp5_efail2/test.db
+2026-06-12 09:36:19,024 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:36:19,075 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:36:19,075 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:36:19,076 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmphaghedah/test.db
+2026-06-12 09:36:19,227 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:36:19,278 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:36:19,278 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:36:19,278 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp67sw4i9r/test.db
+2026-06-12 09:36:19,432 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:36:19,483 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:36:19,484 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:36:19,485 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpejrfwhmg/test.db
+2026-06-12 09:36:19,637 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:36:19,686 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:36:19,686 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:36:19,687 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpnu315b_z/test.db
+2026-06-12 09:36:20,141 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:36:20,189 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:36:20,189 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:36:20,190 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmphkkswv5e/test.db
+2026-06-12 09:36:20,243 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:36:20,294 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:36:20,294 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:36:20,295 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpn_s_ozvf/test.db
+2026-06-12 09:36:20,452 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:36:20,504 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:36:20,504 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:36:20,505 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp18vb7d4d/test.db
+2026-06-12 09:36:20,558 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:36:20,610 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:36:20,610 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:36:20,611 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpxpvue62n/test.db
+2026-06-12 09:36:20,921 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:36:20,971 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:36:20,971 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:36:20,972 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpdriz2cje/test.db
+2026-06-12 09:36:21,231 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:36:21,282 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:36:21,282 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:36:21,282 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpeqedthpi/test.db
+2026-06-12 09:36:21,436 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:36:21,485 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:36:21,485 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:36:21,486 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpvwsz4z4d/test.db
+2026-06-12 09:36:21,640 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:36:21,690 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:36:21,690 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:36:21,691 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpk2xf9s0h/auth_test.db
+2026-06-12 09:36:21,792 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:36:21,843 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:36:21,843 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:36:21,844 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpmzvnpz7r/auth_test.db
+2026-06-12 09:36:22,049 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:36:22,099 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:36:22,099 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:36:22,100 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpapflx1vi/auth_test.db
+2026-06-12 09:36:24,643 - multi_pair - WARNING - No trained models found. Run: python train_all.py --fetch
+2026-06-12 09:36:24,647 - trading_engine - WARNING - calculate_position_size: requested risk_pct 0.100 exceeds hard cap 0.020 — clamped.
+2026-06-12 09:36:24,700 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-12 09:36:24,750 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:36:24,750 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-12 09:36:24,751 - database - INFO - Database ready at /var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpomd7grn5/test.db
+2026-06-12 09:41:36,666 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:41:36,667 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-12 09:41:36,667 - database - INFO - Database ready at data/forexchautari.db
+2026-06-12 09:41:54,794 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:41:54,795 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-12 09:41:54,795 - database - INFO - Database ready at data/forexchautari.db
+2026-06-12 09:42:05,093 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:42:05,094 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-12 09:42:05,095 - database - INFO - Database ready at data/forexchautari.db
+2026-06-12 09:42:16,017 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:42:16,018 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-12 09:42:16,018 - database - INFO - Database ready at data/forexchautari.db
+2026-06-12 09:42:35,229 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:42:35,230 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-12 09:42:35,231 - database - INFO - Database ready at data/forexchautari.db
+2026-06-12 09:42:41,447 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:42:41,448 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-12 09:42:41,448 - database - INFO - Database ready at data/forexchautari.db
+2026-06-12 09:42:54,354 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:42:54,355 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-12 09:42:54,355 - database - INFO - Database ready at data/forexchautari.db
+2026-06-12 09:42:58,485 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:42:58,485 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-12 09:42:58,486 - database - INFO - Database ready at data/forexchautari.db
+2026-06-12 09:42:58,620 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:42:58,621 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-12 09:42:58,621 - database - INFO - Database ready at data/forexchautari.db
+2026-06-12 09:43:45,289 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-12 09:43:45,290 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-12 09:43:45,290 - database - INFO - Database ready at data/forexchautari.db
+2026-06-12 09:43:47,012 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-12 09:43:47,012 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-12 09:43:47,013 - database - INFO - Database ready at data/forexchautari.db
+2026-06-12 09:43:48,488 - regime - INFO - Regime: ADX=33.7 (trending) | Direction=neutral | Vol=normal (0.66x avg) | Tradeable=['BUY', 'SELL']
+2026-06-12 09:43:48,547 - regime - INFO - Regime: ADX=21.1 (transitioning) | Direction=bullish | Vol=normal (1.11x avg) | Tradeable=[]
+2026-06-12 09:43:48,604 - regime - INFO - Regime: ADX=21.9 (transitioning) | Direction=neutral | Vol=low (0.28x avg) | Tradeable=[]
+2026-06-12 09:43:48,659 - regime - INFO - Regime: ADX=31.5 (trending) | Direction=neutral | Vol=normal (0.90x avg) | Tradeable=['BUY', 'SELL']
+2026-06-12 09:47:05,372 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-12 09:47:05,373 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-12 09:47:05,374 - database - INFO - Database ready at data/forexchautari.db
+2026-06-12 09:47:05,564 - regime - INFO - Regime: ADX=33.7 (trending) | Direction=neutral | Vol=normal (0.66x avg) | Tradeable=['BUY', 'SELL']
+2026-06-12 09:47:05,620 - regime - INFO - Regime: ADX=21.1 (transitioning) | Direction=bullish | Vol=normal (1.11x avg) | Tradeable=[]
+2026-06-12 09:47:05,678 - regime - INFO - Regime: ADX=21.9 (transitioning) | Direction=neutral | Vol=low (0.28x avg) | Tradeable=[]
+2026-06-12 09:47:05,745 - regime - INFO - Regime: ADX=31.5 (trending) | Direction=neutral | Vol=normal (0.90x avg) | Tradeable=['BUY', 'SELL']
+2026-06-12 09:47:09,720 - multi_pair - INFO - EUR_USD: 528 rows saved to data/EUR_USD.csv
+2026-06-12 09:47:10,098 - multi_pair - INFO - GBP_USD: 528 rows saved to data/GBP_USD.csv
+2026-06-12 09:47:10,444 - multi_pair - INFO - USD_JPY: 528 rows saved to data/USD_JPY.csv
+2026-06-12 09:47:10,784 - multi_pair - INFO - AUD_USD: 528 rows saved to data/AUD_USD.csv
+2026-06-12 09:47:13,008 - multi_pair - INFO - EUR_USD: model saved → models/EUR_USD_model.pkl
+2026-06-12 09:47:13,008 - multi_pair - INFO - EUR_USD: trained — train=0.7759 test=0.4902 wf=0.5300
+2026-06-12 09:47:13,517 - multi_pair - INFO - GBP_USD: model saved → models/GBP_USD_model.pkl
+2026-06-12 09:47:13,517 - multi_pair - INFO - GBP_USD: trained — train=0.8128 test=0.5490 wf=0.4900
+2026-06-12 09:47:14,027 - multi_pair - INFO - USD_JPY: model saved → models/USD_JPY_model.pkl
+2026-06-12 09:47:14,027 - multi_pair - INFO - USD_JPY: trained — train=0.7562 test=0.5098 wf=0.5100
+2026-06-12 09:47:14,508 - multi_pair - INFO - AUD_USD: model saved → models/AUD_USD_model.pkl
+2026-06-12 09:47:14,508 - multi_pair - INFO - AUD_USD: trained — train=0.7438 test=0.4314 wf=0.5600
+2026-06-12 09:47:50,811 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-12 09:47:50,811 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-12 09:47:50,812 - database - INFO - Database ready at data/forexchautari.db
+2026-06-12 09:47:50,988 - regime - INFO - Regime: ADX=36.3 (trending) | Direction=bearish | Vol=normal (0.83x avg) | Tradeable=['SELL']
+2026-06-12 09:47:51,056 - regime - INFO - Regime: ADX=27.5 (trending) | Direction=bearish | Vol=normal (0.67x avg) | Tradeable=['SELL']
+2026-06-12 09:47:51,109 - regime - INFO - Regime: ADX=35.3 (trending) | Direction=neutral | Vol=low (0.37x avg) | Tradeable=['BUY', 'SELL']
+2026-06-12 09:47:51,161 - regime - INFO - Regime: ADX=51.0 (trending) | Direction=bearish | Vol=normal (0.94x avg) | Tradeable=['SELL']
+2026-06-12 09:47:58,757 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-12 09:47:58,758 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-12 09:47:58,759 - database - INFO - Database ready at data/forexchautari.db
+2026-06-12 09:47:58,856 - regime - INFO - Regime: ADX=36.3 (trending) | Direction=bearish | Vol=normal (0.83x avg) | Tradeable=['SELL']
+2026-06-12 09:47:58,915 - regime - INFO - Regime: ADX=27.5 (trending) | Direction=bearish | Vol=normal (0.67x avg) | Tradeable=['SELL']
+2026-06-12 09:47:58,976 - regime - INFO - Regime: ADX=35.3 (trending) | Direction=neutral | Vol=low (0.37x avg) | Tradeable=['BUY', 'SELL']
+2026-06-12 09:47:59,041 - regime - INFO - Regime: ADX=51.0 (trending) | Direction=bearish | Vol=normal (0.94x avg) | Tradeable=['SELL']
+2026-06-12 09:48:04,207 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-12 09:48:04,207 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-12 09:48:04,208 - database - INFO - Database ready at data/forexchautari.db
+2026-06-12 09:48:04,312 - regime - INFO - Regime: ADX=36.3 (trending) | Direction=bearish | Vol=normal (0.83x avg) | Tradeable=['SELL']
+2026-06-12 09:48:04,370 - regime - INFO - Regime: ADX=27.5 (trending) | Direction=bearish | Vol=normal (0.67x avg) | Tradeable=['SELL']
+2026-06-12 09:48:04,422 - regime - INFO - Regime: ADX=35.3 (trending) | Direction=neutral | Vol=low (0.37x avg) | Tradeable=['BUY', 'SELL']
+2026-06-12 09:48:04,481 - regime - INFO - Regime: ADX=51.0 (trending) | Direction=bearish | Vol=normal (0.94x avg) | Tradeable=['SELL']
+2026-06-12 09:48:06,439 - regime - INFO - Regime: ADX=36.3 (trending) | Direction=bearish | Vol=normal (0.83x avg) | Tradeable=['SELL']
+2026-06-12 09:48:06,492 - regime - INFO - Regime: ADX=27.5 (trending) | Direction=bearish | Vol=normal (0.67x avg) | Tradeable=['SELL']
+2026-06-12 09:48:06,547 - regime - INFO - Regime: ADX=35.3 (trending) | Direction=neutral | Vol=low (0.37x avg) | Tradeable=['BUY', 'SELL']
+2026-06-12 09:48:06,605 - regime - INFO - Regime: ADX=51.0 (trending) | Direction=bearish | Vol=normal (0.94x avg) | Tradeable=['SELL']
+2026-06-12 09:48:08,925 - paper_trader - ERROR - Signal check failed: Oanda POST /v3/accounts/101-011-21728758-001/orders [400]: {"orderRejectTransaction":{"id":"31","accountID":"101-011-21728758-001","userID":21728758,"batchID":"31","requestID":"97543041971514223","time":"2026-06-12T04:03:08.824405736Z","type":"MARKET_ORDER_REJECT","rejectReason":"TAKE_PROFIT_ON_FILL_PRICE_PRECISION_EXCEEDED","instrument":"USD_JPY","units":"
+2026-06-12 09:49:42,902 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-12 09:49:42,903 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-12 09:49:42,904 - database - INFO - Database ready at data/forexchautari.db
+2026-06-12 09:49:43,060 - regime - INFO - Regime: ADX=36.3 (trending) | Direction=bearish | Vol=normal (0.83x avg) | Tradeable=['SELL']
+2026-06-12 09:49:43,137 - regime - INFO - Regime: ADX=27.5 (trending) | Direction=bearish | Vol=normal (0.67x avg) | Tradeable=['SELL']
+2026-06-12 09:49:43,192 - regime - INFO - Regime: ADX=35.3 (trending) | Direction=neutral | Vol=low (0.37x avg) | Tradeable=['BUY', 'SELL']
+2026-06-12 09:49:43,247 - regime - INFO - Regime: ADX=51.0 (trending) | Direction=bearish | Vol=normal (0.94x avg) | Tradeable=['SELL']
+2026-06-12 10:04:49,522 - database - INFO - Database ready at data/forexchautari.db
+2026-06-12 10:04:54,927 - database - INFO - Database ready at data/forexchautari.db
