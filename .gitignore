@@ -1,3 +1,24 @@
 .env
 .env.local
 
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+
+# Logs
+logs/
+*.log
+
+# Data files
+data/*.csv
+data/*.db
+data/*.json
+
+# Model binaries and results
+models/*.pkl
+models/*_wf_results.csv
+models/walk_forward_results.csv
+models/metadata.json
