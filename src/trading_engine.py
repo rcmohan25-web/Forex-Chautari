@@ -3,19 +3,179 @@ ForexChautari — Trading Engine
 Central place for all trading logic used by both user dashboard and admin panel.
 Handles: build client from user's stored account, risk checks, order placement,
 position sizing, SL/TP calculation.
+
+Security (task 1.5):
+  enforce_hard_risk_limits() is called before every order placement.
+  It enforces three ceilings that no user setting can override:
+    • HARD_MAX_POSITIONS      — absolute open-position cap
+    • HARD_MAX_RISK_PCT       — max balance fraction at risk per trade
+    • HARD_MAX_DAILY_LOSS_PCT — daily kill-switch (disables auto-trading for
+                                the rest of the UTC day and sends a Telegram alert)
 """
 
 import os
-from typing import Optional
+from datetime import date as _date
+from typing import Optional, TYPE_CHECKING
+
 from src.oanda_client import OandaClient
 from src.database import (
     get_trading_accounts, log_trade, close_trade as db_close_trade,
     get_user_trading_settings,
+    get_platform_settings, update_platform_settings,
 )
 from src.logger import get_logger
+from config.settings import (
+    HARD_MAX_POSITIONS,
+    HARD_MAX_RISK_PCT,
+    HARD_MAX_DAILY_LOSS_PCT,
+)
 
 logger = get_logger("trading_engine")
 
+
+# ── Kill-switch helpers ───────────────────────────────────────────────────────
+
+def _killswitch_key(user_id: int) -> str:
+    """platform_settings key for a user's daily kill-switch date."""
+    return f"killswitch_user_{user_id}"
+
+
+def is_user_killed_today(user_id: int) -> bool:
+    """
+    Return True if the daily kill switch fired for this user today (UTC).
+    The switch resets automatically at midnight UTC — no cleanup needed.
+    """
+    settings = get_platform_settings()
+    stored = settings.get(_killswitch_key(user_id), "")
+    return stored == str(_date.today())
+
+
+def _activate_killswitch(user_id: int, drawdown_pct: float) -> None:
+    """
+    Persist today's date as the kill-switch value for this user and send
+    a Telegram alert.  Idempotent — safe to call multiple times in the
+    same UTC day.
+    """
+    update_platform_settings({_killswitch_key(user_id): str(_date.today())})
+
+    logger.critical(
+        f"KILL SWITCH ACTIVATED — user_id={user_id} "
+        f"daily drawdown={drawdown_pct * 100:.2f}% >= "
+        f"{HARD_MAX_DAILY_LOSS_PCT * 100:.0f}% hard limit. "
+        "Auto-trading disabled for the rest of the UTC day."
+    )
+
+    try:
+        from src.alerter import Alerter
+        Alerter()._send(
+            f"🚨 <b>DAILY KILL SWITCH ACTIVATED</b>\n\n"
+            f"User ID: <code>{user_id}</code>\n"
+            f"Unrealised drawdown: <b>{drawdown_pct * 100:.2f}%</b> has breached the\n"
+            f"hard limit of <b>{HARD_MAX_DAILY_LOSS_PCT * 100:.0f}%</b>.\n\n"
+            f"Auto-trading is <b>disabled for the rest of today (UTC)</b>.\n"
+            f"It will resume automatically tomorrow.\n\n"
+            f"No further orders will be placed for this account today."
+        )
+    except Exception as exc:
+        logger.warning(f"Kill-switch Telegram alert failed: {exc}")
+
+
+# ── Hard risk enforcement ─────────────────────────────────────────────────────
+
+def enforce_hard_risk_limits(
+    client: OandaClient,
+    user_id: Optional[int],
+    units: int,
+    instrument: str,
+    sl_pips: float,
+) -> None:
+    """
+    Enforce platform-level hard risk ceilings before any order is placed.
+
+    This function is intentionally separate from the user-configurable
+    _check_risk() in PaperTrader so that it cannot be disabled, bypassed,
+    or misconfigured through any user-facing setting.
+
+    Checks (in order):
+
+    1. Daily kill switch — was this user shut down earlier today?
+    2. Hard position ceiling — HARD_MAX_POSITIONS open at once.
+    3. Daily drawdown kill switch — if unrealised P&L / balance is worse
+       than -HARD_MAX_DAILY_LOSS_PCT, activate the kill switch and block.
+    4. Per-trade risk ceiling — units × sl_pips × pip_value / balance
+       must not exceed HARD_MAX_RISK_PCT.
+
+    Raises ValueError with a clear message on any breach.
+    Logs a WARNING and proceeds if the account summary is temporarily
+    unavailable (checks 3 & 4 only — kill switch and position cap always run).
+    """
+
+    # ── 1. Kill switch ────────────────────────────────────────────────────────
+    if user_id is not None and is_user_killed_today(user_id):
+        raise ValueError(
+            f"Daily kill switch is active for user {user_id}. "
+            f"Auto-trading is disabled for the rest of today (UTC). "
+            f"It will resume tomorrow automatically."
+        )
+
+    # ── 2. Hard position ceiling ──────────────────────────────────────────────
+    open_trades = client.get_open_trades()
+    n_open = len(open_trades)
+    if n_open >= HARD_MAX_POSITIONS:
+        raise ValueError(
+            f"Hard position ceiling reached: {n_open} open "
+            f"(hard limit {HARD_MAX_POSITIONS}). "
+            f"Close an existing position before placing a new order."
+        )
+
+    # ── 3 & 4. Account-level checks ───────────────────────────────────────────
+    # These require an API call; if Oanda is temporarily unreachable we log a
+    # warning rather than blocking trades — the position cap (check 2) and kill
+    # switch (check 1) are the primary safety net.
+    try:
+        summary = client.get_account_summary()
+        balance = float(summary["balance"])
+
+        if balance > 0:
+            # ── 3. Daily drawdown → kill switch ───────────────────────────────
+            unrealised_pl  = float(summary["unrealized_pl"])
+            drawdown_pct   = unrealised_pl / balance  # negative when losing
+
+            if drawdown_pct <= -HARD_MAX_DAILY_LOSS_PCT:
+                if user_id is not None:
+                    _activate_killswitch(user_id, abs(drawdown_pct))
+                raise ValueError(
+                    f"Daily loss hard limit breached: "
+                    f"{abs(drawdown_pct) * 100:.2f}% unrealised drawdown "
+                    f"(hard limit {HARD_MAX_DAILY_LOSS_PCT * 100:.0f}%). "
+                    f"Auto-trading disabled for the rest of today."
+                )
+
+            # ── 4. Per-trade risk ceiling ──────────────────────────────────────
+            pip_value      = 0.01 if "JPY" in instrument else 0.0001
+            trade_risk_pct = (units * sl_pips * pip_value) / balance
+
+            if trade_risk_pct > HARD_MAX_RISK_PCT:
+                raise ValueError(
+                    f"Trade risk {trade_risk_pct * 100:.2f}% exceeds hard cap "
+                    f"{HARD_MAX_RISK_PCT * 100:.0f}%. "
+                    f"Reduce units ({units:,}) or stop-loss ({sl_pips} pips) "
+                    f"so the position risks at most "
+                    f"${balance * HARD_MAX_RISK_PCT:,.2f} "
+                    f"({HARD_MAX_RISK_PCT * 100:.0f}% of ${balance:,.2f})."
+                )
+
+    except ValueError:
+        raise  # re-raise our own limit-breach errors untouched
+    except Exception as exc:
+        # Oanda API temporarily down — position cap and kill switch still ran
+        logger.warning(
+            f"enforce_hard_risk_limits: account summary unavailable "
+            f"({exc}); checks 3 & 4 skipped for this order."
+        )
+
+
+# ── Internal account helpers ──────────────────────────────────────────────────
 
 def _select_account(accounts: list, account_idx: int = 0, account_db_id: int | None = None) -> dict:
     if account_db_id:
@@ -62,10 +222,22 @@ def calculate_position_size(
     Calculate units based on risk percentage of balance.
     risk_pct: e.g. 0.01 = 1%
     stop_loss_pips: distance to stop in pips
+
+    Note: risk_pct is silently clamped to HARD_MAX_RISK_PCT so that
+    risk-sizing helpers can never produce a position that would be
+    rejected by enforce_hard_risk_limits().
     """
+    # Clamp the requested risk to the hard ceiling
+    effective_risk_pct = min(risk_pct, HARD_MAX_RISK_PCT)
+    if effective_risk_pct < risk_pct:
+        logger.warning(
+            f"calculate_position_size: requested risk_pct {risk_pct:.3f} "
+            f"exceeds hard cap {HARD_MAX_RISK_PCT:.3f} — clamped."
+        )
+
     if stop_loss_pips <= 0:
         return min_units
-    risk_amount = balance * risk_pct
+    risk_amount = balance * effective_risk_pct
     units = int(risk_amount / (stop_loss_pips * pip_value))
     return max(min_units, min(units, max_units))
 
@@ -106,10 +278,26 @@ def place_trade(
     account_db_id: Optional[int] = None,
 ) -> dict:
     """
-    Full trade placement: get client → get live price → calculate SL/TP → place → log to DB.
-    Returns result dict with fill details.
+    Full trade placement: get client → enforce hard risk limits →
+    get live price → calculate SL/TP → place → log to DB.
+
+    Hard risk limits are enforced here unconditionally, before any
+    order reaches Oanda.  This is the primary enforcement point for
+    trades placed through the Trading tab (manual and limit orders).
+
+    Raises ValueError if any hard limit is breached.
     """
     client = get_client_for_user(user_id, account_idx, account_db_id)
+
+    # ── Hard risk limits (cannot be bypassed) ─────────────────────────────────
+    enforce_hard_risk_limits(
+        client=client,
+        user_id=user_id,
+        units=units,
+        instrument=instrument,
+        sl_pips=sl_pips,
+    )
+
     price_data = client.get_live_price(instrument)
     entry = price_data["mid"]
 
@@ -134,9 +322,12 @@ def place_trade(
         broker_trade_id=fill.get("trade_id", ""),
     )
 
-    logger.info(f"Trade placed: user={user_id} {instrument} {direction} units={units} fill={fill['fill_price']}")
+    logger.info(
+        f"Trade placed: user={user_id} {instrument} {direction} "
+        f"units={units} fill={fill['fill_price']}"
+    )
     return {
-        "success":    True,
+        "success":     True,
         "db_trade_id": trade_id,
         "fill":        fill,
         "sl":          sl,
@@ -181,6 +372,11 @@ def get_risk_metrics(
             "daily_pnl":         client.get_daily_pnl(),
             "risk_pct":          round(abs(total_unrealized) / summary["balance"] * 100, 2)
                                  if summary["balance"] > 0 else 0,
+            # Expose kill-switch state so dashboards can surface it
+            "kill_switch_active": is_user_killed_today(user_id) if user_id else False,
+            "hard_max_positions": HARD_MAX_POSITIONS,
+            "hard_max_risk_pct":  HARD_MAX_RISK_PCT,
+            "hard_max_daily_loss_pct": HARD_MAX_DAILY_LOSS_PCT,
         }
     except Exception as e:
         return {"error": str(e)}
@@ -193,6 +389,17 @@ def run_user_auto_trade(user_id: int, settings: Optional[dict] = None) -> list:
 
     if settings.get("mode") != "auto" or not settings.get("auto_trade_enabled"):
         return [{"action": "skipped", "reason": "Auto-trade is not enabled"}]
+
+    # Kill switch is also checked inside enforce_hard_risk_limits() for each
+    # individual pair, but do a fast early-exit here to skip the whole cycle.
+    if is_user_killed_today(user_id):
+        return [{
+            "action": "skipped",
+            "reason": (
+                "Daily kill switch is active — auto-trading is disabled "
+                "for the rest of today (UTC)."
+            ),
+        }]
 
     from src.multi_pair_manager import run_portfolio_signal_check
 

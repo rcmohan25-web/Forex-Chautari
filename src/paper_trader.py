@@ -3,6 +3,11 @@ Paper trading engine — multi-pair aware.
 
 Fix: now loads the correct per-pair model from models/{PAIR}_model.pkl
 instead of the legacy single-pair models/model.pkl.
+
+Security (task 1.5):
+  _check_risk() calls enforce_hard_risk_limits() before the user-configurable
+  checks.  This ensures platform ceilings apply to every automated order even
+  when PaperTrader is invoked directly (e.g. from the portfolio scheduler).
 """
 
 import os
@@ -171,7 +176,7 @@ class PaperTrader:
                 except Exception:
                     pass
 
-            # 7. Risk check
+            # 7. Risk check (hard limits + user-configurable limits)
             risk_ok, risk_reason = self._check_risk()
             if not risk_ok:
                 status["reason"] = risk_reason
@@ -226,6 +231,33 @@ class PaperTrader:
         return status
 
     def _check_risk(self) -> tuple:
+        """
+        Two-layer risk check:
+
+        Layer 1 — Hard platform ceilings (enforce_hard_risk_limits).
+          These are non-negotiable and cannot be overridden by any user
+          setting.  If they fire, the trade is blocked and auto-trading
+          may be halted for the day (kill switch).
+
+        Layer 2 — User-configurable per-account limits.
+          max_positions, max_daily_loss, duplicate-position guard.
+          These are soft limits that users and admins can adjust within
+          the bounds of the hard ceilings set by Layer 1.
+        """
+        # ── Layer 1: Hard limits ──────────────────────────────────────────────
+        try:
+            from src.trading_engine import enforce_hard_risk_limits
+            enforce_hard_risk_limits(
+                client=self.oanda,
+                user_id=self.user_id,
+                units=self.units,
+                instrument=self.instrument,
+                sl_pips=self.sl_pips,
+            )
+        except ValueError as exc:
+            return False, str(exc)
+
+        # ── Layer 2: User-configurable limits ─────────────────────────────────
         try:
             summary = self.oanda.get_account_summary()
             if summary["open_trades"] >= self.max_positions:

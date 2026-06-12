@@ -46,11 +46,26 @@ DEFAULT_WF_TRAIN_SIZE    = 300
 DEFAULT_WF_TEST_SIZE     = 100
 DEFAULT_WF_STEP_SIZE     = 100
 
-# ── Risk management ───────────────────────────────────────────────────────────
+# ── Risk management (user-configurable, subject to hard ceilings below) ───────
 DEFAULT_RISK_PER_TRADE = 0.01
 DEFAULT_MAX_DAILY_LOSS = 0.02
 DEFAULT_MAX_POSITIONS  = 3
 DEFAULT_UNITS          = 1000
+
+# ── Hard risk ceilings (CANNOT be overridden by user settings) ────────────────
+# These are enforced at the platform layer before every order, regardless of
+# what any user or admin has configured. They exist to prevent a misconfigured
+# or compromised account from causing outsized losses.
+#
+# HARD_MAX_POSITIONS     : absolute cap on open positions per account
+# HARD_MAX_RISK_PCT      : max fraction of balance risked on a single trade
+#                          (units × sl_pips × pip_value / balance)
+# HARD_MAX_DAILY_LOSS_PCT: unrealised drawdown threshold that triggers the
+#                          daily kill switch — auto-trading is halted for the
+#                          rest of the UTC day and a Telegram alert is sent
+HARD_MAX_POSITIONS      = 5     # never more than 5 open positions at once
+HARD_MAX_RISK_PCT       = 0.02  # never risk more than 2% of balance per trade
+HARD_MAX_DAILY_LOSS_PCT = 0.05  # kill switch fires at 5% unrealised drawdown
 
 # ── Subscription plan limits ──────────────────────────────────────────────────
 PLAN_LIMITS = {
