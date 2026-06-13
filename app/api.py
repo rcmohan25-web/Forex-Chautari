@@ -38,13 +38,14 @@ from src.schemas import (
     HealthResponse, PredictionResponse,
     ModelInfoResponse, FetchResponse,
 )
-from config.startup_checks import validate_env, warn_if_debug_settings_in_production
+from config.startup_checks import validate_env, warn_if_debug_settings_in_production, verify_database_connectivity
 
 logger = get_logger("api")
 
-# Fail fast — check all required env vars before touching the database
+# Fail fast — check all required env vars and database connectivity before starting
 validate_env()
 warn_if_debug_settings_in_production()
+verify_database_connectivity()
 
 from app.api_auth import (
     auth_router,

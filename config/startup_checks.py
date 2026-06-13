@@ -95,6 +95,12 @@ _ENV_SPEC = [
         "description":  "Alpha Vantage key — only needed if using AV as data source.",
         "generate_cmd": "https://www.alphavantage.co/support/#api-key (free)",
     },
+    {
+        "key":          "DATABASE_URL",
+        "required":     False,
+        "description":  "Database connection string (Postgres recommended for production).",
+        "generate_cmd": "postgresql://user:pass@host:5432/forexchautari",
+    },
 ]
 
 
@@ -188,6 +194,38 @@ def validate_env(*, die_on_warnings: bool = False) -> None:
         print(message, file=sys.stderr)
         raise SystemExit(1)
 
+    # ── Optional: if DATABASE_URL points to Postgres, verify the shared
+    # SQLAlchemy ENGINE can actually connect. This fails fast at startup
+    # rather than when the first query is attempted at runtime.
+    database_url = os.getenv("DATABASE_URL", "").strip()
+    if database_url and not database_url.startswith("sqlite"):
+        try:
+            from sqlalchemy import text
+            from src.db_engine import ENGINE
+
+            with ENGINE.connect() as conn:
+                conn.execute(text("SELECT 1"))
+            logger.info("Database engine connectivity check passed: ENGINE.connect() ✓")
+        except Exception as exc:  # pragma: no cover - startup failure path
+            message = (
+                "\n"
+                "╔══════════════════════════════════════════════════════════════════╗\n"
+                "║       FOREXCHAUTARI — DATABASE ENGINE CONNECTIVITY FAILED        ║\n"
+                "╚══════════════════════════════════════════════════════════════════╝\n"
+                "\n"
+                f"Could not connect using the application ENGINE to:\n"
+                f"  {database_url}\n\n"
+                f"Error:\n  {type(exc).__name__}: {exc}\n\n"
+                "Troubleshooting:\n"
+                "  1. Verify DATABASE_URL in .env is correct.\n"
+                "  2. Ensure the Postgres server is running and reachable.\n"
+                "  3. Confirm the database and user exist and credentials are valid.\n"
+                "\n"
+                "To use SQLite instead, unset DATABASE_URL in .env and restart.\n"
+            )
+            print(message, file=sys.stderr)
+            raise SystemExit(1)
+
 
 def warn_if_debug_settings_in_production() -> None:
     """
@@ -204,12 +242,14 @@ def warn_if_debug_settings_in_production() -> None:
             "The v1 model has ~51-53% walk-forward accuracy."
         )
 
-    # DB in a temp location
-    db_path = os.getenv("DB_PATH", "data/forexchautari.db")
-    if db_path.startswith("/tmp"):
-        warnings_found.append(
-            f"  • DB_PATH={db_path} — database is in /tmp and will be lost on reboot."
-        )
+    # DATABASE_URL in a temp location (SQLite only)
+    database_url = os.getenv("DATABASE_URL", "").strip()
+    if database_url and database_url.startswith("sqlite"):
+        db_path = database_url.replace("sqlite:///", "")
+        if db_path.startswith("/tmp"):
+            warnings_found.append(
+                f"  • DATABASE_URL={database_url} — database is in /tmp and will be lost on reboot."
+            )
 
     # Short JWT secret
     jwt_secret = os.getenv("JWT_SECRET", "")
@@ -221,3 +261,59 @@ def warn_if_debug_settings_in_production() -> None:
 
     for w in warnings_found:
         logger.warning("Production warning: %s", w.strip())
+
+
+def verify_database_connectivity() -> None:
+    """
+    If DATABASE_URL is set to a PostgreSQL connection, verify it's reachable.
+    This is a fail-fast check — if the database is down, the app should not start.
+
+    Call this during startup (after validate_env()) so bad connections are caught
+    before the app starts accepting traffic or processing background jobs.
+
+    Raises SystemExit if the connection cannot be established.
+    """
+    database_url = os.getenv("DATABASE_URL", "").strip()
+
+    # Skip check for SQLite or unset DATABASE_URL
+    if not database_url or database_url.startswith("sqlite"):
+        return
+
+    # Try to establish a test connection
+    try:
+        from sqlalchemy import create_engine, text
+        test_engine = create_engine(
+            database_url,
+            pool_pre_ping=True,
+            connect_args={},
+            future=True,
+            echo=False,
+        )
+        with test_engine.connect() as conn:
+            conn.execute(text("SELECT 1"))
+        logger.info(
+            f"Database connectivity check passed: {database_url.split('@')[0]}@... ✓"
+        )
+    except Exception as exc:
+        message = (
+            "\n"
+            "╔══════════════════════════════════════════════════════════════════╗\n"
+            "║       FOREXCHAUTARI — DATABASE CONNECTIVITY CHECK FAILED         ║\n"
+            "╚══════════════════════════════════════════════════════════════════╝\n"
+            "\n"
+            f"Could not connect to database at:\n"
+            f"  {database_url}\n"
+            f"\n"
+            f"Error:\n"
+            f"  {type(exc).__name__}: {exc}\n"
+            f"\n"
+            f"Troubleshooting:\n"
+            f"  1. Verify the DATABASE_URL is correct in .env\n"
+            f"  2. Check that the PostgreSQL server is running\n"
+            f"  3. Verify network connectivity and firewall rules\n"
+            f"  4. Ensure the database and user exist (run migrations if needed)\n"
+            f"\n"
+            f"To use SQLite instead, unset DATABASE_URL in .env and restart.\n"
+        )
+        print(message, file=sys.stderr)
+        raise SystemExit(1)

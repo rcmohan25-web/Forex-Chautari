@@ -17,16 +17,19 @@ pip install -r requirements.txt
 cp .env.example .env
 # Edit .env with your Oanda, Telegram, and Alpha Vantage keys
 
-# 3. Fetch data and train models for all 4 pairs
+# 3. If you want local Postgres via Docker Compose, start it now
+docker compose up -d postgres
+
+# 4. Fetch data and train models for all 4 pairs
 python train_all.py --fetch
 
-# 4. Start the API backend (Terminal 1)
+# 5. Start the API backend (Terminal 1)
 uvicorn app.api:app --reload --host 127.0.0.1 --port 8000
 
-# 5. Start the dashboard (Terminal 2)
+# 6. Start the dashboard (Terminal 2)
 streamlit run app/main.py
 
-# 6. Open browser → http://localhost:8501
+# 7. Open browser → http://localhost:8501
 #    Default admin login: admin / admin123
 ```
 
@@ -141,6 +144,88 @@ python tests/test_all.py
 
 # Check the API health endpoint
 curl http://127.0.0.1:8000/health
+```
+
+### Optional: Local Postgres via Docker Compose
+
+If you want a local PostgreSQL service instead of SQLite, start the provided Compose service from the project root:
+
+```bash
+docker compose up -d postgres
+```
+
+Then set `DATABASE_URL` in `.env` to:
+
+```env
+DATABASE_URL=postgresql://forex_user:change_me_strong_password@localhost:5432/forexchautari
+```
+
+Then restart the API, dashboard, and scheduler.
+
+### Database strategy: SQLite (local) vs Postgres (production)
+
+**Local Development & CI: Keep SQLite** (faster, no setup)
+- Do NOT set `DATABASE_URL` in `.env` — leave it blank or commented out
+- The app automatically uses `sqlite:///data/forexchautari.db` (no external dependencies)
+- Each developer gets their own local DB file; perfect for parallel testing
+- Tests run in isolated temp SQLite files via `_temp_db()` fixture
+
+**Production & Staging: Use Postgres** (concurrency, durability)
+- Set `DATABASE_URL=postgresql://user:pass@host:5432/db` in your deployment
+- The startup checks (`validate_env()`, `verify_database_connectivity()`) will verify it's reachable before accepting traffic
+- Connection pooling prevents exhausting max_connections under high load
+- MVCC + row-level locking handle concurrent API, dashboard, and scheduler traffic safely
+
+**Migrating existing data to Postgres:**
+
+```bash
+# Step 1: Create Postgres schema
+DATABASE_URL=postgresql://user:pass@host:5432/forexchautari \
+  python -c "from src.database import init_db; init_db()"
+
+# Step 2: Copy data from SQLite
+python scripts/migrate_sqlite_to_postgres.py \
+    --sqlite-path data/forexchautari.db \
+    --postgres-url postgresql://user:pass@host:5432/forexchautari
+
+# Step 3: Verify (check row counts match)
+psql postgresql://user:pass@host:5432/forexchautari -c "SELECT COUNT(*) FROM users;"
+```
+
+**Docker Compose for local Postgres development:**
+
+```bash
+# Start just the Postgres service (API/dashboard run locally for faster iteration)
+docker compose up -d postgres
+
+# Set DATABASE_URL in your shell
+export DATABASE_URL=postgresql://forex_user:change_me_strong_password@localhost:5432/forexchautari
+
+# Run app locally
+uvicorn app.api:app --reload
+streamlit run app/main.py
+
+# When done:
+docker compose down
+```
+
+**Docker Compose for full production stack:**
+
+```bash
+# Start all services (API, dashboard, scheduler, Postgres)
+docker compose up -d
+
+# Tail logs
+docker compose logs -f
+
+# Stop
+docker compose down
+```
+
+**Important:** Before running anything against Postgres in production, back up your SQLite database:
+
+```bash
+cp data/forexchautari.db data/forexchautari.db.bak
 ```
 
 ---

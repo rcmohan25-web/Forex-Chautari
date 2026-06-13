@@ -1,47 +1,31 @@
 """
-SQLite database layer for ForexChautari.
+Database layer for ForexChautari.
 
-Changes in this version (encryption audit update):
-  - Imports encrypt() and decrypt() from src.encryption
-  - add_trading_account() encrypts api_key before INSERT  (existing)
-  - get_trading_accounts() decrypts api_key_enc after SELECT  (existing)
-  - init_db() now calls _audit_plaintext_api_keys() on every startup.
-    Any row whose api_key_enc does NOT start with the "enc:v1:" prefix
-    is a plaintext key that was written before encryption was deployed.
-    A CRITICAL log line is emitted and stored in platform_settings so
-    the admin panel can surface a banner without re-querying the table.
-    Resolution: run  python scripts/migrate_encrypt_keys.py
+Dialect-agnostic: works with SQLite (default) or PostgreSQL via DATABASE_URL.
+All queries use named params (:name) for Postgres/SQLite compatibility.
+
+Concurrency & Locking:
+  - SQLite: uses WAL mode at the engine level (db_engine.py), enabling
+    concurrent reads and single-writer transactions.
+  - PostgreSQL: MVCC (Multi-Version Concurrency Control) + row-level locking
+    are handled natively; no pragmas needed. Connections are pooled to prevent
+    exhausting max_connections limits.
+
+Imports from src.db_engine:
+  - get_db: context manager for transactional connections
+  - execute, fetchone, fetchall: dict-based query helpers
+  - pk_column, IS_POSTGRES, IS_SQLITE: dialect detection
 """
 
 import os
-import sqlite3
 import hashlib
 import secrets
 from datetime import datetime, timedelta
-from contextlib import contextmanager
 from src.logger import get_logger
-from src.encryption import encrypt, decrypt, is_encrypted   # ← is_encrypted added
+from src.encryption import encrypt, decrypt, is_encrypted
+from src.db_engine import get_db, execute, fetchone, fetchall, pk_column, IS_POSTGRES, IS_SQLITE
 
 logger = get_logger("database")
-
-DB_PATH = os.getenv("DB_PATH", "data/forexchautari.db")
-
-
-@contextmanager
-def get_db():
-    os.makedirs(os.path.dirname(DB_PATH) or ".", exist_ok=True)
-    conn = sqlite3.connect(DB_PATH, detect_types=sqlite3.PARSE_DECLTYPES)
-    conn.row_factory = sqlite3.Row
-    conn.execute("PRAGMA journal_mode=WAL")
-    conn.execute("PRAGMA foreign_keys=ON")
-    try:
-        yield conn
-        conn.commit()
-    except Exception:
-        conn.rollback()
-        raise
-    finally:
-        conn.close()
 
 
 # ── Default password sentinel ─────────────────────────────────────────────────
@@ -60,9 +44,8 @@ def _audit_admin_default_password(conn) -> None:
       ADMIN_PASSWORD_CHANGED = "false"  — still on default, block non-health endpoints
     """
     now = datetime.utcnow().isoformat()
-    admin_row = conn.execute(
-        "SELECT password_hash, salt FROM users WHERE username='admin' AND is_active=1"
-    ).fetchone()
+    admin_row = fetchone(conn,
+        "SELECT password_hash, salt FROM users WHERE username='admin' AND is_active=1")
 
     if not admin_row:
         return
@@ -75,13 +58,13 @@ def _audit_admin_default_password(conn) -> None:
 
     flag_value = "false" if still_default else "true"
 
-    conn.execute("""
+    execute(conn, """
         INSERT INTO platform_settings (key, value, updated_at)
-        VALUES ('ADMIN_PASSWORD_CHANGED', ?, ?)
+        VALUES (:k, :v, :now)
         ON CONFLICT(key) DO UPDATE
             SET value = excluded.value,
                 updated_at = excluded.updated_at
-    """, (flag_value, now))
+    """, {"k": "ADMIN_PASSWORD_CHANGED", "v": flag_value, "now": now})
 
     if still_default:
         logger.critical(
@@ -121,9 +104,8 @@ def _audit_plaintext_api_keys(conn) -> None:
     """
     now = datetime.utcnow().isoformat()
 
-    rows = conn.execute(
-        "SELECT id, user_id, api_key_enc FROM trading_accounts WHERE is_active = 1"
-    ).fetchall()
+    rows = fetchall(conn,
+        "SELECT id, user_id, api_key_enc FROM trading_accounts WHERE is_active = 1")
 
     plaintext_ids: list[int] = [
         row["id"] for row in rows
@@ -133,30 +115,30 @@ def _audit_plaintext_api_keys(conn) -> None:
     found = len(plaintext_ids) > 0
     flag  = "true" if found else "false"
 
-    conn.execute("""
+    execute(conn, """
         INSERT INTO platform_settings (key, value, updated_at)
-        VALUES ('PLAINTEXT_API_KEYS_FOUND', ?, ?)
+        VALUES (:k, :v, :now)
         ON CONFLICT(key) DO UPDATE
             SET value      = excluded.value,
                 updated_at = excluded.updated_at
-    """, (flag, now))
+    """, {"k": "PLAINTEXT_API_KEYS_FOUND", "v": flag, "now": now})
 
     if found:
         # Also store the count so the admin panel can show a specific number.
-        conn.execute("""
+        execute(conn, """
             INSERT INTO platform_settings (key, value, updated_at)
-            VALUES ('PLAINTEXT_API_KEYS_COUNT', ?, ?)
+            VALUES (:k, :v, :now)
             ON CONFLICT(key) DO UPDATE
                 SET value      = excluded.value,
                     updated_at = excluded.updated_at
-        """, (str(len(plaintext_ids)), now))
+        """, {"k": "PLAINTEXT_API_KEYS_COUNT", "v": str(len(plaintext_ids)), "now": now})
 
         logger.critical(
             "\n".join([
                 "=" * 70,
                 "CRITICAL SECURITY WARNING — PLAINTEXT API KEYS IN DATABASE",
                 f"{len(plaintext_ids)} trading account(s) have their Oanda API key",
-                "stored as PLAINTEXT. Anyone who reads the SQLite file can steal",
+                "stored as PLAINTEXT. Anyone who reads the database file can steal",
                 "live Oanda credentials and place or close trades on behalf of users.",
                 "",
                 "To encrypt all plaintext keys, run:",
@@ -182,10 +164,11 @@ def _audit_plaintext_api_keys(conn) -> None:
 
 
 def init_db():
+    pk = pk_column()
     with get_db() as conn:
-        conn.executescript("""
+        execute(conn, f"""
         CREATE TABLE IF NOT EXISTS users (
-            id            INTEGER PRIMARY KEY AUTOINCREMENT,
+            id            {pk},
             username      TEXT UNIQUE NOT NULL,
             email         TEXT UNIQUE NOT NULL,
             password_hash TEXT NOT NULL,
@@ -196,10 +179,11 @@ def init_db():
             last_login    TEXT,
             full_name     TEXT,
             phone         TEXT
-        );
+        )""")
 
+        execute(conn, f"""
         CREATE TABLE IF NOT EXISTS subscriptions (
-            id          INTEGER PRIMARY KEY AUTOINCREMENT,
+            id          {pk},
             user_id     INTEGER NOT NULL REFERENCES users(id),
             plan        TEXT NOT NULL DEFAULT 'free',
             status      TEXT NOT NULL DEFAULT 'active',
@@ -208,10 +192,11 @@ def init_db():
             auto_trade  INTEGER NOT NULL DEFAULT 0,
             max_pairs   INTEGER NOT NULL DEFAULT 1,
             UNIQUE(user_id)
-        );
+        )""")
 
+        execute(conn, f"""
         CREATE TABLE IF NOT EXISTS trading_accounts (
-            id              INTEGER PRIMARY KEY AUTOINCREMENT,
+            id              {pk},
             user_id         INTEGER NOT NULL REFERENCES users(id),
             account_name    TEXT NOT NULL,
             broker          TEXT NOT NULL DEFAULT 'oanda',
@@ -221,10 +206,11 @@ def init_db():
             is_active       INTEGER NOT NULL DEFAULT 1,
             created_at      TEXT NOT NULL,
             verified_at     TEXT
-        );
+        )""")
 
+        execute(conn, f"""
         CREATE TABLE IF NOT EXISTS trades (
-            id              INTEGER PRIMARY KEY AUTOINCREMENT,
+            id              {pk},
             user_id         INTEGER REFERENCES users(id),
             pair            TEXT NOT NULL,
             signal          TEXT NOT NULL,
@@ -237,10 +223,11 @@ def init_db():
             broker_trade_id TEXT,
             opened_at       TEXT NOT NULL,
             closed_at       TEXT
-        );
+        )""")
 
+        execute(conn, f"""
         CREATE TABLE IF NOT EXISTS signals_log (
-            id          INTEGER PRIMARY KEY AUTOINCREMENT,
+            id          {pk},
             pair        TEXT NOT NULL,
             signal      TEXT NOT NULL,
             prob_up     REAL,
@@ -249,35 +236,39 @@ def init_db():
             tradeable   INTEGER,
             price       REAL,
             created_at  TEXT NOT NULL
-        );
+        )""")
 
+        execute(conn, f"""
         CREATE TABLE IF NOT EXISTS audit_log (
-            id          INTEGER PRIMARY KEY AUTOINCREMENT,
+            id          {pk},
             user_id     INTEGER REFERENCES users(id),
             event       TEXT NOT NULL,
             detail      TEXT,
             ip_address  TEXT,
             created_at  TEXT NOT NULL
-        );
+        )""")
 
+        execute(conn, f"""
         CREATE TABLE IF NOT EXISTS notifications (
-            id          INTEGER PRIMARY KEY AUTOINCREMENT,
+            id          {pk},
             user_id     INTEGER REFERENCES users(id),
             title       TEXT NOT NULL,
             message     TEXT NOT NULL,
             type        TEXT NOT NULL DEFAULT 'info',
             is_read     INTEGER NOT NULL DEFAULT 0,
             created_at  TEXT NOT NULL
-        );
+        )""")
 
+        execute(conn, """
         CREATE TABLE IF NOT EXISTS sessions (
             token       TEXT PRIMARY KEY,
             user_id     INTEGER NOT NULL REFERENCES users(id),
             role        TEXT NOT NULL,
             expires     TEXT NOT NULL,
             created_at  TEXT NOT NULL
-        );
+        )""")
 
+        execute(conn, """
         CREATE TABLE IF NOT EXISTS user_trading_settings (
             user_id              INTEGER PRIMARY KEY REFERENCES users(id),
             mode                 TEXT NOT NULL DEFAULT 'signals_only',
@@ -292,35 +283,40 @@ def init_db():
             use_regime_filter    INTEGER NOT NULL DEFAULT 1,
             created_at           TEXT NOT NULL,
             updated_at           TEXT NOT NULL
-        );
+        )""")
 
+        execute(conn, """
         CREATE TABLE IF NOT EXISTS platform_settings (
             key         TEXT PRIMARY KEY,
             value       TEXT NOT NULL,
             updated_at  TEXT NOT NULL
-        );
-        """)
+        )""")
 
-        admin = conn.execute("SELECT id FROM users WHERE username='admin'").fetchone()
+        admin = fetchone(conn, "SELECT id FROM users WHERE username=:u", {"u": "admin"})
         if not admin:
             salt    = secrets.token_hex(32)
             pw_hash = hash_password("admin123", salt)
             now     = datetime.utcnow().isoformat()
-            conn.execute("""
+            execute(conn, """
                 INSERT INTO users (username,email,password_hash,salt,role,created_at,full_name)
-                VALUES (?,?,?,?,'admin',?,'System Administrator')
-            """, ("admin","admin@forexchautari.com", pw_hash, salt, now))
-            uid = conn.execute("SELECT id FROM users WHERE username='admin'").fetchone()["id"]
-            conn.execute("""
+                VALUES (:u,:e,:h,:s,'admin',:now,'System Administrator')
+            """, {"u": "admin", "e": "admin@forexchautari.com", "h": pw_hash, "s": salt, "now": now})
+
+            uid = fetchone(conn, "SELECT id FROM users WHERE username=:u", {"u": "admin"})["id"]
+
+            execute(conn, """
                 INSERT INTO subscriptions (user_id,plan,status,started_at,auto_trade,max_pairs)
-                VALUES (?,'enterprise','active',?,1,99)
-            """, (uid, now))
-            conn.execute("""
-                INSERT OR IGNORE INTO user_trading_settings
+                VALUES (:uid,'enterprise','active',:now,1,99)
+            """, {"uid": uid, "now": now})
+
+            execute(conn, """
+                INSERT INTO user_trading_settings
                 (user_id,mode,auto_trade_enabled,threshold,risk_pct,sl_pips,tp_pips,units,
                  max_positions,use_regime_filter,created_at,updated_at)
-                VALUES (?,'signals_only',0,0.55,0.01,20,40,1000,3,1,?,?)
-            """, (uid, now, now))
+                VALUES (:uid,'signals_only',0,0.55,0.01,20,40,1000,3,1,:now,:now)
+                ON CONFLICT (user_id) DO NOTHING
+            """, {"uid": uid, "now": now})
+
             logger.critical(
                 "SECURITY: Default admin account created with password 'admin123'. "
                 "You MUST change this before using the system."
@@ -328,22 +324,23 @@ def init_db():
 
         # ── Security audits (run on every startup) ─────────────────────────
         _audit_admin_default_password(conn)
-        _audit_plaintext_api_keys(conn)       # ← NEW
+        _audit_plaintext_api_keys(conn)
 
         # Backfill settings for existing users after upgrades.
         now = datetime.utcnow().isoformat()
-        rows = conn.execute("""
+        rows = fetchall(conn, """
             SELECT u.id FROM users u
             LEFT JOIN user_trading_settings s ON s.user_id=u.id
             WHERE s.user_id IS NULL
-        """).fetchall()
+        """)
         for row in rows:
-            conn.execute("""
+            execute(conn, """
                 INSERT INTO user_trading_settings
                 (user_id,mode,auto_trade_enabled,threshold,risk_pct,sl_pips,tp_pips,units,
                  max_positions,use_regime_filter,created_at,updated_at)
-                VALUES (?,'signals_only',0,0.55,0.01,20,40,1000,3,1,?,?)
-            """, (row["id"], now, now))
+                VALUES (:uid,'signals_only',0,0.55,0.01,20,40,1000,3,1,:now,:now)
+                ON CONFLICT (user_id) DO NOTHING
+            """, {"uid": row["id"], "now": now})
 
         default_settings = {
             "auto_fetch_enabled": "1",
@@ -359,12 +356,13 @@ def init_db():
             "minimum_profit_factor": "1.05",
         }
         for key, value in default_settings.items():
-            conn.execute("""
-                INSERT OR IGNORE INTO platform_settings (key,value,updated_at)
-                VALUES (?,?,?)
-            """, (key, value, now))
+            execute(conn, """
+                INSERT INTO platform_settings (key,value,updated_at)
+                VALUES (:k,:v,:now)
+                ON CONFLICT (key) DO NOTHING
+            """, {"k": key, "v": value, "now": now})
 
-    logger.info(f"Database ready at {DB_PATH}")
+    logger.info(f"Database ready ({'PostgreSQL' if IS_POSTGRES else 'SQLite'})")
 
 
 # ── Password ──────────────────────────────────────────────────────────────────
@@ -393,35 +391,35 @@ def create_session(user_id: int, role: str) -> str:
     }
     now = datetime.utcnow().isoformat()
     with get_db() as conn:
-        conn.execute("""
-            INSERT OR REPLACE INTO sessions (token,user_id,role,expires,created_at)
-            VALUES (?,?,?,?,?)
-        """, (token, user_id, role, expires, now))
+        execute(conn, """
+            INSERT INTO sessions (token,user_id,role,expires,created_at)
+            VALUES (:token,:uid,:role,:exp,:now)
+            ON CONFLICT(token) DO UPDATE SET user_id=excluded.user_id, role=excluded.role, expires=excluded.expires
+        """, {"token": token, "uid": user_id, "role": role, "exp": expires, "now": now})
     return token
 
 def get_session(token: str) -> dict | None:
     s = SESSIONS.get(token)
     if not s:
         with get_db() as conn:
-            row = conn.execute(
-                "SELECT token,user_id,role,expires FROM sessions WHERE token=?",
-                (token,)
-            ).fetchone()
+            row = fetchone(conn,
+                "SELECT token,user_id,role,expires FROM sessions WHERE token=:t",
+                {"t": token})
             if not row:
                 return None
-            s = dict(row)
+            s = row
             SESSIONS[token] = s
     if datetime.utcnow().isoformat() > s["expires"]:
         SESSIONS.pop(token, None)
         with get_db() as conn:
-            conn.execute("DELETE FROM sessions WHERE token=?", (token,))
+            execute(conn, "DELETE FROM sessions WHERE token=:t", {"t": token})
         return None
     return s
 
 def destroy_session(token: str):
     SESSIONS.pop(token, None)
     with get_db() as conn:
-        conn.execute("DELETE FROM sessions WHERE token=?", (token,))
+        execute(conn, "DELETE FROM sessions WHERE token=:t", {"t": token})
 
 
 # ── Users ─────────────────────────────────────────────────────────────────────
@@ -442,55 +440,62 @@ def create_user(username: str, email: str, password: str,
     limits  = PLAN_LIMITS.get(plan, PLAN_LIMITS["free"])
 
     with get_db() as conn:
-        conn.execute("""
+        execute(conn, """
             INSERT INTO users (username,email,password_hash,salt,role,created_at,full_name,phone)
-            VALUES (?,?,?,?,?,?,?,?)
-        """, (username, email, pw_hash, salt, role, now, full_name, phone))
-        uid = conn.execute("SELECT id FROM users WHERE username=?", (username,)).fetchone()["id"]
-        conn.execute("""
+            VALUES (:u,:e,:h,:s,:role,:now,:full_name,:phone)
+        """, {"u": username, "e": email, "h": pw_hash, "s": salt, "role": role, "now": now, "full_name": full_name, "phone": phone})
+        
+        uid = fetchone(conn, "SELECT id FROM users WHERE username=:u", {"u": username})["id"]
+        
+        execute(conn, """
             INSERT INTO subscriptions (user_id,plan,status,started_at,auto_trade,max_pairs)
-            VALUES (?,?,'active',?,?,?)
-        """, (uid, plan, now, limits["auto_trade"], limits["max_pairs"]))
-        conn.execute("""
+            VALUES (:uid,:plan,'active',:now,:at,:mp)
+        """, {"uid": uid, "plan": plan, "now": now, "at": limits["auto_trade"], "mp": limits["max_pairs"]})
+        
+        execute(conn, """
             INSERT INTO user_trading_settings
             (user_id,mode,auto_trade_enabled,threshold,risk_pct,sl_pips,tp_pips,units,
              max_positions,use_regime_filter,created_at,updated_at)
-            VALUES (?,'signals_only',0,0.55,0.01,20,40,1000,3,1,?,?)
-        """, (uid, now, now))
-        conn.execute("""
+            VALUES (:uid,'signals_only',0,0.55,0.01,20,40,1000,3,1,:now,:now)
+        """, {"uid": uid, "now": now})
+        
+        execute(conn, """
             INSERT INTO audit_log (user_id,event,detail,created_at)
-            VALUES (?,?,?,?)
-        """, (uid, "register", f"New {role} account: {email}", now))
-        conn.execute("""
+            VALUES (:uid,:event,:detail,:now)
+        """, {"uid": uid, "event": "register", "detail": f"New {role} account: {email}", "now": now})
+        
+        execute(conn, """
             INSERT INTO notifications (user_id,title,message,type,created_at)
-            VALUES (?,?,?,?,?)
-        """, (uid, "Welcome to ForexChautari!",
-              f"Your {plan.title()} account is ready. Explore the signals tab to get started.",
-              "success", now))
+            VALUES (:uid,:title,:msg,:type,:now)
+        """, {"uid": uid, "title": "Welcome to ForexChautari!", "msg": f"Your {plan.title()} account is ready. Explore the signals tab to get started.", "type": "success", "now": now})
+    
     return {"id": uid, "username": username, "role": role, "plan": plan}
 
 
 def authenticate_user(username: str, password: str, ip: str = "") -> dict | None:
     with get_db() as conn:
-        row = conn.execute(
-            "SELECT * FROM users WHERE (username=? OR email=?) AND is_active=1",
-            (username, username)
-        ).fetchone()
+        row = fetchone(conn,
+            "SELECT * FROM users WHERE (username=:u OR email=:u) AND is_active=1",
+            {"u": username})
         if not row:
             return None
         if not verify_password(password, row["salt"], row["password_hash"]):
-            conn.execute("""
+            execute(conn, """
                 INSERT INTO audit_log (user_id,event,detail,ip_address,created_at)
-                VALUES (?,?,?,?,?)
-            """, (row["id"],"login_fail","Bad password", ip, datetime.utcnow().isoformat()))
+                VALUES (:uid,:event,:detail,:ip,:now)
+            """, {"uid": row["id"], "event": "login_fail", "detail": "Bad password", "ip": ip, "now": datetime.utcnow().isoformat()})
             return None
+        
         now = datetime.utcnow().isoformat()
-        conn.execute("UPDATE users SET last_login=? WHERE id=?", (now, row["id"]))
-        sub = conn.execute("SELECT * FROM subscriptions WHERE user_id=?", (row["id"],)).fetchone()
-        conn.execute("""
+        execute(conn, "UPDATE users SET last_login=:now WHERE id=:id", {"now": now, "id": row["id"]})
+        
+        sub = fetchone(conn, "SELECT * FROM subscriptions WHERE user_id=:id", {"id": row["id"]})
+        
+        execute(conn, """
             INSERT INTO audit_log (user_id,event,detail,ip_address,created_at)
-            VALUES (?,?,?,?,?)
-        """, (row["id"],"login_ok","Successful login", ip, now))
+            VALUES (:uid,:event,:detail,:ip,:now)
+        """, {"uid": row["id"], "event": "login_ok", "detail": "Successful login", "ip": ip, "now": now})
+        
         return {
             "id":         row["id"],
             "username":   row["username"],
@@ -506,61 +511,62 @@ def authenticate_user(username: str, password: str, ip: str = "") -> dict | None
 
 def get_user_by_id(user_id: int) -> dict | None:
     with get_db() as conn:
-        row = conn.execute("""
+        row = fetchone(conn, """
             SELECT u.*, s.plan, s.status, s.auto_trade, s.max_pairs
             FROM users u LEFT JOIN subscriptions s ON s.user_id=u.id
-            WHERE u.id=?
-        """, (user_id,)).fetchone()
-        return dict(row) if row else None
+            WHERE u.id=:id
+        """, {"id": user_id})
+        return row
 
 
 def get_all_users() -> list:
     with get_db() as conn:
-        rows = conn.execute("""
+        rows = fetchall(conn, """
             SELECT u.id, u.username, u.email, u.full_name, u.phone, u.role,
                    u.is_active, u.last_login, u.created_at,
                    s.plan, s.status, s.auto_trade, s.max_pairs
             FROM users u LEFT JOIN subscriptions s ON s.user_id=u.id
             ORDER BY u.created_at DESC
-        """).fetchall()
-        return [dict(r) for r in rows]
+        """)
+        return rows
 
 
 def update_user_plan(user_id: int, plan: str, admin_id: int):
     limits = PLAN_LIMITS.get(plan, PLAN_LIMITS["free"])
     now    = datetime.utcnow().isoformat()
     with get_db() as conn:
-        conn.execute("""
-            UPDATE subscriptions SET plan=?, auto_trade=?, max_pairs=? WHERE user_id=?
-        """, (plan, limits["auto_trade"], limits["max_pairs"], user_id))
+        execute(conn, """
+            UPDATE subscriptions SET plan=:plan, auto_trade=:at, max_pairs=:mp WHERE user_id=:uid
+        """, {"plan": plan, "at": limits["auto_trade"], "mp": limits["max_pairs"], "uid": user_id})
+        
         if not limits["auto_trade"]:
-            conn.execute("""
+            execute(conn, """
                 UPDATE user_trading_settings
-                SET mode='signals_only', auto_trade_enabled=0, updated_at=?
-                WHERE user_id=?
-            """, (now, user_id))
-        conn.execute("""
-            INSERT INTO audit_log (user_id,event,detail,created_at) VALUES (?,?,?,?)
-        """, (admin_id, "plan_change", f"Changed user {user_id} to {plan}", now))
-        conn.execute("""
+                SET mode='signals_only', auto_trade_enabled=0, updated_at=:now
+                WHERE user_id=:uid
+            """, {"now": now, "uid": user_id})
+        
+        execute(conn, """
+            INSERT INTO audit_log (user_id,event,detail,created_at) VALUES (:admin,:event,:detail,:now)
+        """, {"admin": admin_id, "event": "plan_change", "detail": f"Changed user {user_id} to {plan}", "now": now})
+        
+        execute(conn, """
             INSERT INTO notifications (user_id,title,message,type,created_at)
-            VALUES (?,?,?,?,?)
-        """, (user_id, "Plan Updated",
-              f"Your plan has been updated to {plan.title()}. Refresh to see new features.",
-              "info", now))
+            VALUES (:uid,:title,:msg,:type,:now)
+        """, {"uid": user_id, "title": "Plan Updated", "msg": f"Your plan has been updated to {plan.title()}. Refresh to see new features.", "type": "info", "now": now})
 
 
 def update_user_profile(user_id: int, full_name: str = None,
                         phone: str = None, email: str = None):
-    fields, vals = [], []
-    if full_name is not None: fields.append("full_name=?"); vals.append(full_name)
-    if phone is not None:     fields.append("phone=?");     vals.append(phone)
-    if email is not None:     fields.append("email=?");     vals.append(email)
+    fields, vals = [], {}
+    if full_name is not None: fields.append("full_name=:fn"); vals["fn"] = full_name
+    if phone is not None:     fields.append("phone=:ph");     vals["ph"] = phone
+    if email is not None:     fields.append("email=:em");     vals["em"] = email
     if not fields:
         return
-    vals.append(user_id)
+    vals["uid"] = user_id
     with get_db() as conn:
-        conn.execute(f"UPDATE users SET {','.join(fields)} WHERE id=?", vals)
+        execute(conn, f"UPDATE users SET {','.join(fields)} WHERE id=:uid", vals)
 
 
 def update_user_password(user_id: int, new_password: str):
@@ -568,29 +574,29 @@ def update_user_password(user_id: int, new_password: str):
     pw_hash = hash_password(new_password, salt)
     now     = datetime.utcnow().isoformat()
     with get_db() as conn:
-        conn.execute("UPDATE users SET password_hash=?, salt=? WHERE id=?",
-                     (pw_hash, salt, user_id))
-        conn.execute("""
-            INSERT INTO audit_log (user_id,event,detail,created_at) VALUES (?,?,?,?)
-        """, (user_id, "password_change", "Password changed by user", now))
+        execute(conn, "UPDATE users SET password_hash=:h, salt=:s WHERE id=:id",
+                     {"h": pw_hash, "s": salt, "id": user_id})
+        execute(conn, """
+            INSERT INTO audit_log (user_id,event,detail,created_at) VALUES (:uid,:event,:detail,:now)
+        """, {"uid": user_id, "event": "password_change", "detail": "Password changed by user", "now": now})
 
 
 def deactivate_user(user_id: int, admin_id: int):
     now = datetime.utcnow().isoformat()
     with get_db() as conn:
-        conn.execute("UPDATE users SET is_active=0 WHERE id=?", (user_id,))
-        conn.execute("""
-            INSERT INTO audit_log (user_id,event,detail,created_at) VALUES (?,?,?,?)
-        """, (admin_id, "deactivate", f"Deactivated user {user_id}", now))
+        execute(conn, "UPDATE users SET is_active=0 WHERE id=:id", {"id": user_id})
+        execute(conn, """
+            INSERT INTO audit_log (user_id,event,detail,created_at) VALUES (:admin,:event,:detail,:now)
+        """, {"admin": admin_id, "event": "deactivate", "detail": f"Deactivated user {user_id}", "now": now})
 
 
 def reactivate_user(user_id: int, admin_id: int):
     now = datetime.utcnow().isoformat()
     with get_db() as conn:
-        conn.execute("UPDATE users SET is_active=1 WHERE id=?", (user_id,))
-        conn.execute("""
-            INSERT INTO audit_log (user_id,event,detail,created_at) VALUES (?,?,?,?)
-        """, (admin_id, "reactivate", f"Reactivated user {user_id}", now))
+        execute(conn, "UPDATE users SET is_active=1 WHERE id=:id", {"id": user_id})
+        execute(conn, """
+            INSERT INTO audit_log (user_id,event,detail,created_at) VALUES (:admin,:event,:detail,:now)
+        """, {"admin": admin_id, "event": "reactivate", "detail": f"Reactivated user {user_id}", "now": now})
 
 
 # ── Trading accounts ──────────────────────────────────────────────────────────
@@ -641,17 +647,16 @@ def add_trading_account(
     encrypted_key = encrypt(api_key)
 
     with get_db() as conn:
-        conn.execute("""
+        execute(conn, """
             INSERT INTO trading_accounts
                 (user_id, account_name, broker, api_key_enc,
                  account_id, environment, created_at, verified_at)
-            VALUES (?, ?, 'oanda', ?, ?, ?, ?, ?)
-        """, (user_id, account_name, encrypted_key, account_id, environment, now, now))
+            VALUES (:uid, :name, 'oanda', :key, :acc_id, :env, :now, :now)
+        """, {"uid": user_id, "name": account_name, "key": encrypted_key, "acc_id": account_id, "env": environment, "now": now})
 
-        row = conn.execute(
-            "SELECT id FROM trading_accounts WHERE user_id=? ORDER BY id DESC LIMIT 1",
-            (user_id,)
-        ).fetchone()
+        row = fetchone(conn,
+            "SELECT id FROM trading_accounts WHERE user_id=:uid ORDER BY id DESC LIMIT 1",
+            {"uid": user_id})
 
     new_id = row["id"]
     logger.info(
@@ -673,23 +678,21 @@ def get_trading_accounts(user_id: int) -> list:
     is excluded from the result with an error log — the rest still work.
     """
     with get_db() as conn:
-        rows = conn.execute(
-            "SELECT * FROM trading_accounts WHERE user_id=? AND is_active=1",
-            (user_id,)
-        ).fetchall()
+        rows = fetchall(conn,
+            "SELECT * FROM trading_accounts WHERE user_id=:uid AND is_active=1",
+            {"uid": user_id})
 
     result = []
     for row in rows:
-        account = dict(row)
         try:
-            account["api_key_enc"] = decrypt(account["api_key_enc"])
+            row["api_key_enc"] = decrypt(row["api_key_enc"])
         except RuntimeError as exc:
             logger.error(
                 f"Failed to decrypt API key for trading_account "
-                f"id={account.get('id')} user_id={user_id}: {exc}"
+                f"id={row.get('id')} user_id={user_id}: {exc}"
             )
             continue
-        result.append(account)
+        result.append(row)
 
     return result
 
@@ -697,15 +700,14 @@ def get_trading_accounts(user_id: int) -> list:
 def remove_trading_account(account_id: int, user_id: int):
     now = datetime.utcnow().isoformat()
     with get_db() as conn:
-        conn.execute(
-            "UPDATE trading_accounts SET is_active=0 WHERE id=? AND user_id=?",
-            (account_id, user_id)
-        )
-        conn.execute("""
+        execute(conn,
+            "UPDATE trading_accounts SET is_active=0 WHERE id=:id AND user_id=:uid",
+            {"id": account_id, "uid": user_id})
+        execute(conn, """
             UPDATE user_trading_settings
-            SET mode='signals_only', auto_trade_enabled=0, trading_account_id=NULL, updated_at=?
-            WHERE user_id=? AND trading_account_id=?
-        """, (now, user_id, account_id))
+            SET mode='signals_only', auto_trade_enabled=0, trading_account_id=NULL, updated_at=:now
+            WHERE user_id=:uid AND trading_account_id=:acc_id
+        """, {"now": now, "uid": user_id, "acc_id": account_id})
 
 
 # ── Trading settings ──────────────────────────────────────────────────────────
@@ -727,20 +729,18 @@ TRADING_SETTING_FIELDS = {
 def ensure_trading_settings(user_id: int) -> dict:
     now = datetime.utcnow().isoformat()
     with get_db() as conn:
-        row = conn.execute(
-            "SELECT * FROM user_trading_settings WHERE user_id=?", (user_id,)
-        ).fetchone()
+        row = fetchone(conn,
+            "SELECT * FROM user_trading_settings WHERE user_id=:uid", {"uid": user_id})
         if not row:
-            conn.execute("""
+            execute(conn, """
                 INSERT INTO user_trading_settings
                 (user_id,mode,auto_trade_enabled,threshold,risk_pct,sl_pips,tp_pips,units,
                  max_positions,use_regime_filter,created_at,updated_at)
-                VALUES (?,'signals_only',0,0.55,0.01,20,40,1000,3,1,?,?)
-            """, (user_id, now, now))
-            row = conn.execute(
-                "SELECT * FROM user_trading_settings WHERE user_id=?", (user_id,)
-            ).fetchone()
-        return dict(row)
+                VALUES (:uid,'signals_only',0,0.55,0.01,20,40,1000,3,1,:now,:now)
+            """, {"uid": user_id, "now": now})
+            row = fetchone(conn,
+                "SELECT * FROM user_trading_settings WHERE user_id=:uid", {"uid": user_id})
+        return row
 
 
 def get_user_trading_settings(user_id: int) -> dict:
@@ -764,17 +764,16 @@ def update_user_trading_settings(user_id: int, **settings):
         allowed["use_regime_filter"] = int(bool(allowed["use_regime_filter"]))
 
     allowed["updated_at"] = datetime.utcnow().isoformat()
-    fields = ",".join(f"{k}=?" for k in allowed.keys())
-    vals = list(allowed.values()) + [user_id]
+    fields = ",".join(f"{k}=:{k}" for k in allowed.keys())
     ensure_trading_settings(user_id)
     with get_db() as conn:
-        conn.execute(f"UPDATE user_trading_settings SET {fields} WHERE user_id=?", vals)
+        execute(conn, f"UPDATE user_trading_settings SET {fields} WHERE user_id=:uid", {**allowed, "uid": user_id})
 
 
 def get_auto_trade_users() -> list:
     """Return active users eligible for scheduled auto-trading."""
     with get_db() as conn:
-        rows = conn.execute("""
+        rows = fetchall(conn, """
             SELECT u.id, u.username, u.email, u.role,
                    s.plan, s.auto_trade AS plan_auto_trade,
                    ts.mode, ts.auto_trade_enabled, ts.trading_account_id,
@@ -793,13 +792,12 @@ def get_auto_trade_users() -> list:
               AND ts.mode='auto'
             GROUP BY u.id
             ORDER BY u.id
-        """).fetchall()
+        """)
         result = []
         for row in rows:
-            d = dict(row)
-            d["auto_trade_enabled"] = bool(d["auto_trade_enabled"])
-            d["use_regime_filter"] = bool(d["use_regime_filter"])
-            result.append(d)
+            row["auto_trade_enabled"] = bool(row["auto_trade_enabled"])
+            row["use_regime_filter"] = bool(row["use_regime_filter"])
+            result.append(row)
         return result
 
 
@@ -807,7 +805,7 @@ def get_auto_trade_users() -> list:
 
 def get_platform_settings() -> dict:
     with get_db() as conn:
-        rows = conn.execute("SELECT key,value FROM platform_settings").fetchall()
+        rows = fetchall(conn, "SELECT key,value FROM platform_settings")
         return {r["key"]: r["value"] for r in rows}
 
 
@@ -844,11 +842,11 @@ def update_platform_settings(settings: dict):
     now = datetime.utcnow().isoformat()
     with get_db() as conn:
         for key, value in settings.items():
-            conn.execute("""
+            execute(conn, """
                 INSERT INTO platform_settings (key,value,updated_at)
-                VALUES (?,?,?)
+                VALUES (:k,:v,:now)
                 ON CONFLICT(key) DO UPDATE SET value=excluded.value, updated_at=excluded.updated_at
-            """, (str(key), str(value), now))
+            """, {"k": str(key), "v": str(value), "now": now})
 
 
 def setting_bool(settings: dict, key: str, default: bool = False) -> bool:
@@ -863,71 +861,62 @@ def log_trade(user_id: int, pair: str, signal: str, entry_price: float,
               broker_trade_id: str = "") -> int:
     now = datetime.utcnow().isoformat()
     with get_db() as conn:
-        conn.execute("""
+        execute(conn, """
             INSERT INTO trades
             (user_id,pair,signal,entry_price,units,trade_type,broker_trade_id,opened_at,status)
-            VALUES (?,?,?,?,?,?,?,?,'open')
-        """, (user_id, pair, signal, entry_price, units, trade_type, broker_trade_id, now))
-        row = conn.execute(
-            "SELECT id FROM trades WHERE user_id=? ORDER BY id DESC LIMIT 1", (user_id,)
-        ).fetchone()
+            VALUES (:uid,:pair,:signal,:price,:units,:type,:bid,:now,'open')
+        """, {"uid": user_id, "pair": pair, "signal": signal, "price": entry_price, "units": units, "type": trade_type, "bid": broker_trade_id, "now": now})
+        
+        row = fetchone(conn,
+            "SELECT id FROM trades WHERE user_id=:uid ORDER BY id DESC LIMIT 1", {"uid": user_id})
         return row["id"]
 
 
 def close_trade(trade_id: int, exit_price: float, pnl: float):
     now = datetime.utcnow().isoformat()
     with get_db() as conn:
-        conn.execute("""
-            UPDATE trades SET exit_price=?,pnl=?,status='closed',closed_at=? WHERE id=?
-        """, (exit_price, pnl, now, trade_id))
+        execute(conn, """
+            UPDATE trades SET exit_price=:ep,pnl=:pnl,status='closed',closed_at=:now WHERE id=:id
+        """, {"ep": exit_price, "pnl": pnl, "now": now, "id": trade_id})
 
 
 def get_user_trades(user_id: int | None = None, limit: int = 50) -> list:
     """Get trades. user_id=None returns all trades (admin use)."""
     with get_db() as conn:
         if user_id is None:
-            rows = conn.execute("""
+            rows = fetchall(conn, """
                 SELECT t.*, u.username FROM trades t
                 LEFT JOIN users u ON u.id=t.user_id
-                ORDER BY t.opened_at DESC LIMIT ?
-            """, (limit,)).fetchall()
+                ORDER BY t.opened_at DESC LIMIT :limit
+            """, {"limit": limit})
         else:
-            rows = conn.execute("""
-                SELECT * FROM trades WHERE user_id=?
-                ORDER BY opened_at DESC LIMIT ?
-            """, (user_id, limit)).fetchall()
-        return [dict(r) for r in rows]
+            rows = fetchall(conn, """
+                SELECT * FROM trades WHERE user_id=:uid
+                ORDER BY opened_at DESC LIMIT :limit
+            """, {"uid": user_id, "limit": limit})
+        return rows
 
 
 def get_trade_stats(user_id: int | None = None) -> dict:
     """Return aggregated trade statistics."""
     with get_db() as conn:
         if user_id is not None:
-            total  = conn.execute(
-                "SELECT COUNT(*) FROM trades WHERE user_id=?", (user_id,)
-            ).fetchone()[0]
-            closed = conn.execute(
-                "SELECT COUNT(*),SUM(pnl),AVG(pnl) FROM trades WHERE user_id=? AND status='closed'",
-                (user_id,)
-            ).fetchone()
-            wins = conn.execute(
-                "SELECT COUNT(*) FROM trades WHERE user_id=? AND pnl>0", (user_id,)
-            ).fetchone()[0]
+            total = execute(conn, "SELECT COUNT(*) FROM trades WHERE user_id=:uid", {"uid": user_id}).scalar()
+            closed = fetchone(conn,
+                "SELECT COUNT(*) as count,SUM(pnl) as total_pnl,AVG(pnl) as avg_pnl FROM trades WHERE user_id=:uid AND status='closed'",
+                {"uid": user_id})
+            wins = execute(conn, "SELECT COUNT(*) FROM trades WHERE user_id=:uid AND pnl>0", {"uid": user_id}).scalar()
         else:
-            total  = conn.execute("SELECT COUNT(*) FROM trades").fetchone()[0]
-            closed = conn.execute(
-                "SELECT COUNT(*),SUM(pnl),AVG(pnl) FROM trades WHERE status='closed'"
-            ).fetchone()
-            wins = conn.execute(
-                "SELECT COUNT(*) FROM trades WHERE pnl>0"
-            ).fetchone()[0]
+            total = execute(conn, "SELECT COUNT(*) FROM trades").scalar()
+            closed = fetchone(conn, "SELECT COUNT(*) as count,SUM(pnl) as total_pnl,AVG(pnl) as avg_pnl FROM trades WHERE status='closed'")
+            wins = execute(conn, "SELECT COUNT(*) FROM trades WHERE pnl>0").scalar()
 
-        closed_count = closed[0] or 0
+        closed_count = closed["count"] if closed else 0
         return {
             "total_trades":  total,
             "closed_trades": closed_count,
-            "total_pnl":     round(float(closed[1] or 0), 2),
-            "avg_pnl":       round(float(closed[2] or 0), 2),
+            "total_pnl":     round(float(closed["total_pnl"] or 0), 2) if closed else 0.0,
+            "avg_pnl":       round(float(closed["avg_pnl"] or 0), 2) if closed else 0.0,
             "wins":          wins,
             "win_rate":      round(wins / closed_count * 100, 1) if closed_count else 0,
         }
@@ -938,81 +927,82 @@ def get_trade_stats(user_id: int | None = None) -> dict:
 def log_signal(pair: str, signal: str, prob_up: float, confidence: str,
                regime: str, tradeable: bool, price: float):
     with get_db() as conn:
-        recent = conn.execute("""
+        recent = fetchone(conn, """
             SELECT id FROM signals_log
-            WHERE pair=? AND signal=? AND ABS(prob_up - ?) < 0.00001
-              AND confidence=? AND regime=? AND tradeable=?
-              AND created_at >= ?
+            WHERE pair=:pair AND signal=:sig AND ABS(prob_up - :prob) < 0.00001
+              AND confidence=:conf AND regime=:reg AND tradeable=:tradeable
+              AND created_at >= :time
             ORDER BY created_at DESC LIMIT 1
-        """, (
-            pair, signal, prob_up, confidence, regime, int(tradeable),
-            (datetime.utcnow() - timedelta(minutes=30)).isoformat(),
-        )).fetchone()
+        """, {
+            "pair": pair, "sig": signal, "prob": prob_up, "conf": confidence, "reg": regime, "tradeable": int(tradeable),
+            "time": (datetime.utcnow() - timedelta(minutes=30)).isoformat(),
+        })
         if recent:
             return
-        conn.execute("""
+        execute(conn, """
             INSERT INTO signals_log
             (pair,signal,prob_up,confidence,regime,tradeable,price,created_at)
-            VALUES (?,?,?,?,?,?,?,?)
-        """, (pair, signal, prob_up, confidence, regime,
-              int(tradeable), price, datetime.utcnow().isoformat()))
+            VALUES (:pair,:sig,:prob,:conf,:reg,:tradeable,:price,:now)
+        """, {"pair": pair, "sig": signal, "prob": prob_up, "conf": confidence, "reg": regime,
+              "tradeable": int(tradeable), "price": price, "now": datetime.utcnow().isoformat()})
 
 
 def get_signals_log(limit: int = 100, pair: str = None) -> list:
     with get_db() as conn:
         if pair:
-            rows = conn.execute(
-                "SELECT * FROM signals_log WHERE pair=? ORDER BY created_at DESC LIMIT ?",
-                (pair, limit)
-            ).fetchall()
+            rows = fetchall(conn,
+                "SELECT * FROM signals_log WHERE pair=:pair ORDER BY created_at DESC LIMIT :limit",
+                {"pair": pair, "limit": limit})
         else:
-            rows = conn.execute(
-                "SELECT * FROM signals_log ORDER BY created_at DESC LIMIT ?", (limit,)
-            ).fetchall()
-        return [dict(r) for r in rows]
+            rows = fetchall(conn,
+                "SELECT * FROM signals_log ORDER BY created_at DESC LIMIT :limit", {"limit": limit})
+        return rows
 
 
 # ── Audit & notifications ─────────────────────────────────────────────────────
 
 def get_audit_log(limit: int = 100) -> list:
     with get_db() as conn:
-        rows = conn.execute("""
+        rows = fetchall(conn, """
             SELECT a.*, u.username FROM audit_log a
             LEFT JOIN users u ON u.id=a.user_id
-            ORDER BY a.created_at DESC LIMIT ?
-        """, (limit,)).fetchall()
-        return [dict(r) for r in rows]
+            ORDER BY a.created_at DESC LIMIT :limit
+        """, {"limit": limit})
+        return rows
 
 
 def get_notifications(user_id: int, unread_only: bool = False) -> list:
     with get_db() as conn:
-        q = "WHERE user_id=? AND is_read=0" if unread_only else "WHERE user_id=?"
-        rows = conn.execute(
-            f"SELECT * FROM notifications {q} ORDER BY created_at DESC LIMIT 20",
-            (user_id,)
-        ).fetchall()
-        return [dict(r) for r in rows]
+        if unread_only:
+            rows = fetchall(conn,
+                "SELECT * FROM notifications WHERE user_id=:uid AND is_read=0 ORDER BY created_at DESC LIMIT 20",
+                {"uid": user_id})
+        else:
+            rows = fetchall(conn,
+                "SELECT * FROM notifications WHERE user_id=:uid ORDER BY created_at DESC LIMIT 20",
+                {"uid": user_id})
+        return rows
 
 
 def mark_notifications_read(user_id: int):
     with get_db() as conn:
-        conn.execute("UPDATE notifications SET is_read=1 WHERE user_id=?", (user_id,))
+        execute(conn, "UPDATE notifications SET is_read=1 WHERE user_id=:uid", {"uid": user_id})
 
 
 # ── Platform stats ────────────────────────────────────────────────────────────
 
 def get_platform_stats() -> dict:
     with get_db() as conn:
-        total_users   = conn.execute("SELECT COUNT(*) FROM users WHERE is_active=1").fetchone()[0]
-        total_trades  = conn.execute("SELECT COUNT(*) FROM trades").fetchone()[0]
-        total_signals = conn.execute("SELECT COUNT(*) FROM signals_log").fetchone()[0]
-        total_pnl     = conn.execute("SELECT SUM(pnl) FROM trades WHERE status='closed'").fetchone()[0]
-        plan_counts   = conn.execute(
-            "SELECT plan,COUNT(*) as cnt FROM subscriptions GROUP BY plan"
-        ).fetchall()
-        new_today     = conn.execute(
-            "SELECT COUNT(*) FROM users WHERE created_at >= date('now')"
-        ).fetchone()[0]
+        total_users   = execute(conn, "SELECT COUNT(*) FROM users WHERE is_active=1").scalar()
+        total_trades  = execute(conn, "SELECT COUNT(*) FROM trades").scalar()
+        total_signals = execute(conn, "SELECT COUNT(*) FROM signals_log").scalar()
+        total_pnl     = execute(conn, "SELECT SUM(pnl) FROM trades WHERE status='closed'").scalar()
+        plan_counts   = fetchall(conn,
+            "SELECT plan,COUNT(*) as cnt FROM subscriptions GROUP BY plan")
+        today_start   = datetime.utcnow().strftime("%Y-%m-%d")
+        new_today     = fetchone(conn,
+            "SELECT COUNT(*) AS c FROM users WHERE created_at >= :today",
+            {"today": today_start})["c"]
         return {
             "total_users":   total_users,
             "total_trades":  total_trades,

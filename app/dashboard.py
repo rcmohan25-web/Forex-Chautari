@@ -18,6 +18,7 @@ from datetime import datetime
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
+from app.api_client import api_get
 from config.settings import DATA_PATH, METADATA_PATH, WF_RESULTS_PATH, DEFAULT_SPREAD_COST
 from src.data_loader import load_forex_data
 from src.features import add_features
@@ -153,20 +154,6 @@ div[data-testid="stDataFrame"]{{border:1px solid {C_BORDER}!important;border-rad
 
 
 # ── helpers ───────────────────────────────────────────────────────────────────
-def api_get(path, **kw):
-    t0 = time.time()
-    try:
-        r = requests.get(f"{API_BASE}{path}", timeout=5, **kw)
-        return r.json(), None, round((time.time()-t0)*1000)
-    except Exception as e:
-        return None, str(e), round((time.time()-t0)*1000)
-
-def api_post(path, **kw):
-    try:
-        r = requests.post(f"{API_BASE}{path}", timeout=180, **kw)
-        return r.json(), None
-    except Exception as e:
-        return None, str(e)
 
 def sc(label, value, cls="", sub=""):
     sub_html = f'<div class="sc-sub">{sub}</div>' if sub else ""

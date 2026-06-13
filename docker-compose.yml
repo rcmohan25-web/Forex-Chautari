@@ -1,0 +1,80 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: forexchautari_pg
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: forex_user
+      POSTGRES_PASSWORD: change_me_strong_password
+      POSTGRES_DB: forexchautari
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U forex_user -d forexchautari"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build: .
+    container_name: forexchautari_api
+    restart: unless-stopped
+    command: "uvicorn app.api:app --host 0.0.0.0 --port 8000"
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql://forex_user:change_me_strong_password@postgres:5432/forexchautari
+      # Add your API keys here or in .env
+      # JWT_SECRET=...
+      # FIELD_ENCRYPTION_KEY=...
+      # OANDA_API_KEY=...
+      # OANDA_ACCOUNT_ID=...
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./logs:/app/logs
+      - ./data:/app/data
+    env_file:
+      - .env
+
+  dashboard:
+    build: .
+    container_name: forexchautari_dashboard
+    restart: unless-stopped
+    command: "streamlit run app/main.py --server.port=8501 --server.address=0.0.0.0"
+    ports:
+      - "8501:8501"
+    environment:
+      DATABASE_URL: postgresql://forex_user:change_me_strong_password@postgres:5432/forexchautari
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./logs:/app/logs
+      - ./data:/app/data
+    env_file:
+      - .env
+
+  scheduler:
+    build: .
+    container_name: forexchautari_scheduler
+    restart: unless-stopped
+    command: "python run_scheduler.py"
+    environment:
+      DATABASE_URL: postgresql://forex_user:change_me_strong_password@postgres:5432/forexchautari
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./logs:/app/logs
+      - ./data:/app/data
+    env_file:
+      - .env
+
+volumes:
+  pgdata:

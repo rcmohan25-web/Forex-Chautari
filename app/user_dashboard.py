@@ -22,7 +22,7 @@ from datetime import datetime
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from app.auth import render_logout_button
-from app.api_client import api_post, api_delete, ApiError
+from app.api_client import api_get, api_post, api_delete, ApiError
 from src.database import (
     get_trading_accounts, add_trading_account, remove_trading_account,
     get_user_trades, get_trade_stats, log_signal, get_signals_log,
@@ -71,13 +71,6 @@ PLOT = dict(
 def pf(fig, h=340):
     fig.update_layout(**PLOT, height=h)
     return fig
-
-def api_get(path, **kw):
-    try:
-        r = requests.get(f"{API_BASE}{path}", timeout=5, **kw)
-        return r.json(), None
-    except Exception as e:
-        return None, str(e)
 
 # ── Plan config ───────────────────────────────────────────────────────────────
 PLAN_UI = {

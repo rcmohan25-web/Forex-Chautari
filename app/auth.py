@@ -126,6 +126,18 @@ def _user_session_payload(user_id: int) -> dict | None:
     }
 
 
+def _ensure_jwt_for_user(user: dict) -> None:
+    if st.session_state.get("jwt_access") and st.session_state.get("jwt_refresh"):
+        return
+    try:
+        from app.api_auth import create_token_pair
+        tokens = create_token_pair(user)
+        st.session_state["jwt_access"] = tokens.access_token
+        st.session_state["jwt_refresh"] = tokens.refresh_token
+    except Exception:
+        pass
+
+
 def render_login():
     _auth_css()
     render_brand()
@@ -273,6 +285,7 @@ def get_current_user() -> dict | None:
         _clear_query_token()
         return None
     st.session_state["user"] = user
+    _ensure_jwt_for_user(user)
     return user
 
 

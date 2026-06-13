@@ -4,6 +4,7 @@ for write operations from Streamlit dashboards.
 """
 import requests
 import streamlit as st
+import time
 
 API_BASE = "http://127.0.0.1:8000"
 
@@ -50,7 +51,7 @@ def _refresh() -> bool:
 def _headers():
     token = st.session_state.get("jwt_access")
     if not token:
-        raise ApiError(401, "Not authenticated with API — please log in again.")
+        return {}
     return {"Authorization": f"Bearer {token}"}
 
 
@@ -67,10 +68,18 @@ def _handle(resp, retry_fn):
 
 
 def api_get(path, **kw):
+    t0 = time.time()
     def call():
         return requests.get(f"{API_BASE}{path}", headers=_headers(), timeout=15, **kw)
-    r = call()
-    return _handle(r, lambda: _handle(call(), lambda: (_ for _ in ()).throw(ApiError(401, "expired"))))
+
+    try:
+        r = call()
+        data = _handle(r, lambda: _handle(call(), lambda: (_ for _ in ()).throw(ApiError(401, "expired"))))
+        return data, None, round((time.time() - t0) * 1000)
+    except ApiError as e:
+        return None, e.detail, round((time.time() - t0) * 1000)
+    except Exception as e:
+        return None, str(e), round((time.time() - t0) * 1000)
 
 
 def api_post(path, **kw):

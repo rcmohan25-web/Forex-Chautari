@@ -16,6 +16,17 @@ import sys, time, subprocess, os
 import schedule
 from datetime import datetime, date
 
+from config.startup_checks import validate_env, warn_if_debug_settings_in_production, verify_database_connectivity
+
+# Validate environment and database connectivity before starting any jobs
+try:
+    validate_env()
+    warn_if_debug_settings_in_production()
+    verify_database_connectivity()
+except SystemExit as e:
+    print(f"Startup validation failed; exiting scheduler.", file=sys.stderr)
+    sys.exit(1)
+
 from src.multi_pair_manager import fetch_all_pairs, run_portfolio_signal_check
 from src.oanda_client import OandaClient
 from src.alerter import Alerter

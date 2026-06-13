@@ -19,11 +19,12 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import streamlit as st
 from datetime import datetime
+from sqlalchemy import text
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from app.auth import render_logout_button
-from app.api_client import api_post, api_delete, ApiError
+from app.api_client import api_get, api_delete, ApiError
 from src.database import (
     get_all_users, update_user_plan, deactivate_user, reactivate_user,
     get_signals_log, get_audit_log, get_platform_stats,
@@ -60,24 +61,9 @@ PLOT = dict(
 )
 def pf(fig, h=320): fig.update_layout(**PLOT, height=h); return fig
 
-def api_get(path, **kw):
-    t0 = time.time()
-    try:
-        r = requests.get(f"{API_BASE}{path}", timeout=5, **kw)
-        return r.json(), None, round((time.time()-t0)*1000)
-    except Exception as e:
-        return None, str(e), round((time.time()-t0)*1000)
-
-def api_post(path, **kw):
-    try:
-        r = requests.post(f"{API_BASE}{path}", timeout=180, **kw)
-        return r.json(), None
-    except Exception as e:
-        return None, str(e)
-
 # Prefer the remote API client for admin actions — use the JWT-authenticated
 # client so callers can rely on ApiError exceptions.
-from app.api_client import api_post as _api_post_remote, api_delete as _api_delete_remote, ApiError as _ApiError
+from app.api_client import api_get, api_post as _api_post_remote, api_delete as _api_delete_remote, ApiError as _ApiError
 api_post = _api_post_remote
 api_delete = _api_delete_remote
 ApiError = _ApiError
@@ -211,8 +197,9 @@ def _render_first_run_wizard(user: dict):
         # from being hijacked to change the password without knowing it.
         with get_db() as conn:
             row = conn.execute(
-                "SELECT password_hash, salt FROM users WHERE username='admin'"
-            ).fetchone()
+                text("SELECT password_hash, salt FROM users WHERE username=:username"),
+                {"username": "admin"}
+            ).mappings().fetchone()
         if not row or not verify_password(current_pw, row["salt"], row["password_hash"]):
             errors.append("Current password is incorrect.")
 

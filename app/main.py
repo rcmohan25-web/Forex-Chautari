@@ -9,13 +9,14 @@ import streamlit as st
 import sys, os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from config.startup_checks import validate_env
+from config.startup_checks import validate_env, verify_database_connectivity
 from app.auth import require_auth, render_logout_button
 
 # Validate environment before rendering anything — surfaces config errors
 # as a clear Streamlit error rather than a cryptic mid-render crash.
 try:
     validate_env()
+    verify_database_connectivity()
 except SystemExit:
     st.error(
         "**Missing required environment variables.** "
@@ -32,6 +33,8 @@ st.set_page_config(
 )
 
 user = require_auth()
+if not user:
+    st.stop()
 
 if user["role"] == "admin":
     from app.admin_panel import render_admin

@@ -30,6 +30,7 @@ LOG_PATH          = "logs/app.log"
 PAPER_TRADES_PATH = "data/paper_trades.json"
 SIGNALS_LOG_PATH  = "data/signals_log.csv"
 DB_PATH           = os.getenv("DB_PATH", "data/forexchautari.db")
+DATABASE_URL      = os.getenv("DATABASE_URL", f"sqlite:///{DB_PATH}")
 
 # ── External APIs ─────────────────────────────────────────────────────────────
 ALPHAVANTAGE_API_KEY = os.getenv("ALPHAVANTAGE_API_KEY", "")
