@@ -557,7 +557,7 @@ def trading_modify(body: ModifyTradeRequest, user: CurrentUser = Depends(require
 
 
 @app.post("/trading/close-all", tags=["Trading"])
-def trading_close_all(account_db_id: Optional[int] = Query(None),
+def trading_close_all(account_db_id: Opt[int] = Query(None),
                        user: CurrentUser = Depends(require_user)):
     if not user.is_admin() and not user.can_trade():
         raise HTTPException(403, "Trading requires Pro or Enterprise plan.")
@@ -576,8 +576,8 @@ def trading_signal_trade(
     threshold: float = Query(DEFAULT_SIGNAL_THRESHOLD),
     sl_pips: float = Query(20.0),
     tp_pips: float = Query(40.0),
-    units: Optional[int] = Query(None),
-    account_db_id: Optional[int] = Query(None),
+    units: Opt[int] = Query(None),
+    account_db_id: Opt[int] = Query(None),
     user: CurrentUser = Depends(require_user),
 ):
     if not user.is_admin() and not user.can_trade():

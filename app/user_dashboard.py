@@ -685,7 +685,6 @@ def render_user_dashboard(user: dict):
                     if st.form_submit_button("Verify & Connect", type="primary"):
                         if acc_name and api_key and acc_id:
                             with st.spinner("Verifying credentials with Oanda..."):
-                                try:
                                             try:
                                                 resp = api_post("/account/trading-accounts", json={
                                                     "account_name": acc_name,
