@@ -40,23 +40,50 @@ def make_ohlc(n=300, start_price=1.10, seed=42) -> pd.DataFrame:
     })
 
 
+def _temp_db():
+    """Set DATABASE_URL to a fresh temp SQLite file and initialize it."""
+    tmpdir = tempfile.mkdtemp()
+    db_path = os.path.join(tmpdir, "test.db")
+    
+    # Save original DATABASE_URL
+    orig = os.environ.get("DATABASE_URL")
+    
+    # Set to temp database
+    os.environ["DATABASE_URL"] = f"sqlite:///{db_path}"
+    
+    # Reset engine to use new DATABASE_URL
+    from src.db_engine import reset_engine
+    reset_engine()
+    
+    from src.database import init_db
+    init_db()
+    
+    return orig
+
+
+def _restore_db(orig):
+    """Restore original DATABASE_URL and reset engine."""
+    if orig is not None:
+        os.environ["DATABASE_URL"] = orig
+    else:
+        os.environ.pop("DATABASE_URL", None)
+    
+    # Reset engine to restore original connection
+    from src.db_engine import reset_engine
+    reset_engine()
+
+
 # ── TestDatabase ──────────────────────────────────────────────────────────────
 
 class TestDatabase(unittest.TestCase):
 
     def setUp(self):
         """Use a temporary database for each test."""
-        self.tmpdir = tempfile.mkdtemp()
-        self.db_path = os.path.join(self.tmpdir, "test.db")
-        import src.database as db_mod
-        self._orig_db_path = db_mod.DB_PATH
-        db_mod.DB_PATH = self.db_path
-        from src.database import init_db
-        init_db()
+        self._orig_db_url = _temp_db()
 
     def tearDown(self):
-        import src.database as db_mod
-        db_mod.DB_PATH = self._orig_db_path
+        """Restore original database connection."""
+        _restore_db(self._orig_db_url)
 
     def test_admin_seeded_on_init(self):
         from src.database import authenticate_user
@@ -203,17 +230,33 @@ class TestDatabase(unittest.TestCase):
 class TestAuth(unittest.TestCase):
 
     def setUp(self):
-        self.tmpdir  = tempfile.mkdtemp()
+        self.tmpdir = tempfile.mkdtemp()
         self.db_path = os.path.join(self.tmpdir, "auth_test.db")
-        import src.database as db_mod
-        self._orig   = db_mod.DB_PATH
-        db_mod.DB_PATH = self.db_path
+        
+        # Save original DATABASE_URL
+        self._orig_db_url = os.environ.get("DATABASE_URL")
+        
+        # Set to temp SQLite database
+        os.environ["DATABASE_URL"] = f"sqlite:///{self.db_path}"
+        
+        # Reset engine to use new DATABASE_URL
+        from src.db_engine import reset_engine
+        reset_engine()
+        
+        # Initialize database schema
         from src.database import init_db
         init_db()
 
     def tearDown(self):
-        import src.database as db_mod
-        db_mod.DB_PATH = self._orig
+        # Restore original DATABASE_URL
+        if self._orig_db_url is not None:
+            os.environ["DATABASE_URL"] = self._orig_db_url
+        else:
+            os.environ.pop("DATABASE_URL", None)
+        
+        # Reset engine to restore original connection
+        from src.db_engine import reset_engine
+        reset_engine()
 
     def test_session_lifecycle(self):
         from src.database import create_session, get_session, destroy_session
@@ -647,12 +690,19 @@ class TestTradingEngine(unittest.TestCase):
     def test_get_client_for_user_no_account(self):
         """Should raise ValueError when user has no linked account."""
         from src.trading_engine import get_client_for_user
-        from src.database import init_db, create_user, authenticate_user
-        import tempfile, src.database as db_mod
-        tmpdir  = tempfile.mkdtemp()
-        orig    = db_mod.DB_PATH
-        db_mod.DB_PATH = f"{tmpdir}/test.db"
+        from src.database import create_user, authenticate_user
+        
+        tmpdir = tempfile.mkdtemp()
+        orig_db_url = os.environ.get("DATABASE_URL")
+        os.environ["DATABASE_URL"] = f"sqlite:///{tmpdir}/test.db"
+        
+        # Reset engine to use new DATABASE_URL
+        from src.db_engine import reset_engine
+        reset_engine()
+        
+        from src.database import init_db
         init_db()
+        
         try:
             create_user("notradingacc", "nt@test.com", "pass1234")
             u = authenticate_user("notradingacc", "pass1234")
@@ -660,7 +710,12 @@ class TestTradingEngine(unittest.TestCase):
                 get_client_for_user(u["id"])
             self.assertIn("No trading account", str(ctx.exception))
         finally:
-            db_mod.DB_PATH = orig
+            if orig_db_url is not None:
+                os.environ["DATABASE_URL"] = orig_db_url
+            else:
+                os.environ.pop("DATABASE_URL", None)
+            
+            reset_engine()
 
     def test_get_risk_metrics_no_account(self):
         """Should return error dict gracefully when no account linked."""

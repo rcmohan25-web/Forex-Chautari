@@ -52,20 +52,36 @@ def _mock_oanda(
 
 
 def _temp_db():
-    """Patch src.database.DB_PATH to a fresh temp file and init it."""
-    import src.database as db_mod
-    tmpdir  = tempfile.mkdtemp()
+    """Set DATABASE_URL to a fresh temp file and init it."""
+    tmpdir = tempfile.mkdtemp()
     db_path = os.path.join(tmpdir, "test.db")
-    orig    = db_mod.DB_PATH
-    db_mod.DB_PATH = db_path
+    
+    # Save original DATABASE_URL
+    orig = os.environ.get("DATABASE_URL")
+    
+    # Set to temp database
+    os.environ["DATABASE_URL"] = f"sqlite:///{db_path}"
+    
+    # Reset engine to use new DATABASE_URL
+    from src.db_engine import reset_engine
+    reset_engine()
+    
     from src.database import init_db
     init_db()
+    
     return orig
 
 
 def _restore_db(orig):
-    import src.database as db_mod
-    db_mod.DB_PATH = orig
+    # Restore original DATABASE_URL
+    if orig is not None:
+        os.environ["DATABASE_URL"] = orig
+    else:
+        os.environ.pop("DATABASE_URL", None)
+    
+    # Reset engine to restore original connection
+    from src.db_engine import reset_engine
+    reset_engine()
 
 
 # ══════════════════════════════════════════════════════════════════════════════

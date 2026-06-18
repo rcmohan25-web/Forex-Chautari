@@ -32,10 +32,10 @@
   "pair": "AUD_USD",
   "model_version": "v2",
   "feature_set": "FEATURE_COLUMNS_V2",
-  "rows_total": 508,
-  "rows_train": 406,
+  "rows_total": 509,
+  "rows_train": 407,
   "rows_test": 102,
-  "accuracy_train": 0.7438423645320197,
+  "accuracy_train": 0.7493857493857494,
   "accuracy_test": 0.43137254901960786,
   "walk_forward_mean_accuracy": 0.56,
   "walk_forward_mean_strategy_return": -0.005085663607704571,
@@ -49,5 +49,5 @@
   "rf_min_samples_leaf": 20,
   "rf_n_estimators": 200,
   "signal_threshold": 0.55,
-  "trained_at": "2026-06-12T04:02:14.487484"
+  "trained_at": "2026-06-13T20:37:13.024763"
 }
