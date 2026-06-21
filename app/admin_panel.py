@@ -507,6 +507,9 @@ def render_admin(user: dict):
 
     # ══ TAB 3 — Portfolio ═════════════════════════════════════════════════════
     with t3:
+        st.caption(
+            "⚠️ ML signals are not financial advice. Past model performance does not guarantee future returns."
+        )
         _sec("Live Portfolio Signals")
         try:
             from src.multi_pair_manager import get_portfolio_signals
@@ -549,26 +552,40 @@ def render_admin(user: dict):
             if os.path.exists(mp):
                 with open(mp) as f: m = json.load(f)
                 gap = m.get("accuracy_train",0) - m.get("accuracy_test",0)
+
+                net_pf         = m.get("walk_forward_mean_net_profit_factor")
+                net_splits_pct = m.get("walk_forward_net_profitable_splits_pct")
+
+                if "is_tradable_edge" in m:
+                    is_tradable = bool(m.get("is_tradable_edge"))
+                else:
+                    is_tradable = None  # legacy metadata, predates net-of-cost reporting
+
+                if gap > 0.15:
+                    status = "⚠️ Overfit"
+                elif is_tradable is None:
+                    status = "🟡 Retrain for net-of-cost check"
+                elif is_tradable:
+                    status = "✅ Tradable edge"
+                else:
+                    status = "🔴 Weak edge"
+
                 pair_rows.append({
                     "Pair": p.replace("_","/"),
                     "Test Acc":  f"{m.get('accuracy_test',0):.3f}",
                     "WF Acc":    f"{m.get('walk_forward_mean_accuracy',0):.3f}",
-                    "WF PF":     f"{m.get('walk_forward_mean_profit_factor',0):.2f}" if m.get("walk_forward_mean_profit_factor") is not None else "—",
+                    "Net PF":    f"{net_pf:.2f}" if net_pf is not None else "—",
+                    "Net Profit Splits": f"{net_splits_pct*100:.0f}%" if net_splits_pct is not None else "—",
                     "WF Sharpe": f"{m.get('walk_forward_mean_sharpe',0):.2f}" if m.get("walk_forward_mean_sharpe") is not None else "—",
                     "Expectancy":f"{m.get('walk_forward_mean_expectancy',0):+.5f}" if m.get("walk_forward_mean_expectancy") is not None else "—",
                     "Gap":       f"{gap:.3f}",
                     "WF Profit": f"{m.get('walk_forward_profitable_splits',0)}/{m.get('walk_forward_total_splits',0)}",
                     "Rows":      m.get("rows_total","?"),
                     "Trained":   m.get("trained_at","?")[:10],
-                    "Status":    "⚠️ Overfit" if gap>0.15 else (
-                        "✅ Tradable edge" if (
-                            m.get("walk_forward_mean_accuracy",0)>0.51
-                            and (m.get("walk_forward_mean_profit_factor") or 0) >= 1.05
-                        ) else "🔴 Weak edge"
-                    ),
+                    "Status":    status,
                 })
             else:
-                pair_rows.append({"Pair":p.replace("_","/"),"Test Acc":"—","WF Acc":"—","WF PF":"—","WF Sharpe":"—","Expectancy":"—","Gap":"—","WF Profit":"—","Rows":"—","Trained":"not trained","Status":"⚠️ Not trained"})
+                pair_rows.append({"Pair":p.replace("_","/"),"Test Acc":"—","WF Acc":"—","Net PF":"—","Net Profit Splits":"—","WF Sharpe":"—","Expectancy":"—","Gap":"—","WF Profit":"—","Rows":"—","Trained":"not trained","Status":"⚠️ Not trained"})
         st.dataframe(pd.DataFrame(pair_rows), width="stretch", hide_index=True)
 
     # ══ TAB 4 — Trading ═══════════════════════════════════════════════════════

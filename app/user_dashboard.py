@@ -33,6 +33,8 @@ from src.database import (
 from config.settings import (
     ACTIVE_PAIRS, PAIRS, DEFAULT_SIGNAL_THRESHOLD,
     meta_path, data_path, wf_path, APP_BRAND, APP_NAME, PLAN_LIMITS,
+    TRADABLE_MIN_WF_ACCURACY, TRADABLE_MIN_NET_PROFIT_FACTOR,
+    TRADABLE_MIN_PROFITABLE_SPLITS_PCT,
 )
 
 API_BASE = "http://127.0.0.1:8000"
@@ -261,6 +263,10 @@ def render_user_dashboard(user: dict):
 
     # ══ SIGNALS TAB ═══════════════════════════════════════════════════════════
     with t_signals:
+        st.caption(
+            "⚠️ ML signals are for informational purposes only and are **not financial advice**. "
+            "Past model performance does not guarantee future returns."
+        )
         try:
             from src.multi_pair_manager import get_portfolio_signals
             with st.spinner("Loading signals..."):
@@ -559,26 +565,50 @@ def render_user_dashboard(user: dict):
                     h3.markdown(_kpi("WF Accuracy",    f"{meta.get('walk_forward_mean_accuracy',0):.3f}",
                                      "g" if meta.get('walk_forward_mean_accuracy',0)>0.52 else "r"), unsafe_allow_html=True)
                     h4.markdown(_kpi("Training Rows",  str(meta.get('rows_total','?')), "a"), unsafe_allow_html=True)
+
                     p1,p2,p3,p4 = st.columns(4)
-                    pf_val = meta.get("walk_forward_mean_profit_factor")
-                    sh_val = meta.get("walk_forward_mean_sharpe")
-                    ex_val = meta.get("walk_forward_mean_expectancy")
+                    pf_val  = meta.get("walk_forward_mean_profit_factor")
+                    sh_val  = meta.get("walk_forward_mean_sharpe")
+                    ex_val  = meta.get("walk_forward_mean_expectancy")
                     exp_val = meta.get("walk_forward_mean_exposure")
-                    p1.markdown(_kpi("WF Profit Factor", f"{pf_val:.2f}" if pf_val is not None else "—",
-                                     "g" if (pf_val or 0) >= 1.05 else "r"), unsafe_allow_html=True)
+                    p1.markdown(_kpi("WF Profit Factor (gross)", f"{pf_val:.2f}" if pf_val is not None else "—", "m"), unsafe_allow_html=True)
                     p2.markdown(_kpi("WF Sharpe", f"{sh_val:.2f}" if sh_val is not None else "—",
                                      "g" if (sh_val or 0) > 0 else "r"), unsafe_allow_html=True)
                     p3.markdown(_kpi("Expectancy", f"{ex_val:+.5f}" if ex_val is not None else "—",
                                      "g" if (ex_val or 0) > 0 else "r"), unsafe_allow_html=True)
                     p4.markdown(_kpi("Exposure", f"{exp_val*100:.1f}%" if exp_val is not None else "—", "m"), unsafe_allow_html=True)
 
+                    # ── Net-of-realistic-cost figures ──────────────────────────
+                    net_pf         = meta.get("walk_forward_mean_net_profit_factor")
+                    net_sh         = meta.get("walk_forward_mean_net_sharpe")
+                    net_ex         = meta.get("walk_forward_mean_net_expectancy")
+                    net_splits_pct = meta.get("walk_forward_net_profitable_splits_pct")
+                    if net_pf is not None:
+                        n1,n2,n3,n4 = st.columns(4)
+                        n1.markdown(_kpi("Net Profit Factor", f"{net_pf:.2f}",
+                                         "g" if net_pf > TRADABLE_MIN_NET_PROFIT_FACTOR else "r",
+                                         sub="after realistic spread, slippage & swap"), unsafe_allow_html=True)
+                        n2.markdown(_kpi("Net Sharpe", f"{net_sh:.2f}" if net_sh is not None else "—",
+                                         "g" if (net_sh or 0) > 0 else "r"), unsafe_allow_html=True)
+                        n3.markdown(_kpi("Net Expectancy", f"{net_ex:+.5f}" if net_ex is not None else "—",
+                                         "g" if (net_ex or 0) > 0 else "r"), unsafe_allow_html=True)
+                        n4.markdown(_kpi("Net Profitable Splits", f"{net_splits_pct*100:.0f}%" if net_splits_pct is not None else "—",
+                                         "g" if (net_splits_pct or 0) >= TRADABLE_MIN_PROFITABLE_SPLITS_PCT else "r"), unsafe_allow_html=True)
+
                     gap = (meta.get("accuracy_train",0) - meta.get("accuracy_test",0))
+                    is_tradable = meta.get("is_tradable_edge")
                     if gap > 0.15:
                         st.warning(f"⚠️ Overfitting gap is {gap:.3f}. Consider retraining.")
-                    elif meta.get("walk_forward_mean_accuracy",0) < 0.51 or (pf_val is not None and pf_val < 1.05):
-                        st.error("🔴 Weak tradable edge — review walk-forward profit factor before auto-trading.")
+                    elif is_tradable is None:
+                        st.warning("🟡 This model predates net-of-cost reporting. Retrain to get an accurate tradable-edge check.")
+                    elif not is_tradable:
+                        st.error(
+                            f"🔴 Weak tradable edge after realistic costs — needs WF accuracy > {TRADABLE_MIN_WF_ACCURACY:.0%}, "
+                            f"net profit factor > {TRADABLE_MIN_NET_PROFIT_FACTOR:.2f}, and "
+                            f"≥{TRADABLE_MIN_PROFITABLE_SPLITS_PCT:.0%} profitable splits. Not recommended for auto-trading."
+                        )
                     else:
-                        st.success(f"✅ Model looks healthy. Trained: {meta.get('trained_at','?')[:10]}")
+                        st.success(f"✅ Model looks healthy net of realistic costs. Trained: {meta.get('trained_at','?')[:10]}")
                 else:
                     st.info(f"Model not trained for {sel_pair}. Run: `python train_all.py --fetch`")
 
