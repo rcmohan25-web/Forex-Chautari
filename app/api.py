@@ -670,14 +670,15 @@ def account_mark_notifications_read(user: CurrentUser = Depends(require_user)):
 
 @app.post("/admin/users", tags=["Admin"])
 def admin_create_user(body: CreateUserRequest, user: CurrentUser = Depends(require_admin)):
+    from sqlalchemy.exc import IntegrityError
     from src.database import create_user
     try:
         result = create_user(body.username, body.email, body.password,
                               body.full_name, role=body.role, plan=body.plan)
         return {"success": True, "user": result}
+    except IntegrityError:
+        raise HTTPException(400, "Username or email already taken.")
     except Exception as e:
-        if "UNIQUE constraint" in str(e):
-            raise HTTPException(400, "Username or email already taken.")
         raise HTTPException(500, str(e))
 
 
