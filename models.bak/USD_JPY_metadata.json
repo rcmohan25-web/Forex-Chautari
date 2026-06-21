@@ -38,34 +38,16 @@
   "accuracy_train": 0.754257907542579,
   "accuracy_test": 0.5631067961165048,
   "walk_forward_mean_accuracy": 0.51,
-  "walk_forward_mean_strategy_return": -0.39451610881264537,
-  "walk_forward_mean_profit_factor": 0.11913540360639749,
-  "walk_forward_mean_expectancy": -0.008985489938911025,
-  "walk_forward_mean_sharpe": -14.633473430622018,
+  "walk_forward_mean_strategy_return": -0.01355801683815333,
+  "walk_forward_mean_profit_factor": 0.8417152733748199,
+  "walk_forward_mean_expectancy": -0.0004906728657402935,
+  "walk_forward_mean_sharpe": -1.3159192581646633,
   "walk_forward_mean_exposure": 0.3484848484848485,
-  "walk_forward_profitable_splits": 0,
+  "walk_forward_profitable_splits": 1,
   "walk_forward_total_splits": 2,
-  "walk_forward_mean_net_strategy_return": -0.6254477158888754,
-  "walk_forward_mean_net_profit_factor": 0.03618293416239079,
-  "walk_forward_mean_net_expectancy": -0.018112014329154925,
-  "walk_forward_mean_net_sharpe": -18.086196189293275,
-  "walk_forward_net_profitable_splits": 0,
-  "walk_forward_net_profitable_splits_pct": 0.0,
-  "realistic_cost_assumptions": {
-    "slippage_pips": 0.5,
-    "swap_cost_per_day_pips": 0.2,
-    "raw_spread_used": 0.015,
-    "pip_size": 0.01
-  },
-  "is_tradable_edge": false,
-  "tradable_edge_thresholds": {
-    "min_wf_accuracy": 0.53,
-    "min_net_profit_factor": 1.2,
-    "min_profitable_splits_pct": 0.6
-  },
   "rf_max_depth": 5,
   "rf_min_samples_leaf": 20,
   "rf_n_estimators": 200,
   "signal_threshold": 0.55,
-  "trained_at": "2026-06-21T12:44:30.660344"
+  "trained_at": "2026-06-21T09:05:18.207799"
 }

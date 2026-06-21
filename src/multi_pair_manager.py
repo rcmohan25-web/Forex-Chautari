@@ -33,6 +33,9 @@ from config.settings import (
     DEFAULT_SIGNAL_THRESHOLD, DEFAULT_WF_TRAIN_SIZE,
     DEFAULT_WF_TEST_SIZE, DEFAULT_WF_STEP_SIZE,
     DEFAULT_SPREAD_COST, DEFAULT_MAX_POSITIONS,
+    REALISTIC_SLIPPAGE_PIPS, REALISTIC_SWAP_COST_PER_DAY_PIPS,
+    TRADABLE_MIN_WF_ACCURACY, TRADABLE_MIN_NET_PROFIT_FACTOR,
+    TRADABLE_MIN_PROFITABLE_SPLITS_PCT,
 )
 
 logger = get_logger("multi_pair")
@@ -113,9 +116,21 @@ def fetch_all_pairs(count: int = 500) -> dict:
 def train_pair(
     pair: str,
     threshold: float = DEFAULT_SIGNAL_THRESHOLD,
-    spread_cost: float = DEFAULT_SPREAD_COST,
+    spread_cost: float = None,
 ) -> dict:
-    """Train a model for one pair and save directly to models/{PAIR}_model.pkl."""
+    """
+    Train a model for one pair and save directly to models/{PAIR}_model.pkl.
+
+    spread_cost: raw spread used for the walk-forward backtest. Defaults to
+    the pair's own configured spread (config.settings.PAIRS[pair]["spread"])
+    rather than a single global value, since EUR/USD and USD/JPY spreads
+    aren't comparable in raw price units.
+
+    Walk-forward results are computed both gross and net of realistic costs
+    (1.5x spread + slippage + overnight swap — see config.settings). The
+    metadata's `is_tradable_edge` flag is the single source of truth the
+    dashboards use to decide whether to show the "Tradable edge" badge.
+    """
     csv = data_path(pair)
     if not os.path.exists(csv):
         raise FileNotFoundError(
@@ -128,6 +143,12 @@ def train_pair(
     if len(df) < 400:
         raise ValueError(f"{pair}: only {len(df)} rows after feature engineering — need 400+.")
 
+    pair_cfg          = PAIRS.get(pair, {})
+    pip_size          = pair_cfg.get("pip", 0.0001)
+    effective_spread  = spread_cost if spread_cost is not None else pair_cfg.get("spread", DEFAULT_SPREAD_COST)
+    slippage_cost     = REALISTIC_SLIPPAGE_PIPS * pip_size
+    swap_cost_per_day = REALISTIC_SWAP_COST_PER_DAY_PIPS * pip_size
+
     # Walk-forward validation
     wf_df = walk_forward_validation(
         df=df,
@@ -136,7 +157,9 @@ def train_pair(
         test_size=DEFAULT_WF_TEST_SIZE,
         step_size=DEFAULT_WF_STEP_SIZE,
         threshold=threshold,
-        spread_cost=spread_cost,
+        spread_cost=effective_spread,
+        slippage_cost=slippage_cost,
+        swap_cost_per_day=swap_cost_per_day,
     )
     os.makedirs("models", exist_ok=True)
     wf_df.to_csv(wf_path(pair), index=False)
@@ -148,6 +171,22 @@ def train_pair(
     _, _, tr_m = evaluate_model(model, tr[FEATURE_COLUMNS_V2], tr["target"])
     _, _, te_m = evaluate_model(model, te[FEATURE_COLUMNS_V2], te["target"])
 
+    total_splits = len(wf_df)
+    wf_mean_accuracy = float(wf_df["accuracy"].mean()) if total_splits else 0.0
+
+    net_pf_series  = wf_df["net_profit_factor"].replace([float("inf")], 999) if "net_profit_factor" in wf_df and total_splits else None
+    wf_mean_net_pf = float(net_pf_series.mean()) if net_pf_series is not None else None
+
+    net_profitable_splits     = int((wf_df["net_strategy_return"] > 0).sum()) if "net_strategy_return" in wf_df and total_splits else 0
+    net_profitable_splits_pct = (net_profitable_splits / total_splits) if total_splits else 0.0
+
+    is_tradable_edge = bool(
+        total_splits > 0
+        and wf_mean_accuracy > TRADABLE_MIN_WF_ACCURACY
+        and (wf_mean_net_pf or 0) > TRADABLE_MIN_NET_PROFIT_FACTOR
+        and net_profitable_splits_pct >= TRADABLE_MIN_PROFITABLE_SPLITS_PCT
+    )
+
     metadata = {
         "pair":                          pair,
         "model_version":                 "v2",
@@ -157,15 +196,38 @@ def train_pair(
         "rows_test":                     len(te),
         "accuracy_train":                tr_m["accuracy"],
         "accuracy_test":                 te_m["accuracy"],
-        "walk_forward_mean_accuracy":    float(wf_df["accuracy"].mean()),
-        "walk_forward_mean_strategy_return": float(wf_df["strategy_return"].mean()),
+        "walk_forward_mean_accuracy":    wf_mean_accuracy,
+        "walk_forward_mean_strategy_return": float(wf_df["strategy_return"].mean()) if total_splits else None,
         "walk_forward_mean_profit_factor": float(wf_df["profit_factor"].replace([float("inf")], 999).mean())
-                                            if "profit_factor" in wf_df else None,
-        "walk_forward_mean_expectancy":  float(wf_df["expectancy"].mean()) if "expectancy" in wf_df else None,
-        "walk_forward_mean_sharpe":      float(wf_df["sharpe"].mean()) if "sharpe" in wf_df else None,
-        "walk_forward_mean_exposure":    float(wf_df["exposure"].mean()) if "exposure" in wf_df else None,
-        "walk_forward_profitable_splits":    int((wf_df["strategy_return"] > 0).sum()),
-        "walk_forward_total_splits":         len(wf_df),
+                                            if "profit_factor" in wf_df and total_splits else None,
+        "walk_forward_mean_expectancy":  float(wf_df["expectancy"].mean()) if "expectancy" in wf_df and total_splits else None,
+        "walk_forward_mean_sharpe":      float(wf_df["sharpe"].mean()) if "sharpe" in wf_df and total_splits else None,
+        "walk_forward_mean_exposure":    float(wf_df["exposure"].mean()) if "exposure" in wf_df and total_splits else None,
+        "walk_forward_profitable_splits":    int((wf_df["strategy_return"] > 0).sum()) if total_splits else 0,
+        "walk_forward_total_splits":         total_splits,
+
+        # ── Net of realistic cost (1.5x spread + 0.5 pip slippage + overnight swap) ──
+        "walk_forward_mean_net_strategy_return":  float(wf_df["net_strategy_return"].mean()) if total_splits else None,
+        "walk_forward_mean_net_profit_factor":    wf_mean_net_pf,
+        "walk_forward_mean_net_expectancy":       float(wf_df["net_expectancy"].mean()) if total_splits else None,
+        "walk_forward_mean_net_sharpe":           float(wf_df["net_sharpe"].mean()) if total_splits else None,
+        "walk_forward_net_profitable_splits":     net_profitable_splits,
+        "walk_forward_net_profitable_splits_pct": net_profitable_splits_pct,
+        "realistic_cost_assumptions": {
+            "slippage_pips": REALISTIC_SLIPPAGE_PIPS,
+            "swap_cost_per_day_pips": REALISTIC_SWAP_COST_PER_DAY_PIPS,
+            "raw_spread_used": effective_spread,
+            "pip_size": pip_size,
+        },
+
+        # ── Single source of truth for "is this model's edge real" ──────────
+        "is_tradable_edge": is_tradable_edge,
+        "tradable_edge_thresholds": {
+            "min_wf_accuracy": TRADABLE_MIN_WF_ACCURACY,
+            "min_net_profit_factor": TRADABLE_MIN_NET_PROFIT_FACTOR,
+            "min_profitable_splits_pct": TRADABLE_MIN_PROFITABLE_SPLITS_PCT,
+        },
+
         "rf_max_depth":                  5,
         "rf_min_samples_leaf":           20,
         "rf_n_estimators":               200,
@@ -179,7 +241,9 @@ def train_pair(
     logger.info(
         f"{pair}: trained — train={tr_m['accuracy']:.4f} "
         f"test={te_m['accuracy']:.4f} "
-        f"wf={wf_df['accuracy'].mean():.4f}"
+        f"wf={wf_mean_accuracy:.4f} "
+        f"net_pf={wf_mean_net_pf if wf_mean_net_pf is not None else 'n/a'} "
+        f"tradable_edge={is_tradable_edge}"
     )
     return metadata
 

@@ -45,27 +45,9 @@
   "walk_forward_mean_exposure": 0.37373737373737376,
   "walk_forward_profitable_splits": 1,
   "walk_forward_total_splits": 2,
-  "walk_forward_mean_net_strategy_return": -0.019687994390432673,
-  "walk_forward_mean_net_profit_factor": 0.8588293653627697,
-  "walk_forward_mean_net_expectancy": -0.000312765824287605,
-  "walk_forward_mean_net_sharpe": -1.1174835392594284,
-  "walk_forward_net_profitable_splits": 0,
-  "walk_forward_net_profitable_splits_pct": 0.0,
-  "realistic_cost_assumptions": {
-    "slippage_pips": 0.5,
-    "swap_cost_per_day_pips": 0.2,
-    "raw_spread_used": 0.0001,
-    "pip_size": 0.0001
-  },
-  "is_tradable_edge": false,
-  "tradable_edge_thresholds": {
-    "min_wf_accuracy": 0.53,
-    "min_net_profit_factor": 1.2,
-    "min_profitable_splits_pct": 0.6
-  },
   "rf_max_depth": 5,
   "rf_min_samples_leaf": 20,
   "rf_n_estimators": 200,
   "signal_threshold": 0.55,
-  "trained_at": "2026-06-21T12:44:29.664747"
+  "trained_at": "2026-06-21T09:05:17.217689"
 }

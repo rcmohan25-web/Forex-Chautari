@@ -8565,3 +8565,836 @@ Log in to the admin panel to complete first-run setup.
 2026-06-18 20:20:45,995 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
 2026-06-18 20:20:45,996 - database - INFO - Database ready (SQLite)
 2026-06-18 20:20:46,398 - db_engine - INFO - Engine reset to: postgresql://forex_user:change_me_strong_password@... (PostgreSQL)
+2026-06-21 12:36:30,769 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 12:36:30,771 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 12:36:30,780 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 12:36:48,052 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 12:36:48,055 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 12:36:48,067 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 12:37:00,337 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 12:37:00,339 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 12:37:00,351 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 12:37:31,971 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 12:37:31,973 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 12:37:31,987 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 14:10:49,886 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 14:10:49,888 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 14:10:49,899 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 14:11:02,795 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 14:11:02,797 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 14:11:02,807 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 14:11:17,279 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 14:11:17,283 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 14:11:17,295 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 14:11:33,343 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 14:11:33,346 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 14:11:33,356 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 14:11:58,048 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 14:11:58,052 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 14:11:58,062 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 14:11:58,202 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 14:11:58,204 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 14:11:58,212 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 14:12:29,993 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 14:12:29,995 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 14:12:30,005 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 14:12:30,141 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 14:12:30,143 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 14:12:30,154 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 14:12:44,218 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 14:12:44,222 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 14:12:44,232 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 14:12:59,616 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 14:12:59,618 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 14:12:59,628 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 14:25:28,946 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 14:25:28,950 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 14:25:28,968 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 14:25:41,981 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 14:25:41,984 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 14:25:41,997 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 14:25:44,301 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 14:25:44,303 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 14:25:44,313 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 14:27:46,465 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 14:27:46,468 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 14:27:46,478 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 14:32:49,707 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 14:32:49,711 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 14:32:49,726 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 14:33:02,734 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 14:33:02,738 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 14:33:02,748 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 14:37:06,271 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 14:37:06,274 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 14:37:06,285 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 14:39:18,364 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 14:39:18,368 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 14:39:18,381 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 14:39:33,545 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 14:39:33,549 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 14:39:33,562 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 14:40:29,296 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 14:40:29,299 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 14:40:29,306 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 14:40:32,297 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 14:40:32,301 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 14:40:32,309 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 14:40:39,872 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 14:40:39,874 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 14:40:39,886 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 14:41:53,456 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 14:41:53,459 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 14:41:53,469 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 14:41:54,285 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 14:41:54,287 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 14:41:54,297 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 14:42:22,665 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 14:42:22,667 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 14:42:22,681 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 14:42:33,542 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 14:42:33,546 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 14:42:33,558 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 14:42:34,205 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 14:42:34,208 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 14:42:34,217 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 14:43:24,909 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 14:43:24,914 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 14:43:24,923 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 14:43:26,768 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 14:43:26,769 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 14:43:26,774 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 14:43:30,230 - regime - INFO - Regime: ADX=37.9 (trending) | Direction=bearish | Vol=normal (0.82x avg) | Tradeable=['SELL']
+2026-06-21 14:43:30,305 - regime - INFO - Regime: ADX=28.7 (trending) | Direction=bearish | Vol=normal (0.68x avg) | Tradeable=['SELL']
+2026-06-21 14:43:30,368 - regime - INFO - Regime: ADX=31.4 (trending) | Direction=neutral | Vol=low (0.38x avg) | Tradeable=['BUY', 'SELL']
+2026-06-21 14:43:30,423 - regime - INFO - Regime: ADX=50.9 (trending) | Direction=bearish | Vol=normal (0.93x avg) | Tradeable=['SELL']
+2026-06-21 14:43:38,935 - regime - INFO - Regime: ADX=37.9 (trending) | Direction=bearish | Vol=normal (0.82x avg) | Tradeable=['SELL']
+2026-06-21 14:43:39,005 - regime - INFO - Regime: ADX=28.7 (trending) | Direction=bearish | Vol=normal (0.68x avg) | Tradeable=['SELL']
+2026-06-21 14:43:39,061 - regime - INFO - Regime: ADX=31.4 (trending) | Direction=neutral | Vol=low (0.38x avg) | Tradeable=['BUY', 'SELL']
+2026-06-21 14:43:39,115 - regime - INFO - Regime: ADX=50.9 (trending) | Direction=bearish | Vol=normal (0.93x avg) | Tradeable=['SELL']
+2026-06-21 14:44:31,783 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 14:44:31,785 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 14:44:31,800 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 14:50:04,779 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 14:50:04,782 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 14:50:04,798 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 14:50:05,085 - regime - INFO - Regime: ADX=37.9 (trending) | Direction=bearish | Vol=normal (0.82x avg) | Tradeable=['SELL']
+2026-06-21 14:50:05,141 - regime - INFO - Regime: ADX=28.7 (trending) | Direction=bearish | Vol=normal (0.68x avg) | Tradeable=['SELL']
+2026-06-21 14:50:05,195 - regime - INFO - Regime: ADX=31.4 (trending) | Direction=neutral | Vol=low (0.38x avg) | Tradeable=['BUY', 'SELL']
+2026-06-21 14:50:05,252 - regime - INFO - Regime: ADX=50.9 (trending) | Direction=bearish | Vol=normal (0.93x avg) | Tradeable=['SELL']
+2026-06-21 14:50:12,705 - regime - INFO - Regime: ADX=37.9 (trending) | Direction=bearish | Vol=normal (0.82x avg) | Tradeable=['SELL']
+2026-06-21 14:50:12,760 - regime - INFO - Regime: ADX=28.7 (trending) | Direction=bearish | Vol=normal (0.68x avg) | Tradeable=['SELL']
+2026-06-21 14:50:12,815 - regime - INFO - Regime: ADX=31.4 (trending) | Direction=neutral | Vol=low (0.38x avg) | Tradeable=['BUY', 'SELL']
+2026-06-21 14:50:12,869 - regime - INFO - Regime: ADX=50.9 (trending) | Direction=bearish | Vol=normal (0.93x avg) | Tradeable=['SELL']
+2026-06-21 14:50:13,285 - multi_pair - INFO - EUR_USD: 534 rows saved to data/EUR_USD.csv
+2026-06-21 14:50:13,953 - multi_pair - INFO - GBP_USD: 534 rows saved to data/GBP_USD.csv
+2026-06-21 14:50:14,776 - multi_pair - INFO - USD_JPY: 534 rows saved to data/USD_JPY.csv
+2026-06-21 14:50:15,189 - multi_pair - INFO - AUD_USD: 534 rows saved to data/AUD_USD.csv
+2026-06-21 14:50:17,238 - multi_pair - INFO - EUR_USD: model saved → models/EUR_USD_model.pkl
+2026-06-21 14:50:17,238 - multi_pair - INFO - EUR_USD: trained — train=0.7883 test=0.4369 wf=0.5300
+2026-06-21 14:50:17,746 - multi_pair - INFO - GBP_USD: model saved → models/GBP_USD_model.pkl
+2026-06-21 14:50:17,746 - multi_pair - INFO - GBP_USD: trained — train=0.7956 test=0.5534 wf=0.4900
+2026-06-21 14:50:18,257 - multi_pair - INFO - USD_JPY: model saved → models/USD_JPY_model.pkl
+2026-06-21 14:50:18,258 - multi_pair - INFO - USD_JPY: trained — train=0.7543 test=0.5631 wf=0.5100
+2026-06-21 14:50:18,767 - multi_pair - INFO - AUD_USD: model saved → models/AUD_USD_model.pkl
+2026-06-21 14:50:18,767 - multi_pair - INFO - AUD_USD: trained — train=0.7835 test=0.4854 wf=0.5600
+2026-06-21 18:16:12,784 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpfp4u19ek.db@... (SQLite)
+2026-06-21 18:16:12,880 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:16:12,930 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:16:12,930 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:16:12,931 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:24,902 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp_nbi8of3/test.db@... (SQLite)
+2026-06-21 18:25:24,991 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:25,042 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:25,042 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:25,042 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:25,093 - db_engine - INFO - Engine reset to: sqlite:///data/forexchautari.db@... (SQLite)
+2026-06-21 18:25:25,093 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp4evz4bxw/test.db@... (SQLite)
+2026-06-21 18:25:25,148 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:25,199 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:25,199 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:25,200 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:25,301 - db_engine - INFO - Engine reset to: sqlite:///data/forexchautari.db@... (SQLite)
+2026-06-21 18:25:25,302 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpevumhzsw/test.db@... (SQLite)
+2026-06-21 18:25:25,357 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:25,407 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:25,407 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:25,408 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:25,609 - db_engine - INFO - Engine reset to: sqlite:///data/forexchautari.db@... (SQLite)
+2026-06-21 18:25:25,609 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp6rinbnmw/test.db@... (SQLite)
+2026-06-21 18:25:25,664 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:25,716 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:25,716 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:25,716 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:25,816 - db_engine - INFO - Engine reset to: sqlite:///data/forexchautari.db@... (SQLite)
+2026-06-21 18:25:25,817 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp3y5wrglj/test.db@... (SQLite)
+2026-06-21 18:25:25,871 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:25,922 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:25,922 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:25,923 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:26,026 - db_engine - INFO - Engine reset to: sqlite:///data/forexchautari.db@... (SQLite)
+2026-06-21 18:25:26,026 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp4xprbi4i/test.db@... (SQLite)
+2026-06-21 18:25:26,084 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:26,135 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:26,135 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:26,136 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:26,139 - db_engine - INFO - Engine reset to: sqlite:///data/forexchautari.db@... (SQLite)
+2026-06-21 18:25:26,139 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpsntut7ut/test.db@... (SQLite)
+2026-06-21 18:25:26,193 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:26,243 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:26,244 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:26,245 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:26,345 - db_engine - INFO - Engine reset to: sqlite:///data/forexchautari.db@... (SQLite)
+2026-06-21 18:25:26,346 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpq7vjyr41/test.db@... (SQLite)
+2026-06-21 18:25:26,402 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:26,452 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:26,452 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:26,453 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:26,554 - db_engine - INFO - Engine reset to: sqlite:///data/forexchautari.db@... (SQLite)
+2026-06-21 18:25:26,554 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpyxc9htz7/test.db@... (SQLite)
+2026-06-21 18:25:26,609 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:26,660 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:26,660 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:26,661 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:26,763 - db_engine - INFO - Engine reset to: sqlite:///data/forexchautari.db@... (SQLite)
+2026-06-21 18:25:26,764 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpomyywicp/test.db@... (SQLite)
+2026-06-21 18:25:26,819 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:26,870 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:26,870 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:26,871 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:27,278 - db_engine - INFO - Engine reset to: sqlite:///data/forexchautari.db@... (SQLite)
+2026-06-21 18:25:27,278 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp21dh2y7p/test.db@... (SQLite)
+2026-06-21 18:25:27,333 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:27,384 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:27,384 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:27,385 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:27,386 - db_engine - INFO - Engine reset to: sqlite:///data/forexchautari.db@... (SQLite)
+2026-06-21 18:25:27,386 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp15tvvz9w/test.db@... (SQLite)
+2026-06-21 18:25:27,442 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:27,492 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:27,492 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:27,493 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:27,598 - db_engine - INFO - Engine reset to: sqlite:///data/forexchautari.db@... (SQLite)
+2026-06-21 18:25:27,598 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp1xnyg6tw/test.db@... (SQLite)
+2026-06-21 18:25:27,653 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:27,703 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:27,703 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:27,704 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:27,704 - db_engine - INFO - Engine reset to: sqlite:///data/forexchautari.db@... (SQLite)
+2026-06-21 18:25:27,705 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmphxknk1ip/test.db@... (SQLite)
+2026-06-21 18:25:27,759 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:27,810 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:27,810 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:27,811 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:28,066 - db_engine - INFO - Engine reset to: sqlite:///data/forexchautari.db@... (SQLite)
+2026-06-21 18:25:28,066 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp2yrfe6ei/test.db@... (SQLite)
+2026-06-21 18:25:28,121 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:28,171 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:28,171 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:28,172 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:28,376 - db_engine - INFO - Engine reset to: sqlite:///data/forexchautari.db@... (SQLite)
+2026-06-21 18:25:28,376 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmppjk64c3e/test.db@... (SQLite)
+2026-06-21 18:25:28,431 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:28,482 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:28,482 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:28,483 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:28,588 - db_engine - INFO - Engine reset to: sqlite:///data/forexchautari.db@... (SQLite)
+2026-06-21 18:25:28,588 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpdyx93z8w/test.db@... (SQLite)
+2026-06-21 18:25:28,645 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:28,695 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:28,696 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:28,696 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:28,798 - db_engine - INFO - Engine reset to: sqlite:///data/forexchautari.db@... (SQLite)
+2026-06-21 18:25:28,800 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp3n_egp4b/auth_test.db@... (SQLite)
+2026-06-21 18:25:28,856 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:28,907 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:28,907 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:28,908 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:28,958 - db_engine - INFO - Engine reset to: sqlite:///data/forexchautari.db@... (SQLite)
+2026-06-21 18:25:28,958 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpe9g_a3iv/auth_test.db@... (SQLite)
+2026-06-21 18:25:29,015 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:29,066 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:29,066 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:29,067 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:29,219 - db_engine - INFO - Engine reset to: sqlite:///data/forexchautari.db@... (SQLite)
+2026-06-21 18:25:29,220 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpjkb1191h/auth_test.db@... (SQLite)
+2026-06-21 18:25:29,277 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:29,327 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:29,327 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:29,328 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:29,330 - db_engine - INFO - Engine reset to: sqlite:///data/forexchautari.db@... (SQLite)
+2026-06-21 18:25:32,229 - multi_pair - WARNING - No trained models found. Run: python train_all.py --fetch
+2026-06-21 18:25:32,233 - trading_engine - WARNING - calculate_position_size: requested risk_pct 0.100 exceeds hard cap 0.020 — clamped.
+2026-06-21 18:25:32,233 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp35yx6__j/test.db@... (SQLite)
+2026-06-21 18:25:32,289 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:32,339 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:32,339 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:32,340 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:32,484 - db_engine - INFO - Engine reset to: postgresql://forex_user:change_me_strong_password@... (PostgreSQL)
+2026-06-21 18:25:33,076 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpb3exnbyd/test.db@... (SQLite)
+2026-06-21 18:25:33,144 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:33,194 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:33,194 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:33,195 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:33,515 - trading_engine - CRITICAL - KILL SWITCH ACTIVATED — user_id=99 daily drawdown=6.00% >= 5% hard limit. Auto-trading disabled for the rest of the UTC day.
+2026-06-21 18:25:33,515 - trading_engine - CRITICAL - KILL SWITCH ACTIVATED — user_id=99 daily drawdown=7.00% >= 5% hard limit. Auto-trading disabled for the rest of the UTC day.
+2026-06-21 18:25:33,535 - db_engine - INFO - Engine reset to: postgresql://forex_user:change_me_strong_password@... (PostgreSQL)
+2026-06-21 18:25:33,535 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpjc1l5huh/test.db@... (SQLite)
+2026-06-21 18:25:33,590 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:33,640 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:33,640 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:33,641 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:33,642 - trading_engine - CRITICAL - KILL SWITCH ACTIVATED — user_id=1 daily drawdown=6.00% >= 5% hard limit. Auto-trading disabled for the rest of the UTC day.
+2026-06-21 18:25:33,643 - db_engine - INFO - Engine reset to: postgresql://forex_user:change_me_strong_password@... (PostgreSQL)
+2026-06-21 18:25:33,643 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp3z4ec4ym/test.db@... (SQLite)
+2026-06-21 18:25:33,697 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:33,747 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:33,748 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:33,749 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:33,749 - trading_engine - CRITICAL - KILL SWITCH ACTIVATED — user_id=1 daily drawdown=6.00% >= 5% hard limit. Auto-trading disabled for the rest of the UTC day.
+2026-06-21 18:25:33,750 - db_engine - INFO - Engine reset to: postgresql://forex_user:change_me_strong_password@... (PostgreSQL)
+2026-06-21 18:25:33,750 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpyjxlburj/test.db@... (SQLite)
+2026-06-21 18:25:33,804 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:33,854 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:33,855 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:33,856 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:33,856 - db_engine - INFO - Engine reset to: postgresql://forex_user:change_me_strong_password@... (PostgreSQL)
+2026-06-21 18:25:33,857 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpjuju5_3c/test.db@... (SQLite)
+2026-06-21 18:25:33,911 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:33,961 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:33,961 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:33,962 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:33,962 - db_engine - INFO - Engine reset to: postgresql://forex_user:change_me_strong_password@... (PostgreSQL)
+2026-06-21 18:25:33,962 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpyi_6lp3o/test.db@... (SQLite)
+2026-06-21 18:25:34,017 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:34,067 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:34,068 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:34,069 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:34,069 - trading_engine - CRITICAL - KILL SWITCH ACTIVATED — user_id=7 daily drawdown=7.00% >= 5% hard limit. Auto-trading disabled for the rest of the UTC day.
+2026-06-21 18:25:34,070 - db_engine - INFO - Engine reset to: postgresql://forex_user:change_me_strong_password@... (PostgreSQL)
+2026-06-21 18:25:34,070 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpt08npo0n/test.db@... (SQLite)
+2026-06-21 18:25:34,124 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:34,174 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:34,174 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:34,175 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:34,176 - trading_engine - CRITICAL - KILL SWITCH ACTIVATED — user_id=8 daily drawdown=6.00% >= 5% hard limit. Auto-trading disabled for the rest of the UTC day.
+2026-06-21 18:25:34,176 - trading_engine - WARNING - Kill-switch Telegram alert failed: network
+2026-06-21 18:25:34,176 - db_engine - INFO - Engine reset to: postgresql://forex_user:change_me_strong_password@... (PostgreSQL)
+2026-06-21 18:25:34,176 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp0gzf17wv/test.db@... (SQLite)
+2026-06-21 18:25:34,230 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:34,280 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:34,281 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:34,282 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:34,282 - trading_engine - WARNING - enforce_hard_risk_limits: account summary unavailable (Oanda down); checks 3 & 4 skipped for this order.
+2026-06-21 18:25:34,282 - db_engine - INFO - Engine reset to: postgresql://forex_user:change_me_strong_password@... (PostgreSQL)
+2026-06-21 18:25:34,282 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpq31gexzb/test.db@... (SQLite)
+2026-06-21 18:25:34,337 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:34,387 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:34,387 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:34,388 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:34,389 - trading_engine - CRITICAL - KILL SWITCH ACTIVATED — user_id=42 daily drawdown=6.00% >= 5% hard limit. Auto-trading disabled for the rest of the UTC day.
+2026-06-21 18:25:34,390 - db_engine - INFO - Engine reset to: postgresql://forex_user:change_me_strong_password@... (PostgreSQL)
+2026-06-21 18:25:34,390 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpfhud05m5/test.db@... (SQLite)
+2026-06-21 18:25:34,445 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:34,495 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:34,495 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:34,496 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:34,497 - trading_engine - CRITICAL - KILL SWITCH ACTIVATED — user_id=1 daily drawdown=5.00% >= 5% hard limit. Auto-trading disabled for the rest of the UTC day.
+2026-06-21 18:25:34,497 - db_engine - INFO - Engine reset to: postgresql://forex_user:change_me_strong_password@... (PostgreSQL)
+2026-06-21 18:25:34,497 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpzpk3bccx/test.db@... (SQLite)
+2026-06-21 18:25:34,552 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:34,602 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:34,602 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:34,603 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:34,606 - db_engine - INFO - Engine reset to: postgresql://forex_user:change_me_strong_password@... (PostgreSQL)
+2026-06-21 18:25:34,606 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp35sf9iri/test.db@... (SQLite)
+2026-06-21 18:25:34,660 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:34,710 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:34,710 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:34,711 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:34,712 - trading_engine - CRITICAL - KILL SWITCH ACTIVATED — user_id=1 daily drawdown=6.00% >= 5% hard limit. Auto-trading disabled for the rest of the UTC day.
+2026-06-21 18:25:34,712 - db_engine - INFO - Engine reset to: postgresql://forex_user:change_me_strong_password@... (PostgreSQL)
+2026-06-21 18:25:34,713 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpwhhadbfa/test.db@... (SQLite)
+2026-06-21 18:25:34,768 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:34,819 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:34,819 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:34,820 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:34,820 - trading_engine - CRITICAL - KILL SWITCH ACTIVATED — user_id=1 daily drawdown=6.00% >= 5% hard limit. Auto-trading disabled for the rest of the UTC day.
+2026-06-21 18:25:34,821 - db_engine - INFO - Engine reset to: postgresql://forex_user:change_me_strong_password@... (PostgreSQL)
+2026-06-21 18:25:34,821 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmph97d85ke/test.db@... (SQLite)
+2026-06-21 18:25:34,876 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:34,926 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:34,926 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:34,927 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:34,928 - trading_engine - CRITICAL - KILL SWITCH ACTIVATED — user_id=1 daily drawdown=6.00% >= 5% hard limit. Auto-trading disabled for the rest of the UTC day.
+2026-06-21 18:25:34,929 - db_engine - INFO - Engine reset to: postgresql://forex_user:change_me_strong_password@... (PostgreSQL)
+2026-06-21 18:25:34,929 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp3ddwuw7y/test.db@... (SQLite)
+2026-06-21 18:25:34,983 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:35,033 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:35,034 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:35,034 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:35,035 - db_engine - INFO - Engine reset to: postgresql://forex_user:change_me_strong_password@... (PostgreSQL)
+2026-06-21 18:25:35,035 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp5v4b196k/test.db@... (SQLite)
+2026-06-21 18:25:35,090 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:35,139 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:35,140 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:35,141 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:35,141 - db_engine - INFO - Engine reset to: postgresql://forex_user:change_me_strong_password@... (PostgreSQL)
+2026-06-21 18:25:35,141 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp_zjc4bmd/test.db@... (SQLite)
+2026-06-21 18:25:35,197 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:35,248 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:35,248 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:35,249 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:35,249 - db_engine - INFO - Engine reset to: postgresql://forex_user:change_me_strong_password@... (PostgreSQL)
+2026-06-21 18:25:35,249 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpohb_8wcr/test.db@... (SQLite)
+2026-06-21 18:25:35,304 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:35,354 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:35,354 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:35,355 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:35,355 - db_engine - INFO - Engine reset to: postgresql://forex_user:change_me_strong_password@... (PostgreSQL)
+2026-06-21 18:25:35,356 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpskgesm9o/test.db@... (SQLite)
+2026-06-21 18:25:35,412 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:35,462 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:35,462 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:35,463 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:35,463 - db_engine - INFO - Engine reset to: postgresql://forex_user:change_me_strong_password@... (PostgreSQL)
+2026-06-21 18:25:35,464 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpdxpj3f19/test.db@... (SQLite)
+2026-06-21 18:25:35,518 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:35,568 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:35,568 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:35,569 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:35,569 - db_engine - INFO - Engine reset to: postgresql://forex_user:change_me_strong_password@... (PostgreSQL)
+2026-06-21 18:25:35,569 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpszm06xne/test.db@... (SQLite)
+2026-06-21 18:25:35,626 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:35,676 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:35,676 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:35,677 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:35,677 - db_engine - INFO - Engine reset to: postgresql://forex_user:change_me_strong_password@... (PostgreSQL)
+2026-06-21 18:25:35,678 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmphcxu1akf/test.db@... (SQLite)
+2026-06-21 18:25:35,732 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:35,782 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:35,783 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:35,784 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:35,785 - db_engine - INFO - Engine reset to: postgresql://forex_user:change_me_strong_password@... (PostgreSQL)
+2026-06-21 18:25:35,785 - trading_engine - WARNING - calculate_position_size: requested risk_pct 0.500 exceeds hard cap 0.020 — clamped.
+2026-06-21 18:25:35,785 - trading_engine - WARNING - calculate_position_size: requested risk_pct 0.100 exceeds hard cap 0.020 — clamped.
+2026-06-21 18:25:35,785 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp1gna4jiz/test.db@... (SQLite)
+2026-06-21 18:25:35,841 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:35,892 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:35,892 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:35,893 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:35,894 - trading_engine - CRITICAL - KILL SWITCH ACTIVATED — user_id=1 daily drawdown=6.00% >= 5% hard limit. Auto-trading disabled for the rest of the UTC day.
+2026-06-21 18:25:36,789 - db_engine - INFO - Engine reset to: postgresql://forex_user:change_me_strong_password@... (PostgreSQL)
+2026-06-21 18:25:36,790 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpden_qe9n/test.db@... (SQLite)
+2026-06-21 18:25:36,848 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:36,898 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:36,899 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:36,899 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:36,900 - trading_engine - CRITICAL - KILL SWITCH ACTIVATED — user_id=1 daily drawdown=6.00% >= 5% hard limit. Auto-trading disabled for the rest of the UTC day.
+2026-06-21 18:25:36,901 - db_engine - INFO - Engine reset to: postgresql://forex_user:change_me_strong_password@... (PostgreSQL)
+2026-06-21 18:25:36,901 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp4fohzy_l/test.db@... (SQLite)
+2026-06-21 18:25:36,955 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:37,006 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:37,007 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:37,008 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:37,009 - db_engine - INFO - Engine reset to: postgresql://forex_user:change_me_strong_password@... (PostgreSQL)
+2026-06-21 18:25:37,009 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmp_jcnlhz6/test.db@... (SQLite)
+2026-06-21 18:25:37,068 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:37,118 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:37,118 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:37,119 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:37,120 - trading_engine - INFO - Trade placed: user=1 EUR_USD BUY units=1000 fill=1.085
+2026-06-21 18:25:37,120 - db_engine - INFO - Engine reset to: postgresql://forex_user:change_me_strong_password@... (PostgreSQL)
+2026-06-21 18:25:37,120 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpgsorek87/test.db@... (SQLite)
+2026-06-21 18:25:37,175 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:37,225 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:37,225 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:37,226 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:37,227 - db_engine - INFO - Engine reset to: postgresql://forex_user:change_me_strong_password@... (PostgreSQL)
+2026-06-21 18:25:37,227 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpmc7pj2ob/test.db@... (SQLite)
+2026-06-21 18:25:37,282 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:37,333 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:37,333 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:37,334 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:37,335 - db_engine - INFO - Engine reset to: postgresql://forex_user:change_me_strong_password@... (PostgreSQL)
+2026-06-21 18:25:37,335 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmphwho6b11/test.db@... (SQLite)
+2026-06-21 18:25:37,391 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:37,441 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:37,441 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:37,442 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:37,442 - db_engine - INFO - Engine reset to: postgresql://forex_user:change_me_strong_password@... (PostgreSQL)
+2026-06-21 18:25:37,442 - db_engine - INFO - Engine reset to: sqlite:////var/folders/3y/mr1jkpyj18lb2zyc3zzkxlmc0000gn/T/tmpc8hlwl3k/test.db@... (SQLite)
+2026-06-21 18:25:37,499 - database - CRITICAL - SECURITY: Default admin account created with password 'admin123'. You MUST change this before using the system.
+2026-06-21 18:25:37,549 - database - CRITICAL - ======================================================================
+CRITICAL SECURITY WARNING
+The admin account is still using the default password 'admin123'.
+All non-health API endpoints are BLOCKED until you change it.
+Log in to the admin panel to complete first-run setup.
+======================================================================
+2026-06-21 18:25:37,550 - database - INFO - API key encryption check passed — all 0 active trading account(s) use encrypted keys.
+2026-06-21 18:25:37,550 - database - INFO - Database ready (SQLite)
+2026-06-21 18:25:37,551 - db_engine - INFO - Engine reset to: postgresql://forex_user:change_me_strong_password@... (PostgreSQL)
+2026-06-21 18:27:04,447 - multi_pair - INFO - EUR_USD: 534 rows saved to data/EUR_USD.csv
+2026-06-21 18:27:04,906 - multi_pair - INFO - GBP_USD: 534 rows saved to data/GBP_USD.csv
+2026-06-21 18:27:06,728 - multi_pair - INFO - USD_JPY: 534 rows saved to data/USD_JPY.csv
+2026-06-21 18:27:07,398 - multi_pair - INFO - AUD_USD: 534 rows saved to data/AUD_USD.csv
+2026-06-21 18:27:07,926 - multi_pair - INFO - EUR_USD: model saved → models/EUR_USD_model.pkl
+2026-06-21 18:27:07,926 - multi_pair - INFO - EUR_USD: trained — train=0.7883 test=0.4369 wf=0.5300 net_pf=0.8588293653627697 tradable_edge=False
+2026-06-21 18:27:08,447 - multi_pair - INFO - GBP_USD: model saved → models/GBP_USD_model.pkl
+2026-06-21 18:27:08,447 - multi_pair - INFO - GBP_USD: trained — train=0.7956 test=0.5534 wf=0.4900 net_pf=0.881479657704088 tradable_edge=False
+2026-06-21 18:27:08,947 - multi_pair - INFO - USD_JPY: model saved → models/USD_JPY_model.pkl
+2026-06-21 18:27:08,947 - multi_pair - INFO - USD_JPY: trained — train=0.7543 test=0.5631 wf=0.5100 net_pf=0.03618293416239079 tradable_edge=False
+2026-06-21 18:27:09,454 - multi_pair - INFO - AUD_USD: model saved → models/AUD_USD_model.pkl
+2026-06-21 18:27:09,454 - multi_pair - INFO - AUD_USD: trained — train=0.7835 test=0.4854 wf=0.5600 net_pf=0.8787779237726843 tradable_edge=False
+2026-06-21 18:27:56,145 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 18:27:56,148 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 18:27:56,179 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 18:27:57,720 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 18:27:57,722 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 18:27:57,733 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 18:28:51,555 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 18:28:51,557 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 18:28:51,572 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 18:28:51,972 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 18:28:51,974 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 18:28:51,986 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 18:28:54,108 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-21 18:28:54,167 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-21 18:28:54,221 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-21 18:28:54,273 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-21 18:29:00,537 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-21 18:29:00,591 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-21 18:29:00,643 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-21 18:29:00,696 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-21 18:29:19,267 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 18:29:19,269 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 18:29:19,280 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 18:29:19,451 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-21 18:29:19,504 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-21 18:29:19,557 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-21 18:29:19,611 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-21 18:29:24,304 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-21 18:29:24,358 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-21 18:29:24,409 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-21 18:29:24,463 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-21 18:29:24,855 - multi_pair - INFO - EUR_USD: 534 rows saved to data/EUR_USD.csv
+2026-06-21 18:29:25,415 - multi_pair - INFO - GBP_USD: 534 rows saved to data/GBP_USD.csv
+2026-06-21 18:29:25,885 - multi_pair - INFO - USD_JPY: 534 rows saved to data/USD_JPY.csv
+2026-06-21 18:29:27,772 - multi_pair - INFO - AUD_USD: 534 rows saved to data/AUD_USD.csv
+2026-06-21 18:29:29,685 - multi_pair - INFO - EUR_USD: model saved → models/EUR_USD_model.pkl
+2026-06-21 18:29:29,685 - multi_pair - INFO - EUR_USD: trained — train=0.7883 test=0.4369 wf=0.5300 net_pf=0.8588293653627697 tradable_edge=False
+2026-06-21 18:29:30,186 - multi_pair - INFO - GBP_USD: model saved → models/GBP_USD_model.pkl
+2026-06-21 18:29:30,186 - multi_pair - INFO - GBP_USD: trained — train=0.7956 test=0.5534 wf=0.4900 net_pf=0.881479657704088 tradable_edge=False
+2026-06-21 18:29:30,701 - multi_pair - INFO - USD_JPY: model saved → models/USD_JPY_model.pkl
+2026-06-21 18:29:30,701 - multi_pair - INFO - USD_JPY: trained — train=0.7543 test=0.5631 wf=0.5100 net_pf=0.03618293416239079 tradable_edge=False
+2026-06-21 18:29:31,198 - multi_pair - INFO - AUD_USD: model saved → models/AUD_USD_model.pkl
+2026-06-21 18:29:31,198 - multi_pair - INFO - AUD_USD: trained — train=0.7835 test=0.4854 wf=0.5600 net_pf=0.8787779237726843 tradable_edge=False
+2026-06-21 18:30:43,055 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 18:30:43,057 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 18:30:43,068 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 18:30:43,354 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 18:30:43,356 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 18:30:43,363 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 18:30:58,624 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 18:30:58,629 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 18:30:58,641 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 18:31:16,382 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 18:31:16,385 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 18:31:16,401 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 18:31:16,677 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 18:31:16,679 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 18:31:16,686 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 18:31:16,903 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-21 18:31:16,993 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-21 18:31:17,047 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-21 18:31:17,100 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-21 18:31:21,766 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-21 18:31:21,819 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-21 18:31:21,872 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-21 18:31:21,926 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-21 18:31:34,345 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 18:31:34,348 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 18:31:34,356 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 18:31:34,604 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-21 18:31:34,661 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-21 18:31:34,713 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-21 18:31:34,767 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-21 18:31:39,190 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-21 18:31:39,243 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-21 18:31:39,296 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-21 18:31:39,349 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']

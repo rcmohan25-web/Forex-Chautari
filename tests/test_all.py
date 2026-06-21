@@ -478,6 +478,24 @@ class TestBacktest(unittest.TestCase):
         _, r1 = run_backtest(self.df, preds, probas, 0.55, 0.001)
         self.assertGreaterEqual(r0["total_strategy_return"], r1["total_strategy_return"])
 
+    def test_net_of_cost_fields_present(self):
+        from src.backtest import run_backtest
+        preds  = np.ones(len(self.df), dtype=int)
+        probas = np.column_stack([np.full(len(self.df), 0.4), np.full(len(self.df), 0.6)])
+        _, results = run_backtest(self.df, preds, probas, 0.55, 0.0001)
+        for key in ["net_total_strategy_return", "net_profit_factor", "net_win_rate", "net_expectancy"]:
+            self.assertIn(key, results)
+
+    def test_net_return_never_exceeds_gross(self):
+        from src.backtest import run_backtest
+        preds  = np.ones(len(self.df), dtype=int)
+        probas = np.column_stack([np.full(len(self.df), 0.4), np.full(len(self.df), 0.6)])
+        _, results = run_backtest(
+            self.df, preds, probas, 0.55, 0.0001,
+            slippage_cost=0.00005, swap_cost_per_day=0.00002,
+        )
+        self.assertLessEqual(results["net_total_strategy_return"], results["total_strategy_return"])
+
     def test_no_trades_at_high_threshold(self):
         from src.backtest import run_backtest
         preds  = np.ones(len(self.df), dtype=int)
@@ -552,6 +570,17 @@ class TestTrainPipeline(unittest.TestCase):
         wf_df = walk_forward_validation(df, FEATURE_COLUMNS_V2,
                                         train_size=300, test_size=100, step_size=200)
         for col in ["split_id","accuracy","strategy_return","num_trades"]:
+            self.assertIn(col, wf_df.columns)
+
+    def test_walk_forward_net_of_cost_columns(self):
+        from src.features import add_features, FEATURE_COLUMNS_V2
+        from src.train_pipeline import walk_forward_validation
+        df    = add_features(make_ohlc(600))
+        wf_df = walk_forward_validation(
+            df, FEATURE_COLUMNS_V2, train_size=300, test_size=100, step_size=200,
+            slippage_cost=0.00005, swap_cost_per_day=0.00002,
+        )
+        for col in ["net_strategy_return", "net_profit_factor", "net_expectancy"]:
             self.assertIn(col, wf_df.columns)
 
     def test_walk_forward_accuracy_range(self):

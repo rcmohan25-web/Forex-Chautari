@@ -47,6 +47,25 @@ DEFAULT_WF_TRAIN_SIZE    = 300
 DEFAULT_WF_TEST_SIZE     = 100
 DEFAULT_WF_STEP_SIZE     = 100
 
+# ── Realistic cost assumptions for honest net-of-cost reporting ───────────────
+# Walk-forward "gross" returns only account for the raw spread passed into
+# run_backtest(). Real trading also incurs slippage and, for positions held
+# overnight, broker swap/financing charges. These constants compute a "net"
+# walk-forward view that approximates what a trader actually keeps after
+# realistic costs.
+REALISTIC_SPREAD_MULTIPLIER      = 1.5   # realistic spread = raw spread × this
+REALISTIC_SLIPPAGE_PIPS          = 0.5   # extra slippage assumed per trade
+REALISTIC_SWAP_COST_PER_DAY_PIPS = 0.2   # conservative overnight holding cost/day
+
+# ── "Tradable edge" thresholds used by the dashboards ──────────────────────
+# A model only earns the "Tradable edge" badge once ALL THREE bars are
+# cleared, evaluated NET of the realistic costs above. A profit factor of
+# 1.05 is a misleadingly low bar (five cents of profit per dollar risked,
+# BEFORE slippage and fees) — these thresholds require a real, costed edge.
+TRADABLE_MIN_WF_ACCURACY           = 0.53
+TRADABLE_MIN_NET_PROFIT_FACTOR     = 1.2
+TRADABLE_MIN_PROFITABLE_SPLITS_PCT = 0.60
+
 # ── Risk management (user-configurable, subject to hard ceilings below) ───────
 DEFAULT_RISK_PER_TRADE = 0.01
 DEFAULT_MAX_DAILY_LOSS = 0.02

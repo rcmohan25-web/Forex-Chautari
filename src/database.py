@@ -352,8 +352,8 @@ def init_db():
             "daily_summary_time_utc": "08:30",
             "train_time_utc": "00:01",
             "train_weekday_utc": "0",
-            "minimum_wf_accuracy": "0.51",
-            "minimum_profit_factor": "1.05",
+            "minimum_wf_accuracy": "0.53",
+            "minimum_profit_factor": "1.2",
         }
         for key, value in default_settings.items():
             execute(conn, """

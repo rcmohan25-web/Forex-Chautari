@@ -12,6 +12,8 @@ def walk_forward_validation(
     step_size: int = 100,
     threshold: float = 0.55,
     spread_cost: float = 0.0001,
+    slippage_cost: float = 0.0,
+    swap_cost_per_day: float = 0.0,
 ):
     if feature_columns is None:
         feature_columns = FEATURE_COLUMNS_V2
@@ -38,6 +40,8 @@ def walk_forward_validation(
             threshold=threshold,
             spread_cost=spread_cost,
             allow_short=True,
+            slippage_cost=slippage_cost,
+            swap_cost_per_day=swap_cost_per_day,
         )
 
         results.append({
@@ -58,6 +62,14 @@ def walk_forward_validation(
             "sharpe":          bt["sharpe"],
             "sortino":         bt["sortino"],
             "exposure":        bt["exposure"],
+            # ── Net of realistic cost (spread×1.5 + slippage + overnight swap) ──
+            "net_strategy_return": bt["net_total_strategy_return"],
+            "net_win_rate":        bt["net_win_rate"],
+            "net_max_drawdown":    bt["net_max_drawdown"],
+            "net_profit_factor":   bt["net_profit_factor"],
+            "net_expectancy":      bt["net_expectancy"],
+            "net_sharpe":          bt["net_sharpe"],
+            "avg_realistic_trade_cost": bt["avg_realistic_trade_cost"],
         })
 
         start += step_size
