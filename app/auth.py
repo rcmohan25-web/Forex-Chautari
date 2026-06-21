@@ -5,6 +5,7 @@ Manages session state via st.session_state.
 """
 
 import streamlit as st
+from sqlalchemy.exc import IntegrityError
 from src.database import (
     init_db, authenticate_user, create_user, get_session,
     create_session, destroy_session, get_user_by_id,
@@ -250,11 +251,10 @@ def render_register():
                 login_and_store_jwt(username.strip(), password)   # ← JWT issuance
                 st.success(f"Welcome to ForexChautari, {full_name.split()[0]}!")
                 st.rerun()
+            except IntegrityError:
+                st.error("Username or email already taken. Try a different one.")
             except Exception as e:
-                if "UNIQUE constraint" in str(e):
-                    st.error("Username or email already taken. Try a different one.")
-                else:
-                    st.error(f"Registration failed: {e}")
+                st.error(f"Registration failed: {e}")
 
     st.markdown('<div class="divider">— already have an account? —</div>', unsafe_allow_html=True)
     if st.button("Sign in instead", key="goto_login"):
