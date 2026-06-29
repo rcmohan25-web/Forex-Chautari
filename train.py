@@ -10,7 +10,7 @@ from config.settings import (
 )
 from src.data_loader import load_forex_data
 from src.features import add_features, FEATURE_COLUMNS_V2
-from src.model import train_random_forest, evaluate_model, save_model_bundle
+from src.model import train_random_forest_calibrated, evaluate_model, save_model_bundle
 from src.train_pipeline import walk_forward_validation
 from src.logger import get_logger
 
@@ -22,7 +22,7 @@ def main():
     df = load_forex_data(DATA_PATH)
     df = add_features(df)
 
-    logger.info("Running walk-forward validation...")
+    logger.info("Running walk-forward validation (calibrated model)...")
     wf_df = walk_forward_validation(
         df=df,
         feature_columns=FEATURE_COLUMNS_V2,
@@ -41,24 +41,42 @@ def main():
     train_df = df.iloc[:split_idx]
     test_df  = df.iloc[split_idx:]
 
-    logger.info(f"Training final model on {len(train_df)} rows, testing on {len(test_df)} rows...")
+    logger.info(
+        f"Training calibrated final model on {len(train_df)} rows, "
+        f"testing on {len(test_df)} rows..."
+    )
     X_train = train_df[FEATURE_COLUMNS_V2]
     y_train = train_df["target"]
     X_test  = test_df[FEATURE_COLUMNS_V2]
     y_test  = test_df["target"]
 
-    model = train_random_forest(X_train, y_train)
+    # Use Platt-scaled calibrated RF for all production training
+    model = train_random_forest_calibrated(X_train, y_train)
     _, _, train_metrics = evaluate_model(model, X_train, y_train)
     _, _, test_metrics  = evaluate_model(model, X_test, y_test)
 
+    # Mean Brier score across walk-forward splits (guards against missing column
+    # if an older wf_df was somehow passed in)
+    brier_wf_mean = (
+        float(wf_df["brier_score"].mean())
+        if not wf_df.empty and "brier_score" in wf_df.columns
+        else None
+    )
+
     metadata = {
-        "model_version": "v2",
-        "feature_set": "FEATURE_COLUMNS_V2",
-        "rows_total": len(df),
-        "rows_train": len(train_df),
-        "rows_test": len(test_df),
-        "accuracy_train": train_metrics["accuracy"],
-        "accuracy_test": test_metrics["accuracy"],
+        "model_version":    "v2",
+        "feature_set":      "FEATURE_COLUMNS_V2",
+        "rows_total":       len(df),
+        "rows_train":       len(train_df),
+        "rows_test":        len(test_df),
+        "accuracy_train":   train_metrics["accuracy"],
+        "accuracy_test":    test_metrics["accuracy"],
+        # ── Calibration provenance ─────────────────────────────────────────
+        "is_calibrated":      True,
+        "calibration_method": "sigmoid",   # Platt scaling via CalibratedClassifierCV
+        "brier_score_test":   test_metrics["brier_score"],
+        "brier_score_wf_mean": brier_wf_mean,
+        # ── Walk-forward summary ───────────────────────────────────────────
         "walk_forward_mean_accuracy": float(wf_df["accuracy"].mean()) if not wf_df.empty else None,
         "walk_forward_mean_strategy_return": float(wf_df["strategy_return"].mean()) if not wf_df.empty else None,
         "walk_forward_mean_profit_factor": float(wf_df["profit_factor"].replace([float("inf")], 999).mean())
@@ -70,12 +88,12 @@ def main():
         "walk_forward_mean_exposure": float(wf_df["exposure"].mean())
                                       if not wf_df.empty and "exposure" in wf_df else None,
         "walk_forward_profitable_splits": int((wf_df["strategy_return"] > 0).sum()) if not wf_df.empty else None,
-        "walk_forward_total_splits": len(wf_df),
-        "feature_columns": FEATURE_COLUMNS_V2,
-        "feature_count": len(FEATURE_COLUMNS_V2),
-        "rf_max_depth": 5,
+        "walk_forward_total_splits":      len(wf_df),
+        "feature_columns":  FEATURE_COLUMNS_V2,
+        "feature_count":    len(FEATURE_COLUMNS_V2),
+        "rf_max_depth":     5,
         "rf_min_samples_leaf": 20,
-        "rf_n_estimators": 200,
+        "rf_n_estimators":  200,
         "signal_threshold": DEFAULT_SIGNAL_THRESHOLD,
     }
 
@@ -87,11 +105,15 @@ def main():
     print(f"  Train accuracy (in-sample) : {train_metrics['accuracy']:.4f}")
     print(f"  Test  accuracy (held-out)  : {test_metrics['accuracy']:.4f}")
     print(f"  Overfitting gap            : {train_metrics['accuracy'] - test_metrics['accuracy']:.4f}")
+    print(f"  Brier score (test)         : {test_metrics['brier_score']:.4f}  (coin flip ≈ 0.25)")
+    if brier_wf_mean is not None:
+        print(f"  Brier score (WF mean)      : {brier_wf_mean:.4f}")
     print(f"\n=== Walk-Forward Results ({len(wf_df)} splits) ===")
     print(f"  Mean accuracy              : {wf_df['accuracy'].mean():.4f}")
     print(f"  Mean strategy return       : {wf_df['strategy_return'].mean():.4f}")
     print(f"  Profitable splits          : {(wf_df['strategy_return'] > 0).sum()} / {len(wf_df)}")
     print(f"\nModel saved to: {os.path.abspath('models/model.pkl')}")
+    print("Calibration: Platt scaling (sigmoid) via CalibratedClassifierCV")
 
 
 if __name__ == "__main__":

@@ -10,6 +10,12 @@ Each pair gets its own:
 Key fix over previous version: model save/load now pass file paths
 directly (joblib + json) instead of patching global settings, which
 was unreliable and caused models to save to the wrong path.
+
+Task 3.2 change: train_pair() now uses train_random_forest_calibrated()
+(Platt/sigmoid scaling) instead of the raw Random Forest.  Metadata
+stores calibration_method, is_calibrated, brier_score_test, and
+brier_score_wf_mean so the dashboards and API can surface calibration
+quality alongside the existing accuracy / profit-factor metrics.
 """
 
 import os
@@ -22,7 +28,7 @@ from typing import Optional
 from src.oanda_client import OandaClient
 from src.data_loader import load_forex_data
 from src.features import add_features, FEATURE_COLUMNS_V2
-from src.model import train_random_forest, evaluate_model
+from src.model import train_random_forest_calibrated, evaluate_model
 from src.train_pipeline import walk_forward_validation
 from src.regime_detector import RegimeDetector
 from src.alerter import Alerter
@@ -119,17 +125,20 @@ def train_pair(
     spread_cost: float = None,
 ) -> dict:
     """
-    Train a model for one pair and save directly to models/{PAIR}_model.pkl.
+    Train a calibrated model for one pair and save to models/{PAIR}_model.pkl.
 
-    spread_cost: raw spread used for the walk-forward backtest. Defaults to
-    the pair's own configured spread (config.settings.PAIRS[pair]["spread"])
-    rather than a single global value, since EUR/USD and USD/JPY spreads
-    aren't comparable in raw price units.
+    Uses Platt scaling (sigmoid) via CalibratedClassifierCV so that the
+    model's predict_proba() output reflects genuine probabilities rather than
+    the over-confident raw RF scores.
 
-    Walk-forward results are computed both gross and net of realistic costs
-    (1.5x spread + slippage + overnight swap — see config.settings). The
-    metadata's `is_tradable_edge` flag is the single source of truth the
-    dashboards use to decide whether to show the "Tradable edge" badge.
+    The metadata stores calibration provenance (is_calibrated, calibration_method)
+    and calibration quality metrics (brier_score_test, brier_score_wf_mean) so
+    dashboards and APIs can surface this information without re-loading the model.
+
+    spread_cost: per-pair spread used for the walk-forward backtest.  Defaults
+    to the pair's configured spread from config.settings.PAIRS rather than a
+    single global value, since EUR/USD and USD/JPY spreads aren't comparable
+    in raw price units.
     """
     csv = data_path(pair)
     if not os.path.exists(csv):
@@ -149,7 +158,7 @@ def train_pair(
     slippage_cost     = REALISTIC_SLIPPAGE_PIPS * pip_size
     swap_cost_per_day = REALISTIC_SWAP_COST_PER_DAY_PIPS * pip_size
 
-    # Walk-forward validation
+    # Walk-forward validation (each split uses the calibrated model)
     wf_df = walk_forward_validation(
         df=df,
         feature_columns=FEATURE_COLUMNS_V2,
@@ -164,15 +173,23 @@ def train_pair(
     os.makedirs("models", exist_ok=True)
     wf_df.to_csv(wf_path(pair), index=False)
 
-    # Final model on 80% of data, test on held-out 20%
+    # Final calibrated model on 80% of data, held-out test on last 20%
     split = int(len(df) * 0.8)
     tr, te = df.iloc[:split], df.iloc[split:]
-    model  = train_random_forest(tr[FEATURE_COLUMNS_V2], tr["target"])
+
+    model = train_random_forest_calibrated(tr[FEATURE_COLUMNS_V2], tr["target"])
     _, _, tr_m = evaluate_model(model, tr[FEATURE_COLUMNS_V2], tr["target"])
     _, _, te_m = evaluate_model(model, te[FEATURE_COLUMNS_V2], te["target"])
 
-    total_splits = len(wf_df)
+    total_splits     = len(wf_df)
     wf_mean_accuracy = float(wf_df["accuracy"].mean()) if total_splits else 0.0
+
+    # Mean Brier score across walk-forward splits
+    brier_wf_mean = (
+        float(wf_df["brier_score"].mean())
+        if total_splits and "brier_score" in wf_df.columns
+        else None
+    )
 
     net_pf_series  = wf_df["net_profit_factor"].replace([float("inf")], 999) if "net_profit_factor" in wf_df and total_splits else None
     wf_mean_net_pf = float(net_pf_series.mean()) if net_pf_series is not None else None
@@ -196,6 +213,12 @@ def train_pair(
         "rows_test":                     len(te),
         "accuracy_train":                tr_m["accuracy"],
         "accuracy_test":                 te_m["accuracy"],
+        # ── Calibration provenance (Task 3.2) ──────────────────────────────
+        "is_calibrated":                 True,
+        "calibration_method":            "sigmoid",  # Platt scaling
+        "brier_score_test":              te_m["brier_score"],
+        "brier_score_wf_mean":           brier_wf_mean,
+        # ── Walk-forward summary ───────────────────────────────────────────
         "walk_forward_mean_accuracy":    wf_mean_accuracy,
         "walk_forward_mean_strategy_return": float(wf_df["strategy_return"].mean()) if total_splits else None,
         "walk_forward_mean_profit_factor": float(wf_df["profit_factor"].replace([float("inf")], 999).mean())
@@ -205,8 +228,7 @@ def train_pair(
         "walk_forward_mean_exposure":    float(wf_df["exposure"].mean()) if "exposure" in wf_df and total_splits else None,
         "walk_forward_profitable_splits":    int((wf_df["strategy_return"] > 0).sum()) if total_splits else 0,
         "walk_forward_total_splits":         total_splits,
-
-        # ── Net of realistic cost (1.5x spread + 0.5 pip slippage + overnight swap) ──
+        # ── Net of realistic cost ──────────────────────────────────────────
         "walk_forward_mean_net_strategy_return":  float(wf_df["net_strategy_return"].mean()) if total_splits else None,
         "walk_forward_mean_net_profit_factor":    wf_mean_net_pf,
         "walk_forward_mean_net_expectancy":       float(wf_df["net_expectancy"].mean()) if total_splits else None,
@@ -219,15 +241,13 @@ def train_pair(
             "raw_spread_used": effective_spread,
             "pip_size": pip_size,
         },
-
-        # ── Single source of truth for "is this model's edge real" ──────────
+        # ── Tradable-edge gate ─────────────────────────────────────────────
         "is_tradable_edge": is_tradable_edge,
         "tradable_edge_thresholds": {
             "min_wf_accuracy": TRADABLE_MIN_WF_ACCURACY,
             "min_net_profit_factor": TRADABLE_MIN_NET_PROFIT_FACTOR,
             "min_profitable_splits_pct": TRADABLE_MIN_PROFITABLE_SPLITS_PCT,
         },
-
         "rf_max_depth":                  5,
         "rf_min_samples_leaf":           20,
         "rf_n_estimators":               200,
@@ -235,13 +255,13 @@ def train_pair(
         "trained_at":                    datetime.utcnow().isoformat(),
     }
 
-    # Save directly — no global path patching
     _save_model(model, FEATURE_COLUMNS_V2, metadata, pair)
 
     logger.info(
-        f"{pair}: trained — train={tr_m['accuracy']:.4f} "
+        f"{pair}: trained (calibrated) — train={tr_m['accuracy']:.4f} "
         f"test={te_m['accuracy']:.4f} "
         f"wf={wf_mean_accuracy:.4f} "
+        f"brier_test={te_m['brier_score']:.4f} "
         f"net_pf={wf_mean_net_pf if wf_mean_net_pf is not None else 'n/a'} "
         f"tradable_edge={is_tradable_edge}"
     )
@@ -249,7 +269,7 @@ def train_pair(
 
 
 def train_all_pairs() -> dict:
-    """Train models for all active pairs. Returns {pair: result dict}."""
+    """Train calibrated models for all active pairs. Returns {pair: result dict}."""
     results = {}
     for pair in ACTIVE_PAIRS:
         try:
@@ -290,6 +310,10 @@ def get_pair_signal(pair: str, threshold: float = DEFAULT_SIGNAL_THRESHOLD) -> d
     is_buy     = pred == 1
     signal     = "BUY" if is_buy else "SELL"
     gap        = abs(prob_up - 0.5)
+    # _confidence_label thresholds (HIGH ≥ 0.15 gap, MEDIUM ≥ 0.08) remain
+    # unchanged — they are now genuinely meaningful because calibration
+    # compresses probabilities toward 0.5.  A calibrated HIGH-confidence signal
+    # is a materially stronger signal than an uncalibrated one was.
     confidence = "HIGH" if gap >= 0.15 else ("MEDIUM" if gap >= 0.08 else "LOW")
     above_thresh = prob_up >= threshold if is_buy else (1 - prob_up) >= threshold
 
