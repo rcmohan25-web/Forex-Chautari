@@ -9398,3 +9398,618 @@ Log in to the admin panel to complete first-run setup.
 2026-06-21 18:31:39,243 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
 2026-06-21 18:31:39,296 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
 2026-06-21 18:31:39,349 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-21 18:43:26,947 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 18:43:26,950 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 18:43:26,966 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 18:43:27,577 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-21 18:43:27,634 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-21 18:43:27,688 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-21 18:43:27,745 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-21 18:43:33,435 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-21 18:43:33,488 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-21 18:43:33,542 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-21 18:43:33,596 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-21 18:48:54,127 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 18:48:54,132 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 18:48:54,144 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 18:48:54,627 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 18:48:54,631 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 18:48:54,638 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 18:48:54,759 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-21 18:48:54,838 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-21 18:48:54,898 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-21 18:48:54,958 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-21 18:49:00,599 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-21 18:49:00,658 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-21 18:49:00,712 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-21 18:49:00,765 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-21 18:49:04,789 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 18:49:04,791 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 18:49:04,801 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 18:49:05,014 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-21 18:49:05,069 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-21 18:49:05,123 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-21 18:49:05,177 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-21 18:49:10,291 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-21 18:49:10,343 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-21 18:49:10,397 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-21 18:49:10,448 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-21 18:50:16,879 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 18:50:16,883 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 18:50:16,892 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 18:50:17,172 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-21 18:50:17,227 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-21 18:50:17,277 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-21 18:50:17,328 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-21 18:50:22,150 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-21 18:50:22,203 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-21 18:50:22,256 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-21 18:50:22,307 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-21 18:52:17,930 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 18:52:17,933 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 18:52:17,943 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 18:52:18,227 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 18:52:18,229 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 18:52:18,236 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 18:52:21,126 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 18:52:21,130 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 18:52:21,140 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 18:52:21,276 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 18:52:21,277 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 18:52:21,285 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 18:53:58,126 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 18:53:58,131 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 18:53:58,140 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 19:10:40,565 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 19:10:40,568 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 19:10:40,579 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 19:10:42,775 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 19:10:42,778 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 19:10:42,790 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 19:10:46,681 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 19:10:46,683 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 19:10:46,693 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 19:10:47,551 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 19:10:47,553 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 19:10:47,564 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 19:10:49,131 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 19:10:49,134 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 19:10:49,144 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 19:13:50,383 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 19:13:50,385 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 19:13:50,394 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 19:13:53,496 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 19:13:53,498 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 19:13:53,509 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 19:13:57,927 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 19:13:57,929 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 19:13:57,938 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 19:13:58,070 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 19:13:58,072 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 19:13:58,080 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 19:15:07,301 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 19:15:07,306 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 19:15:07,317 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 19:16:22,798 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 19:16:22,801 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 19:16:22,810 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 19:16:22,909 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 19:16:22,912 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 19:16:22,925 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 19:16:37,319 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 19:16:37,323 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 19:16:37,331 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 19:16:37,690 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 19:16:37,692 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 19:16:37,699 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 19:16:39,515 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-21 19:16:39,574 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-21 19:16:39,627 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-21 19:16:39,679 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-21 19:16:47,766 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-21 19:16:47,819 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-21 19:16:47,871 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-21 19:16:47,924 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-21 19:16:52,060 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 19:16:52,063 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 19:16:52,073 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 19:16:52,205 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-21 19:16:52,271 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-21 19:16:52,327 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-21 19:16:52,378 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-21 19:16:53,536 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 19:16:53,539 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 19:16:53,547 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 19:16:53,746 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 19:16:53,747 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 19:16:53,753 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 19:16:53,880 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-21 19:16:53,933 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-21 19:16:53,985 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-21 19:16:54,038 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-21 19:16:58,644 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-21 19:16:58,698 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-21 19:16:58,752 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-21 19:16:58,806 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-21 19:16:59,580 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 19:16:59,582 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 19:16:59,593 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 19:16:59,907 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-21 19:17:00,024 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-21 19:17:00,086 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-21 19:17:00,138 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-21 19:17:05,583 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-21 19:17:05,638 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-21 19:17:05,692 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-21 19:17:05,746 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-21 19:17:34,514 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 19:17:34,519 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 19:17:34,552 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 19:17:34,874 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 19:17:34,876 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 19:17:34,885 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 19:17:35,014 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-21 19:17:35,068 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-21 19:17:35,121 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-21 19:17:35,172 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-21 19:17:38,306 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 19:17:38,308 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 19:17:38,314 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 19:17:38,482 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-21 19:17:38,577 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-21 19:17:38,657 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-21 19:17:38,709 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-21 19:17:42,872 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 19:17:42,876 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 19:17:42,886 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 19:17:43,099 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 19:17:43,101 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 19:17:43,109 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 19:17:56,946 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 19:17:56,949 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 19:17:56,960 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 19:17:57,249 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 19:17:57,252 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 19:17:57,261 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 19:17:57,377 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-21 19:17:57,459 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-21 19:17:57,514 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-21 19:17:57,566 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-21 19:17:57,728 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-21 19:18:04,444 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 19:18:04,447 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 19:18:04,457 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 19:18:04,548 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-21 19:18:04,607 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-21 19:18:04,671 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-21 19:18:04,729 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-21 19:18:04,842 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-21 19:48:47,945 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 19:48:47,950 - database - INFO - API key encryption check passed — all 2 active trading account(s) use encrypted keys.
+2026-06-21 19:48:47,986 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 19:48:48,319 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-21 19:48:48,382 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-21 19:48:48,438 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-21 19:48:48,495 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-21 19:48:48,734 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-21 19:48:50,348 - database - INFO - Trading account added: user_id=3 account_id=101-011-39622452-001 env=practice db_id=4
+2026-06-21 19:48:50,848 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 19:48:50,850 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-21 19:48:50,859 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 19:48:50,931 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-21 19:48:50,992 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-21 19:48:51,051 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-21 19:48:51,111 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-21 19:48:52,092 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-21 19:49:14,604 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 19:49:14,607 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-21 19:49:14,616 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 19:49:14,723 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-21 19:49:14,785 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-21 19:49:14,841 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-21 19:49:14,894 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-21 19:49:15,446 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-21 19:49:34,620 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 19:49:34,623 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-21 19:49:34,634 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 19:49:34,758 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-21 19:49:34,823 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-21 19:49:34,883 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-21 19:49:34,941 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-21 19:49:35,661 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-21 19:49:49,114 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 19:49:49,117 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-21 19:49:49,122 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 19:49:49,234 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-21 19:49:49,287 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-21 19:49:49,342 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-21 19:49:49,400 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-21 19:49:50,161 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-21 19:49:59,747 - alerter - WARNING - Telegram error: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8593453301:AAGJdUMUNZaOZfbRBhQfCn5-rAb2lDnKqe4/sendMessage (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.telegram.org', port=443) at 0x10a3851d0>, 'Connection to api.telegram.org timed out. (connect timeout=10)'))
+2026-06-21 19:50:14,410 - alerter - WARNING - Telegram error: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8593453301:AAGJdUMUNZaOZfbRBhQfCn5-rAb2lDnKqe4/sendMessage (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.telegram.org', port=443) at 0x1198edf90>, 'Connection to api.telegram.org timed out. (connect timeout=10)'))
+2026-06-21 19:51:10,486 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 19:51:10,490 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-21 19:51:10,498 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 19:51:10,603 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-21 19:51:10,663 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-21 19:51:10,719 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-21 19:51:10,779 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-21 19:51:11,506 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-21 19:51:39,810 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 19:51:39,817 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-21 19:51:39,829 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 19:51:39,925 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-21 19:51:39,984 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-21 19:51:40,039 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-21 19:51:40,093 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-21 19:51:40,726 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-21 19:52:04,904 - alerter - WARNING - Telegram error: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8593453301:AAGJdUMUNZaOZfbRBhQfCn5-rAb2lDnKqe4/sendMessage (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.telegram.org', port=443) at 0x110795450>, 'Connection to api.telegram.org timed out. (connect timeout=10)'))
+2026-06-21 19:52:12,567 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 19:52:12,568 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-21 19:52:12,578 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 19:52:12,747 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 19:52:12,749 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-21 19:52:12,758 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 19:52:24,926 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 19:52:24,929 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-21 19:52:24,940 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 19:52:31,513 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 19:52:31,516 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-21 19:52:31,529 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 19:52:31,802 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 19:52:31,805 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-21 19:52:31,817 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 19:52:32,044 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-21 19:52:32,099 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-21 19:52:32,155 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-21 19:52:32,206 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-21 19:52:38,113 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-21 19:52:38,167 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-21 19:52:38,220 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-21 19:52:38,273 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-21 19:53:02,410 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-21 19:53:02,413 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-21 19:53:02,423 - database - INFO - Database ready (PostgreSQL)
+2026-06-21 19:53:02,533 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-21 19:53:02,586 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-21 19:53:02,639 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-21 19:53:02,691 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-21 19:53:05,627 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-21 19:53:05,681 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-21 19:53:05,735 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-21 19:53:05,786 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-21 19:53:25,811 - alerter - WARNING - Telegram error: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8593453301:AAGJdUMUNZaOZfbRBhQfCn5-rAb2lDnKqe4/sendMessage (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.telegram.org', port=443) at 0x110795450>, 'Connection to api.telegram.org timed out. (connect timeout=10)'))
+2026-06-21 19:53:45,844 - alerter - WARNING - Telegram error: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8593453301:AAGJdUMUNZaOZfbRBhQfCn5-rAb2lDnKqe4/sendMessage (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.telegram.org', port=443) at 0x1107956d0>, 'Connection to api.telegram.org timed out. (connect timeout=10)'))
+2026-06-21 19:54:06,884 - alerter - WARNING - Telegram error: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8593453301:AAGJdUMUNZaOZfbRBhQfCn5-rAb2lDnKqe4/sendMessage (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.telegram.org', port=443) at 0x110794b90>, 'Connection to api.telegram.org timed out. (connect timeout=10)'))
+2026-06-21 19:54:26,919 - alerter - WARNING - Telegram error: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8593453301:AAGJdUMUNZaOZfbRBhQfCn5-rAb2lDnKqe4/sendMessage (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.telegram.org', port=443) at 0x110795090>, 'Connection to api.telegram.org timed out. (connect timeout=10)'))
+2026-06-21 19:54:29,920 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-21 19:54:29,973 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-21 19:54:30,026 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-21 19:54:30,079 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-22 14:00:11,300 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-22 14:00:11,305 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-22 14:00:11,319 - database - INFO - Database ready (PostgreSQL)
+2026-06-22 14:00:30,114 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-22 14:00:30,116 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-22 14:00:30,128 - database - INFO - Database ready (PostgreSQL)
+2026-06-22 14:00:30,601 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-22 14:00:30,603 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-22 14:00:30,608 - database - INFO - Database ready (PostgreSQL)
+2026-06-22 14:00:31,040 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-22 14:00:31,094 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-22 14:00:31,148 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-22 14:00:31,208 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-22 14:00:39,000 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-22 14:00:39,008 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-22 14:00:39,018 - database - INFO - Database ready (PostgreSQL)
+2026-06-22 14:00:39,224 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-22 14:00:39,284 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-22 14:00:39,340 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-22 14:00:39,397 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-22 14:00:46,615 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-22 14:00:46,670 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-22 14:00:46,723 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-22 14:00:46,776 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-22 14:00:52,101 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-22 14:00:52,104 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-22 14:00:52,115 - database - INFO - Database ready (PostgreSQL)
+2026-06-22 14:00:52,284 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-22 14:00:52,339 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-22 14:00:52,395 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-22 14:00:52,446 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-22 14:00:58,023 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-22 14:00:58,076 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-22 14:00:58,129 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-22 14:00:58,182 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-22 14:00:58,654 - multi_pair - INFO - EUR_USD: 534 rows saved to data/EUR_USD.csv
+2026-06-22 14:00:59,105 - multi_pair - INFO - GBP_USD: 534 rows saved to data/GBP_USD.csv
+2026-06-22 14:00:59,680 - multi_pair - INFO - USD_JPY: 534 rows saved to data/USD_JPY.csv
+2026-06-22 14:01:00,113 - multi_pair - INFO - AUD_USD: 534 rows saved to data/AUD_USD.csv
+2026-06-22 14:01:03,089 - multi_pair - INFO - EUR_USD: model saved → models/EUR_USD_model.pkl
+2026-06-22 14:01:03,089 - multi_pair - INFO - EUR_USD: trained — train=0.7883 test=0.4369 wf=0.5300 net_pf=0.8588293653627697 tradable_edge=False
+2026-06-22 14:01:03,575 - multi_pair - INFO - GBP_USD: model saved → models/GBP_USD_model.pkl
+2026-06-22 14:01:03,575 - multi_pair - INFO - GBP_USD: trained — train=0.7956 test=0.5534 wf=0.4900 net_pf=0.881479657704088 tradable_edge=False
+2026-06-22 14:01:04,089 - multi_pair - INFO - USD_JPY: model saved → models/USD_JPY_model.pkl
+2026-06-22 14:01:04,089 - multi_pair - INFO - USD_JPY: trained — train=0.7543 test=0.5631 wf=0.5100 net_pf=0.03618293416239079 tradable_edge=False
+2026-06-22 14:01:04,592 - multi_pair - INFO - AUD_USD: model saved → models/AUD_USD_model.pkl
+2026-06-22 14:01:04,592 - multi_pair - INFO - AUD_USD: trained — train=0.7835 test=0.4854 wf=0.5600 net_pf=0.8787779237726843 tradable_edge=False
+2026-06-22 14:02:32,582 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-22 14:02:32,586 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-22 14:02:32,597 - database - INFO - Database ready (PostgreSQL)
+2026-06-22 14:02:32,942 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-22 14:02:33,015 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-22 14:02:33,081 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-22 14:02:33,137 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-22 14:02:37,554 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-22 14:02:37,606 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-22 14:02:37,661 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-22 14:02:37,714 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-22 14:03:41,430 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-22 14:03:41,433 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-22 14:03:41,444 - database - INFO - Database ready (PostgreSQL)
+2026-06-22 14:03:41,622 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-22 14:03:41,681 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-22 14:03:41,737 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-22 14:03:41,793 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-22 14:03:46,607 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-22 14:03:46,661 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-22 14:03:46,714 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-22 14:03:46,767 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-22 14:03:46,998 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-22 14:03:47,000 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-22 14:03:47,007 - database - INFO - Database ready (PostgreSQL)
+2026-06-22 14:03:47,126 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-22 14:03:47,212 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-22 14:03:47,265 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-22 14:03:47,320 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-22 14:03:51,747 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-22 14:03:51,801 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-22 14:03:51,854 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-22 14:03:51,907 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-22 14:07:14,555 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-22 14:07:14,560 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-22 14:07:14,571 - database - INFO - Database ready (PostgreSQL)
+2026-06-22 14:07:14,806 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-22 14:07:14,866 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-22 14:07:14,923 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-22 14:07:14,980 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-22 14:07:20,832 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-22 14:07:20,886 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-22 14:07:20,939 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-22 14:07:20,992 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-22 14:26:38,123 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-22 14:26:38,127 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-22 14:26:38,138 - database - INFO - Database ready (PostgreSQL)
+2026-06-22 14:26:38,479 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-22 14:26:38,538 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-22 14:26:38,594 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-22 14:26:38,648 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-22 14:26:44,675 - regime - INFO - Regime: ADX=42.9 (trending) | Direction=bearish | Vol=normal (0.97x avg) | Tradeable=['SELL']
+2026-06-22 14:26:44,729 - regime - INFO - Regime: ADX=39.1 (trending) | Direction=bearish | Vol=normal (0.99x avg) | Tradeable=['SELL']
+2026-06-22 14:26:44,782 - regime - INFO - Regime: ADX=31.3 (trending) | Direction=bullish | Vol=low (0.47x avg) | Tradeable=['BUY']
+2026-06-22 14:26:44,836 - regime - INFO - Regime: ADX=44.9 (trending) | Direction=bearish | Vol=normal (0.72x avg) | Tradeable=['SELL']
+2026-06-27 18:02:44,745 - multi_pair - INFO - EUR_USD: 539 rows saved to data/EUR_USD.csv
+2026-06-27 18:02:45,865 - multi_pair - INFO - GBP_USD: 539 rows saved to data/GBP_USD.csv
+2026-06-27 18:02:46,350 - multi_pair - INFO - USD_JPY: 539 rows saved to data/USD_JPY.csv
+2026-06-27 18:02:46,804 - multi_pair - INFO - AUD_USD: 539 rows saved to data/AUD_USD.csv
+2026-06-27 18:02:49,404 - multi_pair - INFO - EUR_USD: model saved → models/EUR_USD_model.pkl
+2026-06-27 18:02:49,404 - multi_pair - INFO - EUR_USD: trained (calibrated) — train=0.2458 test=0.5288 wf=0.5300 brier_test=0.2498 net_pf=0.2790634063336026 tradable_edge=False
+2026-06-27 18:02:51,973 - multi_pair - INFO - GBP_USD: model saved → models/GBP_USD_model.pkl
+2026-06-27 18:02:51,973 - multi_pair - INFO - GBP_USD: trained (calibrated) — train=0.3253 test=0.5000 wf=0.5250 brier_test=0.2601 net_pf=1.1744790589740097 tradable_edge=False
+2026-06-27 18:02:54,502 - multi_pair - INFO - USD_JPY: model saved → models/USD_JPY_model.pkl
+2026-06-27 18:02:54,502 - multi_pair - INFO - USD_JPY: trained (calibrated) — train=0.2867 test=0.5096 wf=0.5800 brier_test=0.2464 net_pf=0.03999017188555974 tradable_edge=False
+2026-06-27 18:02:57,053 - multi_pair - INFO - AUD_USD: model saved → models/AUD_USD_model.pkl
+2026-06-27 18:02:57,054 - multi_pair - INFO - AUD_USD: trained (calibrated) — train=0.3976 test=0.5481 wf=0.5150 brier_test=0.2529 net_pf=1.1038880479221387 tradable_edge=False
+2026-06-27 18:12:52,555 - multi_pair - INFO - EUR_USD: 539 rows saved to data/EUR_USD.csv
+2026-06-27 18:12:53,075 - multi_pair - INFO - GBP_USD: 539 rows saved to data/GBP_USD.csv
+2026-06-27 18:12:53,548 - multi_pair - INFO - USD_JPY: 539 rows saved to data/USD_JPY.csv
+2026-06-27 18:12:53,986 - multi_pair - INFO - AUD_USD: 539 rows saved to data/AUD_USD.csv
+2026-06-27 18:12:56,725 - multi_pair - INFO - EUR_USD: model saved → models/EUR_USD_model.pkl
+2026-06-27 18:12:56,725 - multi_pair - INFO - EUR_USD: trained (calibrated) — train=0.2458 test=0.5288 wf=0.5300 brier_test=0.2498 net_pf=0.2790634063336026 tradable_edge=False
+2026-06-27 18:12:59,322 - multi_pair - INFO - GBP_USD: model saved → models/GBP_USD_model.pkl
+2026-06-27 18:12:59,322 - multi_pair - INFO - GBP_USD: trained (calibrated) — train=0.3253 test=0.5000 wf=0.5250 brier_test=0.2601 net_pf=1.1744790589740097 tradable_edge=False
+2026-06-27 18:13:01,885 - multi_pair - INFO - USD_JPY: model saved → models/USD_JPY_model.pkl
+2026-06-27 18:13:01,885 - multi_pair - INFO - USD_JPY: trained (calibrated) — train=0.2867 test=0.5096 wf=0.5800 brier_test=0.2464 net_pf=0.03999017188555974 tradable_edge=False
+2026-06-27 18:13:04,416 - multi_pair - INFO - AUD_USD: model saved → models/AUD_USD_model.pkl
+2026-06-27 18:13:04,416 - multi_pair - INFO - AUD_USD: trained (calibrated) — train=0.3976 test=0.5481 wf=0.5150 brier_test=0.2529 net_pf=1.1038880479221387 tradable_edge=False
+2026-06-27 18:13:10,293 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-27 18:13:10,294 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-27 18:13:10,299 - database - INFO - Database ready (PostgreSQL)
+2026-06-27 18:13:41,711 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-27 18:13:41,713 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-27 18:13:41,722 - database - INFO - Database ready (PostgreSQL)
+2026-06-27 18:14:01,339 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-27 18:14:01,342 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-27 18:14:01,354 - database - INFO - Database ready (PostgreSQL)
+2026-06-27 18:14:01,769 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-27 18:14:01,776 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-27 18:14:01,788 - database - INFO - Database ready (PostgreSQL)
+2026-06-27 18:14:04,296 - regime - INFO - Regime: ADX=54.5 (trending) | Direction=bearish | Vol=normal (0.96x avg) | Tradeable=['SELL']
+2026-06-27 18:14:04,533 - regime - INFO - Regime: ADX=44.8 (trending) | Direction=bearish | Vol=normal (0.94x avg) | Tradeable=['SELL']
+2026-06-27 18:14:04,764 - regime - INFO - Regime: ADX=47.3 (trending) | Direction=bullish | Vol=low (0.35x avg) | Tradeable=['BUY']
+2026-06-27 18:14:04,989 - regime - INFO - Regime: ADX=58.0 (trending) | Direction=bearish | Vol=normal (0.78x avg) | Tradeable=['SELL']
+2026-06-27 18:14:13,368 - regime - INFO - Regime: ADX=54.5 (trending) | Direction=bearish | Vol=normal (0.96x avg) | Tradeable=['SELL']
+2026-06-27 18:14:13,596 - regime - INFO - Regime: ADX=44.8 (trending) | Direction=bearish | Vol=normal (0.94x avg) | Tradeable=['SELL']
+2026-06-27 18:14:13,817 - regime - INFO - Regime: ADX=47.3 (trending) | Direction=bullish | Vol=low (0.35x avg) | Tradeable=['BUY']
+2026-06-27 18:14:14,040 - regime - INFO - Regime: ADX=58.0 (trending) | Direction=bearish | Vol=normal (0.78x avg) | Tradeable=['SELL']
+2026-06-27 18:15:23,681 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-27 18:15:23,685 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-27 18:15:23,694 - database - INFO - Database ready (PostgreSQL)
+2026-06-27 18:15:24,062 - regime - INFO - Regime: ADX=54.5 (trending) | Direction=bearish | Vol=normal (0.96x avg) | Tradeable=['SELL']
+2026-06-27 18:15:24,285 - regime - INFO - Regime: ADX=44.8 (trending) | Direction=bearish | Vol=normal (0.94x avg) | Tradeable=['SELL']
+2026-06-27 18:15:24,522 - regime - INFO - Regime: ADX=47.3 (trending) | Direction=bullish | Vol=low (0.35x avg) | Tradeable=['BUY']
+2026-06-27 18:15:24,746 - regime - INFO - Regime: ADX=58.0 (trending) | Direction=bearish | Vol=normal (0.78x avg) | Tradeable=['SELL']
+2026-06-27 18:15:30,570 - regime - INFO - Regime: ADX=54.5 (trending) | Direction=bearish | Vol=normal (0.96x avg) | Tradeable=['SELL']
+2026-06-27 18:15:30,795 - regime - INFO - Regime: ADX=44.8 (trending) | Direction=bearish | Vol=normal (0.94x avg) | Tradeable=['SELL']
+2026-06-27 18:15:31,017 - regime - INFO - Regime: ADX=47.3 (trending) | Direction=bullish | Vol=low (0.35x avg) | Tradeable=['BUY']
+2026-06-27 18:15:31,236 - regime - INFO - Regime: ADX=58.0 (trending) | Direction=bearish | Vol=normal (0.78x avg) | Tradeable=['SELL']
+2026-06-27 18:15:33,101 - multi_pair - INFO - EUR_USD: 539 rows saved to data/EUR_USD.csv
+2026-06-27 18:15:34,579 - multi_pair - INFO - GBP_USD: 539 rows saved to data/GBP_USD.csv
+2026-06-27 18:15:35,084 - multi_pair - INFO - USD_JPY: 539 rows saved to data/USD_JPY.csv
+2026-06-27 18:15:36,149 - multi_pair - INFO - AUD_USD: 539 rows saved to data/AUD_USD.csv
+2026-06-27 18:15:40,351 - multi_pair - INFO - EUR_USD: model saved → models/EUR_USD_model.pkl
+2026-06-27 18:15:40,351 - multi_pair - INFO - EUR_USD: trained (calibrated) — train=0.2458 test=0.5288 wf=0.5300 brier_test=0.2498 net_pf=0.2790634063336026 tradable_edge=False
+2026-06-27 18:15:42,878 - multi_pair - INFO - GBP_USD: model saved → models/GBP_USD_model.pkl
+2026-06-27 18:15:42,878 - multi_pair - INFO - GBP_USD: trained (calibrated) — train=0.3253 test=0.5000 wf=0.5250 brier_test=0.2601 net_pf=1.1744790589740097 tradable_edge=False
+2026-06-27 18:15:45,454 - multi_pair - INFO - USD_JPY: model saved → models/USD_JPY_model.pkl
+2026-06-27 18:15:45,454 - multi_pair - INFO - USD_JPY: trained (calibrated) — train=0.2867 test=0.5096 wf=0.5800 brier_test=0.2464 net_pf=0.03999017188555974 tradable_edge=False
+2026-06-27 18:15:48,005 - multi_pair - INFO - AUD_USD: model saved → models/AUD_USD_model.pkl
+2026-06-27 18:15:48,005 - multi_pair - INFO - AUD_USD: trained (calibrated) — train=0.3976 test=0.5481 wf=0.5150 brier_test=0.2529 net_pf=1.1038880479221387 tradable_edge=False
+2026-06-27 18:15:51,653 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-27 18:15:51,655 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-27 18:15:51,664 - database - INFO - Database ready (PostgreSQL)
+2026-06-27 18:15:51,982 - regime - INFO - Regime: ADX=54.5 (trending) | Direction=bearish | Vol=normal (0.96x avg) | Tradeable=['SELL']
+2026-06-27 18:15:52,204 - regime - INFO - Regime: ADX=44.8 (trending) | Direction=bearish | Vol=normal (0.94x avg) | Tradeable=['SELL']
+2026-06-27 18:15:52,421 - regime - INFO - Regime: ADX=47.3 (trending) | Direction=bullish | Vol=low (0.35x avg) | Tradeable=['BUY']
+2026-06-27 18:15:52,642 - regime - INFO - Regime: ADX=58.0 (trending) | Direction=bearish | Vol=normal (0.78x avg) | Tradeable=['SELL']
+2026-06-27 18:15:59,279 - regime - INFO - Regime: ADX=54.5 (trending) | Direction=bearish | Vol=normal (0.96x avg) | Tradeable=['SELL']
+2026-06-27 18:15:59,505 - regime - INFO - Regime: ADX=44.8 (trending) | Direction=bearish | Vol=normal (0.94x avg) | Tradeable=['SELL']
+2026-06-27 18:15:59,727 - regime - INFO - Regime: ADX=47.3 (trending) | Direction=bullish | Vol=low (0.35x avg) | Tradeable=['BUY']
+2026-06-27 18:15:59,949 - regime - INFO - Regime: ADX=58.0 (trending) | Direction=bearish | Vol=normal (0.78x avg) | Tradeable=['SELL']
+2026-06-27 18:16:00,432 - multi_pair - INFO - EUR_USD: 539 rows saved to data/EUR_USD.csv
+2026-06-27 18:16:00,872 - multi_pair - INFO - GBP_USD: 539 rows saved to data/GBP_USD.csv
+2026-06-27 18:16:01,248 - multi_pair - INFO - USD_JPY: 539 rows saved to data/USD_JPY.csv
+2026-06-27 18:16:01,636 - multi_pair - INFO - AUD_USD: 539 rows saved to data/AUD_USD.csv
+2026-06-27 18:16:19,935 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-27 18:16:19,938 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-27 18:16:19,947 - database - INFO - Database ready (PostgreSQL)
+2026-06-27 18:16:20,218 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-27 18:16:20,220 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-27 18:16:20,226 - database - INFO - Database ready (PostgreSQL)
+2026-06-27 18:16:43,319 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-27 18:16:43,324 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-27 18:16:43,334 - database - INFO - Database ready (PostgreSQL)
+2026-06-27 18:17:15,068 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-27 18:17:15,070 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-27 18:17:15,081 - database - INFO - Database ready (PostgreSQL)
+2026-06-27 18:17:17,378 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-27 18:17:17,380 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-27 18:17:17,388 - database - INFO - Database ready (PostgreSQL)
+2026-06-27 18:17:17,663 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-27 18:17:17,664 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-27 18:17:17,671 - database - INFO - Database ready (PostgreSQL)
+2026-06-27 18:17:18,497 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-27 18:17:18,500 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-27 18:17:18,507 - database - INFO - Database ready (PostgreSQL)
+2026-06-27 18:17:18,613 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-27 18:17:18,615 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-27 18:17:18,622 - database - INFO - Database ready (PostgreSQL)
+2026-06-27 18:17:18,943 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-27 18:17:18,945 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-27 18:17:18,952 - database - INFO - Database ready (PostgreSQL)
+2026-06-27 18:17:25,333 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-27 18:17:25,334 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-27 18:17:25,339 - database - INFO - Database ready (PostgreSQL)
+2026-06-27 18:17:37,656 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-27 18:17:37,659 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-27 18:17:37,670 - database - INFO - Database ready (PostgreSQL)
+2026-06-27 18:17:56,167 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-27 18:17:56,170 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-27 18:17:56,181 - database - INFO - Database ready (PostgreSQL)
+2026-06-27 18:17:56,537 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-27 18:17:56,539 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-27 18:17:56,548 - database - INFO - Database ready (PostgreSQL)
+2026-06-27 18:17:56,935 - regime - INFO - Regime: ADX=54.5 (trending) | Direction=bearish | Vol=normal (0.96x avg) | Tradeable=['SELL']
+2026-06-27 18:17:57,223 - regime - INFO - Regime: ADX=44.8 (trending) | Direction=bearish | Vol=normal (0.94x avg) | Tradeable=['SELL']
+2026-06-27 18:17:57,451 - regime - INFO - Regime: ADX=47.3 (trending) | Direction=bullish | Vol=low (0.35x avg) | Tradeable=['BUY']
+2026-06-27 18:17:57,683 - regime - INFO - Regime: ADX=58.0 (trending) | Direction=bearish | Vol=normal (0.78x avg) | Tradeable=['SELL']
+2026-06-27 18:18:04,372 - regime - INFO - Regime: ADX=54.5 (trending) | Direction=bearish | Vol=normal (0.96x avg) | Tradeable=['SELL']
+2026-06-27 18:18:04,594 - regime - INFO - Regime: ADX=44.8 (trending) | Direction=bearish | Vol=normal (0.94x avg) | Tradeable=['SELL']
+2026-06-27 18:18:04,815 - regime - INFO - Regime: ADX=47.3 (trending) | Direction=bullish | Vol=low (0.35x avg) | Tradeable=['BUY']
+2026-06-27 18:18:05,036 - regime - INFO - Regime: ADX=58.0 (trending) | Direction=bearish | Vol=normal (0.78x avg) | Tradeable=['SELL']
+2026-06-27 18:18:18,657 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-27 18:18:18,660 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-27 18:18:18,669 - database - INFO - Database ready (PostgreSQL)
+2026-06-27 18:18:18,956 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-27 18:18:18,957 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-27 18:18:18,961 - database - INFO - Database ready (PostgreSQL)
+2026-06-27 18:18:29,736 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-27 18:18:29,739 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-27 18:18:29,748 - database - INFO - Database ready (PostgreSQL)
+2026-06-27 18:18:30,095 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-27 18:18:30,097 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-27 18:18:30,104 - database - INFO - Database ready (PostgreSQL)
+2026-06-27 18:18:30,389 - regime - INFO - Regime: ADX=54.5 (trending) | Direction=bearish | Vol=normal (0.96x avg) | Tradeable=['SELL']
+2026-06-27 18:18:30,622 - regime - INFO - Regime: ADX=44.8 (trending) | Direction=bearish | Vol=normal (0.94x avg) | Tradeable=['SELL']
+2026-06-27 18:18:30,856 - regime - INFO - Regime: ADX=47.3 (trending) | Direction=bullish | Vol=low (0.35x avg) | Tradeable=['BUY']
+2026-06-27 18:18:31,084 - regime - INFO - Regime: ADX=58.0 (trending) | Direction=bearish | Vol=normal (0.78x avg) | Tradeable=['SELL']
+2026-06-27 18:18:32,272 - regime - INFO - Regime: ADX=54.5 (trending) | Direction=bearish | Vol=normal (0.96x avg) | Tradeable=['SELL']
+2026-06-27 18:18:57,334 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-27 18:18:57,337 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-27 18:18:57,346 - database - INFO - Database ready (PostgreSQL)
+2026-06-27 18:18:57,645 - regime - INFO - Regime: ADX=54.5 (trending) | Direction=bearish | Vol=normal (0.96x avg) | Tradeable=['SELL']
+2026-06-27 18:18:57,861 - regime - INFO - Regime: ADX=44.8 (trending) | Direction=bearish | Vol=normal (0.94x avg) | Tradeable=['SELL']
+2026-06-27 18:18:58,100 - regime - INFO - Regime: ADX=47.3 (trending) | Direction=bullish | Vol=low (0.35x avg) | Tradeable=['BUY']
+2026-06-27 18:18:58,315 - regime - INFO - Regime: ADX=58.0 (trending) | Direction=bearish | Vol=normal (0.78x avg) | Tradeable=['SELL']
+2026-06-27 18:18:58,795 - regime - INFO - Regime: ADX=54.5 (trending) | Direction=bearish | Vol=normal (0.96x avg) | Tradeable=['SELL']
+2026-06-27 18:19:07,737 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-27 18:19:07,739 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-27 18:19:07,745 - database - INFO - Database ready (PostgreSQL)
+2026-06-27 18:19:07,994 - regime - INFO - Regime: ADX=54.5 (trending) | Direction=bearish | Vol=normal (0.96x avg) | Tradeable=['SELL']
+2026-06-27 18:19:08,223 - regime - INFO - Regime: ADX=44.8 (trending) | Direction=bearish | Vol=normal (0.94x avg) | Tradeable=['SELL']
+2026-06-27 18:19:08,459 - regime - INFO - Regime: ADX=47.3 (trending) | Direction=bullish | Vol=low (0.35x avg) | Tradeable=['BUY']
+2026-06-27 18:19:08,677 - regime - INFO - Regime: ADX=58.0 (trending) | Direction=bearish | Vol=normal (0.78x avg) | Tradeable=['SELL']
+2026-06-27 18:19:09,221 - regime - INFO - Regime: ADX=54.5 (trending) | Direction=bearish | Vol=normal (0.96x avg) | Tradeable=['SELL']
+2026-06-27 18:19:25,884 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-27 18:19:25,886 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-27 18:19:25,899 - database - INFO - Database ready (PostgreSQL)
+2026-06-27 18:19:26,165 - regime - INFO - Regime: ADX=54.5 (trending) | Direction=bearish | Vol=normal (0.96x avg) | Tradeable=['SELL']
+2026-06-27 18:19:26,382 - regime - INFO - Regime: ADX=44.8 (trending) | Direction=bearish | Vol=normal (0.94x avg) | Tradeable=['SELL']
+2026-06-27 18:19:26,607 - regime - INFO - Regime: ADX=47.3 (trending) | Direction=bullish | Vol=low (0.35x avg) | Tradeable=['BUY']
+2026-06-27 18:19:26,836 - regime - INFO - Regime: ADX=58.0 (trending) | Direction=bearish | Vol=normal (0.78x avg) | Tradeable=['SELL']
+2026-06-27 18:19:27,411 - regime - INFO - Regime: ADX=54.5 (trending) | Direction=bearish | Vol=normal (0.96x avg) | Tradeable=['SELL']
+2026-06-27 18:20:16,529 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-27 18:20:16,534 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-27 18:20:16,543 - database - INFO - Database ready (PostgreSQL)
+2026-06-27 18:20:16,813 - regime - INFO - Regime: ADX=54.5 (trending) | Direction=bearish | Vol=normal (0.96x avg) | Tradeable=['SELL']
+2026-06-27 18:20:17,042 - regime - INFO - Regime: ADX=44.8 (trending) | Direction=bearish | Vol=normal (0.94x avg) | Tradeable=['SELL']
+2026-06-27 18:20:17,275 - regime - INFO - Regime: ADX=47.3 (trending) | Direction=bullish | Vol=low (0.35x avg) | Tradeable=['BUY']
+2026-06-27 18:20:17,510 - regime - INFO - Regime: ADX=58.0 (trending) | Direction=bearish | Vol=normal (0.78x avg) | Tradeable=['SELL']
+2026-06-27 18:20:17,969 - regime - INFO - Regime: ADX=54.5 (trending) | Direction=bearish | Vol=normal (0.96x avg) | Tradeable=['SELL']
+2026-06-27 18:20:21,251 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-27 18:20:21,254 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-27 18:20:21,262 - database - INFO - Database ready (PostgreSQL)
+2026-06-27 18:20:21,514 - regime - INFO - Regime: ADX=54.5 (trending) | Direction=bearish | Vol=normal (0.96x avg) | Tradeable=['SELL']
+2026-06-27 18:20:21,743 - regime - INFO - Regime: ADX=44.8 (trending) | Direction=bearish | Vol=normal (0.94x avg) | Tradeable=['SELL']
+2026-06-27 18:20:21,970 - regime - INFO - Regime: ADX=47.3 (trending) | Direction=bullish | Vol=low (0.35x avg) | Tradeable=['BUY']
+2026-06-27 18:20:22,197 - regime - INFO - Regime: ADX=58.0 (trending) | Direction=bearish | Vol=normal (0.78x avg) | Tradeable=['SELL']
+2026-06-27 18:20:22,697 - regime - INFO - Regime: ADX=54.5 (trending) | Direction=bearish | Vol=normal (0.96x avg) | Tradeable=['SELL']
+2026-06-27 18:20:49,208 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-27 18:20:49,212 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-27 18:20:49,221 - database - INFO - Database ready (PostgreSQL)
+2026-06-27 18:20:49,489 - regime - INFO - Regime: ADX=54.5 (trending) | Direction=bearish | Vol=normal (0.96x avg) | Tradeable=['SELL']
+2026-06-27 18:20:49,717 - regime - INFO - Regime: ADX=44.8 (trending) | Direction=bearish | Vol=normal (0.94x avg) | Tradeable=['SELL']
+2026-06-27 18:20:49,951 - regime - INFO - Regime: ADX=47.3 (trending) | Direction=bullish | Vol=low (0.35x avg) | Tradeable=['BUY']
+2026-06-27 18:20:50,171 - regime - INFO - Regime: ADX=58.0 (trending) | Direction=bearish | Vol=normal (0.78x avg) | Tradeable=['SELL']
+2026-06-27 18:20:50,644 - regime - INFO - Regime: ADX=54.5 (trending) | Direction=bearish | Vol=normal (0.96x avg) | Tradeable=['SELL']
+2026-06-27 18:25:46,967 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-27 18:25:46,970 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-27 18:25:46,985 - database - INFO - Database ready (PostgreSQL)
+2026-06-27 18:25:47,330 - regime - INFO - Regime: ADX=54.5 (trending) | Direction=bearish | Vol=normal (0.96x avg) | Tradeable=['SELL']
+2026-06-27 18:25:47,553 - regime - INFO - Regime: ADX=44.8 (trending) | Direction=bearish | Vol=normal (0.94x avg) | Tradeable=['SELL']
+2026-06-27 18:25:47,778 - regime - INFO - Regime: ADX=47.3 (trending) | Direction=bullish | Vol=low (0.35x avg) | Tradeable=['BUY']
+2026-06-27 18:25:48,014 - regime - INFO - Regime: ADX=58.0 (trending) | Direction=bearish | Vol=normal (0.78x avg) | Tradeable=['SELL']
+2026-06-27 18:25:48,273 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-27 18:25:48,275 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-27 18:25:48,283 - database - INFO - Database ready (PostgreSQL)
+2026-06-27 18:25:48,637 - regime - INFO - Regime: ADX=54.5 (trending) | Direction=bearish | Vol=normal (0.96x avg) | Tradeable=['SELL']
+2026-06-27 18:25:48,858 - regime - INFO - Regime: ADX=44.8 (trending) | Direction=bearish | Vol=normal (0.94x avg) | Tradeable=['SELL']
+2026-06-27 18:25:49,072 - regime - INFO - Regime: ADX=47.3 (trending) | Direction=bullish | Vol=low (0.35x avg) | Tradeable=['BUY']
+2026-06-27 18:25:49,351 - regime - INFO - Regime: ADX=58.0 (trending) | Direction=bearish | Vol=normal (0.78x avg) | Tradeable=['SELL']
+2026-06-27 18:25:49,792 - regime - INFO - Regime: ADX=54.5 (trending) | Direction=bearish | Vol=normal (0.96x avg) | Tradeable=['SELL']
+2026-06-27 18:25:54,826 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-27 18:25:54,828 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-27 18:25:54,833 - database - INFO - Database ready (PostgreSQL)
+2026-06-27 18:25:55,071 - regime - INFO - Regime: ADX=54.5 (trending) | Direction=bearish | Vol=normal (0.96x avg) | Tradeable=['SELL']
+2026-06-27 18:25:55,291 - regime - INFO - Regime: ADX=44.8 (trending) | Direction=bearish | Vol=normal (0.94x avg) | Tradeable=['SELL']
+2026-06-27 18:25:55,509 - regime - INFO - Regime: ADX=47.3 (trending) | Direction=bullish | Vol=low (0.35x avg) | Tradeable=['BUY']
+2026-06-27 18:25:55,731 - regime - INFO - Regime: ADX=58.0 (trending) | Direction=bearish | Vol=normal (0.78x avg) | Tradeable=['SELL']
+2026-06-27 18:25:56,343 - regime - INFO - Regime: ADX=54.5 (trending) | Direction=bearish | Vol=normal (0.96x avg) | Tradeable=['SELL']
+2026-06-27 19:33:24,888 - database - INFO - Admin password check passed — default password has been changed.
+2026-06-27 19:33:24,889 - database - INFO - API key encryption check passed — all 3 active trading account(s) use encrypted keys.
+2026-06-27 19:33:24,897 - database - INFO - Database ready (PostgreSQL)
+2026-06-27 19:33:25,706 - regime - INFO - Regime: ADX=54.5 (trending) | Direction=bearish | Vol=normal (0.96x avg) | Tradeable=['SELL']
+2026-06-27 19:33:25,923 - regime - INFO - Regime: ADX=44.8 (trending) | Direction=bearish | Vol=normal (0.94x avg) | Tradeable=['SELL']
+2026-06-27 19:33:26,145 - regime - INFO - Regime: ADX=47.3 (trending) | Direction=bullish | Vol=low (0.35x avg) | Tradeable=['BUY']
+2026-06-27 19:33:26,368 - regime - INFO - Regime: ADX=58.0 (trending) | Direction=bearish | Vol=normal (0.78x avg) | Tradeable=['SELL']
+2026-06-27 19:33:27,479 - regime - INFO - Regime: ADX=54.5 (trending) | Direction=bearish | Vol=normal (0.96x avg) | Tradeable=['SELL']
