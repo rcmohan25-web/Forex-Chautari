@@ -1193,7 +1193,7 @@ def render_user_dashboard(user: dict):
                     elif len(new_pw) < 8: st.error("Password must be at least 8 characters.")
                     else:
                         try:
-                            api_post("/account/password", json={"current_password": cur_pw, "new_password": new_pw})
+                            api_post("/account/password", json={"current_value": cur_pw, "new_value": new_pw})
                             st.success("Password updated.")
                         except ApiError as e: st.error(e.detail)
 
