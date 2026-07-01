@@ -109,8 +109,8 @@ class ProfileUpdate(BaseModel):
 
 
 class PasswordUpdate(BaseModel):
-    current_password: str
-    new_password: str
+    current_value: str
+    new_value: str
 
 
 class CreateUserRequest(BaseModel):
@@ -621,13 +621,13 @@ def account_profile(body: ProfileUpdate, user: CurrentUser = Depends(require_use
 @app.post("/account/password", tags=["Account"])
 def account_password(body: PasswordUpdate, user: CurrentUser = Depends(require_user)):
     from src.database import get_db, verify_password, update_user_password
-    if len(body.new_password) < 8:
+    if len(body.new_value) < 8:
         raise HTTPException(400, "Password must be at least 8 characters.")
     with get_db() as conn:
         row = conn.execute("SELECT * FROM users WHERE id=?", (user.id,)).fetchone()
-    if not row or not verify_password(body.current_password, row["salt"], row["password_hash"]):
+    if not row or not verify_password(body.current_value, row["salt"], row["password_hash"]):
         raise HTTPException(400, "Current password is incorrect.")
-    update_user_password(user.id, body.new_password)
+    update_user_password(user.id, body.new_value)
     return {"success": True}
 
 
