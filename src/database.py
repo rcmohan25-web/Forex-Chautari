@@ -268,6 +268,29 @@ def init_db():
             created_at  TEXT NOT NULL
         )""")
 
+        # ── Task 3.3 migration: add outcome tracking to signals_log ──────────
+        # Must be done in separate transactions because PostgreSQL aborts the
+        # transaction on any error, even if caught. Use separate get_db() contexts
+        # for the ALTER TABLE statements so failures don't poison the main init.
+
+    # End main transaction
+
+    # Attempt to add outcome and exit_price columns if they don't exist
+    # (e.g., during upgrades). Each one gets its own transaction.
+    try:
+        with get_db() as conn:
+            execute(conn, "ALTER TABLE signals_log ADD COLUMN outcome INTEGER")
+    except Exception:
+        pass  # column already exists
+
+    try:
+        with get_db() as conn:
+            execute(conn, "ALTER TABLE signals_log ADD COLUMN exit_price REAL")
+    except Exception:
+        pass  # column already exists
+
+    # Resume main transaction for remaining initialization tasks
+    with get_db() as conn:
         execute(conn, """
         CREATE TABLE IF NOT EXISTS user_trading_settings (
             user_id              INTEGER PRIMARY KEY REFERENCES users(id),
@@ -790,7 +813,11 @@ def get_auto_trade_users() -> list:
               AND s.auto_trade=1
               AND ts.auto_trade_enabled=1
               AND ts.mode='auto'
-            GROUP BY u.id
+            GROUP BY u.id, u.username, u.email, u.role,
+                   s.plan, s.auto_trade,
+                   ts.mode, ts.auto_trade_enabled, ts.trading_account_id,
+                   ts.threshold, ts.risk_pct, ts.sl_pips, ts.tp_pips,
+                   ts.units, ts.max_positions, ts.use_regime_filter
             ORDER BY u.id
         """)
         result = []
@@ -1011,3 +1038,88 @@ def get_platform_stats() -> dict:
             "new_today":     new_today,
             "plans":         {r["plan"]: r["cnt"] for r in plan_counts},
         }
+
+
+def get_latest_unresolved_signal(pair: str) -> dict | None:
+    """
+    Return the most recent tradeable signal for `pair` whose outcome has not
+    yet been resolved (outcome IS NULL).
+
+    Only signals with a recorded price > 0 are returned — we need the entry
+    price to compute whether the prediction was correct.
+
+    Called by PaperTrader._resolve_previous_signal_outcome() at the start of
+    every signal check cycle.
+    """
+    with get_db() as conn:
+        row = fetchone(conn, """
+            SELECT *
+            FROM   signals_log
+            WHERE  pair      = :pair
+              AND  tradeable = 1
+              AND  outcome   IS NULL
+              AND  price     IS NOT NULL
+              AND  price     > 0
+            ORDER  BY created_at DESC
+            LIMIT  1
+        """, {"pair": pair})
+    return row
+
+
+def resolve_signal_outcome(signal_id: int, outcome: int, exit_price: float) -> None:
+    """
+    Record the outcome of a previously unresolved paper signal.
+
+    outcome   — 1 = win (price moved in predicted direction), 0 = loss
+    exit_price — live mid price at time of resolution (next signal check)
+
+    Called by PaperTrader._resolve_previous_signal_outcome().
+    """
+    with get_db() as conn:
+        execute(conn, """
+            UPDATE signals_log
+            SET    outcome    = :outcome,
+                   exit_price = :exit_price
+            WHERE  id = :id
+              AND  outcome IS NULL   -- idempotency guard
+        """, {"outcome": outcome, "exit_price": exit_price, "id": signal_id})
+
+
+def get_paper_signal_stats(pair: str, since_date: str = "2000-01-01") -> dict:
+    """
+    Return aggregated paper signal statistics for `pair` since `since_date`.
+
+    Only tradeable=1 signals with a resolved outcome are counted; regime-blocked
+    and below-threshold signals are excluded from the win-rate calculation so
+    the number reflects what the auto-trader would actually have done.
+
+    Returns:
+        resolved   — total resolved tradeable signals
+        wins       — number of winning signals
+        losses     — number of losing signals
+        win_rate   — float 0–1 (0.0 if no resolved signals)
+
+    Called by paper_validator.check_and_promote_model().
+    """
+    with get_db() as conn:
+        row = fetchone(conn, """
+            SELECT
+                COUNT(*)                                            AS resolved_count,
+                SUM(CASE WHEN outcome = 1 THEN 1 ELSE 0 END)       AS wins
+            FROM   signals_log
+            WHERE  pair      = :pair
+              AND  tradeable = 1
+              AND  outcome   IS NOT NULL
+              AND  created_at >= :since
+        """, {"pair": pair, "since": since_date})
+
+    resolved = int(row["resolved_count"] or 0) if row else 0
+    wins     = int(row["wins"]          or 0) if row else 0
+    win_rate = wins / resolved if resolved > 0 else 0.0
+
+    return {
+        "resolved": resolved,
+        "wins":     wins,
+        "losses":   resolved - wins,
+        "win_rate": round(win_rate, 4),
+    }

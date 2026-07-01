@@ -559,34 +559,140 @@ def render_admin(user: dict):
                 if "is_tradable_edge" in m:
                     is_tradable = bool(m.get("is_tradable_edge"))
                 else:
-                    is_tradable = None  # legacy metadata, predates net-of-cost reporting
+                    is_tradable = None
 
                 if gap > 0.15:
-                    status = "⚠️ Overfit"
+                    edge_status = "⚠️ Overfit"
                 elif is_tradable is None:
-                    status = "🟡 Retrain for net-of-cost check"
+                    edge_status = "🟡 Retrain for net-of-cost check"
                 elif is_tradable:
-                    status = "✅ Tradable edge"
+                    edge_status = "✅ Tradable edge"
                 else:
-                    status = "🔴 Weak edge"
+                    edge_status = "🔴 Weak edge"
+
+                # Task 3.3 — validation gate status
+                model_status  = m.get("model_status", "validated")
+                paper_count   = m.get("paper_signals_count", 0) or 0
+                paper_wr      = m.get("paper_win_rate")
+                val_badge     = "📄 Paper Only" if model_status == "paper_only" else "✅ Validated"
 
                 pair_rows.append({
-                    "Pair": p.replace("_","/"),
-                    "Test Acc":  f"{m.get('accuracy_test',0):.3f}",
-                    "WF Acc":    f"{m.get('walk_forward_mean_accuracy',0):.3f}",
-                    "Net PF":    f"{net_pf:.2f}" if net_pf is not None else "—",
-                    "Net Profit Splits": f"{net_splits_pct*100:.0f}%" if net_splits_pct is not None else "—",
-                    "WF Sharpe": f"{m.get('walk_forward_mean_sharpe',0):.2f}" if m.get("walk_forward_mean_sharpe") is not None else "—",
-                    "Expectancy":f"{m.get('walk_forward_mean_expectancy',0):+.5f}" if m.get("walk_forward_mean_expectancy") is not None else "—",
-                    "Gap":       f"{gap:.3f}",
-                    "WF Profit": f"{m.get('walk_forward_profitable_splits',0)}/{m.get('walk_forward_total_splits',0)}",
-                    "Rows":      m.get("rows_total","?"),
-                    "Trained":   m.get("trained_at","?")[:10],
-                    "Status":    status,
+                    "Pair":        p.replace("_","/"),
+                    "Test Acc":    f"{m.get('accuracy_test',0):.3f}",
+                    "WF Acc":      f"{m.get('walk_forward_mean_accuracy',0):.3f}",
+                    "Net PF":      f"{net_pf:.2f}" if net_pf is not None else "—",
+                    "Net Prof %":  f"{net_splits_pct*100:.0f}%" if net_splits_pct is not None else "—",
+                    "WF Sharpe":   f"{m.get('walk_forward_mean_sharpe',0):.2f}" if m.get("walk_forward_mean_sharpe") is not None else "—",
+                    "Expectancy":  f"{m.get('walk_forward_mean_expectancy',0):+.5f}" if m.get("walk_forward_mean_expectancy") is not None else "—",
+                    "Gap":         f"{gap:.3f}",
+                    "WF Profit":   f"{m.get('walk_forward_profitable_splits',0)}/{m.get('walk_forward_total_splits',0)}",
+                    "Rows":        m.get("rows_total","?"),
+                    "Trained":     m.get("trained_at","?")[:10],
+                    "Edge":        edge_status,
+                    # ── Task 3.3 ──
+                    "Validation":  val_badge,
+                    "Paper Sigs":  f"{paper_count}/30" if model_status == "paper_only" else (f"{paper_count}" if paper_count else "—"),
+                    "Paper WR":    f"{paper_wr*100:.0f}%" if paper_wr is not None else "—",
                 })
             else:
-                pair_rows.append({"Pair":p.replace("_","/"),"Test Acc":"—","WF Acc":"—","Net PF":"—","Net Profit Splits":"—","WF Sharpe":"—","Expectancy":"—","Gap":"—","WF Profit":"—","Rows":"—","Trained":"not trained","Status":"⚠️ Not trained"})
+                pair_rows.append({
+                    "Pair":p.replace("_","/"),"Test Acc":"—","WF Acc":"—","Net PF":"—",
+                    "Net Prof %":"—","WF Sharpe":"—","Expectancy":"—","Gap":"—",
+                    "WF Profit":"—","Rows":"—","Trained":"not trained","Edge":"⚠️ Not trained",
+                    "Validation":"—","Paper Sigs":"—","Paper WR":"—",
+                })
         st.dataframe(pd.DataFrame(pair_rows), width="stretch", hide_index=True)
+
+        # ── Task 3.3: Validation Management ──────────────────────────────────
+        _sec("Model Validation Management")
+        st.caption(
+            "Controls the paper trading gate. "
+            "Models start as **Paper Only** after training; they auto-promote once "
+            "30 tradeable signals resolve with ≥ 50% win rate. "
+            "Use the buttons below to override — use with caution."
+        )
+
+        try:
+            from src.paper_validator import (
+                promote_model_to_validated,
+                reset_model_to_paper_only,
+                get_paper_stats,
+            )
+
+            for p in ACTIVE_PAIRS:
+                mp = meta_path(p)
+                if not os.path.exists(mp):
+                    continue
+
+                stats        = get_paper_stats(p)
+                model_status = stats["model_status"]
+                paper_count  = stats["paper_count"]
+                paper_wr     = stats["paper_win_rate"]
+                val_at       = (stats["validated_at"] or "")[:10]
+                is_override  = stats["validation_override"]
+                pair_display = p.replace("_", "/")
+
+                v_col, p_col, b1_col, b2_col = st.columns([1, 4, 1, 1])
+
+                with v_col:
+                    icon = "📄" if model_status == "paper_only" else "✅"
+                    st.markdown(
+                        f'<div style="padding:8px 0;font-size:13px;font-weight:600;">'
+                        f'{icon} {pair_display}</div>',
+                        unsafe_allow_html=True,
+                    )
+
+                with p_col:
+                    if model_status == "paper_only":
+                        needed   = max(0, 30 - paper_count)
+                        wr_str   = f" · {paper_wr*100:.0f}% WR" if paper_wr is not None else ""
+                        need_str = f" — {needed} more needed" if needed > 0 else " — WR threshold not met"
+                        st.markdown(
+                            f'<div style="font-size:12px;color:{C_YELLOW};padding:8px 0;">'
+                            f'Accumulating signals: {paper_count}/30{wr_str}{need_str}</div>',
+                            unsafe_allow_html=True,
+                        )
+                    else:
+                        wr_str       = f" · paper WR {paper_wr*100:.0f}%" if paper_wr is not None else ""
+                        override_str = " (admin override)" if is_override else ""
+                        val_str      = f" since {val_at}" if val_at else ""
+                        st.markdown(
+                            f'<div style="font-size:12px;color:{C_GREEN};padding:8px 0;">'
+                            f'Auto-trading enabled{wr_str}{override_str}{val_str}</div>',
+                            unsafe_allow_html=True,
+                        )
+
+                with b1_col:
+                    if model_status == "paper_only":
+                        if st.button("✓ Promote", key=f"promote_{p}",
+                                     help="Force-promote this model, bypassing the 30-signal gate"):
+                            try:
+                                promote_model_to_validated(p)
+                                st.success(f"✅ {pair_display} promoted to validated.")
+                                st.rerun()
+                            except Exception as e:
+                                st.error(str(e))
+
+                with b2_col:
+                    if model_status == "validated":
+                        if st.button("↺ Reset", key=f"reset_{p}",
+                                     help="Reset this model to paper-only, clearing accumulated stats"):
+                            try:
+                                reset_model_to_paper_only(p)
+                                st.warning(f"↺ {pair_display} reset to paper-only.")
+                                st.rerun()
+                            except Exception as e:
+                                st.error(str(e))
+
+                st.markdown(
+                    f'<hr style="border-color:{C_DIM};margin:2px 0;">',
+                    unsafe_allow_html=True,
+                )
+
+        except ImportError as ie:
+            st.error(f"paper_validator module not found: {ie}")
+        except Exception as e:
+            st.error(f"Validation management error: {e}")
 
     # ══ TAB 4 — Trading ═══════════════════════════════════════════════════════
     with t4:

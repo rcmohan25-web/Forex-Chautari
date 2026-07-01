@@ -43,6 +43,11 @@ from config.settings import (
     TRADABLE_MIN_WF_ACCURACY, TRADABLE_MIN_NET_PROFIT_FACTOR,
     TRADABLE_MIN_PROFITABLE_SPLITS_PCT,
 )
+from src.paper_validator import (
+    get_model_status,
+    PAPER_SIGNALS_NEEDED,
+    PAPER_WIN_RATE_NEEDED,
+)
 
 logger = get_logger("multi_pair")
 
@@ -253,6 +258,14 @@ def train_pair(
         "rf_n_estimators":               200,
         "signal_threshold":              threshold,
         "trained_at":                    datetime.utcnow().isoformat(),
+        # ── Task 3.3: paper trading validation gate ──────────────────────────
+        "model_status":             "paper_only",
+        "paper_signals_count":      0,
+        "paper_win_rate":           None,
+        "paper_signals_needed":     PAPER_SIGNALS_NEEDED,
+        "paper_win_rate_needed":    PAPER_WIN_RATE_NEEDED,
+        "validated_at":             None,
+        "validation_override":      False,
     }
 
     _save_model(model, FEATURE_COLUMNS_V2, metadata, pair)
@@ -434,6 +447,10 @@ def run_portfolio_signal_check(
             continue
 
         try:
+            # Task 3.3: block real orders for paper_only models
+            _model_status     = get_model_status(pair)
+            _paper_only       = (_model_status == "paper_only")
+
             pt     = PaperTrader(
                 instrument=pair,
                 threshold=threshold,
@@ -444,6 +461,7 @@ def run_portfolio_signal_check(
                 account_db_id=account_db_id,
                 sl_pips=sl_pips,
                 tp_pips=tp_pips,
+                paper_trading_only=_paper_only,   # ← Task 3.3
             )
             result = pt.run_signal_check()
             if result["action"] == "order_placed":
