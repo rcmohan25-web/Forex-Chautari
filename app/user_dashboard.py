@@ -779,6 +779,49 @@ def render_user_dashboard(user: dict):
                     else:
                         st.success(f"✅ Model looks healthy net of realistic costs. Trained: {meta.get('trained_at','?')[:10]}")
 
+                    # ── Task 3.3: paper validation status ─────────────────────
+                    try:
+                        from src.paper_validator import get_paper_stats, PAPER_SIGNALS_NEEDED
+                        pstats       = get_paper_stats(sel_pair)
+                        model_status = pstats["model_status"]
+                        paper_count  = pstats["paper_count"]
+                        paper_wr     = pstats["paper_win_rate"]
+                        val_at       = (pstats["validated_at"] or "")[:10]
+                        is_override  = pstats["validation_override"]
+
+                        _section("Auto-Trade Validation Status")
+                        if model_status == "paper_only":
+                            needed   = max(0, PAPER_SIGNALS_NEEDED - paper_count)
+                            wr_str   = f", win rate {paper_wr*100:.0f}%" if paper_wr is not None else ""
+                            phase    = (
+                                f"Needs {needed} more tradeable signals."
+                                if needed > 0
+                                else "Signal count met — win rate threshold not yet reached."
+                            )
+                            st.info(
+                                f"📄 **Paper Validation Mode** — "
+                                f"{paper_count}/{PAPER_SIGNALS_NEEDED} signals resolved{wr_str}. "
+                                f"{phase} Auto-trading is **disabled** until the gate clears. "
+                                f"Signals are still logged and outcomes tracked automatically."
+                            )
+                        elif model_status == "validated":
+                            wr_str       = f" · paper win rate {paper_wr*100:.0f}%" if paper_wr is not None else ""
+                            override_str = " *(admin override)*" if is_override else ""
+                            val_str      = f" — validated {val_at}" if val_at else ""
+                            st.success(
+                                f"✅ **Model Validated**{override_str}{val_str}{wr_str}. "
+                                f"Auto-trading is **enabled** for this pair."
+                            )
+                        else:
+                            st.warning(
+                                f"⚠️ Unknown model status: `{model_status}`. "
+                                "Retrain to reset the validation gate."
+                            )
+                    except ImportError:
+                        pass   # paper_validator not yet deployed — show nothing
+                    except Exception as _ve:
+                        logger.debug(f"paper_validator status display error: {_ve}")
+
                     # ── Reliability diagram (calibration curve) ────────────────
                     # Rendered when is_calibrated=True (models trained after
                     # Task 3.2).  Uses the held-out 20% test split so the curve

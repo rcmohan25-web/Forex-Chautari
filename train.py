@@ -95,6 +95,14 @@ def main():
         "rf_min_samples_leaf": 20,
         "rf_n_estimators":  200,
         "signal_threshold": DEFAULT_SIGNAL_THRESHOLD,
+        # ── Task 3.3: paper trading validation gate ──────────────────────────
+        "model_status":         "paper_only",
+        "paper_signals_count":  0,
+        "paper_win_rate":       None,
+        "paper_signals_needed": 30,
+        "paper_win_rate_needed":0.50,
+        "validated_at":         None,
+        "validation_override":  False,
     }
 
     save_model_bundle(model, FEATURE_COLUMNS_V2, metadata)

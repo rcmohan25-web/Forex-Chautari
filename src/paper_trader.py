@@ -1,8 +1,16 @@
 """
 Paper trading engine — multi-pair aware.
 
-Fix: now loads the correct per-pair model from models/{PAIR}_model.pkl
-instead of the legacy single-pair models/model.pkl.
+Task 3.3 additions
+──────────────────
+• paper_trading_only=True  — signals are logged and outcomes resolved,
+  but no order is placed.  Set by run_portfolio_signal_check() when the
+  pair's model_status is "paper_only".
+• _resolve_previous_signal_outcome(price) — at the start of every signal
+  check, resolves the previous tradeable signal's outcome (win/loss) by
+  comparing the current mid price to the entry price recorded in the DB.
+  This feeds paper_validator.check_and_promote_model() which auto-promotes
+  a model once it clears the 30-signal / 50%-win-rate threshold.
 
 Security (task 1.5):
   _check_risk() calls enforce_hard_risk_limits() before the user-configurable
@@ -69,18 +77,22 @@ class PaperTrader:
         account_db_id: Optional[int] = None,
         sl_pips: float = 20.0,
         tp_pips: float = 40.0,
+        # ── Task 3.3 ──────────────────────────────────────────────────────────
+        paper_trading_only: bool = False,
+        # ─────────────────────────────────────────────────────────────────────
     ):
-        self.instrument     = instrument
-        self.granularity    = granularity
-        self.threshold      = threshold
-        self.units          = units
-        self.max_daily_loss = max_daily_loss
-        self.max_positions  = max_positions
+        self.instrument        = instrument
+        self.granularity       = granularity
+        self.threshold         = threshold
+        self.units             = units
+        self.max_daily_loss    = max_daily_loss
+        self.max_positions     = max_positions
         self.use_regime_filter = use_regime_filter
-        self.user_id        = user_id
-        self.account_db_id  = account_db_id
-        self.sl_pips        = sl_pips
-        self.tp_pips        = tp_pips
+        self.user_id           = user_id
+        self.account_db_id     = account_db_id
+        self.sl_pips           = sl_pips
+        self.tp_pips           = tp_pips
+        self.paper_trading_only = paper_trading_only   # ← Task 3.3
 
         if oanda_client is not None:
             self.oanda = oanda_client
@@ -94,6 +106,78 @@ class PaperTrader:
 
         os.makedirs(os.path.dirname(PAPER_TRADES_PATH) or ".", exist_ok=True)
         os.makedirs(os.path.dirname(SIGNALS_LOG_PATH)  or ".", exist_ok=True)
+
+    # ── Task 3.3: outcome resolution ──────────────────────────────────────────
+
+    def _resolve_previous_signal_outcome(self, current_price: float) -> None:
+        """
+        Resolve the outcome of the most recent unresolved tradeable signal for
+        this instrument.
+
+        Logic:
+          - Fetch the latest DB signal with tradeable=1 and outcome IS NULL.
+          - Skip if it is less than 4 hours old (same-bar protection for
+            intraday granularities).
+          - Compare current_price to the signal's entry price:
+              BUY signal + price rose  → WIN  (1)
+              BUY signal + price fell  → LOSS (0)
+              SELL signal + price fell → WIN  (1)
+              SELL signal + price rose → LOSS (0)
+          - Write the outcome back to signals_log.
+          - Call check_and_promote_model() so the model auto-promotes if the
+            threshold is now met.
+
+        Failures are logged as warnings and never propagate to the caller.
+        """
+        try:
+            from src.database import (
+                get_latest_unresolved_signal,
+                resolve_signal_outcome,
+            )
+            from src.paper_validator import check_and_promote_model
+
+            prev = get_latest_unresolved_signal(self.instrument)
+            if not prev:
+                return
+
+            # Age check — wait at least 4 h before resolving (daily candles
+            # are available ~1 h after UTC midnight; H4 candles close every 4 h)
+            try:
+                signal_time = datetime.fromisoformat(str(prev["created_at"]))
+            except Exception:
+                signal_time = datetime.utcnow()
+
+            age_hours = (datetime.utcnow() - signal_time).total_seconds() / 3600
+            if age_hours < 4:
+                return
+
+            entry_price = float(prev["price"])
+            if entry_price <= 0:
+                return
+
+            price_moved_up = current_price > entry_price
+            if prev["signal"] == "BUY":
+                outcome = 1 if price_moved_up else 0
+            else:  # SELL
+                outcome = 1 if not price_moved_up else 0
+
+            resolve_signal_outcome(int(prev["id"]), outcome, current_price)
+
+            logger.debug(
+                f"{self.instrument}: resolved signal id={prev['id']} "
+                f"({prev['signal']} @ {entry_price:.5f}) → "
+                f"{'WIN' if outcome else 'LOSS'} (exit @ {current_price:.5f})"
+            )
+
+            # Check if accumulated paper stats now meet the promotion threshold
+            check_and_promote_model(self.instrument)
+
+        except Exception as e:
+            logger.warning(
+                f"{self.instrument}: could not resolve previous signal outcome — {e}"
+            )
+
+    # ── Main signal check loop ────────────────────────────────────────────────
 
     def run_signal_check(self) -> dict:
         timestamp = datetime.utcnow().isoformat()
@@ -112,7 +196,13 @@ class PaperTrader:
             )
             df = add_features(df_raw)
 
-            # 3. Predict
+            # 3. Get live price (moved up so we can pass it to outcome resolution)
+            live_price = self.oanda.get_live_price(self.instrument)
+
+            # 3a. Task 3.3 — resolve previous signal outcome and check promotion
+            self._resolve_previous_signal_outcome(live_price["mid"])
+
+            # 4. Predict
             latest      = df[feature_columns].iloc[-1:]
             prediction  = int(model.predict(latest)[0])
             prob_up     = float(model.predict_proba(latest)[0][1])
@@ -120,17 +210,16 @@ class PaperTrader:
             signal      = "BUY" if is_buy else "SELL"
             gap         = abs(prob_up - 0.5)
             confidence  = "HIGH" if gap >= 0.15 else ("MEDIUM" if gap >= 0.08 else "LOW")
-            live_price  = self.oanda.get_live_price(self.instrument)
 
             status.update({
                 "signal": signal, "prob_up": round(prob_up, 4),
                 "confidence": confidence, "price": live_price["mid"],
             })
 
-            # 4. Log signal to CSV. DB logging happens once with final context.
+            # 5. Log signal to CSV
             self._log_signal(timestamp, signal, prob_up, confidence, live_price["mid"])
 
-            # 5. Threshold check
+            # 6. Threshold check
             above = prob_up >= self.threshold if is_buy else (1 - prob_up) >= self.threshold
             if not above:
                 reason = f"Confidence below threshold ({self.threshold})"
@@ -148,11 +237,10 @@ class PaperTrader:
                 )
                 return status
 
-            # 6. Regime filter
+            # 7. Regime filter
             if self.use_regime_filter:
                 regime = self.regime.detect(df)
                 tradeable = self.regime.is_tradeable(regime, signal)
-                # Update DB signal log with regime info
                 try:
                     from src.database import log_signal
                     log_signal(self.instrument, signal, prob_up, confidence,
@@ -176,14 +264,35 @@ class PaperTrader:
                 except Exception:
                     pass
 
-            # 7. Risk check (hard limits + user-configurable limits)
+            # 7b. Task 3.3 — paper-only gate ──────────────────────────────────
+            # At this point the signal is above threshold and passes the regime
+            # filter (tradeable=True was logged above).  If the model is still
+            # in paper_only mode we stop here — the signal is already persisted
+            # so it will count toward the promotion threshold once resolved.
+            if self.paper_trading_only:
+                reason = (
+                    "Model in paper-only validation mode — "
+                    f"accumulating signals ({metadata.get('paper_signals_count', 0) or 0}"
+                    f"/{30} needed). No order placed."
+                )
+                status["reason"] = reason
+                status["action"] = "paper_signal"
+                self.alerter.send_signal(
+                    signal=signal, prob_up=prob_up, confidence=confidence,
+                    price=live_price["mid"], instrument=self.instrument,
+                    traded=False, reason=reason,
+                )
+                return status
+            # ─────────────────────────────────────────────────────────────────
+
+            # 8. Risk check (hard limits + user-configurable limits)
             risk_ok, risk_reason = self._check_risk()
             if not risk_ok:
                 status["reason"] = risk_reason
                 self.alerter.send_risk_alert(risk_reason)
                 return status
 
-            # 8. Place order
+            # 9. Place order
             units = self.units if is_buy else -self.units
             mid   = live_price["mid"]
             from src.trading_engine import calculate_sl_tp
